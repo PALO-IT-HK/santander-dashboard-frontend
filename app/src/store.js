@@ -11,7 +11,6 @@ import Logger from 'utilities/Logger'
 // import { createPathChangeSagaWatcher } from 'saga'
 
 // sagaWatcher
-import home, { homeSagaWatcher } from 'models/home'
 import dashboard, { dashboardSagaWatcher } from 'models/dashboard'
 
 /** --------------------------------------------------------
@@ -22,7 +21,6 @@ const rootReducer = combineReducers({
   router: routerReducer,
   form: formReducer,
   // add imported model
-  home,
   dashboard
 })
 
@@ -40,7 +38,6 @@ const rootReducer = combineReducers({
 function * rootSaga () {
   yield all([
     // add MODEL_NAME
-    ...homeSagaWatcher,
     ...dashboardSagaWatcher
   ])
 }
