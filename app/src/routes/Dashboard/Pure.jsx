@@ -42,12 +42,10 @@ const Dashboard = ({getDashboard, dashboardData}) => {
       <BodyWrap>
         <MainDiv>
           <IntroButton onClick={getDashboard}>Click me</IntroButton>
-            <Search />
         </MainDiv>
       </BodyWrap>
     </Wrap>
   )
 }
-
 
 export default Dashboard
