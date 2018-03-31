@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import styled from 'styled-components'
 
 import { media } from 'styledconfig'
-import { StdContentCentered } from 'components/Layout'
+import { StdContentCentered, StdWrapperFlexContentCentered } from 'components/Layout'
 import Helmet from 'react-helmet'
 
 const Header = styled.div`
@@ -10,39 +10,48 @@ const Header = styled.div`
   top: 0;
   height: 70px;
   position: fixed;
-  background-color: #000;
+  background-color: #50aeeb;
   z-index: 1001;
 
   /*
   Examples for responsive css, breakpoints defined in 'styledconfig.js'
   */
-  ${media.xs`
+  ${media.mobile`
 
   `}
 
-  ${media['gt-sm']`
+  ${media['gt-mobile']`
 
   `}
 
-  ${media.sm`
+  ${media.mobile`
   `}
+`
+
+const HeaderText = styled.div`
+  font-size: 24px;
 `
 
 const Content = styled.div`
   padding: 70px 16px 0 16px;
-  background: #ffffff;
+  background: #FFFFFF;
 
-  ${media.sm`
+  ${media.mobile`
     padding-top: 50px;
   `}
 `
 
 const Footer = styled.div`
-  background: #333;
-  color: #AAA;
-  padding: 32px 16px;
-  font-size: 14px;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: #50aeeb;
+  font-size: 24px;
   line-height: 1.8;
+`
+
+const FooterContent = styled.div`
+  font-size: 24px;
 `
 
 class AppLayout extends Component {
@@ -52,7 +61,9 @@ class AppLayout extends Component {
         <Helmet title='Landing Page' titleTemplate='%s | My App' />
         <Header>
           <StdContentCentered style={{height: '100%'}}>
-            This is the header
+            <StdWrapperFlexContentCentered style={{height: '100%'}}>
+              <HeaderText>Analytics Dashboard</HeaderText>
+            </StdWrapperFlexContentCentered>
           </StdContentCentered>
         </Header>
         <Content>
@@ -60,7 +71,11 @@ class AppLayout extends Component {
         </Content>
         <Footer>
           <StdContentCentered>
-            This is the footer
+            <StdWrapperFlexContentCentered>
+              <FooterContent>
+                This is the footer
+              </FooterContent>
+            </StdWrapperFlexContentCentered>
           </StdContentCentered>
         </Footer>
       </div>
