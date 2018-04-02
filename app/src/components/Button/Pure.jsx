@@ -1,20 +1,23 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import styled from 'styled-components'
 
 const buttonTypeStyles = {
   primary: `
-    background-color: #1F6EDA;
+    background-color: #D54435;
+    border: 1px solid #D54435;
   `,
   secondary: `
-    background-color: #FFFFFF;
-    border: solid 1px #1F6EDA;
+    background-color: #D54435;
+    border: 1px solid #D54435;
     `,
   primaryDisabled: `
-    background-color: #999999;
+    background-color: #A8AAB6;
+    border: 1px solid #A8AAB6;
   `,
   secondaryDisabled: `
-    background-color: #FFFFFF;
-    border: solid 1px #999999;
+    background-color: #A8AAB6;
+    border: 1px solid #A8AAB6;
   `
 }
 
@@ -29,24 +32,24 @@ const textTypeStyles = {
     color: #FFFFFF;
   `,
   secondaryDisabled: `
-    color: #999999;
+    color: #FFFFFF;
   `
 }
 
 const buttonSizeStyles = {
   large: `
     height: 42px;
-    min-width: 120px;
+    min-width: 140px;
     padding: 0 25px;
   `,
   medium: `
     height: 36px;
-    min-width: 100px;
+    min-width: 120px;
     padding: 0 20px;
   `,
   small: `
     height: 26px;
-    min-width: 70px;
+    min-width: 80px;
     padding: 0 15px;
   `
 }
@@ -58,7 +61,7 @@ const textSizeStyles = {
 }
 
 const Button = styled.button`
-  border-radius: 5px;
+  border-radius: 30px;
   align-items: center;
   justify-content: center;
 
@@ -77,9 +80,9 @@ const Text = styled.h3`
   `
 
 export default function SButton (props) {
-  const {type, size, disabled, children} = props
+  const {type, size, onClick, disabled, children} = props
   return (
-    <Button type={type} size={size} disabled={disabled}>
+    <Button type={type} size={size} onClick={onClick} disabled={disabled}>
       <Text type={type} size={size} disabled={disabled}>
         {children}
       </Text>
@@ -90,5 +93,13 @@ export default function SButton (props) {
 SButton.defaultProps = {
   type: 'primary',
   size: 'medium',
-  onPress: () => null
+  onClick: () => null
+}
+
+SButton.propTypes = {
+  type: PropTypes.oneOf(['primary', 'secondary']),
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  onClick: PropTypes.func.isRequired,
+  disabled: PropTypes.bool,
+  children: PropTypes.node.isRequired
 }
