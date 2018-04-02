@@ -56,7 +56,7 @@ const buttonSizeStyles = {
 
 const textSizeStyles = {
   large: 'font-size: 16px;',
-  medium: 'font-size: 16px;',
+  medium: 'font-size: 14px;',
   small: 'font-size: 12px;'
 }
 
@@ -64,7 +64,7 @@ const Button = styled.button`
   border-radius: 30px;
   align-items: center;
   justify-content: center;
-
+  cursor: pointer;
   ${({type, size, disabled}) => {
     const buttonType = disabled ? `${type}Disabled` : type
     return buttonSizeStyles[size] + buttonTypeStyles[buttonType]
@@ -73,13 +73,14 @@ const Button = styled.button`
 
 const Text = styled.h3`
   margin: 0 auto;
+  cursor: pointer;
   ${({type, size, disabled}) => {
     const buttonType = disabled ? `${type}Disabled` : type
     return textTypeStyles[buttonType] + textSizeStyles[size]
   }};
   `
 
-export default function SButton (props) {
+const SButton = props => {
   const {type, size, onClick, disabled, children} = props
   return (
     <Button type={type} size={size} onClick={onClick} disabled={disabled}>
@@ -103,3 +104,5 @@ SButton.propTypes = {
   disabled: PropTypes.bool,
   children: PropTypes.node.isRequired
 }
+
+export default SButton

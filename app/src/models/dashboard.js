@@ -36,7 +36,12 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  * Reducers
  *
  */
-export const dashboard = {}
+export const dashboard = {
+  [getDashboardSuccess]: (state, dashboardData) => ({
+    ...state,
+    dashboardData
+  })
+}
 
 export const dashboardInitialState = {}
 
