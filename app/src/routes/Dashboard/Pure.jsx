@@ -1,7 +1,8 @@
 import React from 'react'
 import styled from 'styled-components'
 
-import { StdContentCentered } from 'components/Layout'
+import { StdWrapperFlexContentCentered } from 'components/Layout'
+import SButton from '../../components/Button/Pure'
 
 const Wrap = styled.div`
   margin: 0;
@@ -31,21 +32,20 @@ const IntroButton = styled.button`
   }
 `
 
-const DashboardData = styled.div`
-  padding: 5px;
-  border: 1px solid black;
-`
-
-const Dashboard = ({getDashboard, dashboardData}) => {
+export default function Dashboard ({getDashboard, dashboardData}) {
   return (
     <Wrap>
       <BodyWrap>
         <MainDiv>
-          <IntroButton onClick={getDashboard}>Click me</IntroButton>
+          <SButton onClick={getDashboard}
+                   children={'Click Me'}>Click me</SButton>
+          {dashboardData && 
+          <StdWrapperFlexContentCentered>
+            {JSON.stringify(dashboardData, 2, null)}
+          </StdWrapperFlexContentCentered>
+          }
         </MainDiv>
       </BodyWrap>
     </Wrap>
   )
 }
-
-export default Dashboard
