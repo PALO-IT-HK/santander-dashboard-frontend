@@ -1,14 +1,15 @@
 import React, { Component } from 'react'
 import styled from 'styled-components'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { media } from 'styledconfig'
+import NavBarTabs from 'components/Tabs/Pure'
 import { StdContentCentered, StdWrapperFlexContentCentered } from 'components/Layout'
 import Helmet from 'react-helmet'
 
 const Header = styled.div`
   width: 100%;
   top: 0;
-  height: 70px;
   position: fixed;
   background-color: #50aeeb;
   z-index: 1001;
@@ -33,7 +34,7 @@ const HeaderText = styled.div`
 `
 
 const Content = styled.div`
-  padding: 70px 16px 0 16px;
+  padding: 0;
   background: #FFFFFF;
 
   ${media.mobile`
@@ -55,29 +56,37 @@ const FooterContent = styled.div`
 `
 
 class AppLayout extends Component {
+  handleTabChange = v => this.props.changeTabAction(v)
   render () {
     return (
       <div>
-        <Helmet title='Landing Page' titleTemplate='%s | My App' />
-        <Header>
-          <StdContentCentered style={{height: '100%'}}>
-            <StdWrapperFlexContentCentered style={{height: '100%'}}>
-              <HeaderText>Analytics Dashboard</HeaderText>
-            </StdWrapperFlexContentCentered>
-          </StdContentCentered>
-        </Header>
-        <Content>
-          {this.props.children}
-        </Content>
-        <Footer>
-          <StdContentCentered>
-            <StdWrapperFlexContentCentered>
-              <FooterContent>
-                This is the footer
-              </FooterContent>
-            </StdWrapperFlexContentCentered>
-          </StdContentCentered>
-        </Footer>
+        <MuiThemeProvider>
+          <React.Fragment>
+            <Helmet title='Landing Page' titleTemplate='%s | My App' />
+            <Header>
+              <StdContentCentered style={{height: '100%'}}>
+                <StdWrapperFlexContentCentered style={{height: '100%'}}>
+                  <NavBarTabs
+                    value={this.props.currentTab}
+                    onChange={this.handleTabChange}
+                  />
+                </StdWrapperFlexContentCentered>
+              </StdContentCentered>
+            </Header>
+            <Content>
+              {this.props.children}
+            </Content>
+            <Footer>
+              <StdContentCentered>
+                <StdWrapperFlexContentCentered>
+                  <FooterContent>
+                  This is the footer
+                </FooterContent>
+                </StdWrapperFlexContentCentered>
+              </StdContentCentered>
+            </Footer>
+          </React.Fragment>
+        </MuiThemeProvider>
       </div>
     )
   }

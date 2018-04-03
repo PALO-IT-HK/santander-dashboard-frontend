@@ -8,8 +8,10 @@ import { createSagaWatcher } from 'saga'
  * Actions
  *
  */
-export const getDashboard = createAction('Get dashboard')
-export const getDashboardSuccess = createAction('Get dashboard success')
+const MODEL_NAME = '[DASHBOARD]'
+export const getDashboard = createAction(`${MODEL_NAME} GET`)
+export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
+export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
 
 /** --------------------------------------------------
  *
@@ -33,16 +35,26 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
 
 /** --------------------------------------------------
  *
+ * Logic
+ *
+ */
+const changeTab = (state, tabs) => ({...state, currentTab: tabs})
+const addDashboardData = (state, dashboardData) => {
+  return {
+    ...state,
+    dashboardData
+  }
+}
+/** --------------------------------------------------
+ *
  * Reducers
  *
  */
 export const dashboard = {
-  [getDashboardSuccess]: (state, dashboardData) => ({
-    ...state,
-    dashboardData
-  })
+  [getDashboardSuccess]: addDashboardData,
+  [changeTabAction]: changeTab
 }
 
-export const dashboardInitialState = {}
+export const dashboardInitialState = {currentTab: 'HEATMAP'}
 
 export default createReducer(dashboard, dashboardInitialState)

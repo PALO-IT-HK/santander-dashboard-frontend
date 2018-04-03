@@ -7,7 +7,8 @@ import { getDashboard } from 'models/dashboard'
 
 // s function
 const s = state => ({
-  dashboardData: state.dashboard.dashboardData
+  dashboardData: state.dashboard.dashboardData,
+  currentTab: state.dashboard.currentTab
 })
 
 // d function

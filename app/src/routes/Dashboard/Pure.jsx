@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
-import SButton from '../../components/Button/Pure'
+import SButton from 'components/Button/Pure'
 
 const Wrap = styled.div`
   margin: 0;
@@ -20,26 +20,21 @@ const BodyWrap = styled.div`
 
 const MainDiv = styled.div`
   text-align: center;
-  padding: 32px;
+  margin-top: 170px;
+  padding: 0;
 `
 
-const IntroButton = styled.button`
-  width: 150px;
-  height: 20px;
-
-  &:hover {
-    cursor: pointer;
-  }
-`
-
-export default function Dashboard ({getDashboard, dashboardData}) {
+export default function Dashboard ({getDashboard, dashboardData, value, currentTab}) {
   return (
     <Wrap>
       <BodyWrap>
         <MainDiv>
+          {currentTab === 'HEATMAP' && <h1>HEATMAP</h1>}
+          {currentTab === 'BIKEUSAGE' && <h1>BIKEUSAGE</h1>}
+          {currentTab === 'WEATHER' && <h1>WEATHER</h1>}
           <SButton onClick={getDashboard}
-                   children={'Click Me'}>Click me</SButton>
-          {dashboardData && 
+            children={'Click Me'}>Click me</SButton>
+          {dashboardData &&
           <StdWrapperFlexContentCentered>
             {JSON.stringify(dashboardData, 2, null)}
           </StdWrapperFlexContentCentered>
