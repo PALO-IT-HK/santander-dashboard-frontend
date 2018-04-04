@@ -13,3 +13,9 @@ export const StdWrapperFlexContentCentered = styled.div`
   justify-content: center;
   align-items: center;
 `
+
+export const StdWrapperFlexContentLeft = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+`
