@@ -3,6 +3,9 @@ import { put, call } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 
+// Mock data
+import data from '../mockdata.json'
+
 /** --------------------------------------------------
  *
  * Actions
@@ -12,12 +15,9 @@ const MODEL_NAME = '[DASHBOARD]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
-<<<<<<< HEAD
 export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL VISIBLE`)
 export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
-=======
 export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
->>>>>>> f692c00bb6756e476ad32550ad109cc8c8279fba
 
 /** --------------------------------------------------
  *
@@ -62,22 +62,16 @@ const hideMarkerLabel = state => ({...state, currentMarker: ''})
 export const dashboard = {
   [getDashboardSuccess]: addDashboardData,
   [changeTabAction]: changeTab,
-<<<<<<< HEAD
   [toggleMarkerLabelVisibilityAction]: toggleMarkerLabelVisible,
-  [hideMarkerLabelAction]: hideMarkerLabel
-}
-
-export const dashboardInitialState = {
-  currentTab: 'BIKEUSAGE',
-  currentMarker: ''
-=======
+  [hideMarkerLabelAction]: hideMarkerLabel,
   [changeToggledTabAction]: changeToggledTab
 }
 
 export const dashboardInitialState = {
   currentTab: 'BIKE USAGE',
-  currentToggledTab: 'HEAT MAP'
->>>>>>> f692c00bb6756e476ad32550ad109cc8c8279fba
+  currentMarker: '',
+  currentToggledTab: 'HEAT MAP',
+  graphData: data
 }
 
 export default createReducer(dashboard, dashboardInitialState)

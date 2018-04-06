@@ -2,13 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
-<<<<<<< HEAD
-// import SButton from 'components/Button/Pure'
 import Heatmap from 'components/Heatmap/Pure'
-=======
-import SButton from 'components/Button/Pure'
 import BikeUsageMainSearch from 'components/BikeUsageMainSearch/Pure'
->>>>>>> f692c00bb6756e476ad32550ad109cc8c8279fba
 
 const Wrap = styled.div`
   margin: 0;
@@ -31,19 +26,18 @@ const MainDiv = styled.div`
 `
 
 export default function Dashboard ({getDashboard, dashboardData, value, currentTab, currentMarker,
-  toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, currentToggledTab, changeToggledTabAction}) {
+  toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, currentToggledTab, changeToggledTabAction, 
+  graphData}) {
   return (
     <Wrap>
       <BodyWrap>
         <MainDiv>
-          {currentTab === 'BIKEUSAGE' &&
-            <Heatmap
-              isMarkerShown
-              toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
-              hideMarkerLabelAction={hideMarkerLabelAction}
-              currentMarker={currentMarker} />
-          }
-          {currentTab === 'BIKE USAGE' && <BikeUsageMainSearch currentToggledTab={currentToggledTab} changeToggledTabAction={changeToggledTabAction} />}
+          {currentTab === 'BIKE USAGE' && <BikeUsageMainSearch currentToggledTab={currentToggledTab}
+                                                               changeToggledTabAction={changeToggledTabAction}
+                                                               data={graphData.list}
+                                                               currentMarker={currentMarker}
+                                                               toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
+                                                               hideMarkerLabelAction={hideMarkerLabelAction} />}
           {currentTab === 'WEATHER EFFECT' && <h1>WEATHER EFFECT</h1>}
           {dashboardData &&
           <StdWrapperFlexContentCentered>
