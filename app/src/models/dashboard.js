@@ -12,6 +12,7 @@ const MODEL_NAME = '[DASHBOARD]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
+export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
 
 /** --------------------------------------------------
  *
@@ -39,6 +40,7 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  *
  */
 const changeTab = (state, tabs) => ({...state, currentTab: tabs})
+const changeToggledTab = (state, tabs) => ({...state, currentToggledTab: tabs})
 const addDashboardData = (state, dashboardData) => {
   return {
     ...state,
@@ -52,9 +54,13 @@ const addDashboardData = (state, dashboardData) => {
  */
 export const dashboard = {
   [getDashboardSuccess]: addDashboardData,
-  [changeTabAction]: changeTab
+  [changeTabAction]: changeTab,
+  [changeToggledTabAction]: changeToggledTab
 }
 
-export const dashboardInitialState = {currentTab: 'HEATMAP'}
+export const dashboardInitialState = {
+  currentTab: 'BIKE USAGE',
+  currentToggledTab: 'HEAT MAP'
+}
 
 export default createReducer(dashboard, dashboardInitialState)
