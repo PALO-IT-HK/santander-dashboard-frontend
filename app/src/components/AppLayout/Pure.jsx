@@ -11,7 +11,7 @@ const Header = styled.div`
   width: 100%;
   top: 0;
   position: fixed;
-  background-color: #50aeeb;
+  background-color: #ffffff;
   z-index: 1001;
 
   /*
