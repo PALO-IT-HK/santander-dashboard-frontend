@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
-import Heatmap from 'components/Heatmap/Pure'
 import BikeUsageMainSearch from 'components/BikeUsageMainSearch/Pure'
 
 const Wrap = styled.div`
@@ -31,13 +30,6 @@ export default function Dashboard ({getDashboard, dashboardData, value, currentT
     <Wrap>
       <BodyWrap>
         <MainDiv>
-          {currentTab === 'BIKEUSAGE' &&
-            <Heatmap
-              isMarkerShown
-              toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
-              hideMarkerLabelAction={hideMarkerLabelAction}
-              currentMarker={currentMarker} />
-          }
           {currentTab === 'BIKE USAGE' && <BikeUsageMainSearch currentToggledTab={currentToggledTab} changeToggledTabAction={changeToggledTabAction} />}
           {currentTab === 'WEATHER EFFECT' && <h1>WEATHER EFFECT</h1>}
           {dashboardData &&

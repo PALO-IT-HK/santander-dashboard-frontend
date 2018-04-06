@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import ToggleTabs from 'components/ToggleTabs/Pure'
+import Heatmap from 'components/Heatmap/Pure'
 
 const RenderMapGraphDiv = styled.div`
   min-height: 500px;
@@ -12,7 +13,7 @@ const SearchBoxDiv = styled.div`
   padding: 0 5rem;
 `
 
-const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction}) => {
+const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction}) => {
   const handleTabChange = v => changeToggledTabAction(v)
 
   return (
@@ -25,7 +26,12 @@ const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction}) => {
         />
       </SearchBoxDiv>
       <RenderMapGraphDiv>
-        {currentToggledTab === 'HEAT MAP' && <h3>HEAT MAP COMPONENT</h3>}
+        {currentToggledTab === 'HEAT MAP' && 
+          <Heatmap
+          isMarkerShown
+          toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
+          hideMarkerLabelAction={hideMarkerLabelAction}
+          currentMarker={currentMarker} />}
         {currentToggledTab === 'GRAPH' && <h3>GRAPH COMPONENT</h3>}
       </RenderMapGraphDiv>
     </div>

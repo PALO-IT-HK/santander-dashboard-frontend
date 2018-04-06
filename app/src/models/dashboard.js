@@ -66,7 +66,7 @@ export const dashboard = {
 }
 
 export const dashboardInitialState = {
-  currentTab: 'BIKEUSAGE',
+  currentTab: 'BIKE USAGE',
   currentMarker: '',
   currentToggledTab: 'HEAT MAP'
 }
