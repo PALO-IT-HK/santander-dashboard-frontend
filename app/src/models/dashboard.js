@@ -3,6 +3,9 @@ import { put, call } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 
+// Mock data
+import data from '../mockdata.json'
+
 /** --------------------------------------------------
  *
  * Actions
@@ -68,7 +71,8 @@ export const dashboard = {
 export const dashboardInitialState = {
   currentTab: 'BIKE USAGE',
   currentMarker: '',
-  currentToggledTab: 'HEAT MAP'
+  currentToggledTab: 'HEAT MAP',
+  graphData: data
 }
 
 export default createReducer(dashboard, dashboardInitialState)

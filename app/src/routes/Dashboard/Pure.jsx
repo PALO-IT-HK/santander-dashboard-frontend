@@ -25,12 +25,18 @@ const MainDiv = styled.div`
 `
 
 export default function Dashboard ({getDashboard, dashboardData, value, currentTab, currentMarker,
-  toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, currentToggledTab, changeToggledTabAction}) {
+  toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, currentToggledTab, changeToggledTabAction, 
+  graphData}) {
   return (
     <Wrap>
       <BodyWrap>
         <MainDiv>
-          {currentTab === 'BIKE USAGE' && <BikeUsageMainSearch currentToggledTab={currentToggledTab} changeToggledTabAction={changeToggledTabAction} />}
+          {currentTab === 'BIKE USAGE' && <BikeUsageMainSearch currentToggledTab={currentToggledTab}
+                                                               changeToggledTabAction={changeToggledTabAction}
+                                                               data={graphData.list}
+                                                               currentMarker={currentMarker}
+                                                               toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
+                                                               hideMarkerLabelAction={hideMarkerLabelAction} />}
           {currentTab === 'WEATHER EFFECT' && <h1>WEATHER EFFECT</h1>}
           {dashboardData &&
           <StdWrapperFlexContentCentered>
