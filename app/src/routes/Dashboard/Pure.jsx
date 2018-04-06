@@ -2,7 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
-import SButton from 'components/Button/Pure'
+// import SButton from 'components/Button/Pure'
+import Heatmap from 'components/Heatmap/Pure'
 
 const Wrap = styled.div`
   margin: 0;
@@ -20,20 +21,24 @@ const BodyWrap = styled.div`
 
 const MainDiv = styled.div`
   text-align: center;
-  margin-top: 170px;
+  margin-top: 80px;
   padding: 0;
 `
 
-export default function Dashboard ({getDashboard, dashboardData, value, currentTab}) {
+export default function Dashboard ({getDashboard, dashboardData, value, currentTab, currentMarker,
+  toggleMarkerLabelVisibilityAction, hideMarkerLabelAction}) {
   return (
     <Wrap>
       <BodyWrap>
         <MainDiv>
-          {currentTab === 'HEATMAP' && <h1>HEATMAP</h1>}
-          {currentTab === 'BIKEUSAGE' && <h1>BIKEUSAGE</h1>}
+          {currentTab === 'BIKEUSAGE' &&
+            <Heatmap
+              isMarkerShown
+              toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
+              hideMarkerLabelAction={hideMarkerLabelAction}
+              currentMarker={currentMarker} />
+          }
           {currentTab === 'WEATHER' && <h1>WEATHER</h1>}
-          <SButton onClick={getDashboard}
-            children={'Click Me'}>Click me</SButton>
           {dashboardData &&
           <StdWrapperFlexContentCentered>
             {JSON.stringify(dashboardData, 2, null)}
