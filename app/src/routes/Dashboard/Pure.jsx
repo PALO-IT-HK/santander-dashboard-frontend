@@ -2,6 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
+import Heatmap from 'components/Heatmap/Pure'
 import BikeUsageMainSearch from 'components/BikeUsageMainSearch/Pure'
 
 const Wrap = styled.div`

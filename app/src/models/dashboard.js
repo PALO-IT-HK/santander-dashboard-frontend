@@ -19,7 +19,6 @@ export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOG
 export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
 export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
 
-
 /** --------------------------------------------------
  *
  * Sagas

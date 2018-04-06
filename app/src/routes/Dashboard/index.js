@@ -16,15 +16,9 @@ const s = state => ({
   graphData: state.dashboard.graphData
 })
 
-// d function
-// const d = dispatch => ({
-//   getDashboard: () => dispatch(getDashboard())
-// })
-
 const d = dispatch => ({
   getDashboard: bindActionCreators(getDashboard, dispatch),
   toggleMarkerLabelVisibilityAction: bindActionCreators(toggleMarkerLabelVisibilityAction, dispatch),
-  // toggleMarkerLabelVisibilityAction: (markerId) => dispatch(toggleMarkerLabelVisibilityAction(markerId)),
   hideMarkerLabelAction: bindActionCreators(hideMarkerLabelAction, dispatch),
   changeTabAction: bindActionCreators(changeTabAction, dispatch),
   changeToggledTabAction: bindActionCreators(changeToggledTabAction, dispatch)
