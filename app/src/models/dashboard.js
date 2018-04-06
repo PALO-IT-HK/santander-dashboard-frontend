@@ -14,6 +14,8 @@ export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
 export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL VISIBLE`)
 export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
+export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
+
 
 /** --------------------------------------------------
  *
@@ -41,6 +43,7 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  *
  */
 const changeTab = (state, tabs) => ({...state, currentTab: tabs})
+const changeToggledTab = (state, tabs) => ({...state, currentToggledTab: tabs})
 const addDashboardData = (state, dashboardData) => {
   return {
     ...state,
@@ -58,12 +61,14 @@ export const dashboard = {
   [getDashboardSuccess]: addDashboardData,
   [changeTabAction]: changeTab,
   [toggleMarkerLabelVisibilityAction]: toggleMarkerLabelVisible,
-  [hideMarkerLabelAction]: hideMarkerLabel
+  [hideMarkerLabelAction]: hideMarkerLabel,
+  [changeToggledTabAction]: changeToggledTab
 }
 
 export const dashboardInitialState = {
   currentTab: 'BIKEUSAGE',
-  currentMarker: ''
+  currentMarker: '',
+  currentToggledTab: 'HEAT MAP'
 }
 
 export default createReducer(dashboard, dashboardInitialState)

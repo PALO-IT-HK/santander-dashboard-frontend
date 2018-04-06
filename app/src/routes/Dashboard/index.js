@@ -1,22 +1,32 @@
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
+import { bindActionCreators } from 'redux'
 import Pure from './Pure'
 
 // Import action
-import { getDashboard, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction } from 'models/dashboard'
+import { getDashboard, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
+  changeTabAction, changeToggledTabAction } from 'models/dashboard'
 
 // s function
 const s = state => ({
   dashboardData: state.dashboard.dashboardData,
   currentTab: state.dashboard.currentTab,
-  currentMarker: state.dashboard.currentMarker
+  currentMarker: state.dashboard.currentMarker,
+  currentToggledTab: state.dashboard.currentToggledTab
 })
 
 // d function
+// const d = dispatch => ({
+//   getDashboard: () => dispatch(getDashboard())
+// })
+
 const d = dispatch => ({
-  getDashboard: () => dispatch(getDashboard()),
-  toggleMarkerLabelVisibilityAction: (markerId) => dispatch(toggleMarkerLabelVisibilityAction(markerId)),
-  hideMarkerLabelAction: () => dispatch(hideMarkerLabelAction())
+  getDashboard: bindActionCreators(getDashboard, dispatch),
+  toggleMarkerLabelVisibilityAction: bindActionCreators(toggleMarkerLabelVisibilityAction, dispatch),
+  // toggleMarkerLabelVisibilityAction: (markerId) => dispatch(toggleMarkerLabelVisibilityAction(markerId)),
+  hideMarkerLabelAction: bindActionCreators(hideMarkerLabelAction, dispatch),
+  changeTabAction: bindActionCreators(changeTabAction, dispatch),
+  changeToggledTabAction: bindActionCreators(changeToggledTabAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))
