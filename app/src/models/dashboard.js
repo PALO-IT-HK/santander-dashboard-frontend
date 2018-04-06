@@ -3,6 +3,9 @@ import { put, call } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 
+// Mock data
+import data from '../mockdata.json'
+
 /** --------------------------------------------------
  *
  * Actions
@@ -12,6 +15,9 @@ const MODEL_NAME = '[DASHBOARD]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
+export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL VISIBLE`)
+export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
+export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
 
 /** --------------------------------------------------
  *
@@ -39,12 +45,15 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  *
  */
 const changeTab = (state, tabs) => ({...state, currentTab: tabs})
+const changeToggledTab = (state, tabs) => ({...state, currentToggledTab: tabs})
 const addDashboardData = (state, dashboardData) => {
   return {
     ...state,
     dashboardData
   }
 }
+const toggleMarkerLabelVisible = (state, markerId) => ({...state, currentMarker: markerId})
+const hideMarkerLabel = state => ({...state, currentMarker: ''})
 /** --------------------------------------------------
  *
  * Reducers
@@ -52,9 +61,17 @@ const addDashboardData = (state, dashboardData) => {
  */
 export const dashboard = {
   [getDashboardSuccess]: addDashboardData,
-  [changeTabAction]: changeTab
+  [changeTabAction]: changeTab,
+  [toggleMarkerLabelVisibilityAction]: toggleMarkerLabelVisible,
+  [hideMarkerLabelAction]: hideMarkerLabel,
+  [changeToggledTabAction]: changeToggledTab
 }
 
-export const dashboardInitialState = {currentTab: 'HEATMAP'}
+export const dashboardInitialState = {
+  currentTab: 'BIKE USAGE',
+  currentMarker: '',
+  currentToggledTab: 'HEAT MAP',
+  graphData: data
+}
 
 export default createReducer(dashboard, dashboardInitialState)

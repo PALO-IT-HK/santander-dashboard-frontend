@@ -23,7 +23,7 @@
   <meta property="og:url" content="<%= htmlWebpackPlugin.options.ogUrl %>" />
   <meta property="og:title" content="<%= htmlWebpackPlugin.options.title || 'My React/Redux App'%>" />
   <meta property="og:description" content="Welcome to my React/Redux App" />
-
+  <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500,700" rel="stylesheet">
   <% for (var css in htmlWebpackPlugin.files.css) { %>
   <link href="<%= htmlWebpackPlugin.files.css[css] %>" rel="stylesheet">
   <% } %>

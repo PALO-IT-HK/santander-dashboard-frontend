@@ -9,8 +9,8 @@ const NavBarTabs = props => {
       value={value}
       onChange={onChange}
     >
-      <Tab label='BIKE USAGE' value='BIKEUSAGE' />
-      <Tab label='WEATHER' value='WEATHER' />
+      <Tab label='BIKE USAGE' value='BIKE USAGE' />
+      <Tab label='WEATHER EFFECT' value='WEATHER EFFECT' />
     </Tabs>
   )
 }

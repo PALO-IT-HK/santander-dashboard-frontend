@@ -18,3 +18,9 @@ body.no-overflow{
   height: 100vh;
   overflow: hidden;
 }
+
+p {
+  font-family: 'Rubik', sans-serif;
+  font-size: 12px;
+  margin: 0;
+}
