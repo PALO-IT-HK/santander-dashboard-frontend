@@ -12,6 +12,8 @@ const MODEL_NAME = '[DASHBOARD]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
+export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL VISIBLE`)
+export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
 
 /** --------------------------------------------------
  *
@@ -45,6 +47,8 @@ const addDashboardData = (state, dashboardData) => {
     dashboardData
   }
 }
+const toggleMarkerLabelVisible = (state, markerId) => ({...state, currentMarker: markerId})
+const hideMarkerLabel = state => ({...state, currentMarker: ''})
 /** --------------------------------------------------
  *
  * Reducers
@@ -52,9 +56,14 @@ const addDashboardData = (state, dashboardData) => {
  */
 export const dashboard = {
   [getDashboardSuccess]: addDashboardData,
-  [changeTabAction]: changeTab
+  [changeTabAction]: changeTab,
+  [toggleMarkerLabelVisibilityAction]: toggleMarkerLabelVisible,
+  [hideMarkerLabelAction]: hideMarkerLabel
 }
 
-export const dashboardInitialState = {currentTab: 'HEATMAP'}
+export const dashboardInitialState = {
+  currentTab: 'BIKEUSAGE',
+  currentMarker: ''
+}
 
 export default createReducer(dashboard, dashboardInitialState)
