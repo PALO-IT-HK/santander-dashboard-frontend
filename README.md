@@ -8,16 +8,20 @@
 * Styled Components (Component Styling)
 * Redux Act (Action and Reducer creation for Redux)
 * Redux Saga (Redux Middleware to handle Asynchronous calls)
+* Recompose (Function Composition)
+* Re-Charts (Graph Charting Library)
+* React Google Maps (HOC for Google Maps API implementation)
 
 ### Back End
-* Node JS with Express
+* Node for Micro Services
+* Presto and AWS Athena for Data Queries and Aggregation
+* ECS for Instance Management and Load Balancing
 
-### CI/CD Pipeline
-Amazon ECS with:
-  * Circle CI
-  * Github
-  * Amazon ECR
+### Version Control
+* Github
+
+### CI/CD
+* Circle CI
 
 ### Bundling
 * Webpack
-
