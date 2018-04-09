@@ -8,8 +8,8 @@ const buttonTypeStyles = {
     border: 1px solid #D54435;
   `,
   secondary: `
-    background-color: #D54435;
-    border: 1px solid #D54435;
+    background-color: #A8AAB6;
+    border: 1px solid #A8AAB6;
     `,
   primaryDisabled: `
     background-color: #A8AAB6;
@@ -26,7 +26,7 @@ const textTypeStyles = {
     color: #FFFFFF;
   `,
   secondary: `
-    color: #1F6EDA;
+    color: #FFFFFF;
   `,
   primaryDisabled: `
     color: #FFFFFF;
@@ -65,23 +65,23 @@ const Button = styled.button`
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  ${({type, size, disabled}) => {
+  ${({ type, size, disabled }) => {
     const buttonType = disabled ? `${type}Disabled` : type
     return buttonSizeStyles[size] + buttonTypeStyles[buttonType]
   }};
-  `
+`
 
 const Text = styled.h3`
   margin: 0 auto;
   cursor: pointer;
-  ${({type, size, disabled}) => {
+  ${({ type, size, disabled }) => {
     const buttonType = disabled ? `${type}Disabled` : type
     return textTypeStyles[buttonType] + textSizeStyles[size]
   }};
-  `
+`
 
 const SButton = props => {
-  const {type, size, onClick, disabled, children} = props
+  const { type, size, onClick, disabled, children } = props
   return (
     <Button type={type} size={size} onClick={onClick} disabled={disabled}>
       <Text type={type} size={size} disabled={disabled}>
