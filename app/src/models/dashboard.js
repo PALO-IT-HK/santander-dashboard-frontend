@@ -18,6 +18,7 @@ export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
 export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL VISIBLE`)
 export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
 export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
+export const changeInputFocusAction = createAction(`${MODEL_NAME} CHANGE SEARCH BAR FOCUS`)
 
 /** --------------------------------------------------
  *
@@ -54,6 +55,7 @@ const addDashboardData = (state, dashboardData) => {
 }
 const toggleMarkerLabelVisible = (state, markerId) => ({...state, currentMarker: markerId})
 const hideMarkerLabel = state => ({...state, currentMarker: ''})
+const toggleFocusStatus = (state, searchBarFocusStatus) => ({...state, currentFocusStatus: searchBarFocusStatus})
 /** --------------------------------------------------
  *
  * Reducers
@@ -64,14 +66,16 @@ export const dashboard = {
   [changeTabAction]: changeTab,
   [toggleMarkerLabelVisibilityAction]: toggleMarkerLabelVisible,
   [hideMarkerLabelAction]: hideMarkerLabel,
-  [changeToggledTabAction]: changeToggledTab
+  [changeToggledTabAction]: changeToggledTab,
+  [changeInputFocusAction]: toggleFocusStatus
 }
 
 export const dashboardInitialState = {
   currentTab: 'BIKE USAGE',
   currentMarker: '',
   currentToggledTab: 'HEAT MAP',
-  graphData: data
+  graphData: data,
+  currentFocusStatus: ''
 }
 
 export default createReducer(dashboard, dashboardInitialState)

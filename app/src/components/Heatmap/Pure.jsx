@@ -18,7 +18,7 @@ const Heatmap = compose(
   withProps({
     googleMapURL: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZvxOHHY7Y6FPH1JwhgEE28YWSV7LHDV0&v=3.exp&libraries=visualization,geometry,drawing,places',
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px` }} />,
+    containerElement: <div style={{ height: `450px`, padding: `0px 10px 10px 10px`, zIndex: `1` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
   withScriptjs,

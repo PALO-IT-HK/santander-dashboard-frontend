@@ -2,7 +2,6 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
-import Heatmap from 'components/Heatmap/Pure'
 import BikeUsageMainSearch from 'components/BikeUsageMainSearch/Pure'
 
 const Wrap = styled.div`
@@ -26,18 +25,22 @@ const MainDiv = styled.div`
 `
 
 export default function Dashboard ({getDashboard, dashboardData, value, currentTab, currentMarker,
-  toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, currentToggledTab, changeToggledTabAction, 
-  graphData}) {
+  toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, currentToggledTab, changeToggledTabAction,
+  changeInputFocusAction, currentFocusStatus, graphData}) {
   return (
     <Wrap>
       <BodyWrap>
         <MainDiv>
-          {currentTab === 'BIKE USAGE' && <BikeUsageMainSearch currentToggledTab={currentToggledTab}
-                                                               changeToggledTabAction={changeToggledTabAction}
-                                                               data={graphData.list}
-                                                               currentMarker={currentMarker}
-                                                               toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
-                                                               hideMarkerLabelAction={hideMarkerLabelAction} />}
+          {currentTab === 'BIKE USAGE' &&
+          <BikeUsageMainSearch
+            currentToggledTab={currentToggledTab}
+            changeToggledTabAction={changeToggledTabAction}
+            changeInputFocusAction={changeInputFocusAction}
+            currentFocusStatus={currentFocusStatus}
+            data={graphData.list}
+            currentMarker={currentMarker}
+            toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
+            hideMarkerLabelAction={hideMarkerLabelAction} />}
           {currentTab === 'WEATHER EFFECT' && <h1>WEATHER EFFECT</h1>}
           {dashboardData &&
           <StdWrapperFlexContentCentered>
