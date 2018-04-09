@@ -17,6 +17,10 @@ const SearchBoxDiv = styled.div`
   padding: 0 5rem;
 `
 
+const DateTimeSearchWrapper = styled.div`
+  width:50%;
+`
+
 const BikeUsageMainSearch = ({
   currentToggledTab,
   changeToggledTabAction,
@@ -49,11 +53,13 @@ const BikeUsageMainSearch = ({
       <SearchBoxDiv>
         <h2>BIKE USAGE IN LONDON (SEARCH BOX)</h2>
         <ToggleTabs value={currentToggledTab} onChange={handleTabChange} />
-        <DateTimeSearch
-          showDatePicker={showDatePicker}
-          onClick={openDatePicker}
-          value={formatNewDate(currentDateSelection)}
-        />
+        <DateTimeSearchWrapper>
+          <DateTimeSearch
+            showDatePicker={showDatePicker}
+            onClick={openDatePicker}
+            value={formatNewDate(currentDateSelection)}
+          />
+        </DateTimeSearchWrapper>
         {showDatePicker ? (
           <CalendarDatePicker
             clickDateFromAction={clickDateFromAction}
