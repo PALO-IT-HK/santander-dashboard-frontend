@@ -19,7 +19,6 @@ export default class CalendarDatePicker extends Component {
     return !from || isBeforeFirstDay || isRangeSelected
   }
   handleDayClick = day => {
-    console.log('handleDayClick')
     const { from, to, clickDateFromAction, clickDateToAction } = this.props
     if (from && to && day >= from && day <= to) {
       this.handleResetClick()
@@ -48,7 +47,6 @@ export default class CalendarDatePicker extends Component {
   }
   render() {
     const { from, to, enteredTo } = this.props
-    console.log(from)
     const modifiers = { start: from, end: enteredTo }
     const selectedDays = [from, { from, to: enteredTo }]
 
