@@ -55,9 +55,9 @@ const BikeUsageMainSearch = ({
         <ToggleTabs value={currentToggledTab} onChange={handleTabChange} />
         <DateTimeSearchWrapper>
           <DateTimeSearch
-            showDatePicker={showDatePicker}
-            onClick={openDatePicker}
-            value={formatNewDate(currentDateSelection)}
+            openDatePicker={openDatePicker}
+            date={formatNewDate(currentDateSelection)}
+            time={'time'}
           />
         </DateTimeSearchWrapper>
         {showDatePicker ? (
@@ -85,7 +85,6 @@ const BikeUsageMainSearch = ({
         )}
         {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
       </RenderMapGraphDiv>
-
     </div>
   )
 }

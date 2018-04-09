@@ -1,14 +1,17 @@
 import React from 'react'
 import styled from 'styled-components'
-import DisplayTab from 'components/DisplayTab/Pure'
+import { DisplayAllTabs, DisplayTab } from 'components/DisplayTab/Pure'
 
-const DateTimeSearch = ({ showDatePicker, onClick, value }) => {
+const DateTimeSearch = ({ date, time, openDatePicker }) => {
   return (
-    <div>
-      <DisplayTab showDatePicker={showDatePicker} onClick={onClick}>
-        <p>{value}</p>
+    <DisplayAllTabs>
+      <DisplayTab onClick={openDatePicker}>
+        <p>{date}</p>
       </DisplayTab>
-    </div>
+      <DisplayTab>
+        <p>{time}</p>
+      </DisplayTab>
+    </DisplayAllTabs>
   )
 }
 
