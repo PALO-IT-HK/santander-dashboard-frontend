@@ -1,9 +1,11 @@
 import React, { Component } from 'react'
 import Helmet from 'react-helmet'
 import styled from 'styled-components'
-import SButton from 'components/Button/Pure'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
+
+import PublicHolidayFilters from 'components/PublicHolidayFilters/Pure'
+import SButton from 'components/Button/Pure'
 import { formatDate } from 'utils/utils'
 
 const CalendarWrapper = styled.div`
@@ -56,6 +58,7 @@ export default class CalendarDatePicker extends Component {
     return (
       <div>
         <CalendarWrapper>
+          <PublicHolidayFilters />
           <DayPicker
             className="Range"
             numberOfMonths={2}
