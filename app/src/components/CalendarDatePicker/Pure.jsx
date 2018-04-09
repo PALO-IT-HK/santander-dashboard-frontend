@@ -12,9 +12,11 @@ const CalendarWrapper = styled.div`
   width: 650px;
   margin: 0 auto;
   padding: 1rem;
-  z-index: 1000;
+  z-index: 99;
   border: 1px solid grey;
   background: #ffffff;
+  position: absolute;
+  top: 200px;
 `
 
 export default class CalendarDatePicker extends Component {

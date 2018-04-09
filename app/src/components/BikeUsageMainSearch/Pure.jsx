@@ -72,21 +72,20 @@ const BikeUsageMainSearch = ({
           />
         ) : null}
       </SearchBoxDiv>
-      {/*
-        <RenderMapGraphDiv>
-          {currentToggledTab === 'HEAT MAP' && (
-            <Heatmap
-              isMarkerShown
-              toggleMarkerLabelVisibilityAction={
-                toggleMarkerLabelVisibilityAction
-              }
-              hideMarkerLabelAction={hideMarkerLabelAction}
-              currentMarker={currentMarker}
-            />
-          )}
-          {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
-        </RenderMapGraphDiv>
-      */}
+      <RenderMapGraphDiv>
+        {currentToggledTab === 'HEAT MAP' && (
+          <Heatmap
+            isMarkerShown
+            toggleMarkerLabelVisibilityAction={
+              toggleMarkerLabelVisibilityAction
+            }
+            hideMarkerLabelAction={hideMarkerLabelAction}
+            currentMarker={currentMarker}
+          />
+        )}
+        {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
+      </RenderMapGraphDiv>
+
     </div>
   )
 }
