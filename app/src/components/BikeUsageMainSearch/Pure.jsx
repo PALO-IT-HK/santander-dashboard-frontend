@@ -29,6 +29,7 @@ const BikeUsageMainSearch = ({
   toggleMarkerLabelVisibilityAction,
   hideMarkerLabelAction,
   data,
+  getPublicHolidayAction,
   currentDateSelection,
   fromDate,
   toDate,
@@ -62,6 +63,7 @@ const BikeUsageMainSearch = ({
         </DateTimeSearchWrapper>
         {showDatePicker ? (
           <CalendarDatePicker
+            getPublicHolidayAction={getPublicHolidayAction}
             clickDateFromAction={clickDateFromAction}
             clickDateToAction={clickDateToAction}
             resetDateAction={resetDateAction}

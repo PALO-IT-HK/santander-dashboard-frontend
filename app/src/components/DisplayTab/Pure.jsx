@@ -2,9 +2,9 @@ import React from 'react'
 import styled from 'styled-components'
 
 export const DisplayTabWrapper = styled.div`
-  width: 220px;
+  width: 250px;
   height: 30px;
-  padding: 5px 30px;
+  padding: 5px;
   border-radius: 3px;
   border: 1px solid #d5dfeb;
   display: flex;

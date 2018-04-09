@@ -34,6 +34,7 @@ export const resetDateAction = createAction(`${CALENDAR} RESET_DATE`)
 export const showDatePickerAction = createAction(`${CALENDAR} SHOW_DATE_PICKER`)
 export const hideDatePickerAction = createAction(`${CALENDAR} HIDE_DATE_PICKER`)
 export const updateDateSelectionTabAction = createAction(`${CALENDAR} UPDATE_DATE_SELECTION_TAB`)
+export const getPublicHolidayAction = createAction(`${CALENDAR} PUBLIC_HOLIDAY_SELECTED`)
 
 /** --------------------------------------------------
  *
@@ -100,6 +101,13 @@ const hideDatePicker = state => ({
   showDatePicker: false
 })
 
+const getPublicHoliday = (state, date) => ({
+  ...state,
+  toDate: date,
+  fromDate: date,
+  enteredTo: date
+})
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -115,7 +123,8 @@ export const dashboard = {
   [clickDateToAction]: clickDateTo,
   [resetDateAction]: resetDate,
   [showDatePickerAction]: showDatePicker,
-  [hideDatePickerAction]: hideDatePicker
+  [hideDatePickerAction]: hideDatePicker,
+  [getPublicHolidayAction]: getPublicHoliday
 }
 
 export const dashboardInitialState = {
