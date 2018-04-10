@@ -81,79 +81,28 @@ const SearchResultsItemRow = styled.div`
   }
 `
 
-const SearchBar = compose(
-  withProps({
-    googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyDZvxOHHY7Y6FPH1JwhgEE28YWSV7LHDV0&v=3.exp&libraries=geometry,drawing,places",
-    loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `500px` }} />
-  }),
-  lifecycle({
-    componentWillMount() {
-      const refs = {}
-
-      this.setState({
-        places: [],
-        onSearchBoxMounted: ref => {
-          refs.searchBox = ref;
-        },
-        onPlacesChanged: () => {
-          const places = refs.searchBox.getPlaces();
-          return places
-        }
-      })
-    }
-  }),
-  withScriptjs)(props => {
+const SearchBar = props => {
     const {size, placeholder, name, type, onChange, value, changeInputFocusAction, 
            places, currentFocusStatus, onSearchBoxMounted, bounds, onPlacesChanged,
            updateMapLocationAction, searchedLocation} = props
     const handleFocusBlur = (e, changeInputFocusAction) => e.type === 'focus' ? changeInputFocusAction('focus') : changeInputFocusAction('blur')
     const handleInputOnChange = (e) => console.log(e.target.value)
     const handleClick = () => console.log('Row clicked!')
-    const handleOnPlacesChanged = () => {
-      const places = onPlacesChanged()
-      updateMapLocationAction(places)
-    }
     return (
-      <SearchBarWrapper
-        data-standalone-searchbox="">
-        <StandaloneSearchBox
-          ref={onSearchBoxMounted}
-          bounds={bounds}
-          onPlacesChanged={handleOnPlacesChanged}>
-          <SearchInputField
-            size={size}
-            onFocus={(e) => handleFocusBlur(e, changeInputFocusAction)}
-            onBlur={(e) => handleFocusBlur(e, changeInputFocusAction)}
-            status={currentFocusStatus}
-            value={value}
-            type={type}
-            placeholder={placeholder}
-            name={name} />
-        </StandaloneSearchBox>
-        {searchedLocation.length !== 0 && 
-        <SearchResultsDiv>
-          {searchedLocation.map(({ place_id, formatted_address, geometry: { location } }) =>
-          <SearchResultsItemRow
-            key={place_id}
-            onClick={() => handleClick()}>
-            {formatted_address}
-          </SearchResultsItemRow>)
-          }
-        </SearchResultsDiv>
-        }
-        {/* <ol>
-          {places.map(({ place_id, formatted_address, geometry: { location } }) =>
-            <li key={place_id}>
-              {formatted_address}
-              {" at "}
-              ({location.lat()}, {location.lng()})
-            </li>
-          )}
-        </ol> */}
+      <SearchBarWrapper>
+        <SearchInputField
+          id='search-autocomplete'
+          size={size}
+          onFocus={(e) => handleFocusBlur(e, changeInputFocusAction)}
+          onBlur={(e) => handleFocusBlur(e, changeInputFocusAction)}
+          status={currentFocusStatus}
+          value={value}
+          type={type}
+          placeholder={placeholder}
+          name={name} />
       </SearchBarWrapper>
     )
-  })
+  }
 
 SearchBar.defaultProps = {
   size: 'medium',

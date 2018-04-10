@@ -26,7 +26,8 @@ const MainDiv = styled.div`
 
 export default function Dashboard ({getDashboard, dashboardData, value, currentTab, currentMarker,
   toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, currentToggledTab, changeToggledTabAction,
-  changeInputFocusAction, currentFocusStatus, graphData, updateMapLocationAction, searchedLocation}) {
+  changeInputFocusAction, currentFocusStatus, graphData, updateMapLocationAction, searchedLocation,
+  mapInitialLoadStatus, getBikePointsActionSaga, currentBikePointsArray}) {
   return (
     <Wrap>
       <BodyWrap>
@@ -42,7 +43,10 @@ export default function Dashboard ({getDashboard, dashboardData, value, currentT
             toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
             hideMarkerLabelAction={hideMarkerLabelAction}
             updateMapLocationAction={updateMapLocationAction}
-            searchedLocation={searchedLocation} />}
+            searchedLocation={searchedLocation}
+            mapInitialLoadStatus={mapInitialLoadStatus}
+            getBikePointsActionSaga={getBikePointsActionSaga}
+            currentBikePointsArray={currentBikePointsArray} />}
           {currentTab === 'WEATHER EFFECT' && <h1>WEATHER EFFECT</h1>}
           {dashboardData &&
           <StdWrapperFlexContentCentered>

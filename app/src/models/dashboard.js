@@ -21,6 +21,8 @@ export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED
 export const changeInputFocusAction = createAction(`${MODEL_NAME} CHANGE SEARCH BAR FOCUS`)
 export const updateMapLocationAction = createAction(`${MODEL_NAME} UPDATE GOOGLE MAP LOCATION BASED ON SEARCH`)
 
+export const getBikePointsActionSaga = createAction(`${MODEL_NAME} GET BIKE POINTS FROM BACKEND ON INITIAL MAP LOAD`)
+export const getBikePointsActionSuccess = createAction(`${MODEL_NAME} GET INITIAL LOAD BIKE POINTS SUCCESS`)
 /** --------------------------------------------------
  *
  * Sagas
@@ -31,12 +33,21 @@ function fetchDashboard () {
   return axios.get('https://swapi.co/api/people/1')
 }
 
+function fetchInitialBikePoints (payload) {
+  const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${payload[0]}&swLon=${payload[1]}&neLat=${payload[2]}&neLon=${payload[3]}`
+  return axios.get(url)
+}
+
 export const sagas = {
   [getDashboard]: function * () {
     // When the response of the async call returns, store the data in res
     const res = yield call(fetchDashboard)
     // This next yield dispatches another action that does not go through Saga and instead to the Reducer
     yield put(getDashboardSuccess(res.data))
+  },
+  [getBikePointsActionSaga]: function * ({payload}) {
+    const result = yield call(fetchInitialBikePoints, payload)
+    yield put(getBikePointsActionSuccess(result.data))
   }
 }
 export const dashboardSagaWatcher = createSagaWatcher(sagas)
@@ -58,6 +69,7 @@ const toggleMarkerLabelVisible = (state, markerId) => ({...state, currentMarker:
 const hideMarkerLabel = state => ({...state, currentMarker: ''})
 const toggleFocusStatus = (state, searchBarFocusStatus) => ({...state, currentFocusStatus: searchBarFocusStatus})
 const updateLocationOnMap = (state, place) => ({...state, searchedLocation: place})
+const updateBikePoints = (state, result) => ({...state, currentBikePointsArray: result})
 /** --------------------------------------------------
  *
  * Reducers
@@ -70,7 +82,8 @@ export const dashboard = {
   [hideMarkerLabelAction]: hideMarkerLabel,
   [changeToggledTabAction]: changeToggledTab,
   [changeInputFocusAction]: toggleFocusStatus,
-  [updateMapLocationAction]: updateLocationOnMap
+  [updateMapLocationAction]: updateLocationOnMap,
+  [getBikePointsActionSuccess]: updateBikePoints
 }
 
 export const dashboardInitialState = {
@@ -79,7 +92,9 @@ export const dashboardInitialState = {
   currentToggledTab: 'HEAT MAP',
   graphData: data,
   currentFocusStatus: '',
-  searchedLocation: ''
+  searchedLocation: '',
+  mapInitialLoadStatus: false,
+  currentBikePointsArray: []
 }
 
 export default createReducer(dashboard, dashboardInitialState)

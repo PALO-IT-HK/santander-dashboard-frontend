@@ -36,7 +36,10 @@ const SubHeader = styled.div`
 `
 
 
-const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction, changeInputFocusAction, currentFocusStatus, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, data, updateMapLocationAction, searchedLocation}) => {
+const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction, changeInputFocusAction, 
+  currentFocusStatus, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, 
+  data, updateMapLocationAction, searchedLocation, mapInitialLoadStatus, getBikePointsActionSaga,
+  currentBikePointsArray}) => {
   const handleTabChange = v => changeToggledTabAction(v)
   return (
     <div>
@@ -59,7 +62,10 @@ const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction, changeI
             isMarkerShown
             toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
             hideMarkerLabelAction={hideMarkerLabelAction}
-            currentMarker={currentMarker} />}
+            currentMarker={currentMarker}
+            mapInitialLoadStatus={mapInitialLoadStatus}
+            getBikePointsActionSaga={getBikePointsActionSaga}
+            currentBikePointsArray={currentBikePointsArray} />}
         {currentToggledTab === 'GRAPH' &&
           <BikeUsageGraph data={data} />}
       </RenderMapGraphDiv>
