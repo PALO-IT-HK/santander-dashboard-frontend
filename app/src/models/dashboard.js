@@ -12,12 +12,28 @@ import data from '../mockdata.json'
  *
  */
 const MODEL_NAME = '[DASHBOARD]'
+const HEAT_MAP = '[HEATMAP]'
+const CALENDAR = '[CALENDAR]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
-export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL VISIBLE`)
-export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
-export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
+export const changeToggledTabAction = createAction(
+  `${MODEL_NAME} CHANGE_TOGGLED_TAB`
+)
+// HeatMap Actions
+export const toggleMarkerLabelVisibilityAction = createAction(
+  `${HEAT_MAP} TOGGLE MARKER LABEL VISIBLE`
+)
+export const hideMarkerLabelAction = createAction(
+  `${HEAT_MAP} TOGGLE MARKER LABEL HIDDEN`
+)
+// Calendar Actions
+export const clickDateFromAction = createAction(`${CALENDAR} DATE_FROM`)
+export const clickDateToAction = createAction(`${CALENDAR} DATE_TO`)
+export const resetDateAction = createAction(`${CALENDAR} RESET_DATE`)
+export const showDatePickerAction = createAction(`${CALENDAR} SHOW_DATE_PICKER`)
+export const hideDatePickerAction = createAction(`${CALENDAR} HIDE_DATE_PICKER`)
+export const updateDateSelectionTabAction = createAction(`${CALENDAR} UPDATE_DATE_SELECTION_TAB`)
 
 /** --------------------------------------------------
  *
@@ -44,16 +60,46 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  * Logic
  *
  */
-const changeTab = (state, tabs) => ({...state, currentTab: tabs})
-const changeToggledTab = (state, tabs) => ({...state, currentToggledTab: tabs})
+const changeTab = (state, tabs) => ({ ...state, currentTab: tabs })
+const changeToggledTab = (state, tabs) => ({
+  ...state,
+  currentToggledTab: tabs
+})
 const addDashboardData = (state, dashboardData) => {
   return {
     ...state,
     dashboardData
   }
 }
-const toggleMarkerLabelVisible = (state, markerId) => ({...state, currentMarker: markerId})
-const hideMarkerLabel = state => ({...state, currentMarker: ''})
+const toggleMarkerLabelVisible = (state, markerId) => ({
+  ...state,
+  currentMarker: markerId
+})
+const hideMarkerLabel = state => ({ ...state, currentMarker: '' })
+const clickDateFrom = (state, { from }) => ({ ...state, fromDate: from })
+const clickDateTo = (state, { to, enteredTo }) => ({
+  ...state,
+  toDate: to,
+  enteredTo
+})
+
+const resetDate = state => ({
+  ...state,
+  toDate: null,
+  fromDate: null,
+  enteredTo: null
+})
+
+const showDatePicker = state => ({
+  ...state,
+  showDatePicker: true
+})
+
+const hideDatePicker = state => ({
+  ...state,
+  showDatePicker: false
+})
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -64,14 +110,24 @@ export const dashboard = {
   [changeTabAction]: changeTab,
   [toggleMarkerLabelVisibilityAction]: toggleMarkerLabelVisible,
   [hideMarkerLabelAction]: hideMarkerLabel,
-  [changeToggledTabAction]: changeToggledTab
+  [changeToggledTabAction]: changeToggledTab,
+  [clickDateFromAction]: clickDateFrom,
+  [clickDateToAction]: clickDateTo,
+  [resetDateAction]: resetDate,
+  [showDatePickerAction]: showDatePicker,
+  [hideDatePickerAction]: hideDatePicker
 }
 
 export const dashboardInitialState = {
   currentTab: 'BIKE USAGE',
   currentMarker: '',
   currentToggledTab: 'HEAT MAP',
-  graphData: data
+  graphData: data,
+  fromDate: null,
+  toDate: null,
+  enteredTo: null,
+  showDatePicker: false,
+  currentDateSelection: new Date()
 }
 
 export default createReducer(dashboard, dashboardInitialState)

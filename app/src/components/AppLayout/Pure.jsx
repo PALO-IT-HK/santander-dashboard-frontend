@@ -4,7 +4,10 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { media } from 'styledconfig'
 import NavBarTabs from 'components/Tabs/Pure'
-import { StdContentCentered, StdWrapperFlexContentLeft } from 'components/Layout'
+import {
+  StdContentCentered,
+  StdWrapperFlexContentLeft
+} from 'components/Layout'
 import Helmet from 'react-helmet'
 
 const Header = styled.div`
@@ -31,14 +34,14 @@ const Header = styled.div`
 
 const Content = styled.div`
   padding: 0;
-  background: #FFFFFF;
+  background: #ffffff;
 
   ${media.mobile`
     padding-top: 50px;
-  `}
+  `};
 `
 
-const AppLayout = ({currentTab, changeTabAction, children}) => {
+const AppLayout = ({ currentTab, changeTabAction, children }) => {
   const handleTabChange = v => changeTabAction(v)
   return (
     <div>
@@ -46,18 +49,16 @@ const AppLayout = ({currentTab, changeTabAction, children}) => {
         <React.Fragment>
           <Helmet title='Landing Page' titleTemplate='%s | My App' />
           <Header>
-            <StdContentCentered style={{height: '100%'}}>
-              <StdWrapperFlexContentLeft style={{height: '100%'}}>
+            <StdContentCentered style={{ height: '100%' }}>
+              <StdWrapperFlexContentLeft style={{ height: '100%' }}>
                 <NavBarTabs
                   value={currentTab}
-                  onChange={(v) => handleTabChange(v)}
+                  onChange={v => handleTabChange(v)}
                 />
               </StdWrapperFlexContentLeft>
             </StdContentCentered>
           </Header>
-          <Content>
-            {children}
-          </Content>
+          <Content>{children}</Content>
         </React.Fragment>
       </MuiThemeProvider>
     </div>
