@@ -67,7 +67,7 @@ export default class CalendarDatePicker extends Component {
   }
 
   render() {
-    const { from, to, enteredTo, selectedDay } = this.props
+    const { from, to, enteredTo } = this.props
     const modifiers = { start: from, end: enteredTo }
     const selectedDays = [from, { from, to: enteredTo }]
 
