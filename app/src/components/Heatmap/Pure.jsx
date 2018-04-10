@@ -1,8 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { compose, withProps } from 'recompose'
+import { compose, withProps, lifecycle } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps'
 import { MarkerWithLabel } from 'react-google-maps/lib/components/addons/MarkerWithLabel'
+import { SearchBox } from 'react-google-maps/lib/components/places/SearchBox'
 import HeatmapLayer from 'react-google-maps/lib/components/visualization/HeatmapLayer'
 
 const markerLabelStyle = {
@@ -21,9 +22,57 @@ const Heatmap = compose(
     containerElement: <div style={{ height: `450px`, padding: `0px 10px 10px 10px`, zIndex: `1` }} />,
     mapElement: <div style={{ height: `100%` }} />
   }),
+  lifecycle({
+    componentWillMount() {
+      const refs = {}
+
+      this.setState({
+        bounds: null,
+        center: {
+          lat: 52.232, lng: -0.233
+        },
+        markers: [],
+        onMapMounted: ref => {
+          refs.map = ref;
+        },
+        onBoundsChanged: () => {
+          this.setState({
+            bounds: refs.map.getBounds(),
+            center: refs.map.getCenter(),
+          })
+        },
+        onSearchBoxMounted: ref => {
+          refs.searchBox = ref;
+        },
+        onPlacesChanged: () => {
+          const places = refs.searchBox.getPlaces();
+          const bounds = new google.maps.LatLngBounds();
+
+          places.forEach(place => {
+            if (place.geometry.viewport) {
+              bounds.union(place.geometry.viewport)
+            } else {
+              bounds.extend(place.geometry.location)
+            }
+          });
+          const nextMarkers = places.map(place => ({
+            position: place.geometry.location,
+          }));
+          const nextCenter = _.get(nextMarkers, '0.position', this.state.center);
+
+          this.setState({
+            center: nextCenter,
+            markers: nextMarkers,
+          });
+          // refs.map.fitBounds(bounds);
+        },
+      })
+    },
+  }),
   withScriptjs,
   withGoogleMap)(props => {
-  const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction } = props
+  const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
+          onMapMounted, center, onBoundsChanged, onSearchBoxMounted, bounds, onPlacesChanged } = props
   const handleMouseOver = e => toggleMarkerLabelVisibilityAction(e.Fa.target.title)
   const getPoints = () => {
     return [
@@ -40,9 +89,35 @@ const Heatmap = compose(
   }
   return (
     <GoogleMap
+      ref={onMapMounted}
       defaultZoom={13}
-      defaultCenter={{ lat: 52.232, lng: -0.233 }}>
+      center={center}
+      onBoundsChanged={onBoundsChanged}>
 
+      <SearchBox
+        ref={onSearchBoxMounted}
+        bounds={bounds}
+        controlPosition={google.maps.ControlPosition.TOP_LEFT}
+        onPlacesChanged={onPlacesChanged}>
+        <input
+          type="text"
+          placeholder="Customized your placeholder"
+          style={{
+            boxSizing: `border-box`,
+            border: `1px solid transparent`,
+            width: `240px`,
+            height: `32px`,
+            marginTop: `27px`,
+            padding: `0 12px`,
+            borderRadius: `3px`,
+            boxShadow: `0 2px 6px rgba(0, 0, 0, 0.3)`,
+            fontSize: `14px`,
+            outline: `none`,
+            textOverflow: `ellipses`,
+          }}
+        />
+      </SearchBox>
+      
       <HeatmapLayer
         data={getPoints()}
         options={({ radius: '80' })} />

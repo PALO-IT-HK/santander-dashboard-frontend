@@ -19,6 +19,7 @@ export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOG
 export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
 export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
 export const changeInputFocusAction = createAction(`${MODEL_NAME} CHANGE SEARCH BAR FOCUS`)
+export const updateMapLocationAction = createAction(`${MODEL_NAME} UPDATE GOOGLE MAP LOCATION BASED ON SEARCH`)
 
 /** --------------------------------------------------
  *
@@ -56,6 +57,7 @@ const addDashboardData = (state, dashboardData) => {
 const toggleMarkerLabelVisible = (state, markerId) => ({...state, currentMarker: markerId})
 const hideMarkerLabel = state => ({...state, currentMarker: ''})
 const toggleFocusStatus = (state, searchBarFocusStatus) => ({...state, currentFocusStatus: searchBarFocusStatus})
+const updateLocationOnMap = (state, place) => ({...state, searchedLocation: place})
 /** --------------------------------------------------
  *
  * Reducers
@@ -67,7 +69,8 @@ export const dashboard = {
   [toggleMarkerLabelVisibilityAction]: toggleMarkerLabelVisible,
   [hideMarkerLabelAction]: hideMarkerLabel,
   [changeToggledTabAction]: changeToggledTab,
-  [changeInputFocusAction]: toggleFocusStatus
+  [changeInputFocusAction]: toggleFocusStatus,
+  [updateMapLocationAction]: updateLocationOnMap
 }
 
 export const dashboardInitialState = {
@@ -75,7 +78,8 @@ export const dashboardInitialState = {
   currentMarker: '',
   currentToggledTab: 'HEAT MAP',
   graphData: data,
-  currentFocusStatus: ''
+  currentFocusStatus: '',
+  searchedLocation: ''
 }
 
 export default createReducer(dashboard, dashboardInitialState)

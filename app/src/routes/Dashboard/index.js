@@ -5,7 +5,7 @@ import Pure from './Pure'
 
 // Import action
 import { getDashboard, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
-  changeTabAction, changeToggledTabAction, changeInputFocusAction } from 'models/dashboard'
+  changeTabAction, changeToggledTabAction, changeInputFocusAction, updateMapLocationAction } from 'models/dashboard'
 
 // s function
 const s = state => ({
@@ -14,7 +14,8 @@ const s = state => ({
   currentMarker: state.dashboard.currentMarker,
   currentFocusStatus: state.dashboard.currentFocusStatus,
   currentToggledTab: state.dashboard.currentToggledTab,
-  graphData: state.dashboard.graphData
+  graphData: state.dashboard.graphData,
+  searchedLocation: state.dashboard.searchedLocation
 })
 
 const d = dispatch => ({
@@ -23,7 +24,8 @@ const d = dispatch => ({
   hideMarkerLabelAction: bindActionCreators(hideMarkerLabelAction, dispatch),
   changeTabAction: bindActionCreators(changeTabAction, dispatch),
   changeToggledTabAction: bindActionCreators(changeToggledTabAction, dispatch),
-  changeInputFocusAction: bindActionCreators(changeInputFocusAction, dispatch)
+  changeInputFocusAction: bindActionCreators(changeInputFocusAction, dispatch),
+  updateMapLocationAction: bindActionCreators(updateMapLocationAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

@@ -36,7 +36,7 @@ const SubHeader = styled.div`
 `
 
 
-const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction, changeInputFocusAction, currentFocusStatus, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, data}) => {
+const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction, changeInputFocusAction, currentFocusStatus, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, data, updateMapLocationAction, searchedLocation}) => {
   const handleTabChange = v => changeToggledTabAction(v)
   return (
     <div>
@@ -44,7 +44,9 @@ const BikeUsageMainSearch = ({currentToggledTab, changeToggledTabAction, changeI
         <SubHeader> Bike usage of 
           <SearchBar 
             changeInputFocusAction={changeInputFocusAction} 
-            currentFocusStatus={currentFocusStatus} />
+            currentFocusStatus={currentFocusStatus}
+            updateMapLocationAction={updateMapLocationAction}
+            searchedLocation={searchedLocation} />
         </SubHeader>
         <ToggleTabs
           value={currentToggledTab}
