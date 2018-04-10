@@ -13,7 +13,9 @@ import {
   resetDateAction,
   hideDatePickerAction,
   showDatePickerAction,
-  getPublicHolidayAction
+  getPublicHolidayAction,
+  showTimePickerAction,
+  hideTimePickerAction
 } from 'models/dashboard'
 
 // s function
@@ -25,7 +27,8 @@ const s = state => ({
   toDate: state.dashboard.toDate,
   enteredTo: state.dashboard.enteredTo,
   showDatePicker: state.dashboard.showDatePicker,
-  currentDateSelection: state.dashboard.currentDateSelection
+  currentDateSelection: state.dashboard.currentDateSelection,
+  isTimePickerShown: state.dashboard.isTimePickerShown
 })
 
 const d = dispatch => ({
@@ -40,7 +43,9 @@ const d = dispatch => ({
   resetDateAction: bindActionCreators(resetDateAction, dispatch),
   showDatePickerAction: bindActionCreators(showDatePickerAction, dispatch),
   hideDatePickerAction: bindActionCreators(hideDatePickerAction, dispatch),
-  getPublicHolidayAction: bindActionCreators(getPublicHolidayAction, dispatch)
+  getPublicHolidayAction: bindActionCreators(getPublicHolidayAction, dispatch),
+  showTimePickerAction: bindActionCreators(showTimePickerAction, dispatch),
+  hideTimePickerAction: bindActionCreators(hideTimePickerAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

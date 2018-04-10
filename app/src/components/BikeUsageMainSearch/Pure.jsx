@@ -6,6 +6,7 @@ import Heatmap from 'components/Heatmap/Pure'
 import BikeUsageGraph from 'components/BikeUsageGraph/Pure'
 import CalendarDatePicker from 'components/CalendarDatePicker/Pure'
 import DateTimeSearch from 'components/DateTimeSearch/Pure'
+import TimePicker from 'components/TimePicker/Pure'
 import { formatDate } from 'utils/utils'
 
 const RenderMapGraphDiv = styled.div`
@@ -38,10 +39,15 @@ const BikeUsageMainSearch = ({
   showDatePickerAction,
   clickDateFromAction,
   clickDateToAction,
-  resetDateAction
+  resetDateAction,
+  isTimePickerShown,
+  showTimePickerAction,
+  hideTimePickerAction
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => showDatePickerAction(v)
+  const openTimePicker = v => showTimePickerAction(v)
+
   const formatNewDate = () => {
     if (fromDate && toDate != null) {
       return `${formatDate(fromDate)} - ${formatDate(toDate)}`
@@ -59,6 +65,7 @@ const BikeUsageMainSearch = ({
             openDatePicker={openDatePicker}
             date={formatNewDate(currentDateSelection)}
             time={'time'}
+            isTimePickerShown={openTimePicker}
           />
         </DateTimeSearchWrapper>
         {showDatePicker ? (
@@ -73,8 +80,13 @@ const BikeUsageMainSearch = ({
             hideDatePickerAction={hideDatePickerAction}
           />
         ) : null}
+        {isTimePickerShown ? (
+          <TimePicker
+            hideTimePickerAction={hideTimePickerAction}
+          />
+        ) : null}
       </SearchBoxDiv>
-      <RenderMapGraphDiv>
+      {/* <RenderMapGraphDiv>
         {currentToggledTab === 'HEAT MAP' && (
           <Heatmap
             isMarkerShown
@@ -86,7 +98,7 @@ const BikeUsageMainSearch = ({
           />
         )}
         {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
-      </RenderMapGraphDiv>
+      </RenderMapGraphDiv> */}
     </div>
   )
 }

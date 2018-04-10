@@ -14,6 +14,7 @@ import data from '../mockdata.json'
 const MODEL_NAME = '[DASHBOARD]'
 const HEAT_MAP = '[HEATMAP]'
 const CALENDAR = '[CALENDAR]'
+const TIME = '[TIME]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
@@ -35,6 +36,10 @@ export const showDatePickerAction = createAction(`${CALENDAR} SHOW_DATE_PICKER`)
 export const hideDatePickerAction = createAction(`${CALENDAR} HIDE_DATE_PICKER`)
 export const updateDateSelectionTabAction = createAction(`${CALENDAR} UPDATE_DATE_SELECTION_TAB`)
 export const getPublicHolidayAction = createAction(`${CALENDAR} PUBLIC_HOLIDAY_SELECTED`)
+
+// Time Actions
+export const showTimePickerAction = createAction(`${TIME} SHOW_TIME_PICKER`)
+export const hideTimePickerAction = createAction(`${TIME} HIDE_TIME_PICKER`)
 
 /** --------------------------------------------------
  *
@@ -108,6 +113,16 @@ const getPublicHoliday = (state, date) => ({
   enteredTo: date
 })
 
+const showTimePicker = state => ({
+  ...state,
+  isTimePickerShown: true
+})
+
+const hideTimePicker = state => ({
+  ...state,
+  isTimePickerShown: false
+})
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -124,7 +139,9 @@ export const dashboard = {
   [resetDateAction]: resetDate,
   [showDatePickerAction]: showDatePicker,
   [hideDatePickerAction]: hideDatePicker,
-  [getPublicHolidayAction]: getPublicHoliday
+  [getPublicHolidayAction]: getPublicHoliday,
+  [showTimePickerAction]: showTimePicker,
+  [hideTimePickerAction]: hideTimePicker
 }
 
 export const dashboardInitialState = {
@@ -136,7 +153,8 @@ export const dashboardInitialState = {
   toDate: null,
   enteredTo: null,
   showDatePicker: false,
-  currentDateSelection: new Date()
+  currentDateSelection: new Date(),
+  isTimePickerShown: false
 }
 
 export default createReducer(dashboard, dashboardInitialState)
