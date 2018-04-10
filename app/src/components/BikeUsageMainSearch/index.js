@@ -19,7 +19,8 @@ import {
   selectTimeFromAction,
   selectTimeToAction,
   filterTimeToArrayAction,
-  filterTimeFromArrayAction
+  filterTimeFromArrayAction,
+  getTimeTagAction
 } from 'models/dashboard'
 
 // s function
@@ -37,7 +38,8 @@ const s = state => ({
   timeTo: state.dashboard.timeTo,
   totalTimeArray: state.dashboard.totalTimeArray,
   timeFromArray: state.dashboard.timeFromArray,
-  timeToArray: state.dashboard.timeToArray
+  timeToArray: state.dashboard.timeToArray,
+  timeTagName: state.dashboard.timeTagName
 })
 
 const d = dispatch => ({
@@ -58,7 +60,8 @@ const d = dispatch => ({
   selectTimeFromAction: bindActionCreators(selectTimeFromAction, dispatch),
   selectTimeToAction: bindActionCreators(selectTimeToAction, dispatch),
   filterTimeToArrayAction: bindActionCreators(filterTimeToArrayAction, dispatch),
-  filterTimeFromArrayAction: bindActionCreators(filterTimeFromArrayAction, dispatch)
+  filterTimeFromArrayAction: bindActionCreators(filterTimeFromArrayAction, dispatch),
+  getTimeTagAction: bindActionCreators(getTimeTagAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

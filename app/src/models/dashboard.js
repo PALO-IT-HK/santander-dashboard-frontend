@@ -49,6 +49,7 @@ export const selectTimeFromAction = createAction(`${TIME} SELECT_TIME_FROM`)
 export const selectTimeToAction = createAction(`${TIME} SELECT_TIME_TO`)
 export const filterTimeToArrayAction = createAction(`${TIME} FILTER_TIME_TO_ARRAY`)
 export const filterTimeFromArrayAction = createAction(`${TIME} FILTER_TIME_FROM_ARRAY`)
+export const getTimeTagAction = createAction(`${TIME} TIME_TAG_SELECTED`)
 
 /** --------------------------------------------------
  *
@@ -134,12 +135,14 @@ const hideTimePicker = state => ({
 
 const selectTimeFrom = (state, time) => ({
   ...state,
-  timeFrom: time
+  timeFrom: time,
+  timeTagName: null
 })
 
 const selectTimeTo = (state, time) => ({
   ...state,
-  timeTo: time
+  timeTo: time,
+  timeTagName: null
 })
 
 const filterTimeToArray = (state, arr) => ({
@@ -150,6 +153,13 @@ const filterTimeToArray = (state, arr) => ({
 const filterTimeFromArray = (state, arr) => ({
   ...state,
   timeFromArray: arr
+})
+
+const getTimeTag = (state, time) => ({
+  ...state,
+  timeTagName: time[0],
+  timeFrom: time[1].timeFrom,
+  timeTo: time[1].timeTo
 })
 
 /** --------------------------------------------------
@@ -174,7 +184,8 @@ export const dashboard = {
   [selectTimeFromAction]: selectTimeFrom,
   [selectTimeToAction]: selectTimeTo,
   [filterTimeToArrayAction]: filterTimeToArray,
-  [filterTimeFromArrayAction]: filterTimeFromArray
+  [filterTimeFromArrayAction]: filterTimeFromArray,
+  [getTimeTagAction]: getTimeTag
 }
 
 export const dashboardInitialState = {
@@ -192,7 +203,8 @@ export const dashboardInitialState = {
   timeFromArray: timeFromArray,
   timeToArray: timeToArray,
   timeFrom: '00:00',
-  timeTo: '23:30'
+  timeTo: '23:30',
+  timeTagName: null
 }
 
 export default createReducer(dashboard, dashboardInitialState)

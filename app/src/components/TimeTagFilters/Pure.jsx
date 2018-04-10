@@ -13,11 +13,12 @@ const TimeTagWrapper = styled.div`
 `
 
 const TimeTag = styled.div`
+  font-family: 'Rubik', sans-serif;
   border: 1px solid #e7e7e7;
   border-radius: 20px;
   color: #a8aab6;
   width: auto;
-  height: 20px;
+  height: 17px;
   justify-content: center;
   padding: 0.1rem 0.5rem;
   font-size: 10px;

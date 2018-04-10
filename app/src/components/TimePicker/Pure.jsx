@@ -56,8 +56,13 @@ const TimePicker = ({
   timeToArray,
   totalTimeArray,
   filterTimeToArrayAction,
-  filterTimeFromArrayAction
+  filterTimeFromArrayAction,
+  getTimeTagAction
 }) => {
+  const getTimeTag = tag => {
+    getTimeTagAction([tag, timeFilters[tag]])
+  }
+
   const getTimeFromValue = event => {
     const getTimeValue = event.target.value
     selectTimeFromAction(getTimeValue)
@@ -77,7 +82,7 @@ const TimePicker = ({
 
   return (
     <TimeWrapper>
-      <TimeTagFilters />
+      <TimeTagFilters selectTimeTag={getTimeTag} />
       <TimeDropDown>
         <TimeLabel>
           <p>FROM</p>

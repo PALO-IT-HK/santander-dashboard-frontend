@@ -10,10 +10,10 @@ export const publicHolidaysLondon = {
 }
 
 export const timeFilters = {
-  '24 Hours': '00:00 - 23:59',
-  'Morning Peak Hour': '07:00 - 10:00',
-  'Afternoon Peak Hour': '12:00 - 14:00',
-  'Evening Peak Hour': '17:30 - 20:30'
+  '24 Hours': {timeFrom: '00:00', timeTo: '23:30'},
+  'Morning Peak Hour': {timeFrom: '07:00', timeTo: '10:00'},
+  'Afternoon Peak Hour': {timeFrom: '12:00', timeTo: '14:00'},
+  'Evening Peak Hour': {timeFrom: '17:30', timeTo: '20:30'}
 }
 
 export const totalTimeArray =

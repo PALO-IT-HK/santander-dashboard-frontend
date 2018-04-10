@@ -51,7 +51,9 @@ const BikeUsageMainSearch = ({
   timeToArray,
   totalTimeArray,
   filterTimeToArrayAction,
-  filterTimeFromArrayAction
+  filterTimeFromArrayAction,
+  getTimeTagAction,
+  timeTagName
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => showDatePickerAction(v)
@@ -64,6 +66,9 @@ const BikeUsageMainSearch = ({
       return `Today, ${formatDate(currentDateSelection)}`
     }
   }
+
+  const formatTime = () => timeTagName || `${timeFrom} - ${timeTo}`
+
   return (
     <div>
       <SearchBoxDiv>
@@ -72,8 +77,8 @@ const BikeUsageMainSearch = ({
         <DateTimeSearchWrapper>
           <DateTimeSearch
             openDatePicker={openDatePicker}
-            date={formatNewDate(currentDateSelection)}
-            time={'time'}
+            date={formatNewDate()}
+            time={formatTime()}
             isTimePickerShown={openTimePicker}
           />
         </DateTimeSearchWrapper>
@@ -91,6 +96,7 @@ const BikeUsageMainSearch = ({
         ) : null}
         {isTimePickerShown ? (
           <TimePicker
+            getTimeTagAction={getTimeTagAction}
             filterTimeFromArrayAction={filterTimeFromArrayAction}
             filterTimeToArrayAction={filterTimeToArrayAction}
             timeToArray={timeToArray}
@@ -104,7 +110,7 @@ const BikeUsageMainSearch = ({
           />
         ) : null}
       </SearchBoxDiv>
-      {/* <RenderMapGraphDiv>
+      <RenderMapGraphDiv>
         {currentToggledTab === 'HEAT MAP' && (
           <Heatmap
             isMarkerShown
@@ -116,7 +122,7 @@ const BikeUsageMainSearch = ({
           />
         )}
         {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
-      </RenderMapGraphDiv> */}
+      </RenderMapGraphDiv>
     </div>
   )
 }

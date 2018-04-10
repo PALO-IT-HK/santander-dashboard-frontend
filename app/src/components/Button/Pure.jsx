@@ -55,16 +55,23 @@ const buttonSizeStyles = {
 }
 
 const textSizeStyles = {
-  large: 'font-size: 16px;',
-  medium: 'font-size: 14px;',
-  small: 'font-size: 12px;'
+  large: `
+    font-size: 14px;
+  `,
+  medium: `
+    font-size: 10px;
+  `,
+  small: `
+    font-size: 8px;
+    `
 }
 
 const Button = styled.button`
-  border-radius: 30px;
+  border-radius: 3px;
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  margin: 0 0.2rem;
   ${({ type, size, disabled }) => {
     const buttonType = disabled ? `${type}Disabled` : type
     return buttonSizeStyles[size] + buttonTypeStyles[buttonType]
@@ -72,8 +79,12 @@ const Button = styled.button`
 `
 
 const Text = styled.h3`
+  font-family: 'Rubik', sans-serif;
   margin: 0 auto;
   cursor: pointer;
+  letter-spacing: 1px;
+  font-weight: 100;
+  text-transform: uppercase;
   ${({ type, size, disabled }) => {
     const buttonType = disabled ? `${type}Disabled` : type
     return textTypeStyles[buttonType] + textSizeStyles[size]
