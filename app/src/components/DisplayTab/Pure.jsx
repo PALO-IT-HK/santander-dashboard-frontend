@@ -7,7 +7,7 @@ export const DisplayAllTabsWrapper = styled.div`
 `
 
 export const DisplayTabWrapper = styled.div`
-  width: 220px;
+  width: 250px;
   height: 30px;
   padding: 5px;
   border-radius: 3px;
