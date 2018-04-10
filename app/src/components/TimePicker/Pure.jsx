@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 import TimeTagFilters from 'components/TimeTagFilters/Pure'
-import { timeFilters, timings } from 'constants/index'
+import { timeFilters } from 'constants/index'
 import SButton from 'components/Button/Pure'
 
 const TimeWrapper = styled.div`
@@ -27,10 +27,10 @@ const TimeLabel = styled.div`
   margin-right: 5rem;
   & p {
     font-size: 10px;
-    color: #A8AAB6;
+    color: #a8aab6;
   }
   & select {
-    color: #D54435;
+    color: #d54435;
     background: #ffffff;
     border: 0;
     font-size: 18px;
@@ -46,34 +46,72 @@ const DisplayButtons = styled.div`
   justify-content: flex-end;
 `
 
-const TimePicker = ({hideTimePickerAction}) => {
-  const getTimeTag = time => {
-    this.props.getTimeTagAction(timeFilters[time])
+const TimePicker = ({
+  hideTimePickerAction,
+  timeFrom,
+  timeTo,
+  selectTimeFromAction,
+  selectTimeToAction,
+  timeFromArray,
+  timeToArray,
+  totalTimeArray,
+  filterTimeToArrayAction,
+  filterTimeFromArrayAction
+}) => {
+  const getTimeFromValue = event => {
+    const getTimeValue = event.target.value
+    selectTimeFromAction(getTimeValue)
+    // filter valid timeTo list when a timeFrom is selected
+    const getTimeFromIndex = totalTimeArray.indexOf(getTimeValue)
+    timeToArray = totalTimeArray.slice(getTimeFromIndex + 1)
+    filterTimeToArrayAction(timeToArray)
+  }
+  const getTimeToValue = event => {
+    const getTimeValue = event.target.value
+    selectTimeToAction(getTimeValue)
+    // filter valid timeFrom list when a timeTo is selected
+    const getTimeToIndex = totalTimeArray.indexOf(getTimeValue)
+    timeFromArray = totalTimeArray.slice(0, getTimeToIndex)
+    filterTimeFromArrayAction(timeFromArray)
   }
 
   return (
     <TimeWrapper>
-      <TimeTagFilters selectTimeTag={getTimeTag} />
+      <TimeTagFilters />
       <TimeDropDown>
         <TimeLabel>
           <p>FROM</p>
-          <select>
-            {timings.map((time, index) => <option key={index} value={time}>{time}</option>)}
+          <select
+            name='selectTimeFrom'
+            value={timeFrom}
+            onChange={getTimeFromValue}>
+            {timeFromArray.map((time, index) => (
+              <option defaultValue key={index} value={time}>
+                {time}
+              </option>
+            ))}
           </select>
         </TimeLabel>
         <TimeLabel>
           <p>TO</p>
-          <select>
-            {timings.map((time, index) => <option key={index} value={time}>{time}</option>)}
+          <select
+            name='selectTimeTo'
+            value={timeTo}
+            onChange={getTimeToValue}>
+            {timeToArray.map((time, index) => (
+              <option defaultValue key={index} value={time}>
+                {time}
+              </option>
+            ))}
           </select>
         </TimeLabel>
-
       </TimeDropDown>
       <DisplayButtons>
         <SButton
           type={'secondary'}
           size={'small'}
           children={'Cancel'}
+          onClick={hideTimePickerAction}
         />
         <SButton
           type={'primary'}
@@ -82,7 +120,6 @@ const TimePicker = ({hideTimePickerAction}) => {
           onClick={hideTimePickerAction}
         />
       </DisplayButtons>
-
     </TimeWrapper>
   )
 }

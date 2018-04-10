@@ -19,7 +19,7 @@ const SearchBoxDiv = styled.div`
 `
 
 const DateTimeSearchWrapper = styled.div`
-  width:50%;
+  width: 50%;
 `
 
 const BikeUsageMainSearch = ({
@@ -42,7 +42,16 @@ const BikeUsageMainSearch = ({
   resetDateAction,
   isTimePickerShown,
   showTimePickerAction,
-  hideTimePickerAction
+  hideTimePickerAction,
+  selectTimeFromAction,
+  selectTimeToAction,
+  timeFrom,
+  timeTo,
+  timeFromArray,
+  timeToArray,
+  totalTimeArray,
+  filterTimeToArrayAction,
+  filterTimeFromArrayAction
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => showDatePickerAction(v)
@@ -82,6 +91,15 @@ const BikeUsageMainSearch = ({
         ) : null}
         {isTimePickerShown ? (
           <TimePicker
+            filterTimeFromArrayAction={filterTimeFromArrayAction}
+            filterTimeToArrayAction={filterTimeToArrayAction}
+            timeToArray={timeToArray}
+            totalTimeArray={totalTimeArray}
+            timeFromArray={timeFromArray}
+            timeFrom={timeFrom}
+            timeTo={timeTo}
+            selectTimeFromAction={selectTimeFromAction}
+            selectTimeToAction={selectTimeToAction}
             hideTimePickerAction={hideTimePickerAction}
           />
         ) : null}

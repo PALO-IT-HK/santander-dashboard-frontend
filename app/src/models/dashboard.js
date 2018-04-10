@@ -2,6 +2,7 @@ import { createAction, createReducer } from 'redux-act'
 import { put, call } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
+import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
 
 // Mock data
 import data from '../mockdata.json'
@@ -34,12 +35,20 @@ export const clickDateToAction = createAction(`${CALENDAR} DATE_TO`)
 export const resetDateAction = createAction(`${CALENDAR} RESET_DATE`)
 export const showDatePickerAction = createAction(`${CALENDAR} SHOW_DATE_PICKER`)
 export const hideDatePickerAction = createAction(`${CALENDAR} HIDE_DATE_PICKER`)
-export const updateDateSelectionTabAction = createAction(`${CALENDAR} UPDATE_DATE_SELECTION_TAB`)
-export const getPublicHolidayAction = createAction(`${CALENDAR} PUBLIC_HOLIDAY_SELECTED`)
+export const updateDateSelectionTabAction = createAction(
+  `${CALENDAR} UPDATE_DATE_SELECTION_TAB`
+)
+export const getPublicHolidayAction = createAction(
+  `${CALENDAR} PUBLIC_HOLIDAY_SELECTED`
+)
 
 // Time Actions
 export const showTimePickerAction = createAction(`${TIME} SHOW_TIME_PICKER`)
 export const hideTimePickerAction = createAction(`${TIME} HIDE_TIME_PICKER`)
+export const selectTimeFromAction = createAction(`${TIME} SELECT_TIME_FROM`)
+export const selectTimeToAction = createAction(`${TIME} SELECT_TIME_TO`)
+export const filterTimeToArrayAction = createAction(`${TIME} FILTER_TIME_TO_ARRAY`)
+export const filterTimeFromArrayAction = createAction(`${TIME} FILTER_TIME_FROM_ARRAY`)
 
 /** --------------------------------------------------
  *
@@ -52,7 +61,7 @@ function fetchDashboard () {
 }
 
 export const sagas = {
-  [getDashboard]: function * () {
+  [getDashboard]: function*() {
     // When the response of the async call returns, store the data in res
     const res = yield call(fetchDashboard)
     // This next yield dispatches another action that does not go through Saga and instead to the Reducer
@@ -123,6 +132,26 @@ const hideTimePicker = state => ({
   isTimePickerShown: false
 })
 
+const selectTimeFrom = (state, time) => ({
+  ...state,
+  timeFrom: time
+})
+
+const selectTimeTo = (state, time) => ({
+  ...state,
+  timeTo: time
+})
+
+const filterTimeToArray = (state, arr) => ({
+  ...state,
+  timeToArray: arr
+})
+
+const filterTimeFromArray = (state, arr) => ({
+  ...state,
+  timeFromArray: arr
+})
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -141,7 +170,11 @@ export const dashboard = {
   [hideDatePickerAction]: hideDatePicker,
   [getPublicHolidayAction]: getPublicHoliday,
   [showTimePickerAction]: showTimePicker,
-  [hideTimePickerAction]: hideTimePicker
+  [hideTimePickerAction]: hideTimePicker,
+  [selectTimeFromAction]: selectTimeFrom,
+  [selectTimeToAction]: selectTimeTo,
+  [filterTimeToArrayAction]: filterTimeToArray,
+  [filterTimeFromArrayAction]: filterTimeFromArray
 }
 
 export const dashboardInitialState = {
@@ -154,7 +187,12 @@ export const dashboardInitialState = {
   enteredTo: null,
   showDatePicker: false,
   currentDateSelection: new Date(),
-  isTimePickerShown: false
+  isTimePickerShown: false,
+  totalTimeArray: totalTimeArray,
+  timeFromArray: timeFromArray,
+  timeToArray: timeToArray,
+  timeFrom: '00:00',
+  timeTo: '23:30'
 }
 
 export default createReducer(dashboard, dashboardInitialState)
