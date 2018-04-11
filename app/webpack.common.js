@@ -3,7 +3,7 @@ const webpack = require('webpack')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 // url for public path
-const publicPath = '/my-app'
+const publicPath = ''
 
 // create 'absolute' paths for dist, src and data files
 const pathBuild = (...paths) => path.join(__dirname, 'dist', ...paths)
@@ -116,8 +116,8 @@ config.plugins.push(new webpack.DefinePlugin({
 config.plugins.push(new HtmlWebpackPlugin({
   filename: pathBuild('index.html'),
   template: pathSrc('index.html'),
-  title: 'My React/Redux App',
-  siteName: 'My App',
+  title: 'Bike Usage Dashboard',
+  siteName: 'BikeUsageDashboard',
   ogUrl: 'https://www.google.com',
   ogImage: 'http://via.placeholder.com/350x150',
   favicon: 'assets/favicon.ico',

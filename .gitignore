@@ -58,7 +58,7 @@ typings/
 .env
 
 # build directory
-dist
+app/dist
 
 # IDE
 .idea
