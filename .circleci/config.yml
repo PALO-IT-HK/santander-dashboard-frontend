@@ -1,0 +1,115 @@
+version: 2
+
+defaults: &defaults
+  working_directory: ~/santander-dashboard-frontend/app
+  docker:
+    - image: circleci/node:8-browsers
+      environment:
+        NODE_ENV: circleci
+
+jobs:
+  build_and_unit_test:
+    <<: *defaults
+    steps:
+      - checkout
+          path: ~/santander-dashboard-frontend
+      - restore_cache:
+          key: node-module-cache-{{ checksum "package.json" }}
+      - run: npm install
+      # - run: npm test
+      - save_cache:
+          key: node-module-cache-{{ checksum "package.json" }}
+          paths:
+            - node_modules
+
+  e2e_test:
+    <<: *defaults
+    environment:
+      E2E_BASE_URL: https://bike-dashboard-demo.ci.palo-it-hk.com
+    steps:
+      - checkout
+          path: ~/santander-dashboard-frontend
+      - restore_cache:
+          key: node-module-cache-{{ checksum "package.json" }}
+      - deploy:
+          command: npm run build:prod && npm run deploy-dev
+      # - run: npm run webdriver-update
+      # - run:
+      #     command: npm run webdriver-start
+      #     background: true
+      # - run: bash bin/wait-for-e2e-ready.sh $E2E_BASE_URL
+      # - run: npm run e2e
+
+  deploy_to_production:
+    <<: *defaults
+    steps:
+      - checkout
+          path: ~/santander-dashboard-frontend
+      - restore_cache:
+          key: node-module-cache-{{ checksum "package.json" }}
+      - deploy:
+          command: npm run build:prod && npm run deploy-prod
+
+  deployment_test_on_production:
+    <<: *defaults
+    environment:
+      E2E_BASE_URL: https://bike-dashboard-demo.palo-it-hk.com
+    steps:
+      - checkout
+          path: ~/santander-dashboard-frontend
+      - restore_cache:
+          key: node-module-cache-{{ checksum "package.json" }}
+      # - run: npm run webdriver-update
+      # - run:
+      #     command: npm run webdriver-start
+      #     background: true
+      # - run: bash bin/wait-for-e2e-ready.sh $E2E_BASE_URL
+      # - run: npm run smoke-testtest
+
+# for workflow jobs that only triggered during tags, you must ignore all
+#   branch builds for that job
+# for details: https://circleci.com/docs/2.0/workflows/#git-tag-job-execution
+workflows:
+  version: 2
+  build_test_and_deploy:
+    jobs:
+      - build_and_unit_test:
+          filters:
+            tags:
+              only: /.*/
+      - e2e_test:
+          requires:
+            - build_and_unit_test
+          filters:
+            branches:
+              only:
+                - develop
+                - master
+            tags:
+              only: /.*/
+      - approve_to_production:
+          type: approval
+          requires:
+            - build_and_unit_test
+            - e2e_test
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v.*-prod.*/
+      - deploy_to_production:
+          requires:
+            - approve_to_production
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v.*-prod.*/
+      - deployment_test_on_production:
+          requires:
+            - deploy_to_production
+          filters:
+            branches:
+              ignore: /.*/
+            tags:
+              only: /v.*-prod.*/

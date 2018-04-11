@@ -8,7 +8,7 @@ import { matchPath } from 'react-router-dom'
 // import { routes } from './src/router'
 
 const buildDir = '../../dist'
-const PUBLIC_PATH = '/my-app'
+const PUBLIC_PATH = ''
 
 const portToUse = 5000
 

@@ -8,7 +8,9 @@
     "start": "NODE_ENV=development webpack-dev-server --progress --inline --hot --config webpack.dev.js",
     "start:uat": "NODE_ENV=uat webpack-dev-server --progress --inline --hot --config webpack.uat.js",
     "start:prod": "BABEL_DISABLE_CACHE=1 NODE_ENV=production node src/local/serve.js",
-    "build:prod": "rimraf dist && NODE_ENV=production GENERATE_SOURCEMAP=false webpack --config webpack.prod.js"
+    "build:prod": "rimraf dist && NODE_ENV=production GENERATE_SOURCEMAP=false webpack --config webpack.prod.js",
+    "deploy-dev": "s3-website deploy -f .s3-website-dev.json",
+    "deploy-prod": "s3-website deploy -f .s3-website-prod.json"
   },
   "dependencies": {
     "axios": "^0.18.0",
@@ -64,6 +66,7 @@
     "react-hot-loader": "3.1.3",
     "redux-devtools-extension": "^2.13.2",
     "rimraf": "^2.6.2",
+    "s3-website": "^3.3.0",
     "standard": "^11.0.0",
     "style-loader": "^0.20.2",
     "stylelint": "^9.1.1",
