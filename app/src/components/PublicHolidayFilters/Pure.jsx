@@ -12,16 +12,18 @@ const HolidayTagWrapper = styled.div`
 `
 
 const HolidayTag = styled.div`
+  font-family: 'Rubik', sans-serif;
   border: 1px solid #e7e7e7;
   border-radius: 20px;
   color: #a8aab6;
   width: auto;
-  height: 20px;
+  height: 17px;
   justify-content: center;
   padding: 0.1rem 0.5rem;
-  font-size: 12px;
+  font-size: 10px;
   margin: 5px;
   cursor: pointer;
+  text-transform: uppercase;
   &:hover {
     color: #d54435;
     font-weight: 400;
@@ -30,7 +32,7 @@ const HolidayTag = styled.div`
 `
 
 const PublicHolidayFilters = ({children, selectPublicHoliday}) => {
-  const publicHoliday = [
+  const publicHolidays = [
     'Early May Bank Holiday 2017',
     'Spring Bank Holiday 2017',
     'Summer Bank holiday 2017',
@@ -44,7 +46,7 @@ const PublicHolidayFilters = ({children, selectPublicHoliday}) => {
   return (
     <PublicHolidayTags>
       <HolidayTagWrapper>
-        {publicHoliday.map((day, index) => (
+        {publicHolidays.map((day, index) => (
           <HolidayTag key={index} onClick={() => selectPublicHoliday(day)}>{`${day}${' '}`}</HolidayTag>
         ))}
       </HolidayTagWrapper>

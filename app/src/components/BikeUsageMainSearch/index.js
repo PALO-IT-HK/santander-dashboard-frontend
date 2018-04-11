@@ -16,7 +16,14 @@ import {
   resetDateAction,
   hideDatePickerAction,
   showDatePickerAction,
-  getPublicHolidayAction
+  getPublicHolidayAction,
+  showTimePickerAction,
+  hideTimePickerAction,
+  selectTimeFromAction,
+  selectTimeToAction,
+  filterTimeToArrayAction,
+  filterTimeFromArrayAction,
+  getTimeTagAction
 } from 'models/dashboard'
 
 // s function
@@ -32,7 +39,14 @@ const s = state => ({
   toDate: state.dashboard.toDate,
   enteredTo: state.dashboard.enteredTo,
   showDatePicker: state.dashboard.showDatePicker,
-  currentDateSelection: state.dashboard.currentDateSelection
+  currentDateSelection: state.dashboard.currentDateSelection,
+  isTimePickerShown: state.dashboard.isTimePickerShown,
+  timeFrom: state.dashboard.timeFrom,
+  timeTo: state.dashboard.timeTo,
+  totalTimeArray: state.dashboard.totalTimeArray,
+  timeFromArray: state.dashboard.timeFromArray,
+  timeToArray: state.dashboard.timeToArray,
+  timeTagName: state.dashboard.timeTagName
 })
 
 const d = dispatch => ({
@@ -47,7 +61,14 @@ const d = dispatch => ({
   resetDateAction: bindActionCreators(resetDateAction, dispatch),
   showDatePickerAction: bindActionCreators(showDatePickerAction, dispatch),
   hideDatePickerAction: bindActionCreators(hideDatePickerAction, dispatch),
-  getPublicHolidayAction: bindActionCreators(getPublicHolidayAction, dispatch)
+  getPublicHolidayAction: bindActionCreators(getPublicHolidayAction, dispatch),
+  showTimePickerAction: bindActionCreators(showTimePickerAction, dispatch),
+  hideTimePickerAction: bindActionCreators(hideTimePickerAction, dispatch),
+  selectTimeFromAction: bindActionCreators(selectTimeFromAction, dispatch),
+  selectTimeToAction: bindActionCreators(selectTimeToAction, dispatch),
+  filterTimeToArrayAction: bindActionCreators(filterTimeToArrayAction, dispatch),
+  filterTimeFromArrayAction: bindActionCreators(filterTimeFromArrayAction, dispatch),
+  getTimeTagAction: bindActionCreators(getTimeTagAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

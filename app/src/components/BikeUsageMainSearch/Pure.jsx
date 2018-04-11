@@ -7,6 +7,7 @@ import BikeUsageGraph from 'components/BikeUsageGraph/Pure'
 import SearchBar from 'components/SearchBar/Pure'
 import CalendarDatePicker from 'components/CalendarDatePicker/Pure'
 import DateTimeSearch from 'components/DateTimeSearch/Pure'
+import TimePicker from 'components/TimePicker/Pure'
 import { formatDate } from 'utils/utils'
 
 const RenderMapGraphDiv = styled.div`
@@ -23,7 +24,7 @@ const SearchBoxDiv = styled.div`
 `
 
 const DateTimeSearchWrapper = styled.div`
-  width:50%;
+  width: 50%;
 `
 
 const SubHeader = styled.div`
@@ -60,6 +61,20 @@ const BikeUsageMainSearch = ({
   clickDateFromAction,
   clickDateToAction,
   resetDateAction,
+  isTimePickerShown,
+  showTimePickerAction,
+  hideTimePickerAction,
+  selectTimeFromAction,
+  selectTimeToAction,
+  timeFrom,
+  timeTo,
+  timeFromArray,
+  timeToArray,
+  totalTimeArray,
+  filterTimeToArrayAction,
+  filterTimeFromArrayAction,
+  getTimeTagAction,
+  timeTagName,
   changeInputFocusAction,
   currentFocusStatus,
   updateMapLocationAction,
@@ -70,6 +85,8 @@ const BikeUsageMainSearch = ({
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => showDatePickerAction(v)
+  const openTimePicker = v => showTimePickerAction(v)
+
   const formatNewDate = () => {
     if (fromDate && toDate != null) {
       return `${formatDate(fromDate)} - ${formatDate(toDate)}`
@@ -77,22 +94,29 @@ const BikeUsageMainSearch = ({
       return `Today, ${formatDate(currentDateSelection)}`
     }
   }
+
+  const formatTime = () => timeTagName || `${timeFrom} - ${timeTo}`
+
   return (
     <div>
       <SearchBoxDiv>
-        <SubHeader> Bike usage of
+        <SubHeader>
+          {' '}
+          Bike usage of
           <SearchBar
             changeInputFocusAction={changeInputFocusAction}
             currentFocusStatus={currentFocusStatus}
             updateMapLocationAction={updateMapLocationAction}
-            searchedLocation={searchedLocation} />
+            searchedLocation={searchedLocation}
+          />
         </SubHeader>
         <ToggleTabs value={currentToggledTab} onChange={handleTabChange} />
         <DateTimeSearchWrapper>
           <DateTimeSearch
             openDatePicker={openDatePicker}
-            date={formatNewDate(currentDateSelection)}
-            time={'time'}
+            date={formatNewDate()}
+            time={formatTime()}
+            isTimePickerShown={openTimePicker}
           />
         </DateTimeSearchWrapper>
         {showDatePicker ? (
@@ -107,17 +131,35 @@ const BikeUsageMainSearch = ({
             hideDatePickerAction={hideDatePickerAction}
           />
         ) : null}
+        {isTimePickerShown ? (
+          <TimePicker
+            getTimeTagAction={getTimeTagAction}
+            filterTimeFromArrayAction={filterTimeFromArrayAction}
+            filterTimeToArrayAction={filterTimeToArrayAction}
+            timeToArray={timeToArray}
+            totalTimeArray={totalTimeArray}
+            timeFromArray={timeFromArray}
+            timeFrom={timeFrom}
+            timeTo={timeTo}
+            selectTimeFromAction={selectTimeFromAction}
+            selectTimeToAction={selectTimeToAction}
+            hideTimePickerAction={hideTimePickerAction}
+          />
+        ) : null}
       </SearchBoxDiv>
       <RenderMapGraphDiv>
         {currentToggledTab === 'HEAT MAP' && (
           <Heatmap
             isMarkerShown
-            toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
+            toggleMarkerLabelVisibilityAction={
+              toggleMarkerLabelVisibilityAction
+            }
             hideMarkerLabelAction={hideMarkerLabelAction}
             currentMarker={currentMarker}
             mapInitialLoadStatus={mapInitialLoadStatus}
             getBikePointsActionSaga={getBikePointsActionSaga}
-            currentBikePointsArray={currentBikePointsArray} />
+            currentBikePointsArray={currentBikePointsArray}
+          />
         )}
         {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
       </RenderMapGraphDiv>
