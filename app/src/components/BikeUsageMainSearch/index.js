@@ -23,7 +23,9 @@ import {
   selectTimeToAction,
   filterTimeToArrayAction,
   filterTimeFromArrayAction,
-  getTimeTagAction
+  getTimeTagAction,
+  toggleDropdownVisibilityAction,
+  updateDropDownDisplayValueAction
 } from 'models/dashboard'
 
 // s function
@@ -46,7 +48,9 @@ const s = state => ({
   totalTimeArray: state.dashboard.totalTimeArray,
   timeFromArray: state.dashboard.timeFromArray,
   timeToArray: state.dashboard.timeToArray,
-  timeTagName: state.dashboard.timeTagName
+  timeTagName: state.dashboard.timeTagName,
+  dropDownDisplayStatus: state.dashboard.dropDownDisplayStatus,
+  currentDropDownDisplayValue: state.dashboard.currentDropDownDisplayValue
 })
 
 const d = dispatch => ({
@@ -68,7 +72,9 @@ const d = dispatch => ({
   selectTimeToAction: bindActionCreators(selectTimeToAction, dispatch),
   filterTimeToArrayAction: bindActionCreators(filterTimeToArrayAction, dispatch),
   filterTimeFromArrayAction: bindActionCreators(filterTimeFromArrayAction, dispatch),
-  getTimeTagAction: bindActionCreators(getTimeTagAction, dispatch)
+  getTimeTagAction: bindActionCreators(getTimeTagAction, dispatch),
+  toggleDropdownVisibilityAction: bindActionCreators(toggleDropdownVisibilityAction, dispatch),
+  updateDropDownDisplayValueAction: bindActionCreators(updateDropDownDisplayValueAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

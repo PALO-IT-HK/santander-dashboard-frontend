@@ -14,6 +14,7 @@ import data from '../mockdata.json'
  */
 const MODEL_NAME = '[DASHBOARD]'
 const HEAT_MAP = '[HEATMAP]'
+const GRAPH = '[GRAPH]'
 const CALENDAR = '[CALENDAR]'
 const TIME = '[TIME]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
@@ -35,6 +36,9 @@ export const changeInputFocusAction = createAction(
 export const updateMapLocationAction = createAction(
   `${MODEL_NAME} UPDATE GOOGLE MAP LOCATION BASED ON SEARCH`
 )
+// Graph Actions
+export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
+export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
 // Calendar Actions
 export const clickDateFromAction = createAction(`${CALENDAR} DATE_FROM`)
 export const clickDateToAction = createAction(`${CALENDAR} DATE_TO`)
@@ -74,11 +78,11 @@ export const getBikePointsActionSuccess = createAction(
  *
  */
 // Sample data, to be replaced by API call to Node Backend when ready
-function fetchDashboard() {
+function fetchDashboard () {
   return axios.get('https://swapi.co/api/people/1')
 }
 
-function fetchInitialBikePoints(payload) {
+function fetchInitialBikePoints (payload) {
   const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${
     payload[0]
   }&swLon=${payload[1]}&neLat=${payload[2]}&neLon=${payload[3]}`
@@ -86,13 +90,13 @@ function fetchInitialBikePoints(payload) {
 }
 
 export const sagas = {
-  [getDashboard]: function*() {
+  [getDashboard]: function * () {
     // When the response of the async call returns, store the data in res
     const res = yield call(fetchDashboard)
     // This next yield dispatches another action that does not go through Saga and instead to the Reducer
     yield put(getDashboardSuccess(res.data))
   },
-  [getBikePointsActionSaga]: function*({ payload }) {
+  [getBikePointsActionSaga]: function * ({ payload }) {
     const result = yield call(fetchInitialBikePoints, payload)
     yield put(getBikePointsActionSuccess(result.data))
   }
@@ -134,6 +138,16 @@ const updateLocationOnMap = (state, place) => ({
 const updateBikePoints = (state, result) => ({
   ...state,
   currentBikePointsArray: result
+})
+
+// Graph
+const toggleDropdownVisibility = (state, toggleValue) => ({
+  ...state, dropDownDisplayStatus: toggleValue
+})
+const updateDropDownDisplayValue = (state, newValue) => ({
+  ...state,
+  currentDropDownDisplayValue: newValue,
+  dropDownDisplayStatus: false
 })
 
 // Calendar
@@ -233,7 +247,9 @@ export const dashboard = {
   [selectTimeToAction]: selectTimeTo,
   [filterTimeToArrayAction]: filterTimeToArray,
   [filterTimeFromArrayAction]: filterTimeFromArray,
-  [getTimeTagAction]: getTimeTag
+  [getTimeTagAction]: getTimeTag,
+  [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
+  [updateDropDownDisplayValueAction]: updateDropDownDisplayValue
 }
 
 export const dashboardInitialState = {
@@ -256,7 +272,9 @@ export const dashboardInitialState = {
   timeToArray: timeToArray,
   timeFrom: '00:00',
   timeTo: '23:30',
-  timeTagName: null
+  timeTagName: null,
+  dropDownDisplayStatus: false,
+  currentDropDownDisplayValue: 'top 5 docks in London'
 }
 
 export default createReducer(dashboard, dashboardInitialState)
