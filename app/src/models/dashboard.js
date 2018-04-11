@@ -12,15 +12,26 @@ import data from '../mockdata.json'
  *
  */
 const MODEL_NAME = '[DASHBOARD]'
+const HEAT_MAP = '[HEATMAP]'
+const CALENDAR = '[CALENDAR]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
-export const toggleMarkerLabelVisibilityAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL VISIBLE`)
-export const hideMarkerLabelAction = createAction(`${MODEL_NAME} TOGGLE MARKER LABEL HIDDEN`)
 export const changeToggledTabAction = createAction(`${MODEL_NAME} CHANGE_TOGGLED_TAB`)
+// HeatMap Actions
+export const toggleMarkerLabelVisibilityAction = createAction(`${HEAT_MAP} TOGGLE MARKER LABEL VISIBLE`)
+export const hideMarkerLabelAction = createAction(`${HEAT_MAP} TOGGLE MARKER LABEL HIDDEN`)
 export const changeInputFocusAction = createAction(`${MODEL_NAME} CHANGE SEARCH BAR FOCUS`)
 export const updateMapLocationAction = createAction(`${MODEL_NAME} UPDATE GOOGLE MAP LOCATION BASED ON SEARCH`)
-
+// Calendar Actions
+export const clickDateFromAction = createAction(`${CALENDAR} DATE_FROM`)
+export const clickDateToAction = createAction(`${CALENDAR} DATE_TO`)
+export const resetDateAction = createAction(`${CALENDAR} RESET_DATE`)
+export const showDatePickerAction = createAction(`${CALENDAR} SHOW_DATE_PICKER`)
+export const hideDatePickerAction = createAction(`${CALENDAR} HIDE_DATE_PICKER`)
+export const updateDateSelectionTabAction = createAction(`${CALENDAR} UPDATE_DATE_SELECTION_TAB`)
+export const getPublicHolidayAction = createAction(`${CALENDAR} PUBLIC_HOLIDAY_SELECTED`)
+// Saga Actions
 export const getBikePointsActionSaga = createAction(`${MODEL_NAME} GET BIKE POINTS FROM BACKEND ON INITIAL MAP LOAD`)
 export const getBikePointsActionSuccess = createAction(`${MODEL_NAME} GET INITIAL LOAD BIKE POINTS SUCCESS`)
 /** --------------------------------------------------
@@ -57,19 +68,58 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  * Logic
  *
  */
-const changeTab = (state, tabs) => ({...state, currentTab: tabs})
-const changeToggledTab = (state, tabs) => ({...state, currentToggledTab: tabs})
+// Tabs
+const changeTab = (state, tabs) => ({ ...state, currentTab: tabs })
+const changeToggledTab = (state, tabs) => ({
+  ...state,
+  currentToggledTab: tabs
+})
 const addDashboardData = (state, dashboardData) => {
   return {
     ...state,
     dashboardData
   }
 }
+
+// Heatmap
 const toggleMarkerLabelVisible = (state, markerId) => ({...state, currentMarker: markerId})
-const hideMarkerLabel = state => ({...state, currentMarker: ''})
+const hideMarkerLabel = state => ({ ...state, currentMarker: '' })
 const toggleFocusStatus = (state, searchBarFocusStatus) => ({...state, currentFocusStatus: searchBarFocusStatus})
 const updateLocationOnMap = (state, place) => ({...state, searchedLocation: place})
 const updateBikePoints = (state, result) => ({...state, currentBikePointsArray: result})
+
+// Calendar
+const clickDateFrom = (state, { from }) => ({ ...state, fromDate: from })
+const clickDateTo = (state, { to, enteredTo }) => ({
+  ...state,
+  toDate: to,
+  enteredTo
+})
+
+const resetDate = state => ({
+  ...state,
+  toDate: null,
+  fromDate: null,
+  enteredTo: null
+})
+
+const showDatePicker = state => ({
+  ...state,
+  showDatePicker: true
+})
+
+const hideDatePicker = state => ({
+  ...state,
+  showDatePicker: false
+})
+
+const getPublicHoliday = (state, date) => ({
+  ...state,
+  toDate: date,
+  fromDate: date,
+  enteredTo: date
+})
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -83,7 +133,13 @@ export const dashboard = {
   [changeToggledTabAction]: changeToggledTab,
   [changeInputFocusAction]: toggleFocusStatus,
   [updateMapLocationAction]: updateLocationOnMap,
-  [getBikePointsActionSuccess]: updateBikePoints
+  [getBikePointsActionSuccess]: updateBikePoints,
+  [clickDateFromAction]: clickDateFrom,
+  [clickDateToAction]: clickDateTo,
+  [resetDateAction]: resetDate,
+  [showDatePickerAction]: showDatePicker,
+  [hideDatePickerAction]: hideDatePicker,
+  [getPublicHolidayAction]: getPublicHoliday
 }
 
 export const dashboardInitialState = {
@@ -94,7 +150,12 @@ export const dashboardInitialState = {
   currentFocusStatus: '',
   searchedLocation: '',
   mapInitialLoadStatus: false,
-  currentBikePointsArray: []
+  currentBikePointsArray: [],
+  fromDate: null,
+  toDate: null,
+  enteredTo: null,
+  showDatePicker: false,
+  currentDateSelection: new Date()
 }
 
 export default createReducer(dashboard, dashboardInitialState)

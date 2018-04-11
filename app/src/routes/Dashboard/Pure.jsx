@@ -2,7 +2,7 @@ import React from 'react'
 import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
-import BikeUsageMainSearch from 'components/BikeUsageMainSearch/Pure'
+import BikeUsageMainSearch from 'components/BikeUsageMainSearch'
 
 const Wrap = styled.div`
   margin: 0;
@@ -24,29 +24,13 @@ const MainDiv = styled.div`
   padding: 0;
 `
 
-export default function Dashboard ({getDashboard, dashboardData, value, currentTab, currentMarker,
-  toggleMarkerLabelVisibilityAction, hideMarkerLabelAction, currentToggledTab, changeToggledTabAction,
-  changeInputFocusAction, currentFocusStatus, graphData, updateMapLocationAction, searchedLocation,
-  mapInitialLoadStatus, getBikePointsActionSaga, currentBikePointsArray}) {
+export default function Dashboard ({getDashboard, dashboardData, value, currentTab}) {
   return (
     <Wrap>
       <BodyWrap>
         <MainDiv>
-          {currentTab === 'BIKE USAGE' &&
-          <BikeUsageMainSearch
-            currentToggledTab={currentToggledTab}
-            changeToggledTabAction={changeToggledTabAction}
-            changeInputFocusAction={changeInputFocusAction}
-            currentFocusStatus={currentFocusStatus}
-            data={graphData.list}
-            currentMarker={currentMarker}
-            toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
-            hideMarkerLabelAction={hideMarkerLabelAction}
-            updateMapLocationAction={updateMapLocationAction}
-            searchedLocation={searchedLocation}
-            mapInitialLoadStatus={mapInitialLoadStatus}
-            getBikePointsActionSaga={getBikePointsActionSaga}
-            currentBikePointsArray={currentBikePointsArray} />}
+          {currentTab === 'BIKE USAGE' && (
+            <BikeUsageMainSearch />)}
           {currentTab === 'WEATHER EFFECT' && <h1>WEATHER EFFECT</h1>}
           {dashboardData &&
           <StdWrapperFlexContentCentered>

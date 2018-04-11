@@ -32,7 +32,8 @@ const MarkerLabelContentWrapper = styled.div`
 
 const Heatmap = compose(
   withProps({
-    googleMapURL: 'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZvxOHHY7Y6FPH1JwhgEE28YWSV7LHDV0&v=3.exp&libraries=visualization,geometry,drawing,places',
+    googleMapURL:
+      'https://maps.googleapis.com/maps/api/js?key=AIzaSyDZvxOHHY7Y6FPH1JwhgEE28YWSV7LHDV0&v=3.exp&libraries=visualization,geometry,drawing,places',
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `100%`, padding: `0px 10px 10px 10px`, zIndex: `1` }} />,
     mapElement: <div style={{ height: `450px` }} id='mapElement'/>,
@@ -132,10 +133,10 @@ const Heatmap = compose(
       new google.maps.LatLng(52.225, -0.18),
       new google.maps.LatLng(52.222, -0.189),
       new google.maps.LatLng(52.222, -0.189),
-      new google.maps.LatLng(52.240, -0.189),
+      new google.maps.LatLng(52.24, -0.189),
       new google.maps.LatLng(52.235, -0.189),
-      new google.maps.LatLng(52.230, -0.189),
-      new google.maps.LatLng(52.230, -0.189)
+      new google.maps.LatLng(52.23, -0.189),
+      new google.maps.LatLng(52.23, -0.189)
     ]
   }
   return (
@@ -207,7 +208,7 @@ const Heatmap = compose(
             </div>
           </MarkerWithLabel>
         )
-      })
+       })
       }
 
     </GoogleMap>
