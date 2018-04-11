@@ -36,7 +36,7 @@ const s = state => ({
 })
 
 const d = dispatch => ({
-  toggleMarkerLabelVisibilityAction: bindActionCreators(toggleMarkerLabelVisibilityAction,dispatch),
+  toggleMarkerLabelVisibilityAction: bindActionCreators(toggleMarkerLabelVisibilityAction, dispatch),
   hideMarkerLabelAction: bindActionCreators(hideMarkerLabelAction, dispatch),
   changeToggledTabAction: bindActionCreators(changeToggledTabAction, dispatch),
   changeInputFocusAction: bindActionCreators(changeInputFocusAction, dispatch),

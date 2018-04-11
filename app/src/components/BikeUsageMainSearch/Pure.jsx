@@ -80,12 +80,12 @@ const BikeUsageMainSearch = ({
   return (
     <div>
       <SearchBoxDiv>
-        <SubHeader> Bike usage of 
-          <SearchBar 
-              changeInputFocusAction={changeInputFocusAction} 
-              currentFocusStatus={currentFocusStatus}
-              updateMapLocationAction={updateMapLocationAction}
-              searchedLocation={searchedLocation} />
+        <SubHeader> Bike usage of
+          <SearchBar
+            changeInputFocusAction={changeInputFocusAction}
+            currentFocusStatus={currentFocusStatus}
+            updateMapLocationAction={updateMapLocationAction}
+            searchedLocation={searchedLocation} />
         </SubHeader>
         <ToggleTabs value={currentToggledTab} onChange={handleTabChange} />
         <DateTimeSearchWrapper>
@@ -111,13 +111,13 @@ const BikeUsageMainSearch = ({
       <RenderMapGraphDiv>
         {currentToggledTab === 'HEAT MAP' && (
           <Heatmap
-          isMarkerShown
-          toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
-          hideMarkerLabelAction={hideMarkerLabelAction}
-          currentMarker={currentMarker}
-          mapInitialLoadStatus={mapInitialLoadStatus}
-          getBikePointsActionSaga={getBikePointsActionSaga}
-          currentBikePointsArray={currentBikePointsArray} />
+            isMarkerShown
+            toggleMarkerLabelVisibilityAction={toggleMarkerLabelVisibilityAction}
+            hideMarkerLabelAction={hideMarkerLabelAction}
+            currentMarker={currentMarker}
+            mapInitialLoadStatus={mapInitialLoadStatus}
+            getBikePointsActionSaga={getBikePointsActionSaga}
+            currentBikePointsArray={currentBikePointsArray} />
         )}
         {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
       </RenderMapGraphDiv>
