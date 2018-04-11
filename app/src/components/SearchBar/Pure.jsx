@@ -78,10 +78,9 @@ SearchBar.defaultProps = {
 
 SearchBar.propTypes = {
   size: PropTypes.string,
+  name: PropTypes.string,
   type: PropTypes.string,
   value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  disabled: PropTypes.bool,
-  onChange: PropTypes.func.isRequired,
   placeholder: PropTypes.string
 }
 
