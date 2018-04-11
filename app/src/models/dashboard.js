@@ -29,6 +29,12 @@ export const toggleMarkerLabelVisibilityAction = createAction(
 export const hideMarkerLabelAction = createAction(
   `${HEAT_MAP} TOGGLE MARKER LABEL HIDDEN`
 )
+export const changeInputFocusAction = createAction(
+  `${MODEL_NAME} CHANGE SEARCH BAR FOCUS`
+)
+export const updateMapLocationAction = createAction(
+  `${MODEL_NAME} UPDATE GOOGLE MAP LOCATION BASED ON SEARCH`
+)
 // Calendar Actions
 export const clickDateFromAction = createAction(`${CALENDAR} DATE_FROM`)
 export const clickDateToAction = createAction(`${CALENDAR} DATE_TO`)
@@ -47,18 +53,36 @@ export const showTimePickerAction = createAction(`${TIME} SHOW_TIME_PICKER`)
 export const hideTimePickerAction = createAction(`${TIME} HIDE_TIME_PICKER`)
 export const selectTimeFromAction = createAction(`${TIME} SELECT_TIME_FROM`)
 export const selectTimeToAction = createAction(`${TIME} SELECT_TIME_TO`)
-export const filterTimeToArrayAction = createAction(`${TIME} FILTER_TIME_TO_ARRAY`)
-export const filterTimeFromArrayAction = createAction(`${TIME} FILTER_TIME_FROM_ARRAY`)
+export const filterTimeToArrayAction = createAction(
+  `${TIME} FILTER_TIME_TO_ARRAY`
+)
+export const filterTimeFromArrayAction = createAction(
+  `${TIME} FILTER_TIME_FROM_ARRAY`
+)
 export const getTimeTagAction = createAction(`${TIME} TIME_TAG_SELECTED`)
 
+// Saga Actions
+export const getBikePointsActionSaga = createAction(
+  `${MODEL_NAME} GET BIKE POINTS FROM BACKEND ON INITIAL MAP LOAD`
+)
+export const getBikePointsActionSuccess = createAction(
+  `${MODEL_NAME} GET INITIAL LOAD BIKE POINTS SUCCESS`
+)
 /** --------------------------------------------------
  *
  * Sagas
  *
  */
 // Sample data, to be replaced by API call to Node Backend when ready
-function fetchDashboard () {
+function fetchDashboard() {
   return axios.get('https://swapi.co/api/people/1')
+}
+
+function fetchInitialBikePoints(payload) {
+  const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${
+    payload[0]
+  }&swLon=${payload[1]}&neLat=${payload[2]}&neLon=${payload[3]}`
+  return axios.get(url)
 }
 
 export const sagas = {
@@ -67,6 +91,10 @@ export const sagas = {
     const res = yield call(fetchDashboard)
     // This next yield dispatches another action that does not go through Saga and instead to the Reducer
     yield put(getDashboardSuccess(res.data))
+  },
+  [getBikePointsActionSaga]: function*({ payload }) {
+    const result = yield call(fetchInitialBikePoints, payload)
+    yield put(getBikePointsActionSuccess(result.data))
   }
 }
 export const dashboardSagaWatcher = createSagaWatcher(sagas)
@@ -76,6 +104,7 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  * Logic
  *
  */
+// Tabs
 const changeTab = (state, tabs) => ({ ...state, currentTab: tabs })
 const changeToggledTab = (state, tabs) => ({
   ...state,
@@ -87,11 +116,27 @@ const addDashboardData = (state, dashboardData) => {
     dashboardData
   }
 }
+
+// Heatmap
 const toggleMarkerLabelVisible = (state, markerId) => ({
   ...state,
   currentMarker: markerId
 })
 const hideMarkerLabel = state => ({ ...state, currentMarker: '' })
+const toggleFocusStatus = (state, searchBarFocusStatus) => ({
+  ...state,
+  currentFocusStatus: searchBarFocusStatus
+})
+const updateLocationOnMap = (state, place) => ({
+  ...state,
+  searchedLocation: place
+})
+const updateBikePoints = (state, result) => ({
+  ...state,
+  currentBikePointsArray: result
+})
+
+// Calendar
 const clickDateFrom = (state, { from }) => ({ ...state, fromDate: from })
 const clickDateTo = (state, { to, enteredTo }) => ({
   ...state,
@@ -173,6 +218,9 @@ export const dashboard = {
   [toggleMarkerLabelVisibilityAction]: toggleMarkerLabelVisible,
   [hideMarkerLabelAction]: hideMarkerLabel,
   [changeToggledTabAction]: changeToggledTab,
+  [changeInputFocusAction]: toggleFocusStatus,
+  [updateMapLocationAction]: updateLocationOnMap,
+  [getBikePointsActionSuccess]: updateBikePoints,
   [clickDateFromAction]: clickDateFrom,
   [clickDateToAction]: clickDateTo,
   [resetDateAction]: resetDate,
@@ -193,6 +241,10 @@ export const dashboardInitialState = {
   currentMarker: '',
   currentToggledTab: 'HEAT MAP',
   graphData: data,
+  currentFocusStatus: '',
+  searchedLocation: '',
+  mapInitialLoadStatus: false,
+  currentBikePointsArray: [],
   fromDate: null,
   toDate: null,
   enteredTo: null,

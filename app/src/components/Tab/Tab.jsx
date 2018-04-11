@@ -9,14 +9,14 @@ export const TabsWrapper = styled.div`
   display: flex;
 `
 export const TabWrapper = styled.div`
-  min-width: 100px;
-  padding: 5px 30px;
+  min-width: 140px;
+  padding: 5px 25px;
   background-color: ${({selected}) => selected ? '#ffffff' : 'none'};
   border-radius: 5px;
   border: 1px solid #d5dfeb;
   display: flex;
   justify-content: center;
-  align-center: center;
+  align-items: center;
   line-height: 20px;
   color: #748597;
   cursor: pointer;

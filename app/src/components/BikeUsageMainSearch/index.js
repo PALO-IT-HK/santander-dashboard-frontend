@@ -8,6 +8,9 @@ import {
   toggleMarkerLabelVisibilityAction,
   hideMarkerLabelAction,
   changeToggledTabAction,
+  changeInputFocusAction,
+  updateMapLocationAction,
+  getBikePointsActionSaga,
   clickDateFromAction,
   clickDateToAction,
   resetDateAction,
@@ -26,8 +29,12 @@ import {
 // s function
 const s = state => ({
   currentMarker: state.dashboard.currentMarker,
+  currentFocusStatus: state.dashboard.currentFocusStatus,
   currentToggledTab: state.dashboard.currentToggledTab,
   graphData: state.dashboard.graphData,
+  searchedLocation: state.dashboard.searchedLocation,
+  mapInitialLoadStatus: state.dashboard.mapInitialLoadStatus,
+  currentBikePointsArray: state.dashboard.currentBikePointsArray,
   fromDate: state.dashboard.fromDate,
   toDate: state.dashboard.toDate,
   enteredTo: state.dashboard.enteredTo,
@@ -43,12 +50,12 @@ const s = state => ({
 })
 
 const d = dispatch => ({
-  toggleMarkerLabelVisibilityAction: bindActionCreators(
-    toggleMarkerLabelVisibilityAction,
-    dispatch
-  ),
+  toggleMarkerLabelVisibilityAction: bindActionCreators(toggleMarkerLabelVisibilityAction, dispatch),
   hideMarkerLabelAction: bindActionCreators(hideMarkerLabelAction, dispatch),
   changeToggledTabAction: bindActionCreators(changeToggledTabAction, dispatch),
+  changeInputFocusAction: bindActionCreators(changeInputFocusAction, dispatch),
+  updateMapLocationAction: bindActionCreators(updateMapLocationAction, dispatch),
+  getBikePointsActionSaga: bindActionCreators(getBikePointsActionSaga, dispatch),
   clickDateFromAction: bindActionCreators(clickDateFromAction, dispatch),
   clickDateToAction: bindActionCreators(clickDateToAction, dispatch),
   resetDateAction: bindActionCreators(resetDateAction, dispatch),

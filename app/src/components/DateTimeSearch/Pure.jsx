@@ -1,5 +1,4 @@
 import React from 'react'
-import styled from 'styled-components'
 import { DisplayAllTabs, DisplayTab } from 'components/DisplayTab/Pure'
 
 const DateTimeSearch = ({ date, time, openDatePicker, isTimePickerShown }) => {
