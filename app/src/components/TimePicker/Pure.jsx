@@ -12,7 +12,8 @@ const TimeWrapper = styled.div`
   border: 1px solid #e7e7e7;
   background: #ffffff;
   position: absolute;
-  top: 200px;
+  top: 32%;
+  left: 70.3%;
 `
 
 const TimeDropDown = styled.div`

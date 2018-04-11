@@ -14,7 +14,7 @@ export const DisplayTabWrapper = styled.div`
   border: 1px solid #d5dfeb;
   display: flex;
   justify-content: center;
-  align-center: center;
+  align-items: center;
   line-height: 20px;
   color: #748597;
   cursor: pointer;
