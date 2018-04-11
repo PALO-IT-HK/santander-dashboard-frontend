@@ -11,7 +11,7 @@ jobs:
   build_and_unit_test:
     <<: *defaults
     steps:
-      - checkout
+      - checkout:
           path: ~/santander-dashboard-frontend
       - restore_cache:
           key: node-module-cache-{{ checksum "package.json" }}
@@ -43,7 +43,7 @@ jobs:
   deploy_to_production:
     <<: *defaults
     steps:
-      - checkout
+      - checkout:
           path: ~/santander-dashboard-frontend
       - restore_cache:
           key: node-module-cache-{{ checksum "package.json" }}
@@ -55,7 +55,7 @@ jobs:
     environment:
       E2E_BASE_URL: https://bike-dashboard-demo.palo-it-hk.com
     steps:
-      - checkout
+      - checkout:
           path: ~/santander-dashboard-frontend
       - restore_cache:
           key: node-module-cache-{{ checksum "package.json" }}
