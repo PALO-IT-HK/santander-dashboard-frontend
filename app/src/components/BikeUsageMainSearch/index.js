@@ -26,7 +26,8 @@ import {
   getTimeTagAction,
   toggleDropdownVisibilityAction,
   updateDropDownDisplayValueAction,
-  getHeatmapPointsActionSaga
+  getHeatmapPointsActionSaga,
+  toggleWidgetOpenStatusAction
 } from 'models/dashboard'
 
 // s function
@@ -52,7 +53,8 @@ const s = state => ({
   timeTagName: state.dashboard.timeTagName,
   dropDownDisplayStatus: state.dashboard.dropDownDisplayStatus,
   currentDropDownDisplayValue: state.dashboard.currentDropDownDisplayValue,
-  bikeUsageHistoryDataArray: state.dashboard.bikeUsageHistoryDataArray
+  bikeUsageHistoryDataArray: state.dashboard.bikeUsageHistoryDataArray,
+  isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently
 })
 
 const d = dispatch => ({
@@ -77,7 +79,8 @@ const d = dispatch => ({
   getTimeTagAction: bindActionCreators(getTimeTagAction, dispatch),
   toggleDropdownVisibilityAction: bindActionCreators(toggleDropdownVisibilityAction, dispatch),
   updateDropDownDisplayValueAction: bindActionCreators(updateDropDownDisplayValueAction, dispatch),
-  getHeatmapPointsActionSaga: bindActionCreators(getHeatmapPointsActionSaga, dispatch)
+  getHeatmapPointsActionSaga: bindActionCreators(getHeatmapPointsActionSaga, dispatch),
+  toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

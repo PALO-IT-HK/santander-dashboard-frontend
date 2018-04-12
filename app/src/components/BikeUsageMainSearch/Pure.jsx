@@ -103,11 +103,27 @@ const BikeUsageMainSearch = ({
   currentDropDownDisplayValue,
   updateDropDownDisplayValueAction,
   bikeUsageHistoryDataArray,
-  getHeatmapPointsActionSaga
+  getHeatmapPointsActionSaga,
+  toggleWidgetOpenStatusAction,
+  isAnyWidgetOpenCurrently
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
-  const openDatePicker = v => showDatePickerAction(v)
-  const openTimePicker = v => showTimePickerAction(v)
+  const openDatePicker = v => {
+    if(!isAnyWidgetOpenCurrently) {
+      showDatePickerAction(v)
+      toggleWidgetOpenStatusAction(true)
+    } else {
+      return null
+    }
+  }
+  const openTimePicker = v => {
+    if(!isAnyWidgetOpenCurrently) {
+      showTimePickerAction(v)
+      toggleWidgetOpenStatusAction(true)
+    } else {
+      return null
+    }
+  }
 
   const formatNewDate = () => {
     if (fromDate && toDate != null) {
@@ -174,6 +190,7 @@ const BikeUsageMainSearch = ({
               to={toDate}
               enteredTo={enteredTo}
               hideDatePickerAction={hideDatePickerAction}
+              toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
             />
           ) : null}
           {isTimePickerShown ? (
@@ -189,6 +206,7 @@ const BikeUsageMainSearch = ({
               selectTimeFromAction={selectTimeFromAction}
               selectTimeToAction={selectTimeToAction}
               hideTimePickerAction={hideTimePickerAction}
+              toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
             />
           ) : null}
         </DateTimeSearchWrapper>

@@ -59,6 +59,7 @@ export default class CalendarDatePicker extends Component {
 
   hideDatePicker = () => {
     this.props.hideDatePickerAction()
+    this.props.toggleWidgetOpenStatusAction(false)
   }
 
   getPublicHoliday = (day) => {
