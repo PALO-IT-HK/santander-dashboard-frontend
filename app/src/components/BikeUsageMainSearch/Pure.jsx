@@ -9,7 +9,7 @@ import Dropdown from 'components/Dropdown/Pure'
 import CalendarDatePicker from 'components/CalendarDatePicker/Pure'
 import DateTimeSearch from 'components/DateTimeSearch/Pure'
 import TimePicker from 'components/TimePicker/Pure'
-import { formatDate } from 'utils/utils'
+import { formatDateBy_ddmmyyyy } from 'utils/utils'
 
 const RenderMapGraphDiv = styled.div`
   height: 300px;
@@ -105,7 +105,9 @@ const BikeUsageMainSearch = ({
   bikeUsageHistoryDataArray,
   getHeatmapPointsActionSaga,
   toggleWidgetOpenStatusAction,
-  isAnyWidgetOpenCurrently
+  isAnyWidgetOpenCurrently,
+  updateMapBoundsAction,
+  currentMapBounds
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
@@ -127,9 +129,9 @@ const BikeUsageMainSearch = ({
 
   const formatNewDate = () => {
     if (fromDate && toDate != null) {
-      return `${formatDate(fromDate)} - ${formatDate(toDate)}`
+      return `${formatDateBy_ddmmyyyy(fromDate)} - ${formatDateBy_ddmmyyyy(toDate)}`
     } else {
-      return `Today, ${formatDate(currentDateSelection)}`
+      return `Today, ${formatDateBy_ddmmyyyy(currentDateSelection)}`
     }
   }
 
@@ -191,6 +193,8 @@ const BikeUsageMainSearch = ({
               enteredTo={enteredTo}
               hideDatePickerAction={hideDatePickerAction}
               toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
+              currentMapBounds={currentMapBounds}
+              getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
             />
           ) : null}
           {isTimePickerShown ? (
@@ -229,6 +233,7 @@ const BikeUsageMainSearch = ({
             timeTo={timeTo}
             bikeUsageHistoryDataArray={bikeUsageHistoryDataArray}
             getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
+            updateMapBoundsAction={updateMapBoundsAction}
           />
         )}
         {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}

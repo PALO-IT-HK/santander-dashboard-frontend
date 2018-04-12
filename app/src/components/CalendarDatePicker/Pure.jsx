@@ -7,7 +7,7 @@ import moment from 'moment'
 
 import PublicHolidayFilters from 'components/PublicHolidayFilters/Pure'
 import SButton from 'components/Button/Pure'
-import { formatDate } from 'utils/utils'
+import { formatDateBy_ddmmyyyy } from 'utils/utils'
 import { publicHolidaysLondon } from 'constants/index'
 
 const CalendarWrapper = styled.div`
@@ -28,6 +28,7 @@ const DisplayButtons = styled.div`
 `
 
 export default class CalendarDatePicker extends Component {
+  // const { currentMapBounds, getHeatmapPointsActionSaga } = props
   isSelectingFirstDay(from, to, day) {
     const isBeforeFirstDay = from && DateUtils.isDayBefore(day, from)
     const isRangeSelected = from && to
@@ -62,6 +63,25 @@ export default class CalendarDatePicker extends Component {
     this.props.toggleWidgetOpenStatusAction(false)
   }
 
+  handleCalendarApplyOnClick = () => {
+    const payload = {
+      ne: {
+        neLat: this.props.currentMapBounds.ne.neLat,
+        neLng: this.props.currentMapBounds.ne.neLng
+      },
+      sw: {
+        swLat: this.props.currentMapBounds.sw.swLat,
+        swLng: this.props.currentMapBounds.sw.swLng
+      },
+      date: {
+        fromDate: this.props.from,
+        toDate: this.props.to
+      }
+    }
+    this.props.getHeatmapPointsActionSaga(payload)
+    this.hideDatePicker()
+  }
+
   getPublicHoliday = (day) => {
     this.props.getPublicHolidayAction(publicHolidaysLondon[day])
   }
@@ -93,8 +113,8 @@ export default class CalendarDatePicker extends Component {
               {from && !to && 'Please select the last day.'}
               {from &&
                 to &&
-                `Selected from ${formatDate(from)} to
-                    ${formatDate(to)}`}{' '}
+                `Selected from ${formatDateBy_ddmmyyyy(from)} to
+                    ${formatDateBy_ddmmyyyy(to)}`}{' '}
               {from &&
                 to && (
                   <SButton
@@ -129,7 +149,7 @@ export default class CalendarDatePicker extends Component {
               <SButton
                 type={'primary'}
                 size={'small'}
-                onClick={this.hideDatePicker}
+                onClick={this.handleCalendarApplyOnClick}
                 children={'Apply'}
               />
             </div>

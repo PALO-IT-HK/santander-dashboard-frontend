@@ -3,6 +3,7 @@ import { put, call } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
+import { formatDateBy_yyyymmdd } from 'utils/utils'
 
 // Mock data
 import data from '../mockdata.json'
@@ -36,6 +37,9 @@ export const changeInputFocusAction = createAction(
 )
 export const updateMapLocationAction = createAction(
   `${MODEL_NAME} UPDATE GOOGLE MAP LOCATION BASED ON SEARCH`
+)
+export const updateMapBoundsAction = createAction(
+  `${MODEL_NAME} UPDATE CURRENT MAP BOUNDS AFTER ZOOM/DRAG/SEARCH`
 )
 // Graph Actions
 export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
@@ -78,11 +82,17 @@ export const getBikePointsActionSaga = createAction(
 export const getBikePointsActionSuccess = createAction(
   `${MODEL_NAME} GET INITIAL LOAD BIKE POINTS SUCCESS`
 )
+export const getBikePointsActionFailed = createAction(
+  `${MODEL_NAME} GET INITIAL LOAD BIKE POINTS FAILED`
+)
 export const getHeatmapPointsActionSaga = createAction(
   `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND`
 )
 export const getHeatmapPointsActionSuccess = createAction(
   `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND SUCCESS`
+)
+export const getHeatmapPointsActionFailed = createAction(
+  `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND FAILED`
 )
 /** --------------------------------------------------
  *
@@ -95,15 +105,16 @@ function fetchDashboard () {
 }
 
 function fetchInitialBikePoints (payload) {
-  const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${
-    payload[0]
-  }&swLon=${payload[1]}&neLat=${payload[2]}&neLon=${payload[3]}`
+  const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${payload.sw.swLat}
+    &swLon=${payload.sw.swLng}&neLat=${payload.ne.neLat}&neLon=${payload.ne.neLng}`
   return axios.get(url)
 }
 
 function fetchHeatmapPoints (payload) {
-  const url = `https://api.ci.palo-it-hk.com/usages/boundary/
-  ${payload[2]},${payload[3]}/${payload[0]},${payload[1]}/type/total/daterange/20170101/20170131`
+  const fromDate = formatDateBy_yyyymmdd(payload.date.fromDate)
+  const toDate = formatDateBy_yyyymmdd(payload.date.toDate)
+  const url = `https://api.ci.palo-it-hk.com/usages/boundary/${payload.ne.neLat},${payload.ne.neLng}/
+    ${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}`
   return axios.get(url)
 }
 
@@ -115,12 +126,20 @@ export const sagas = {
     yield put(getDashboardSuccess(res.data))
   },
   [getBikePointsActionSaga]: function * ({ payload }) {
-    const result = yield call(fetchInitialBikePoints, payload)
-    yield put(getBikePointsActionSuccess(result.data))
+    try {
+      const result = yield call(fetchInitialBikePoints, payload)
+      yield put(getBikePointsActionSuccess(result.data))
+    } catch (error) {
+      yield put (getBikePointsActionFailed(error))
+    }
   },
   [getHeatmapPointsActionSaga]: function * ({ payload }) {
-    const result = yield call(fetchHeatmapPoints, payload)
-    yield put(getHeatmapPointsActionSuccess(result.data))
+    try {
+      const result = yield call(fetchHeatmapPoints, payload)
+      yield put(getHeatmapPointsActionSuccess(result.data))
+    } catch (error) {
+      yield put(getHeatmapPointsActionFailed(error))
+    }
   }
 }
 export const dashboardSagaWatcher = createSagaWatcher(sagas)
@@ -164,6 +183,10 @@ const updateBikePoints = (state, result) => ({
 const updateHeatmapPoints = (state, result) => ({
   ...state,
   bikeUsageHistoryDataArray: result
+})
+const updateMapBounds = (state, bounds) => ({
+  ...state,
+  currentMapBounds: bounds
 })
 
 // Graph
@@ -288,7 +311,8 @@ export const dashboard = {
   [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
   [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
-  [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus
+  [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
+  [updateMapBoundsAction]: updateMapBounds
 }
 
 export const dashboardInitialState = {
@@ -315,7 +339,8 @@ export const dashboardInitialState = {
   dropDownDisplayStatus: false,
   currentDropDownDisplayValue: 'top 5 docks in London',
   bikeUsageHistoryDataArray: [],
-  isAnyWidgetOpenCurrently: false
+  isAnyWidgetOpenCurrently: false,
+  currentMapBounds: []
 }
 
 export default createReducer(dashboard, dashboardInitialState)

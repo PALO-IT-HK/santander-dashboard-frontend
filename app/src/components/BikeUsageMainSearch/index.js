@@ -27,7 +27,8 @@ import {
   toggleDropdownVisibilityAction,
   updateDropDownDisplayValueAction,
   getHeatmapPointsActionSaga,
-  toggleWidgetOpenStatusAction
+  toggleWidgetOpenStatusAction,
+  updateMapBoundsAction
 } from 'models/dashboard'
 
 // s function
@@ -54,7 +55,8 @@ const s = state => ({
   dropDownDisplayStatus: state.dashboard.dropDownDisplayStatus,
   currentDropDownDisplayValue: state.dashboard.currentDropDownDisplayValue,
   bikeUsageHistoryDataArray: state.dashboard.bikeUsageHistoryDataArray,
-  isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently
+  isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
+  currentMapBounds: state.dashboard.currentMapBounds
 })
 
 const d = dispatch => ({
@@ -80,7 +82,8 @@ const d = dispatch => ({
   toggleDropdownVisibilityAction: bindActionCreators(toggleDropdownVisibilityAction, dispatch),
   updateDropDownDisplayValueAction: bindActionCreators(updateDropDownDisplayValueAction, dispatch),
   getHeatmapPointsActionSaga: bindActionCreators(getHeatmapPointsActionSaga, dispatch),
-  toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch)
+  toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch),
+  updateMapBoundsAction: bindActionCreators(updateMapBoundsAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))
