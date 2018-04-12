@@ -54,7 +54,7 @@ class BikeUsageGraph extends React.Component {
               <CartesianGrid strokeDasharray='3 3' />
               <XAxis dataKey={v => v.location} tick={<CustomizedAxisTick />} interval={0} />
               <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} />
-              <Tooltip content={customToolTip} />
+              { data.length > 0 && <Tooltip content={customToolTip} />}
               <Bar yAxisId='bar'
                 dataKey={v => formatToNum(v.totalBikesCount)}
                 maxBarSize={50}
