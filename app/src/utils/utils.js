@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const formatDate = date => {
   const monthNames = [
     'January',
@@ -19,4 +21,10 @@ export const formatDate = date => {
   const year = date.getFullYear()
 
   return day + ' ' + monthNames[monthIndex] + ' ' + year
+}
+
+export const formatToNum = (string) => parseInt(string)
+
+export const formatDateForApi = date => {
+  return moment(date).format('YYYYMMDD')
 }

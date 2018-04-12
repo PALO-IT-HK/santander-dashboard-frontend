@@ -58,6 +58,7 @@ export default class CalendarDatePicker extends Component {
   }
 
   hideDatePicker = () => {
+    this.props.getBikeUsageTopLocationsActionSaga()
     this.props.hideDatePickerAction()
     this.props.toggleWidgetOpenStatusAction(false)
   }

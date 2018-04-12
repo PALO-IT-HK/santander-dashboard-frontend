@@ -102,6 +102,9 @@ const BikeUsageMainSearch = ({
   toggleDropdownVisibilityAction,
   currentDropDownDisplayValue,
   updateDropDownDisplayValueAction,
+  getBikeUsageTopLocationsActionSaga,
+  bikeUsageTopLocationsArray,
+  isLoading,
   bikeUsageHistoryDataArray,
   getHeatmapPointsActionSaga,
   toggleWidgetOpenStatusAction,
@@ -109,7 +112,7 @@ const BikeUsageMainSearch = ({
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
-    if(!isAnyWidgetOpenCurrently) {
+    if (!isAnyWidgetOpenCurrently) {
       showDatePickerAction(v)
       toggleWidgetOpenStatusAction(true)
     } else {
@@ -117,7 +120,7 @@ const BikeUsageMainSearch = ({
     }
   }
   const openTimePicker = v => {
-    if(!isAnyWidgetOpenCurrently) {
+    if (!isAnyWidgetOpenCurrently) {
       showTimePickerAction(v)
       toggleWidgetOpenStatusAction(true)
     } else {
@@ -137,6 +140,7 @@ const BikeUsageMainSearch = ({
 
   return (
     <div>
+      {isLoading ? 'THIS IS LOADING' : null}
       {currentToggledTab === 'HEAT MAP' && (
         <SearchBoxDiv>
           <SubHeader>
@@ -161,7 +165,9 @@ const BikeUsageMainSearch = ({
               dropDownDisplayStatus={dropDownDisplayStatus}
               toggleDropdownVisibilityAction={toggleDropdownVisibilityAction}
               currentDropDownDisplayValue={currentDropDownDisplayValue}
-              updateDropDownDisplayValueAction={updateDropDownDisplayValueAction} />
+              updateDropDownDisplayValueAction={updateDropDownDisplayValueAction}
+              onChange={getBikeUsageTopLocationsActionSaga} />
+
           </SubHeader>
         </SearchBoxDiv>
       )
@@ -179,9 +185,9 @@ const BikeUsageMainSearch = ({
             time={formatTime()}
             isTimePickerShown={openTimePicker}
           />
-
           {showDatePicker ? (
             <CalendarDatePicker
+              getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
               getPublicHolidayAction={getPublicHolidayAction}
               clickDateFromAction={clickDateFromAction}
               clickDateToAction={clickDateToAction}
@@ -231,7 +237,12 @@ const BikeUsageMainSearch = ({
             getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
           />
         )}
-        {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
+        {currentToggledTab === 'GRAPH' && (
+          <BikeUsageGraph
+            getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+            data={bikeUsageTopLocationsArray}
+          />
+        )}
       </RenderMapGraphDiv>
     </div>
   )

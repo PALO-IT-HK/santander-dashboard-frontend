@@ -1,8 +1,9 @@
 import { createAction, createReducer } from 'redux-act'
-import { put, call } from 'redux-saga/effects'
+import { put, call, select } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
+import { formatDateForApi } from 'utils/utils'
 
 // Mock data
 import data from '../mockdata.json'
@@ -16,8 +17,9 @@ const MODEL_NAME = '[DASHBOARD]'
 const HEAT_MAP = '[HEATMAP]'
 const GRAPH = '[GRAPH]'
 const CALENDAR = '[CALENDAR]'
+const CALENDAR_TIME = '[CALENDAR_TIME]'
 const TIME = '[TIME]'
-const CALENDAR_TIME = '[CALENDER & TIME]'
+
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
@@ -37,9 +39,7 @@ export const changeInputFocusAction = createAction(
 export const updateMapLocationAction = createAction(
   `${MODEL_NAME} UPDATE GOOGLE MAP LOCATION BASED ON SEARCH`
 )
-// Graph Actions
-export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
-export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
+
 // Calendar Actions
 export const clickDateFromAction = createAction(`${CALENDAR} DATE_FROM`)
 export const clickDateToAction = createAction(`${CALENDAR} DATE_TO`)
@@ -78,12 +78,21 @@ export const getBikePointsActionSaga = createAction(
 export const getBikePointsActionSuccess = createAction(
   `${MODEL_NAME} GET INITIAL LOAD BIKE POINTS SUCCESS`
 )
+
 export const getHeatmapPointsActionSaga = createAction(
   `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND`
 )
 export const getHeatmapPointsActionSuccess = createAction(
   `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND SUCCESS`
 )
+
+// Graph Actions
+export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
+export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
+export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS`)
+export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
+export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
+export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
 /** --------------------------------------------------
  *
  * Sagas
@@ -92,6 +101,11 @@ export const getHeatmapPointsActionSuccess = createAction(
 // Sample data, to be replaced by API call to Node Backend when ready
 function fetchDashboard () {
   return axios.get('https://swapi.co/api/people/1')
+}
+
+function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate) {
+  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
+  return axios.get(url)
 }
 
 function fetchInitialBikePoints (payload) {
@@ -117,6 +131,21 @@ export const sagas = {
   [getBikePointsActionSaga]: function * ({ payload }) {
     const result = yield call(fetchInitialBikePoints, payload)
     yield put(getBikePointsActionSuccess(result.data))
+  },
+  [getBikeUsageTopLocationsActionSaga]: function * () {
+    yield put(showLoader())
+    const {usageRank, fromDate, toDate} = yield select(state => ({
+      usageRank: state.dashboard.currentDropDownDisplayValue,
+      fromDate: state.dashboard.fromDate,
+      toDate: state.dashboard.toDate
+    }))
+    try {
+      const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate)
+      yield put(getBikeUsageTopLocationsActionSuccess(result.data))
+      yield put(hideLoader())
+    } catch (error) {
+      console.log(error)
+    }
   },
   [getHeatmapPointsActionSaga]: function * ({ payload }) {
     const result = yield call(fetchHeatmapPoints, payload)
@@ -166,9 +195,10 @@ const updateHeatmapPoints = (state, result) => ({
   bikeUsageHistoryDataArray: result
 })
 
-// Graph
+// Graph Dropdown
 const toggleDropdownVisibility = (state, toggleValue) => ({
-  ...state, dropDownDisplayStatus: toggleValue
+  ...state,
+  dropDownDisplayStatus: toggleValue
 })
 const updateDropDownDisplayValue = (state, newValue) => ({
   ...state,
@@ -183,7 +213,6 @@ const clickDateFrom = (state, { from }) => ({
   toDate: null,
   enteredTo: null
 })
-
 const clickDateTo = (state, { to, enteredTo }) => ({
   ...state,
   toDate: to,
@@ -214,6 +243,7 @@ const getPublicHoliday = (state, date) => ({
   enteredTo: date
 })
 
+// Time
 const showTimePicker = state => ({
   ...state,
   isTimePickerShown: true
@@ -253,6 +283,29 @@ const getTimeTag = (state, time) => ({
   timeTo: time[1].timeTo
 })
 
+// Graph top filter
+const bikeUsageTopLocations = (state, data) => {
+  return ({
+    ...state,
+    bikeUsageTopLocationsArray: data
+  })
+}
+
+// Loader
+const showLoading = (state) => {
+  return ({
+    ...state,
+    isLoading: true
+  })
+}
+
+const hideLoading = (state) => {
+  return ({
+    ...state,
+    isLoading: false
+  })
+}
+
 const toggleWidgetOpenStatus = (state, status) => ({
   ...state,
   isAnyWidgetOpenCurrently: status
@@ -287,6 +340,9 @@ export const dashboard = {
   [getTimeTagAction]: getTimeTag,
   [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
   [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
+  [getBikeUsageTopLocationsActionSuccess]: bikeUsageTopLocations,
+  [showLoader]: showLoading,
+  [hideLoader]: hideLoading,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
   [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus
 }
@@ -313,7 +369,9 @@ export const dashboardInitialState = {
   timeTo: '23:30',
   timeTagName: null,
   dropDownDisplayStatus: false,
-  currentDropDownDisplayValue: 'top 5 docks in London',
+  currentDropDownDisplayValue: 5,
+  bikeUsageTopLocationsArray: [],
+  isLoading: false,
   bikeUsageHistoryDataArray: [],
   isAnyWidgetOpenCurrently: false
 }
