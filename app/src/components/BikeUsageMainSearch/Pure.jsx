@@ -101,7 +101,9 @@ const BikeUsageMainSearch = ({
   dropDownDisplayStatus,
   toggleDropdownVisibilityAction,
   currentDropDownDisplayValue,
-  updateDropDownDisplayValueAction
+  updateDropDownDisplayValueAction,
+  bikeUsageHistoryDataArray,
+  getHeatmapPointsActionSaga
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => showDatePickerAction(v)
@@ -203,6 +205,12 @@ const BikeUsageMainSearch = ({
             mapInitialLoadStatus={mapInitialLoadStatus}
             getBikePointsActionSaga={getBikePointsActionSaga}
             currentBikePointsArray={currentBikePointsArray}
+            fromDate={fromDate}
+            toDate={toDate}
+            timeFrom={timeFrom}
+            timeTo={timeTo}
+            bikeUsageHistoryDataArray={bikeUsageHistoryDataArray}
+            getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
           />
         )}
         {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
