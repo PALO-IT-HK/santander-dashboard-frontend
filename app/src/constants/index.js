@@ -49,5 +49,7 @@ export const timeToArray =
 // Dropdown items for Bike Usage Graph
 export const dropDownItemsArray =
   [
-    'top 5 docks in London', 'top 10 docks in London', 'top 15 docks in London'
+    {label: 'top 5 docks in London', value: 5},
+    {label: 'top 10 docks in London', value: 10},
+    {label: 'top 20 docks in London', value: 20}
   ]

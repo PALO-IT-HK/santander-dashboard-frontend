@@ -26,6 +26,7 @@ import {
   getTimeTagAction,
   toggleDropdownVisibilityAction,
   updateDropDownDisplayValueAction,
+  getBikeUsageTopLocationsActionSaga,
   getHeatmapPointsActionSaga,
   toggleWidgetOpenStatusAction,
   updateMapBoundsAction
@@ -54,6 +55,8 @@ const s = state => ({
   timeTagName: state.dashboard.timeTagName,
   dropDownDisplayStatus: state.dashboard.dropDownDisplayStatus,
   currentDropDownDisplayValue: state.dashboard.currentDropDownDisplayValue,
+  bikeUsageTopLocationsArray: state.dashboard.bikeUsageTopLocationsArray,
+  isLoading: state.dashboard.isLoading,
   bikeUsageHistoryDataArray: state.dashboard.bikeUsageHistoryDataArray,
   isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
   currentMapBounds: state.dashboard.currentMapBounds
@@ -81,6 +84,7 @@ const d = dispatch => ({
   getTimeTagAction: bindActionCreators(getTimeTagAction, dispatch),
   toggleDropdownVisibilityAction: bindActionCreators(toggleDropdownVisibilityAction, dispatch),
   updateDropDownDisplayValueAction: bindActionCreators(updateDropDownDisplayValueAction, dispatch),
+  getBikeUsageTopLocationsActionSaga: bindActionCreators(getBikeUsageTopLocationsActionSaga, dispatch),
   getHeatmapPointsActionSaga: bindActionCreators(getHeatmapPointsActionSaga, dispatch),
   toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch),
   updateMapBoundsAction: bindActionCreators(updateMapBoundsAction, dispatch)

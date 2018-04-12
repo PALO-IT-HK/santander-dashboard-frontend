@@ -1,3 +1,5 @@
+import moment from 'moment'
+
 export const formatDateBy_ddmmyyyy = date => {
   const monthNames = [
     'January',
@@ -27,4 +29,9 @@ export const formatDateBy_yyyymmdd = date => {
   const formattedMonth = month < 10 ? `0${month}` : month
   const day = date.getDate()
   return `${fullYear}${formattedMonth}${day}`
+}
+export const formatToNum = (string) => parseInt(string)
+
+export const formatDateForApi = date => {
+  return moment(date).format('YYYYMMDD')
 }
