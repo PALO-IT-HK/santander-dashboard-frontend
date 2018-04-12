@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
+import moment from 'moment'
 
 import PublicHolidayFilters from 'components/PublicHolidayFilters/Pure'
 import SButton from 'components/Button/Pure'
@@ -17,7 +18,8 @@ const CalendarWrapper = styled.div`
   border: 1px solid #e7e7e7;
   background: #ffffff;
   position: absolute;
-  top: 200px;
+  top: 32%;
+  left: 44.5%;
 `
 
 const DisplayButtons = styled.div`
@@ -58,6 +60,7 @@ export default class CalendarDatePicker extends Component {
   hideDatePicker = () => {
     this.props.getBikeUsageTopLocationsActionSaga()
     this.props.hideDatePickerAction()
+    this.props.toggleWidgetOpenStatusAction(false)
   }
 
   getPublicHoliday = (day) => {

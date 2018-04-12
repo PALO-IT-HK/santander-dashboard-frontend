@@ -12,7 +12,8 @@ const TimeWrapper = styled.div`
   border: 1px solid #e7e7e7;
   background: #ffffff;
   position: absolute;
-  top: 200px;
+  top: 32%;
+  left: 70.3%;
 `
 
 const TimeDropDown = styled.div`
@@ -57,7 +58,8 @@ const TimePicker = ({
   totalTimeArray,
   filterTimeToArrayAction,
   filterTimeFromArrayAction,
-  getTimeTagAction
+  getTimeTagAction,
+  toggleWidgetOpenStatusAction
 }) => {
   const getTimeTag = tag => {
     getTimeTagAction([tag, timeFilters[tag]])
@@ -78,6 +80,16 @@ const TimePicker = ({
     const getTimeToIndex = totalTimeArray.indexOf(getTimeValue)
     timeFromArray = totalTimeArray.slice(0, getTimeToIndex)
     filterTimeFromArrayAction(timeFromArray)
+  }
+
+  const handleApplyOnClick = () => {
+    toggleWidgetOpenStatusAction(false)
+    hideTimePickerAction()
+  }
+
+  const handleCancelOnClick = () => {
+    toggleWidgetOpenStatusAction(false)
+    hideTimePickerAction()
   }
 
   return (
@@ -116,13 +128,13 @@ const TimePicker = ({
           type={'secondary'}
           size={'small'}
           children={'Cancel'}
-          onClick={hideTimePickerAction}
+          onClick={() => handleCancelOnClick()}
         />
         <SButton
           type={'primary'}
           size={'small'}
           children={'Apply'}
-          onClick={hideTimePickerAction}
+          onClick={() => handleApplyOnClick()}
         />
       </DisplayButtons>
     </TimeWrapper>

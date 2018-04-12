@@ -11,11 +11,10 @@ const markerLabelStyle = {
   height: 'auto',
   fontFamily: 'Rubik',
   letterSpacing: '0.8px',
-  borderRadius: '5px',
   backgroundColor: '#f1f4f8',
   boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.2)',
   textAlign: 'left',
-  padding: '5px 5px 5px 5px',
+  padding: '5px',
   zIndex: '99'
 }
 
@@ -46,21 +45,21 @@ const Heatmap = compose(
         // onDragEnd: () => {
         //   console.log('Drag End changed refs map ' + refs.map.getBounds())
         // },
-        onIdle: (getBikePointsActionSaga) => {
+        onIdle: (getBikePointsActionSaga, getHeatmapPointsActionSaga, fromDate, toDate) => {
           const bounds = refs.map.getBounds()
           const swLat = bounds.getSouthWest().lat()
           const swLng = bounds.getSouthWest().lng()
           const neLat = bounds.getNorthEast().lat()
           const neLng = bounds.getNorthEast().lng()
-          const payload = [swLat, swLng, neLat, neLng]
+          const payload = [swLat, swLng, neLat, neLng, fromDate, toDate]
           getBikePointsActionSaga(payload)
+          getHeatmapPointsActionSaga(payload)
         },
         // onSearchBoxMounted: ref => {
         //   refs.searchBox = ref;
         // },
         updateMapLocation: (placesArray) => {
           const bounds = new window.google.maps.LatLngBounds()
-          console.log(placesArray)
           placesArray.forEach(place => {
             if (place.geometry.viewport) {
               bounds.union(place.geometry.viewport)
@@ -86,7 +85,8 @@ const Heatmap = compose(
   withGoogleMap)(props => {
   const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
     onMapMounted, center, zoom, onBoundsChanged, updateMapLocation, onZoomChanged,
-    onDragEnd, onIdle, mapInitialLoadStatus, getBikePointsActionSaga, currentBikePointsArray } = props
+    onDragEnd, onIdle, mapInitialLoadStatus, getBikePointsActionSaga, currentBikePointsArray,
+    bikeUsageHistoryDataArray, getHeatmapPointsActionSaga, fromDate, toDate } = props
 
   // Get custom search bar element
   const input = document.getElementById('search-autocomplete')
@@ -103,24 +103,29 @@ const Heatmap = compose(
     updateMapLocation(places)
   })
   const handleOnIdle = () => {
-    !mapInitialLoadStatus ? onIdle(getBikePointsActionSaga) : console.log('map initial load complete!')
+    !mapInitialLoadStatus ? 
+    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, fromDate, toDate) : 
+    console.log('map initial load complete!')
   }
   const handleMouseOver = e => {
-    const title = e.Fa.target.parentElement.title ? e.Fa.target.parentElement.title : null
+    // const title = e.Fa.target.parentElement.title ? e.Fa.target.parentElement.title : null
+    const title = e.Ia.path !== undefined ? e.Ia.path[1].title : null
+    console.log(e.Ia.path[1].title)
     toggleMarkerLabelVisibilityAction(title)
   }
   const getPoints = () => {
-    return [
-      new window.google.maps.LatLng(52.232, -0.2),
-      new window.google.maps.LatLng(52.228, -0.2),
-      new window.google.maps.LatLng(52.225, -0.18),
-      new window.google.maps.LatLng(52.222, -0.189),
-      new window.google.maps.LatLng(52.222, -0.189),
-      new window.google.maps.LatLng(52.24, -0.189),
-      new window.google.maps.LatLng(52.235, -0.189),
-      new window.google.maps.LatLng(52.23, -0.189),
-      new window.google.maps.LatLng(52.23, -0.189)
-    ]
+    return bikeUsageHistoryDataArray.reduce((acc, curr) => {
+      const lat = parseFloat(curr.lat)
+      const lng = parseFloat(curr.lng)
+      const pointWeight = curr.totalBikesOut / 1000
+      const finalValueToEval = curr.totalBikesOut / 1000 < 1.5 ?
+      new window.google.maps.LatLng(lat, lng) :
+      { location: new window.google.maps.LatLng(lat, lng), weight: pointWeight }
+      return [
+        ...acc, 
+        finalValueToEval
+      ]
+    },[])
   }
   return (
     <GoogleMap
@@ -134,7 +139,7 @@ const Heatmap = compose(
 
       <HeatmapLayer
         data={getPoints()}
-        options={({ radius: '80', dissipating: true })} />
+        options={({ radius: '100', dissipating: true })} />
 
       {currentBikePointsArray.map(item => {
         return (
@@ -144,11 +149,12 @@ const Heatmap = compose(
             key={item.id}
             icon={{url: 'https://thumb.ibb.co/cy5FMc/bike.png'}}
             position={{ lat: item.lat, lng: item.lon }}
-            labelAnchor={new window.google.maps.Point(-10, 90)}
+            labelAnchor={new window.google.maps.Point(80, -10)}
             labelStyle={markerLabelStyle}
             onMouseOver={(e) => handleMouseOver(e)}
             onMouseOut={() => hideMarkerLabelAction()}
-            labelVisible={currentMarker === item.id ? true : false}>
+            labelVisible={currentMarker === item.id ? true : false}
+            zIndex={1}>
             <div>
               <div style={{
                 paddingBottom: '5px',

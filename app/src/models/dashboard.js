@@ -17,6 +17,7 @@ const MODEL_NAME = '[DASHBOARD]'
 const HEAT_MAP = '[HEATMAP]'
 const GRAPH = '[GRAPH]'
 const CALENDAR = '[CALENDAR]'
+const CALENDAR_TIME = '[CALENDAR_TIME]'
 const TIME = '[TIME]'
 
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
@@ -65,12 +66,24 @@ export const filterTimeFromArrayAction = createAction(
 )
 export const getTimeTagAction = createAction(`${TIME} TIME_TAG_SELECTED`)
 
+// Calendar + Time Actions
+export const toggleWidgetOpenStatusAction = createAction(
+  `${CALENDAR_TIME} TOGGLE WIDGET OPENED/CLOSED STATUS`
+)
+
 // Saga Actions
 export const getBikePointsActionSaga = createAction(
   `${MODEL_NAME} GET BIKE POINTS FROM BACKEND ON INITIAL MAP LOAD`
 )
 export const getBikePointsActionSuccess = createAction(
   `${MODEL_NAME} GET INITIAL LOAD BIKE POINTS SUCCESS`
+)
+
+export const getHeatmapPointsActionSaga = createAction(
+  `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND`
+)
+export const getHeatmapPointsActionSuccess = createAction(
+  `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND SUCCESS`
 )
 
 // Graph Actions
@@ -102,6 +115,12 @@ function fetchInitialBikePoints (payload) {
   return axios.get(url)
 }
 
+function fetchHeatmapPoints (payload) {
+  const url = `https://api.ci.palo-it-hk.com/usages/boundary/
+  ${payload[2]},${payload[3]}/${payload[0]},${payload[1]}/type/total/daterange/20170101/20170131`
+  return axios.get(url)
+}
+
 export const sagas = {
   [getDashboard]: function * () {
     // When the response of the async call returns, store the data in res
@@ -127,6 +146,10 @@ export const sagas = {
     } catch (error) {
       console.log(error)
     }
+  },
+  [getHeatmapPointsActionSaga]: function * ({ payload }) {
+    const result = yield call(fetchHeatmapPoints, payload)
+    yield put(getHeatmapPointsActionSuccess(result.data))
   }
 }
 export const dashboardSagaWatcher = createSagaWatcher(sagas)
@@ -167,6 +190,10 @@ const updateBikePoints = (state, result) => ({
   ...state,
   currentBikePointsArray: result
 })
+const updateHeatmapPoints = (state, result) => ({
+  ...state,
+  bikeUsageHistoryDataArray: result
+})
 
 // Graph Dropdown
 const toggleDropdownVisibility = (state, toggleValue) => ({
@@ -194,9 +221,9 @@ const clickDateTo = (state, { to, enteredTo }) => ({
 
 const resetDate = state => ({
   ...state,
-  toDate: null,
-  fromDate: null,
-  enteredTo: null
+  toDate: new Date(),
+  fromDate: new Date(),
+  enteredTo: new Date()
 })
 
 const showDatePicker = state => ({
@@ -279,6 +306,11 @@ const hideLoading = (state) => {
   })
 }
 
+const toggleWidgetOpenStatus = (state, status) => ({
+  ...state,
+  isAnyWidgetOpenCurrently: status
+})
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -310,7 +342,9 @@ export const dashboard = {
   [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
   [getBikeUsageTopLocationsActionSuccess]: bikeUsageTopLocations,
   [showLoader]: showLoading,
-  [hideLoader]: hideLoading
+  [hideLoader]: hideLoading,
+  [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
+  [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus
 }
 
 export const dashboardInitialState = {
@@ -322,9 +356,9 @@ export const dashboardInitialState = {
   searchedLocation: '',
   mapInitialLoadStatus: false,
   currentBikePointsArray: [],
-  fromDate: null,
-  toDate: null,
-  enteredTo: null,
+  fromDate: new Date(),
+  toDate: new Date(),
+  enteredTo: new Date(),
   showDatePicker: false,
   currentDateSelection: new Date(),
   isTimePickerShown: false,
@@ -337,7 +371,9 @@ export const dashboardInitialState = {
   dropDownDisplayStatus: false,
   currentDropDownDisplayValue: 5,
   bikeUsageTopLocationsArray: [],
-  isLoading: false
+  isLoading: false,
+  bikeUsageHistoryDataArray: [],
+  isAnyWidgetOpenCurrently: false
 }
 
 export default createReducer(dashboard, dashboardInitialState)

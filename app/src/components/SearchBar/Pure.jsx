@@ -4,7 +4,7 @@ import styled from 'styled-components'
 
 const SearchInputField = styled.input`
   ${({size}) => inputFieldSize[size]}
-    padding: 5px 0px 10px 5px;
+    padding: 5px;
     border-top: 0;
     border-left: 0;
     border-right: 0;
@@ -33,7 +33,7 @@ const inputFieldSize = {
   `,
   medium: `
     width: 600px;
-    height: 40px;
+    height: auto;
     font-size: 14px;
   `,
   large: `
@@ -44,10 +44,10 @@ const inputFieldSize = {
 }
 
 const SearchBarWrapper = styled.div`
-  height: 80px;
+  height: auto;
   width: 400px;
-  padding: 10px 0px 0px 20px;
-
+  padding-left: 15px;
+  display: flex;
 `
 
 const SearchBar = props => {
@@ -73,7 +73,7 @@ SearchBar.defaultProps = {
   size: 'medium',
   type: 'text',
   onChange: () => null,
-  placeholder: 'search by dock / district'
+  placeholder: 'all docks in London'
 }
 
 SearchBar.propTypes = {
