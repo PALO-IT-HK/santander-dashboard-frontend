@@ -40,7 +40,7 @@ export default class CalendarDatePicker extends Component {
       return
     }
     const currentDate = new Date()
-    if (moment(day).format('l') > moment(currentDate).format('l')) return
+    if (day.getTime() > currentDate.getTime()) return
     this.isSelectingFirstDay(from, to, day)
       ? clickDateFromAction({ from: day })
       : clickDateToAction({ to: day, enteredTo: day })
