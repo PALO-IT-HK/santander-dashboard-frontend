@@ -47,7 +47,7 @@ class BikeUsageGraph extends React.Component {
     const {data} = this.props
     return (
       <div>
-        <div style={{height: '500px', padding: '0 20px'}}>
+        <div style={{height: '500px', padding: '0 20px', background: '#f1f4f8'}}>
           <ResponsiveContainer minWidth={1024}>
             <BarChart data={data} margin={{bottom: 100}}>
               <CartesianGrid strokeDasharray='3 3' />
