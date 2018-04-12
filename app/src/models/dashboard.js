@@ -104,7 +104,7 @@ function fetchDashboard () {
 }
 
 function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate) {
-  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/total/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
+  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
   return axios.get(url)
 }
 

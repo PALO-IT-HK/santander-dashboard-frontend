@@ -45,7 +45,6 @@ class BikeUsageGraph extends React.Component {
   }
   render () {
     const {data} = this.props
-
     return (
       <div>
         <div style={{height: '500px', padding: '0 20px'}}>
@@ -56,7 +55,7 @@ class BikeUsageGraph extends React.Component {
               <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} />
               { data.length > 0 && <Tooltip content={customToolTip} />}
               <Bar yAxisId='bar'
-                dataKey={v => formatToNum(v.totalBikesCount)}
+                dataKey={v => formatToNum(v.totalBikesOut)}
                 maxBarSize={50}
                 fill='#D54435'
               />
