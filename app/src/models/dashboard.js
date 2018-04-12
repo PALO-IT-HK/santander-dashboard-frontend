@@ -72,6 +72,12 @@ export const getBikePointsActionSaga = createAction(
 export const getBikePointsActionSuccess = createAction(
   `${MODEL_NAME} GET INITIAL LOAD BIKE POINTS SUCCESS`
 )
+export const getHeatmapPointsActionSaga = createAction(
+  `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND`
+)
+export const getHeatmapPointsActionSuccess = createAction(
+  `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND SUCCESS`
+)
 /** --------------------------------------------------
  *
  * Sagas
@@ -89,6 +95,12 @@ function fetchInitialBikePoints (payload) {
   return axios.get(url)
 }
 
+function fetchHeatmapPoints (payload) {
+  const url = `https://api.ci.palo-it-hk.com/usages/boundary/
+  ${payload[2]},${payload[3]}/${payload[0]},${payload[1]}/type/total/daterange/20170101/20170131`
+  return axios.get(url)
+}
+
 export const sagas = {
   [getDashboard]: function * () {
     // When the response of the async call returns, store the data in res
@@ -99,6 +111,10 @@ export const sagas = {
   [getBikePointsActionSaga]: function * ({ payload }) {
     const result = yield call(fetchInitialBikePoints, payload)
     yield put(getBikePointsActionSuccess(result.data))
+  },
+  [getHeatmapPointsActionSaga]: function * ({ payload }) {
+    const result = yield call(fetchHeatmapPoints, payload)
+    yield put(getHeatmapPointsActionSuccess(result.data))
   }
 }
 export const dashboardSagaWatcher = createSagaWatcher(sagas)
@@ -138,6 +154,10 @@ const updateLocationOnMap = (state, place) => ({
 const updateBikePoints = (state, result) => ({
   ...state,
   currentBikePointsArray: result
+})
+const updateHeatmapPoints = (state, result) => ({
+  ...state,
+  bikeUsageHistoryDataArray: result
 })
 
 // Graph
@@ -249,7 +269,8 @@ export const dashboard = {
   [filterTimeFromArrayAction]: filterTimeFromArray,
   [getTimeTagAction]: getTimeTag,
   [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
-  [updateDropDownDisplayValueAction]: updateDropDownDisplayValue
+  [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
+  [getHeatmapPointsActionSuccess]: updateHeatmapPoints
 }
 
 export const dashboardInitialState = {
@@ -274,7 +295,8 @@ export const dashboardInitialState = {
   timeTo: '23:30',
   timeTagName: null,
   dropDownDisplayStatus: false,
-  currentDropDownDisplayValue: 'top 5 docks in London'
+  currentDropDownDisplayValue: 'top 5 docks in London',
+  bikeUsageHistoryDataArray: []
 }
 
 export default createReducer(dashboard, dashboardInitialState)
