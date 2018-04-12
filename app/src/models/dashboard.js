@@ -3,6 +3,7 @@ import { put, call, select } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
+import { formatDateForApi } from 'utils/utils'
 
 // Mock data
 import data from '../mockdata.json'
@@ -89,8 +90,8 @@ function fetchDashboard () {
   return axios.get('https://swapi.co/api/people/1')
 }
 
-function fetchTopBikeUsageByLocations (usageRank) {
-  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/total/daterange/20180201/20180228`
+function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate) {
+  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/total/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
   return axios.get(url)
 }
 
@@ -114,9 +115,13 @@ export const sagas = {
   },
   [getBikeUsageTopLocationsActionSaga]: function * () {
     yield put(showLoader())
-    const {usageRank} = yield select(state => ({ usageRank: state.dashboard.currentDropDownDisplayValue }))
+    const {usageRank, fromDate, toDate} = yield select(state => ({
+      usageRank: state.dashboard.currentDropDownDisplayValue,
+      fromDate: state.dashboard.fromDate,
+      toDate: state.dashboard.toDate
+    }))
     try {
-      const result = yield call(fetchTopBikeUsageByLocations, usageRank)
+      const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate)
       yield put(getBikeUsageTopLocationsActionSuccess(result.data))
       yield put(hideLoader())
     } catch (error) {

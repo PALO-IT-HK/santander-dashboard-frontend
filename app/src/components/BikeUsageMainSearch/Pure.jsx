@@ -152,6 +152,7 @@ const BikeUsageMainSearch = ({
       </DateTimeSearchWrapper>
       {showDatePicker ? (
         <CalendarDatePicker
+          getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
           getPublicHolidayAction={getPublicHolidayAction}
           clickDateFromAction={clickDateFromAction}
           clickDateToAction={clickDateToAction}
