@@ -88,7 +88,10 @@ const BikeUsageMainSearch = ({
   dropDownDisplayStatus,
   toggleDropdownVisibilityAction,
   currentDropDownDisplayValue,
-  updateDropDownDisplayValueAction
+  updateDropDownDisplayValueAction,
+  getBikeUsageTopLocationsActionSaga,
+  bikeUsageTopLocationsArray,
+  isLoading
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => showDatePickerAction(v)
@@ -106,6 +109,7 @@ const BikeUsageMainSearch = ({
 
   return (
     <div>
+      {isLoading ? 'THIS IS LOADING' : null}
       {currentToggledTab === 'HEAT MAP' && (
         <SearchBoxDiv>
           <SubHeader>
@@ -130,7 +134,9 @@ const BikeUsageMainSearch = ({
               dropDownDisplayStatus={dropDownDisplayStatus}
               toggleDropdownVisibilityAction={toggleDropdownVisibilityAction}
               currentDropDownDisplayValue={currentDropDownDisplayValue}
-              updateDropDownDisplayValueAction={updateDropDownDisplayValueAction} />
+              updateDropDownDisplayValueAction={updateDropDownDisplayValueAction}
+              onChange={getBikeUsageTopLocationsActionSaga} />
+
           </SubHeader>
         </SearchBoxDiv>
       )
@@ -185,7 +191,12 @@ const BikeUsageMainSearch = ({
             currentBikePointsArray={currentBikePointsArray}
           />
         )}
-        {currentToggledTab === 'GRAPH' && <BikeUsageGraph data={data} />}
+        {currentToggledTab === 'GRAPH' && (
+          <BikeUsageGraph
+            getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+            data={bikeUsageTopLocationsArray}
+          />
+        )}
       </RenderMapGraphDiv>
     </div>
   )

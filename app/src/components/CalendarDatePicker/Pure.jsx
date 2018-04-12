@@ -33,9 +33,6 @@ export default class CalendarDatePicker extends Component {
   }
   handleDayClick = day => {
     const { from, to, clickDateFromAction, clickDateToAction } = this.props
-    if ( from && to && day !== null) {
-      return
-    }
     if (from && to && day >= from && day <= to) {
       this.handleResetClick()
       return

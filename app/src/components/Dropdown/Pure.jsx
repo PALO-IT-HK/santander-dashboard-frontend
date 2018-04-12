@@ -59,7 +59,7 @@ const DropdownItemContainer = styled.div`
   z-index: 100;
 `
 
-const DropdownItem = styled.div`
+const DropdownItemWrapper = styled.div`
     width: 100%;
     border-top: 0;
     border-left: 0;
@@ -78,17 +78,28 @@ const DropdownItem = styled.div`
       cursor: pointer;
     }
 `
+const DropdownItem = props => {
+  const {name, size, value, type, onClick, children} = props
+  return (
+    <DropdownItemWrapper
+      name={name}
+      size={size}
+      type={type}
+      children={children}
+      onClick={() => onClick(value)} />
+  )
+}
 
 const Dropdown = props => {
-  const {size, name, type, value, dropDownDisplayStatus, toggleDropdownVisibilityAction,
-    currentDropDownDisplayValue, updateDropDownDisplayValueAction} = props
+  const {size, name, type, dropDownDisplayStatus, toggleDropdownVisibilityAction,
+    currentDropDownDisplayValue, updateDropDownDisplayValueAction, onChange} = props
   const handleDisplayOnClick = () => dropDownDisplayStatus ? toggleDropdownVisibilityAction(false) : toggleDropdownVisibilityAction(true)
-  const handleDropDownItemOnClick = (e) => updateDropDownDisplayValueAction(e.target.innerHTML)
+  const handleDropDownItemOnClick = (value) => updateDropDownDisplayValueAction(value) && onChange()
   return (
     <DropdownWrapper>
       <DropdownDisplay
         onClick={() => handleDisplayOnClick()}>
-        {currentDropDownDisplayValue}
+        {dropDownItemsArray.find(item => currentDropDownDisplayValue === item.value).label}
       </DropdownDisplay>
       <DropdownIcon />
       <DropdownItemContainer
@@ -99,10 +110,10 @@ const Dropdown = props => {
               key={uuidv4()}
               name={name}
               size={size}
-              value={value}
+              value={item.value}
               type={type}
-              onClick={(event) => handleDropDownItemOnClick(event)}>
-              {item}
+              onClick={(value) => handleDropDownItemOnClick(value)}>
+              {item.label}
             </DropdownItem>
           )
         })
@@ -121,7 +132,7 @@ Dropdown.propTypes = {
   size: PropTypes.string,
   name: PropTypes.string,
   type: PropTypes.string,
-  value: PropTypes.string
+  value: PropTypes.any
 }
 
 export default Dropdown

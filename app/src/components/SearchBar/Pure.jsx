@@ -47,7 +47,7 @@ const SearchBarWrapper = styled.div`
   height: 80px;
   width: 400px;
   padding: 10px 0px 0px 20px;
-  
+
 `
 
 const SearchBar = props => {

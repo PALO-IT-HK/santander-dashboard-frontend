@@ -20,3 +20,5 @@ export const formatDate = date => {
 
   return day + ' ' + monthNames[monthIndex] + ' ' + year
 }
+
+export const formatToNum = (string) => parseInt(string)
