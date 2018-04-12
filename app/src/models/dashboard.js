@@ -186,9 +186,9 @@ const clickDateTo = (state, { to, enteredTo }) => ({
 
 const resetDate = state => ({
   ...state,
-  toDate: null,
-  fromDate: null,
-  enteredTo: null
+  toDate: new Date(),
+  fromDate: new Date(),
+  enteredTo: new Date()
 })
 
 const showDatePicker = state => ({
@@ -288,9 +288,9 @@ export const dashboardInitialState = {
   searchedLocation: '',
   mapInitialLoadStatus: false,
   currentBikePointsArray: [],
-  fromDate: null,
-  toDate: null,
-  enteredTo: null,
+  fromDate: new Date(),
+  toDate: new Date(),
+  enteredTo: new Date(),
   showDatePicker: false,
   currentDateSelection: new Date(),
   isTimePickerShown: false,
