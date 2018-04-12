@@ -17,6 +17,7 @@ const HEAT_MAP = '[HEATMAP]'
 const GRAPH = '[GRAPH]'
 const CALENDAR = '[CALENDAR]'
 const TIME = '[TIME]'
+const CALENDAR_TIME = '[CALENDER & TIME]'
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
 export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
@@ -64,6 +65,11 @@ export const filterTimeFromArrayAction = createAction(
   `${TIME} FILTER_TIME_FROM_ARRAY`
 )
 export const getTimeTagAction = createAction(`${TIME} TIME_TAG_SELECTED`)
+
+// Calendar + Time Actions
+export const toggleWidgetOpenStatusAction = createAction(
+  `${CALENDAR_TIME} TOGGLE WIDGET OPENED/CLOSED STATUS`
+)
 
 // Saga Actions
 export const getBikePointsActionSaga = createAction(
@@ -247,6 +253,11 @@ const getTimeTag = (state, time) => ({
   timeTo: time[1].timeTo
 })
 
+const toggleWidgetOpenStatus = (state, status) => ({
+  ...state,
+  isAnyWidgetOpenCurrently: status
+})
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -276,7 +287,8 @@ export const dashboard = {
   [getTimeTagAction]: getTimeTag,
   [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
   [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
-  [getHeatmapPointsActionSuccess]: updateHeatmapPoints
+  [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
+  [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus
 }
 
 export const dashboardInitialState = {
@@ -302,7 +314,8 @@ export const dashboardInitialState = {
   timeTagName: null,
   dropDownDisplayStatus: false,
   currentDropDownDisplayValue: 'top 5 docks in London',
-  bikeUsageHistoryDataArray: []
+  bikeUsageHistoryDataArray: [],
+  isAnyWidgetOpenCurrently: false
 }
 
 export default createReducer(dashboard, dashboardInitialState)
