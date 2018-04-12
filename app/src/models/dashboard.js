@@ -221,9 +221,9 @@ const clickDateTo = (state, { to, enteredTo }) => ({
 
 const resetDate = state => ({
   ...state,
-  toDate: new Date(),
-  fromDate: new Date(),
-  enteredTo: new Date()
+  toDate: null,
+  fromDate: null,
+  enteredTo: null
 })
 
 const showDatePicker = state => ({
