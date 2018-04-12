@@ -3,6 +3,7 @@ import Helmet from 'react-helmet'
 import styled from 'styled-components'
 import DayPicker, { DateUtils } from 'react-day-picker'
 import 'react-day-picker/lib/style.css'
+import moment from 'moment'
 
 import PublicHolidayFilters from 'components/PublicHolidayFilters/Pure'
 import SButton from 'components/Button/Pure'
@@ -34,15 +35,12 @@ export default class CalendarDatePicker extends Component {
   }
   handleDayClick = day => {
     const { from, to, clickDateFromAction, clickDateToAction } = this.props
-    if ( from && to && day !== null) {
-      return
-    }
     if (from && to && day >= from && day <= to) {
       this.handleResetClick()
       return
     }
     const currentDate = new Date()
-    if (day.getTime() > currentDate.getTime()) return
+    if (moment(day).format('l') > moment(currentDate).format('l')) return
     this.isSelectingFirstDay(from, to, day)
       ? clickDateFromAction({ from: day })
       : clickDateToAction({ to: day, enteredTo: day })

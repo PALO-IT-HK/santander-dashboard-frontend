@@ -151,7 +151,13 @@ const updateDropDownDisplayValue = (state, newValue) => ({
 })
 
 // Calendar
-const clickDateFrom = (state, { from }) => ({ ...state, fromDate: from })
+const clickDateFrom = (state, { from }) => ({
+  ...state,
+  fromDate: from,
+  toDate: null,
+  enteredTo: null
+})
+
 const clickDateTo = (state, { to, enteredTo }) => ({
   ...state,
   toDate: to,
