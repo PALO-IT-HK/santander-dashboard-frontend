@@ -108,7 +108,8 @@ const BikeUsageMainSearch = ({
   bikeUsageHistoryDataArray,
   getHeatmapPointsActionSaga,
   toggleWidgetOpenStatusAction,
-  isAnyWidgetOpenCurrently
+  isAnyWidgetOpenCurrently,
+  showErrorText
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
@@ -241,6 +242,8 @@ const BikeUsageMainSearch = ({
           <BikeUsageGraph
             getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
             data={bikeUsageTopLocationsArray}
+            showErrorText={showErrorText}
+            loader={isLoading}
           />
         )}
       </RenderMapGraphDiv>

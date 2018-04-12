@@ -28,7 +28,8 @@ import {
   updateDropDownDisplayValueAction,
   getBikeUsageTopLocationsActionSaga,
   getHeatmapPointsActionSaga,
-  toggleWidgetOpenStatusAction
+  toggleWidgetOpenStatusAction,
+  showErrorAction
 } from 'models/dashboard'
 
 // s function
@@ -57,7 +58,8 @@ const s = state => ({
   bikeUsageTopLocationsArray: state.dashboard.bikeUsageTopLocationsArray,
   isLoading: state.dashboard.isLoading,
   bikeUsageHistoryDataArray: state.dashboard.bikeUsageHistoryDataArray,
-  isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently
+  isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
+  showErrorText: state.dashboard.showErrorText
 })
 
 const d = dispatch => ({
@@ -84,7 +86,8 @@ const d = dispatch => ({
   updateDropDownDisplayValueAction: bindActionCreators(updateDropDownDisplayValueAction, dispatch),
   getBikeUsageTopLocationsActionSaga: bindActionCreators(getBikeUsageTopLocationsActionSaga, dispatch),
   getHeatmapPointsActionSaga: bindActionCreators(getHeatmapPointsActionSaga, dispatch),
-  toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch)
+  toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch),
+  showErrorAction: bindActionCreators(showErrorAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))
