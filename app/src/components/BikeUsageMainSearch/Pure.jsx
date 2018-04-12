@@ -16,21 +16,34 @@ const RenderMapGraphDiv = styled.div`
 `
 
 const SearchBoxDiv = styled.div`
-  height: 100px;
+  height: 70px;
   padding: 0 5rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  top: 50px;
+  top: 40px;
+`
+
+const TabsWrapper = styled.div`
+  padding: 0 5rem;
 `
 
 const DateTimeSearchWrapper = styled.div`
   width: 50%;
+  padding: 0 5rem;
+`
+
+const TabsAndDateTimeWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 40px;
 `
 
 const SubHeader = styled.div`
   padding: 0;
+  width: fit-content;
   height: auto;
   font-size: 36px;
   color: #748597;
@@ -42,7 +55,7 @@ const SubHeader = styled.div`
   letter-spacing: 0.5px;
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
 `
 
@@ -135,42 +148,49 @@ const BikeUsageMainSearch = ({
         </SearchBoxDiv>
       )
       }
-      <ToggleTabs value={currentToggledTab} onChange={handleTabChange} />
-      <DateTimeSearchWrapper>
-        <DateTimeSearch
-          openDatePicker={openDatePicker}
-          date={formatNewDate()}
-          time={formatTime()}
-          isTimePickerShown={openTimePicker}
-        />
-      </DateTimeSearchWrapper>
-      {showDatePicker ? (
-        <CalendarDatePicker
-          getPublicHolidayAction={getPublicHolidayAction}
-          clickDateFromAction={clickDateFromAction}
-          clickDateToAction={clickDateToAction}
-          resetDateAction={resetDateAction}
-          from={fromDate}
-          to={toDate}
-          enteredTo={enteredTo}
-          hideDatePickerAction={hideDatePickerAction}
-        />
-      ) : null}
-      {isTimePickerShown ? (
-        <TimePicker
-          getTimeTagAction={getTimeTagAction}
-          filterTimeFromArrayAction={filterTimeFromArrayAction}
-          filterTimeToArrayAction={filterTimeToArrayAction}
-          timeToArray={timeToArray}
-          totalTimeArray={totalTimeArray}
-          timeFromArray={timeFromArray}
-          timeFrom={timeFrom}
-          timeTo={timeTo}
-          selectTimeFromAction={selectTimeFromAction}
-          selectTimeToAction={selectTimeToAction}
-          hideTimePickerAction={hideTimePickerAction}
-        />
-      ) : null}
+      <TabsAndDateTimeWrapper>
+        <TabsWrapper>
+          <ToggleTabs
+            value={currentToggledTab}
+            onChange={handleTabChange} />
+        </TabsWrapper>
+        <DateTimeSearchWrapper>
+          <DateTimeSearch
+            openDatePicker={openDatePicker}
+            date={formatNewDate()}
+            time={formatTime()}
+            isTimePickerShown={openTimePicker}
+          />
+
+          {showDatePicker ? (
+            <CalendarDatePicker
+              getPublicHolidayAction={getPublicHolidayAction}
+              clickDateFromAction={clickDateFromAction}
+              clickDateToAction={clickDateToAction}
+              resetDateAction={resetDateAction}
+              from={fromDate}
+              to={toDate}
+              enteredTo={enteredTo}
+              hideDatePickerAction={hideDatePickerAction}
+            />
+          ) : null}
+          {isTimePickerShown ? (
+            <TimePicker
+              getTimeTagAction={getTimeTagAction}
+              filterTimeFromArrayAction={filterTimeFromArrayAction}
+              filterTimeToArrayAction={filterTimeToArrayAction}
+              timeToArray={timeToArray}
+              totalTimeArray={totalTimeArray}
+              timeFromArray={timeFromArray}
+              timeFrom={timeFrom}
+              timeTo={timeTo}
+              selectTimeFromAction={selectTimeFromAction}
+              selectTimeToAction={selectTimeToAction}
+              hideTimePickerAction={hideTimePickerAction}
+            />
+          ) : null}
+        </DateTimeSearchWrapper>
+      </TabsAndDateTimeWrapper>
       <RenderMapGraphDiv>
         {currentToggledTab === 'HEAT MAP' && (
           <Heatmap
