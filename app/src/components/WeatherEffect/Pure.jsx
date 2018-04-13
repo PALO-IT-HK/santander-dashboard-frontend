@@ -2,7 +2,13 @@ import React from 'react'
 import styled from 'styled-components'
 
 import ToggleWeatherTabs from 'components/ToggleWeatherTabs/Pure'
+import { formatDateBy_ddmmyyyy } from 'utils/utils'
+import DateTimeSearch from 'components/DateTimeSearch/Pure'
 import CalendarDatePicker from 'components/CalendarDatePicker/Pure'
+import TimePicker from 'components/TimePicker/Pure'
+
+import TemperatureGraph from 'components/TemperatureGraph/Pure'
+import RainfallGraph from 'components/RainfallGraph/Pure'
 
 const SearchWrapper = styled.div`
   height: 70px;
@@ -41,9 +47,13 @@ const FilterWrapper = styled.div`
   margin-bottom: 40px;
 `
 
-const DateTab = styled.div`
-  height: 100px;
-  width: auto;
+const ToggleWeatherTabsWrapper = styled.div`
+  padding: 0 5rem;
+`
+
+const DateTimeSearchWrapper = styled.div`
+  width: 50%;
+  padding: 0 5rem;
 `
 
 const GraphWrapper = styled.div`
@@ -52,9 +62,68 @@ const GraphWrapper = styled.div`
 
 const WeatherEffect = ({
   changeWeatherTabAction,
-  currentWeatherTab
+  currentWeatherTab,
+  showErrorText,
+  isLoading,
+  toggleWidgetOpenStatusAction,
+  showDatePicker,
+  currentMarker,
+  getPublicHolidayAction,
+  currentDateSelection,
+  fromDate,
+  toDate,
+  enteredTo,
+  hideDatePickerAction,
+  showDatePickerAction,
+  clickDateFromAction,
+  clickDateToAction,
+  resetDateAction,
+  isTimePickerShown,
+  showTimePickerAction,
+  hideTimePickerAction,
+  selectTimeFromAction,
+  selectTimeToAction,
+  timeFrom,
+  timeTo,
+  timeFromArray,
+  timeToArray,
+  totalTimeArray,
+  filterTimeToArrayAction,
+  filterTimeFromArrayAction,
+  getTimeTagAction,
+  timeTagName,
+  getBikeUsageTopLocationsActionSaga,
+  bikeUsageTopLocationsArray,
+  isAnyWidgetOpenCurrently
 }) => {
   const handleWeatherTab = val => changeWeatherTabAction(val)
+
+  const openDatePicker = v => {
+    if (!isAnyWidgetOpenCurrently) {
+      showDatePickerAction(v)
+      toggleWidgetOpenStatusAction(true)
+    } else {
+      return null
+    }
+  }
+  const openTimePicker = v => {
+    if (!isAnyWidgetOpenCurrently) {
+      showTimePickerAction(v)
+      toggleWidgetOpenStatusAction(true)
+    } else {
+      return null
+    }
+  }
+
+  const formatNewDate = () => {
+    if (fromDate && toDate != null) {
+      return `${formatDateBy_ddmmyyyy(fromDate)} - ${formatDateBy_ddmmyyyy(toDate)}`
+    } else {
+      return `Today, ${formatDateBy_ddmmyyyy(currentDateSelection)}`
+    }
+  }
+
+  const formatTime = () => timeTagName || `${timeFrom} - ${timeTo}`
 
   return (
     <div>
@@ -66,17 +135,66 @@ const WeatherEffect = ({
         </SubHeader>
       </SearchWrapper>
       <FilterWrapper>
-        <ToggleWeatherTabs
-          value={currentWeatherTab}
-          onChange={handleWeatherTab} />
-        <CalendarDatePicker />
+        <ToggleWeatherTabsWrapper>
+          <ToggleWeatherTabs
+            value={currentWeatherTab}
+            onChange={handleWeatherTab} />
+        </ToggleWeatherTabsWrapper>
+        <DateTimeSearchWrapper>
+          <DateTimeSearch
+            openDatePicker={openDatePicker}
+            date={formatNewDate()}
+            time={formatTime()}
+            isTimePickerShown={openTimePicker}
+          />
+          {showDatePicker ? (
+            <CalendarDatePicker
+              getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+              getPublicHolidayAction={getPublicHolidayAction}
+              clickDateFromAction={clickDateFromAction}
+              clickDateToAction={clickDateToAction}
+              resetDateAction={resetDateAction}
+              from={fromDate}
+              to={toDate}
+              enteredTo={enteredTo}
+              hideDatePickerAction={hideDatePickerAction}
+              toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
+            />
+          ) : null}
+          {isTimePickerShown ? (
+            <TimePicker
+              getTimeTagAction={getTimeTagAction}
+              filterTimeFromArrayAction={filterTimeFromArrayAction}
+              filterTimeToArrayAction={filterTimeToArrayAction}
+              timeToArray={timeToArray}
+              totalTimeArray={totalTimeArray}
+              timeFromArray={timeFromArray}
+              timeFrom={timeFrom}
+              timeTo={timeTo}
+              selectTimeFromAction={selectTimeFromAction}
+              selectTimeToAction={selectTimeToAction}
+              hideTimePickerAction={hideTimePickerAction}
+              toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
+            />
+          ) : null}
+        </DateTimeSearchWrapper>
       </FilterWrapper>
       <GraphWrapper>
         <h3>Graph lives here</h3>
         {currentWeatherTab === 'TEMPERATURE' && (
-          <h4>Temperature</h4>)}
+          <TemperatureGraph
+            getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+            data={bikeUsageTopLocationsArray}
+            showErrorText={showErrorText}
+            loader={isLoading}
+          />)}
         {currentWeatherTab === 'RAINFALL' && (
-          <h4>Rainfall</h4>)}
+          <RainfallGraph
+            getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+            data={bikeUsageTopLocationsArray}
+            showErrorText={showErrorText}
+            loader={isLoading}
+          />)}
       </GraphWrapper>
     </div>
   )
