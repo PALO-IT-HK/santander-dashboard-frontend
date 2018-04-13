@@ -100,8 +100,10 @@ export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROP
 export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
 export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS`)
 export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
+export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_FAIL`)
 export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
 export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
+export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
 /** --------------------------------------------------
  *
  * Sagas
@@ -155,10 +157,10 @@ export const sagas = {
     }))
     try {
       const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate)
-      yield put(getBikeUsageTopLocationsActionSuccess(result.data))
+      result.data.length !== 0 ? yield put(getBikeUsageTopLocationsActionSuccess(result.data)) : yield put(showErrorAction())
       yield put(hideLoader())
     } catch (error) {
-      console.log(error)
+      yield put(getBikeUsageTopLocationActionFail(error))
     }
   },
   [getHeatmapPointsActionSaga]: function * ({ payload }) {
@@ -309,7 +311,8 @@ const getTimeTag = (state, time) => ({
 const bikeUsageTopLocations = (state, data) => {
   return ({
     ...state,
-    bikeUsageTopLocationsArray: data
+    bikeUsageTopLocationsArray: data,
+    showErrorText: null
   })
 }
 
@@ -325,6 +328,13 @@ const hideLoading = (state) => {
   return ({
     ...state,
     isLoading: false
+  })
+}
+
+const showError = (state, showErrorText) => {
+  return ({
+    ...state,
+    showErrorText: `Sorry there is no data for this date range, please refine your parameters`
   })
 }
 
@@ -365,6 +375,7 @@ export const dashboard = {
   [getBikeUsageTopLocationsActionSuccess]: bikeUsageTopLocations,
   [showLoader]: showLoading,
   [hideLoader]: hideLoading,
+  [showErrorAction]: showError,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
   [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
   [updateMapBoundsAction]: updateMapBounds
