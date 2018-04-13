@@ -27,6 +27,10 @@ const DisplayButtons = styled.div`
   padding-top: 0.8rem;
 `
 
+const ButtonsWrapper = styled.div`
+  padding-top: 0.8rem;
+`
+
 export default class CalendarDatePicker extends Component {
   isSelectingFirstDay(from, to, day) {
     const isBeforeFirstDay = from && DateUtils.isDayBefore(day, from)
@@ -96,45 +100,45 @@ export default class CalendarDatePicker extends Component {
                 to &&
                 `Selected from ${formatDate(from)} to
                     ${formatDate(to)}`}{' '}
-              {from &&
-                to && (
+              <ButtonsWrapper>
+                {from &&
+                  to && (
+                    <SButton
+                      onClick={this.handleResetClick}
+                      type={'secondary'}
+                      size={'small'}
+                      children={'Reset'}
+                    />
+                  )}
                   <SButton
-                    onClick={this.handleResetClick}
-                    type={'secondary'}
+                    type={'primary'}
                     size={'small'}
-                    children={'Reset'}
+                    onClick={this.hideDatePicker}
+                    children={'Apply'}
                   />
-                )}
-            </div>
-            <Helmet>
-              <style>
-                {`
-                      .Range .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-                        background-color: #F1F4F8 !important;
-                        color: #D54435;
-                      }
-                      .DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-                        background-color: #D54435;
-                        color: #ffffff;
-                      }
-                      .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-                        background-color: #D54435 !important;
-                        color: #ffffff;
-                      }
-                      .Range .DayPicker-Day {
-                        border-radius: 0 !important;
-                      }`}
-              </style>
-            </Helmet>
-            <div>
-              <SButton
-                type={'primary'}
-                size={'small'}
-                onClick={this.hideDatePicker}
-                children={'Apply'}
-              />
+              </ButtonsWrapper>
             </div>
           </DisplayButtons>
+          <Helmet>
+            <style>
+              {`
+                    .Range .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+                      background-color: #F1F4F8 !important;
+                      color: #D54435;
+                    }
+                    .DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+                      background-color: #D54435;
+                      color: #ffffff;
+                    }
+                    .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+                      background-color: #D54435 !important;
+                      color: #ffffff;
+                    }
+                    .Range .DayPicker-Day {
+                      border-radius: 0 !important;
+                    }`}
+            </style>
+          </Helmet>
         </CalendarWrapper>
       </div>
     )
