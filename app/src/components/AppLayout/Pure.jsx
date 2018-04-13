@@ -10,13 +10,16 @@ import {
 } from 'components/Layout'
 import Helmet from 'react-helmet'
 
+const RootAppContainer = styled.div`
+  
+`
+
 const Header = styled.div`
   width: 100%;
   top: 0;
   position: fixed;
   background-color: #ffffff;
   z-index: 1001;
-
   /*
   Examples for responsive css, breakpoints defined in 'styledconfig.js'
   */
@@ -35,7 +38,6 @@ const Header = styled.div`
 const Content = styled.div`
   padding: 0;
   background: #f1f4f8;
-
   ${media.mobile`
     padding-top: 50px;
   `};
@@ -44,24 +46,22 @@ const Content = styled.div`
 const AppLayout = ({ currentTab, changeTabAction, children }) => {
   const handleTabChange = v => changeTabAction(v)
   return (
-    <div>
+    <RootAppContainer>
       <MuiThemeProvider>
         <React.Fragment>
           <Helmet title='Landing Page' titleTemplate='%s | My App' />
           <Header>
-            <StdContentCentered style={{ height: '100%' }}>
-              <StdWrapperFlexContentLeft style={{ height: '100%' }}>
+              <StdWrapperFlexContentLeft>
                 <MenuBar
                   value={currentTab}
                   onChange={v => handleTabChange(v)}
                 />
               </StdWrapperFlexContentLeft>
-            </StdContentCentered>
           </Header>
           <Content>{children}</Content>
         </React.Fragment>
       </MuiThemeProvider>
-    </div>
+    </RootAppContainer>
   )
 }
 

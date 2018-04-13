@@ -1,6 +1,15 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import LoadingBar from 'components/LoadingBar/Pure'
+
+const LoadingBarWrapper = styled.div`
+  position: absolute;
+  top: 0;
+  width: 100%;
+  background-color: blue;
+`
+
 export const MenuTabsWrapper = styled.div`
   width: fit-content;
   height: 60px;
@@ -11,7 +20,7 @@ export const TabWrapper = styled.div`
   padding: 1rem 2rem;
   letter-spacing: 1px;
   font-weight: 400;
-  background-color: #ffffff
+  background-color: #ffffff;
   color: ${({selected}) => selected ? '#D54435' : '#748597'};
   border-bottom: ${({selected}) => selected ? '3px solid #D54435' : 'none'};
   display: flex;
@@ -23,9 +32,14 @@ export const TabWrapper = styled.div`
 `
 
 export const MenuTabs = ({value, onChange, children}) => (
-  <MenuTabsWrapper>
-    {React.Children.map(children, child => <child.type {...child.props} onChange={onChange} currentTab={value} />)}
-  </MenuTabsWrapper>
+  <div style={{padding: 0}}>
+    <LoadingBarWrapper>
+      <LoadingBar />
+    </LoadingBarWrapper>
+    <MenuTabsWrapper>
+      {React.Children.map(children, child => <child.type {...child.props} onChange={onChange} currentTab={value} />)}
+    </MenuTabsWrapper>
+  </div>
 )
 
 export const MenuTab = ({children, value, onChange, currentTab}) => (

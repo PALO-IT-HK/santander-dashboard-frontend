@@ -3,7 +3,7 @@ import styled from 'styled-components'
 export const StdContentCentered = styled.div`
   width: 1200px;
   max-width: 100%;
-  margin: 0 auto;
+  margin: 0;
   display: flex;
   flex-direction: column;
 `

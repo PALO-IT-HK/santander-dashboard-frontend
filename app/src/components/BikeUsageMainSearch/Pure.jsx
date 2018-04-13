@@ -11,8 +11,23 @@ import DateTimeSearch from 'components/DateTimeSearch/Pure'
 import TimePicker from 'components/TimePicker/Pure'
 import { formatDateBy_ddmmyyyy } from 'utils/utils'
 
+const OverallBikeUsageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
+const SearchAndDateTimeOverallWrapper = styled.div`
+  height: 20%;
+  min-height: 120px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+`
+
 const RenderMapGraphDiv = styled.div`
-  height: 300px;
+  height: 80%;
   background: #f1f4f8;
 `
 
@@ -23,23 +38,22 @@ const SearchBoxDiv = styled.div`
   justify-content: center;
   align-items: flex-start;
   flex-direction: column;
-  top: 40px;
 `
 
 const TabsWrapper = styled.div`
-  padding: 0 5rem;
+  padding-left: 5rem;
+  height: 30%;
 `
 
 const DateTimeSearchWrapper = styled.div`
-  width: 50%;
-  padding: 0 5rem;
+  padding-right: 5rem;
 `
 
 const TabsAndDateTimeWrapper = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  margin-bottom: 40px;
+  /* margin-bottom: 40px; */
 `
 
 const SubHeader = styled.div`
@@ -143,86 +157,88 @@ const BikeUsageMainSearch = ({
   const formatTime = () => timeTagName || `${timeFrom} - ${timeTo}`
 
   return (
-    <div>
-      {isLoading ? 'THIS IS LOADING' : null}
-      {currentToggledTab === 'HEAT MAP' && (
-        <SearchBoxDiv>
-          <SubHeader>
-            {' '}
-            Bike usage of
-            <SearchBar
-              changeInputFocusAction={changeInputFocusAction}
-              currentFocusStatus={currentFocusStatus}
-              updateMapLocationAction={updateMapLocationAction}
-              searchedLocation={searchedLocation}
-            />
-          </SubHeader>
-        </SearchBoxDiv>
-      )
-      }
-      {currentToggledTab === 'GRAPH' && (
-        <SearchBoxDiv>
-          <SubHeader>
-            {' '}
-            Bike usage of
-            <Dropdown
-              dropDownDisplayStatus={dropDownDisplayStatus}
-              toggleDropdownVisibilityAction={toggleDropdownVisibilityAction}
-              currentDropDownDisplayValue={currentDropDownDisplayValue}
-              updateDropDownDisplayValueAction={updateDropDownDisplayValueAction}
-              onChange={getBikeUsageTopLocationsActionSaga} />
+    <OverallBikeUsageWrapper>
+      <SearchAndDateTimeOverallWrapper>
+        {currentToggledTab === 'HEAT MAP' && (
+          <SearchBoxDiv>
+            <SubHeader>
+              {' '}
+              Bike usage of
+              <SearchBar
+                changeInputFocusAction={changeInputFocusAction}
+                currentFocusStatus={currentFocusStatus}
+                updateMapLocationAction={updateMapLocationAction}
+                searchedLocation={searchedLocation}
+              />
+            </SubHeader>
+          </SearchBoxDiv>
+        )
+        }
+        {currentToggledTab === 'GRAPH' && (
+          <SearchBoxDiv>
+            <SubHeader>
+              {' '}
+              Bike usage of
+              <Dropdown
+                dropDownDisplayStatus={dropDownDisplayStatus}
+                toggleDropdownVisibilityAction={toggleDropdownVisibilityAction}
+                currentDropDownDisplayValue={currentDropDownDisplayValue}
+                updateDropDownDisplayValueAction={updateDropDownDisplayValueAction}
+                onChange={getBikeUsageTopLocationsActionSaga} />
 
-          </SubHeader>
-        </SearchBoxDiv>
-      )
-      }
-      <TabsAndDateTimeWrapper>
-        <TabsWrapper>
-          <ToggleTabs
-            value={currentToggledTab}
-            onChange={handleTabChange} />
-        </TabsWrapper>
-        <DateTimeSearchWrapper>
-          <DateTimeSearch
-            openDatePicker={openDatePicker}
-            date={formatNewDate()}
-            time={formatTime()}
-            isTimePickerShown={openTimePicker}
-          />
-          {showDatePicker ? (
-            <CalendarDatePicker
-              getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
-              getPublicHolidayAction={getPublicHolidayAction}
-              clickDateFromAction={clickDateFromAction}
-              clickDateToAction={clickDateToAction}
-              resetDateAction={resetDateAction}
-              from={fromDate}
-              to={toDate}
-              enteredTo={enteredTo}
-              hideDatePickerAction={hideDatePickerAction}
-              toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
-              currentMapBounds={currentMapBounds}
-              getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
+            </SubHeader>
+          </SearchBoxDiv>
+        )
+        }
+        <TabsAndDateTimeWrapper>
+          <TabsWrapper>
+            <ToggleTabs
+              value={currentToggledTab}
+              onChange={handleTabChange} />
+          </TabsWrapper>
+          <DateTimeSearchWrapper>
+            <DateTimeSearch
+              openDatePicker={openDatePicker}
+              date={formatNewDate()}
+              time={formatTime()}
+              isTimePickerShown={openTimePicker}
             />
-          ) : null}
-          {isTimePickerShown ? (
-            <TimePicker
-              getTimeTagAction={getTimeTagAction}
-              filterTimeFromArrayAction={filterTimeFromArrayAction}
-              filterTimeToArrayAction={filterTimeToArrayAction}
-              timeToArray={timeToArray}
-              totalTimeArray={totalTimeArray}
-              timeFromArray={timeFromArray}
-              timeFrom={timeFrom}
-              timeTo={timeTo}
-              selectTimeFromAction={selectTimeFromAction}
-              selectTimeToAction={selectTimeToAction}
-              hideTimePickerAction={hideTimePickerAction}
-              toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
-            />
-          ) : null}
-        </DateTimeSearchWrapper>
-      </TabsAndDateTimeWrapper>
+            {showDatePicker ? (
+              <CalendarDatePicker
+                getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+                getPublicHolidayAction={getPublicHolidayAction}
+                clickDateFromAction={clickDateFromAction}
+                clickDateToAction={clickDateToAction}
+                resetDateAction={resetDateAction}
+                from={fromDate}
+                to={toDate}
+                enteredTo={enteredTo}
+                hideDatePickerAction={hideDatePickerAction}
+                toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
+                currentMapBounds={currentMapBounds}
+                getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
+              />
+            ) : null}
+            {isTimePickerShown ? (
+              <TimePicker
+                getTimeTagAction={getTimeTagAction}
+                filterTimeFromArrayAction={filterTimeFromArrayAction}
+                filterTimeToArrayAction={filterTimeToArrayAction}
+                timeToArray={timeToArray}
+                totalTimeArray={totalTimeArray}
+                timeFromArray={timeFromArray}
+                timeFrom={timeFrom}
+                timeTo={timeTo}
+                selectTimeFromAction={selectTimeFromAction}
+                selectTimeToAction={selectTimeToAction}
+                hideTimePickerAction={hideTimePickerAction}
+                toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
+              />
+            ) : null}
+          </DateTimeSearchWrapper>
+        </TabsAndDateTimeWrapper>
+      </SearchAndDateTimeOverallWrapper>
+
       <RenderMapGraphDiv>
         {currentToggledTab === 'HEAT MAP' && (
           <Heatmap
@@ -253,7 +269,7 @@ const BikeUsageMainSearch = ({
           />
         )}
       </RenderMapGraphDiv>
-    </div>
+    </OverallBikeUsageWrapper>
   )
 }
 
