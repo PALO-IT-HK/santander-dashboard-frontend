@@ -19,6 +19,7 @@ const GRAPH = '[GRAPH]'
 const CALENDAR = '[CALENDAR]'
 const CALENDAR_TIME = '[CALENDAR_TIME]'
 const TIME = '[TIME]'
+const WEATHER = '[WEATHER]'
 
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
@@ -106,6 +107,10 @@ export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE
 export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
 export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
 export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
+
+export const resetWeatherCalendarAction = createAction(`${WEATHER} RESET_WEATHER_CALENDAR`)
+export const clickDateFromWeatherAction = createAction(`${WEATHER} DATE_FROM_WEATHER_CALENDAR`)
+export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER_CALENDAR`)
 
 /** --------------------------------------------------
  *
@@ -247,6 +252,7 @@ const clickDateFrom = (state, { from }) => ({
   toDate: null,
   enteredTo: null
 })
+
 const clickDateTo = (state, { to, enteredTo }) => ({
   ...state,
   toDate: to,
@@ -353,6 +359,26 @@ const toggleWidgetOpenStatus = (state, status) => ({
   isAnyWidgetOpenCurrently: status
 })
 
+const clickDateFromWeather = (state, { from }) => ({
+  ...state,
+  fromDateWeather: from,
+  toDateWeather: null,
+  enteredToWeather: null
+})
+
+const clickDateToWeather = (state, { to, enteredTo }) => ({
+  ...state,
+  toDateWeather: to,
+  enteredToWeather: enteredTo
+})
+
+const resetWeatherCalendar = (state) => ({
+  ...state,
+  toDateWeather: null,
+  fromDateWeather: null,
+  enteredToWeather: null
+})
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -389,7 +415,10 @@ export const dashboard = {
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
   [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
   [updateMapBoundsAction]: updateMapBounds,
-  [changeWeatherTabAction]: changeWeatherTab
+  [changeWeatherTabAction]: changeWeatherTab,
+  [resetWeatherCalendarAction]: resetWeatherCalendar,
+  [clickDateFromWeatherAction]: clickDateFromWeather,
+  [clickDateToWeatherAction]: clickDateToWeather
 }
 
 export const dashboardInitialState = {
@@ -420,7 +449,10 @@ export const dashboardInitialState = {
   isLoading: false,
   bikeUsageHistoryDataArray: [],
   isAnyWidgetOpenCurrently: false,
-  currentMapBounds: []
+  currentMapBounds: [],
+  fromDateWeather: new Date(),
+  toDateWeather: new Date(),
+  enteredToWeather: new Date()
 }
 
 export default createReducer(dashboard, dashboardInitialState)

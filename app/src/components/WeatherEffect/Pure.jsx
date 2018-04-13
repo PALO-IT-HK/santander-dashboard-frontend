@@ -70,14 +70,14 @@ const WeatherEffect = ({
   currentMarker,
   getPublicHolidayAction,
   currentDateSelection,
-  fromDate,
-  toDate,
-  enteredTo,
+  fromDateWeather,
+  toDateWeather,
+  enteredToWeather,
   hideDatePickerAction,
   showDatePickerAction,
-  clickDateFromAction,
-  clickDateToAction,
-  resetDateAction,
+  clickDateFromWeatherAction,
+  clickDateToWeatherAction,
+  resetWeatherCalendarAction,
   isTimePickerShown,
   showTimePickerAction,
   hideTimePickerAction,
@@ -116,8 +116,8 @@ const WeatherEffect = ({
   }
 
   const formatNewDate = () => {
-    if (fromDate && toDate != null) {
-      return `${formatDateBy_ddmmyyyy(fromDate)} - ${formatDateBy_ddmmyyyy(toDate)}`
+    if (fromDateWeather && toDateWeather != null) {
+      return `${formatDateBy_ddmmyyyy(fromDateWeather)} - ${formatDateBy_ddmmyyyy(toDateWeather)}`
     } else {
       return `Today, ${formatDateBy_ddmmyyyy(currentDateSelection)}`
     }
@@ -151,17 +151,17 @@ const WeatherEffect = ({
             <CalendarDatePicker
               getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
               getPublicHolidayAction={getPublicHolidayAction}
-              clickDateFromAction={clickDateFromAction}
-              clickDateToAction={clickDateToAction}
-              resetDateAction={resetDateAction}
-              from={fromDate}
-              to={toDate}
-              enteredTo={enteredTo}
+              clickDateFromAction={clickDateFromWeatherAction}
+              clickDateToAction={clickDateToWeatherAction}
+              resetDateAction={resetWeatherCalendarAction}
+              from={fromDateWeather}
+              to={toDateWeather}
+              enteredTo={enteredToWeather}
               hideDatePickerAction={hideDatePickerAction}
               toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
             />
           ) : null}
-          {isTimePickerShown ? (
+          { isTimePickerShown ? (
             <TimePicker
               getTimeTagAction={getTimeTagAction}
               filterTimeFromArrayAction={filterTimeFromArrayAction}

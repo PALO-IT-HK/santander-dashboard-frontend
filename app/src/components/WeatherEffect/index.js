@@ -4,9 +4,6 @@ import { bindActionCreators } from 'redux'
 import Pure from './Pure'
 import {
   changeWeatherTabAction,
-  clickDateFromAction,
-  clickDateToAction,
-  resetDateAction,
   hideDatePickerAction,
   showDatePickerAction,
   getPublicHolidayAction,
@@ -19,7 +16,10 @@ import {
   getTimeTagAction,
   getBikeUsageTopLocationsActionSaga,
   toggleWidgetOpenStatusAction,
-  showErrorAction
+  showErrorAction,
+  resetWeatherCalendarAction,
+  clickDateFromWeatherAction,
+  clickDateToWeatherAction
 } from 'models/dashboard'
 
 // s function
@@ -28,9 +28,6 @@ const s = state => ({
   bikeUsageTopLocationsArray: state.dashboard.bikeUsageTopLocationsArray,
   isLoading: state.dashboard.isLoading,
   showErrorText: state.dashboard.showErrorText,
-  fromDate: state.dashboard.fromDate,
-  toDate: state.dashboard.toDate,
-  enteredTo: state.dashboard.enteredTo,
   showDatePicker: state.dashboard.showDatePicker,
   currentDateSelection: state.dashboard.currentDateSelection,
   isTimePickerShown: state.dashboard.isTimePickerShown,
@@ -40,15 +37,15 @@ const s = state => ({
   timeFromArray: state.dashboard.timeFromArray,
   timeToArray: state.dashboard.timeToArray,
   timeTagName: state.dashboard.timeTagName,
-  isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently
+  isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
+  fromDateWeather: state.dashboard.fromDateWeather,
+  toDateWeather: state.dashboard.toDateWeather,
+  enteredToWeather: state.dashboard.enteredToWeather
 })
 
 // d function
 const d = dispatch => ({
   changeWeatherTabAction: bindActionCreators(changeWeatherTabAction, dispatch),
-  clickDateFromAction: bindActionCreators(clickDateFromAction, dispatch),
-  clickDateToAction: bindActionCreators(clickDateToAction, dispatch),
-  resetDateAction: bindActionCreators(resetDateAction, dispatch),
   showDatePickerAction: bindActionCreators(showDatePickerAction, dispatch),
   hideDatePickerAction: bindActionCreators(hideDatePickerAction, dispatch),
   getPublicHolidayAction: bindActionCreators(getPublicHolidayAction, dispatch),
@@ -61,7 +58,10 @@ const d = dispatch => ({
   getTimeTagAction: bindActionCreators(getTimeTagAction, dispatch),
   toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch),
   showErrorAction: bindActionCreators(showErrorAction, dispatch),
-  getBikeUsageTopLocationsActionSaga: bindActionCreators(getBikeUsageTopLocationsActionSaga, dispatch)
+  getBikeUsageTopLocationsActionSaga: bindActionCreators(getBikeUsageTopLocationsActionSaga, dispatch),
+  resetWeatherCalendarAction: bindActionCreators(resetWeatherCalendarAction, dispatch),
+  clickDateFromWeatherAction: bindActionCreators(clickDateFromWeatherAction, dispatch),
+  clickDateToWeatherAction: bindActionCreators(clickDateToWeatherAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))
