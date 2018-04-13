@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { media } from 'styledconfig'
-import NavBarTabs from 'components/Tabs/Pure'
+import MenuBar from 'components/MenuBar/Pure'
 import {
   StdContentCentered,
   StdWrapperFlexContentLeft
@@ -34,7 +34,7 @@ const Header = styled.div`
 
 const Content = styled.div`
   padding: 0;
-  background: #ffffff;
+  background: #f1f4f8;
 
   ${media.mobile`
     padding-top: 50px;
@@ -51,7 +51,7 @@ const AppLayout = ({ currentTab, changeTabAction, children }) => {
           <Header>
             <StdContentCentered style={{ height: '100%' }}>
               <StdWrapperFlexContentLeft style={{ height: '100%' }}>
-                <NavBarTabs
+                <MenuBar
                   value={currentTab}
                   onChange={v => handleTabChange(v)}
                 />

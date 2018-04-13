@@ -7,7 +7,7 @@ import moment from 'moment'
 
 import PublicHolidayFilters from 'components/PublicHolidayFilters/Pure'
 import SButton from 'components/Button/Pure'
-import { formatDate } from 'utils/utils'
+import { formatDateBy_ddmmyyyy } from 'utils/utils'
 import { publicHolidaysLondon } from 'constants/index'
 
 const CalendarWrapper = styled.div`
@@ -27,7 +27,12 @@ const DisplayButtons = styled.div`
   padding-top: 0.8rem;
 `
 
+const ButtonsWrapper = styled.div`
+  padding-top: 0.8rem;
+`
+
 export default class CalendarDatePicker extends Component {
+  // const { currentMapBounds, getHeatmapPointsActionSaga } = props
   isSelectingFirstDay(from, to, day) {
     const isBeforeFirstDay = from && DateUtils.isDayBefore(day, from)
     const isRangeSelected = from && to
@@ -63,6 +68,25 @@ export default class CalendarDatePicker extends Component {
     this.props.toggleWidgetOpenStatusAction(false)
   }
 
+  handleCalendarApplyOnClick = () => {
+    const payload = {
+      ne: {
+        neLat: this.props.currentMapBounds.ne.neLat,
+        neLng: this.props.currentMapBounds.ne.neLng
+      },
+      sw: {
+        swLat: this.props.currentMapBounds.sw.swLat,
+        swLng: this.props.currentMapBounds.sw.swLng
+      },
+      date: {
+        fromDate: this.props.from,
+        toDate: this.props.to
+      }
+    }
+    this.props.getHeatmapPointsActionSaga(payload)
+    this.hideDatePicker()
+  }
+
   getPublicHoliday = (day) => {
     this.props.getPublicHolidayAction(publicHolidaysLondon[day])
   }
@@ -94,47 +118,47 @@ export default class CalendarDatePicker extends Component {
               {from && !to && 'Please select the last day.'}
               {from &&
                 to &&
-                `Selected from ${formatDate(from)} to
-                    ${formatDate(to)}`}{' '}
-              {from &&
-                to && (
+                `Selected from ${formatDateBy_ddmmyyyy(from)} to
+                    ${formatDateBy_ddmmyyyy(to)}`}{' '}
+              <ButtonsWrapper>
+                {from &&
+                  to && (
+                    <SButton
+                      onClick={this.handleResetClick}
+                      type={'secondary'}
+                      size={'small'}
+                      children={'Reset'}
+                    />
+                  )}
                   <SButton
-                    onClick={this.handleResetClick}
-                    type={'secondary'}
+                    type={'primary'}
                     size={'small'}
-                    children={'Reset'}
+                    onClick={this.hideDatePicker}
+                    children={'Apply'}
                   />
-                )}
-            </div>
-            <Helmet>
-              <style>
-                {`
-                      .Range .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
-                        background-color: #F1F4F8 !important;
-                        color: #D54435;
-                      }
-                      .DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
-                        background-color: #D54435;
-                        color: #ffffff;
-                      }
-                      .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
-                        background-color: #D54435 !important;
-                        color: #ffffff;
-                      }
-                      .Range .DayPicker-Day {
-                        border-radius: 0 !important;
-                      }`}
-              </style>
-            </Helmet>
-            <div>
-              <SButton
-                type={'primary'}
-                size={'small'}
-                onClick={this.hideDatePicker}
-                children={'Apply'}
-              />
+              </ButtonsWrapper>
             </div>
           </DisplayButtons>
+          <Helmet>
+            <style>
+              {`
+                    .Range .DayPicker-Day--selected:not(.DayPicker-Day--start):not(.DayPicker-Day--end):not(.DayPicker-Day--outside) {
+                      background-color: #F1F4F8 !important;
+                      color: #D54435;
+                    }
+                    .DayPicker:not(.DayPicker--interactionDisabled) .DayPicker-Day:not(.DayPicker-Day--disabled):not(.DayPicker-Day--selected):not(.DayPicker-Day--outside):hover {
+                      background-color: #D54435;
+                      color: #ffffff;
+                    }
+                    .DayPicker-Day--selected:not(.DayPicker-Day--disabled):not(.DayPicker-Day--outside) {
+                      background-color: #D54435 !important;
+                      color: #ffffff;
+                    }
+                    .Range .DayPicker-Day {
+                      border-radius: 0 !important;
+                    }`}
+            </style>
+          </Helmet>
         </CalendarWrapper>
       </div>
     )

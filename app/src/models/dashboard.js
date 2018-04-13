@@ -3,6 +3,7 @@ import { put, call, select } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
+import { formatDateBy_yyyymmdd } from 'utils/utils'
 import { formatDateForApi } from 'utils/utils'
 
 // Mock data
@@ -38,6 +39,9 @@ export const changeInputFocusAction = createAction(
 )
 export const updateMapLocationAction = createAction(
   `${MODEL_NAME} UPDATE GOOGLE MAP LOCATION BASED ON SEARCH`
+)
+export const updateMapBoundsAction = createAction(
+  `${MODEL_NAME} UPDATE CURRENT MAP BOUNDS AFTER ZOOM/DRAG/SEARCH`
 )
 
 // Calendar Actions
@@ -78,12 +82,17 @@ export const getBikePointsActionSaga = createAction(
 export const getBikePointsActionSuccess = createAction(
   `${MODEL_NAME} GET INITIAL LOAD BIKE POINTS SUCCESS`
 )
-
+export const getBikePointsActionFailed = createAction(
+  `${MODEL_NAME} GET INITIAL LOAD BIKE POINTS FAILED`
+)
 export const getHeatmapPointsActionSaga = createAction(
   `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND`
 )
 export const getHeatmapPointsActionSuccess = createAction(
   `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND SUCCESS`
+)
+export const getHeatmapPointsActionFailed = createAction(
+  `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND FAILED`
 )
 
 // Graph Actions
@@ -91,8 +100,10 @@ export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROP
 export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
 export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS`)
 export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
+export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_FAIL`)
 export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
 export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
+export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
 /** --------------------------------------------------
  *
  * Sagas
@@ -109,15 +120,16 @@ function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate) {
 }
 
 function fetchInitialBikePoints (payload) {
-  const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${
-    payload[0]
-  }&swLon=${payload[1]}&neLat=${payload[2]}&neLon=${payload[3]}`
+  const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${payload.sw.swLat}
+    &swLon=${payload.sw.swLng}&neLat=${payload.ne.neLat}&neLon=${payload.ne.neLng}`
   return axios.get(url)
 }
 
 function fetchHeatmapPoints (payload) {
-  const url = `https://api.ci.palo-it-hk.com/usages/boundary/
-  ${payload[2]},${payload[3]}/${payload[0]},${payload[1]}/type/total/daterange/20170101/20170131`
+  const fromDate = formatDateBy_yyyymmdd(payload.date.fromDate)
+  const toDate = formatDateBy_yyyymmdd(payload.date.toDate)
+  const url = `https://api.ci.palo-it-hk.com/usages/boundary/${payload.ne.neLat},${payload.ne.neLng}/
+    ${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}`
   return axios.get(url)
 }
 
@@ -129,8 +141,12 @@ export const sagas = {
     yield put(getDashboardSuccess(res.data))
   },
   [getBikePointsActionSaga]: function * ({ payload }) {
-    const result = yield call(fetchInitialBikePoints, payload)
-    yield put(getBikePointsActionSuccess(result.data))
+    try {
+      const result = yield call(fetchInitialBikePoints, payload)
+      yield put(getBikePointsActionSuccess(result.data))
+    } catch (error) {
+      yield put (getBikePointsActionFailed(error))
+    }
   },
   [getBikeUsageTopLocationsActionSaga]: function * () {
     yield put(showLoader())
@@ -141,15 +157,19 @@ export const sagas = {
     }))
     try {
       const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate)
-      yield put(getBikeUsageTopLocationsActionSuccess(result.data))
+      result.data.length !== 0 ? yield put(getBikeUsageTopLocationsActionSuccess(result.data)) : yield put(showErrorAction())
       yield put(hideLoader())
     } catch (error) {
-      console.log(error)
+      yield put(getBikeUsageTopLocationActionFail(error))
     }
   },
   [getHeatmapPointsActionSaga]: function * ({ payload }) {
-    const result = yield call(fetchHeatmapPoints, payload)
-    yield put(getHeatmapPointsActionSuccess(result.data))
+    try {
+      const result = yield call(fetchHeatmapPoints, payload)
+      yield put(getHeatmapPointsActionSuccess(result.data))
+    } catch (error) {
+      yield put(getHeatmapPointsActionFailed(error))
+    }
   }
 }
 export const dashboardSagaWatcher = createSagaWatcher(sagas)
@@ -193,6 +213,10 @@ const updateBikePoints = (state, result) => ({
 const updateHeatmapPoints = (state, result) => ({
   ...state,
   bikeUsageHistoryDataArray: result
+})
+const updateMapBounds = (state, bounds) => ({
+  ...state,
+  currentMapBounds: bounds
 })
 
 // Graph Dropdown
@@ -287,7 +311,8 @@ const getTimeTag = (state, time) => ({
 const bikeUsageTopLocations = (state, data) => {
   return ({
     ...state,
-    bikeUsageTopLocationsArray: data
+    bikeUsageTopLocationsArray: data,
+    showErrorText: null
   })
 }
 
@@ -303,6 +328,13 @@ const hideLoading = (state) => {
   return ({
     ...state,
     isLoading: false
+  })
+}
+
+const showError = (state, showErrorText) => {
+  return ({
+    ...state,
+    showErrorText: `Sorry there is no data for this date range, please refine your parameters`
   })
 }
 
@@ -343,8 +375,10 @@ export const dashboard = {
   [getBikeUsageTopLocationsActionSuccess]: bikeUsageTopLocations,
   [showLoader]: showLoading,
   [hideLoader]: hideLoading,
+  [showErrorAction]: showError,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
-  [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus
+  [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
+  [updateMapBoundsAction]: updateMapBounds
 }
 
 export const dashboardInitialState = {
@@ -373,7 +407,8 @@ export const dashboardInitialState = {
   bikeUsageTopLocationsArray: [],
   isLoading: false,
   bikeUsageHistoryDataArray: [],
-  isAnyWidgetOpenCurrently: false
+  isAnyWidgetOpenCurrently: false,
+  currentMapBounds: []
 }
 
 export default createReducer(dashboard, dashboardInitialState)

@@ -44,10 +44,10 @@ class BikeUsageGraph extends React.Component {
     this.props.getBikeUsageTopLocationsActionSaga()
   }
   render () {
-    const {data} = this.props
+    const {data, showErrorText, loader} = this.props
     return (
       <div>
-        <div style={{height: '500px', padding: '0 20px'}}>
+        <div style={{height: '500px', padding: '0 20px', background: '#f1f4f8'}}>
           <ResponsiveContainer minWidth={1024}>
             <BarChart data={data} margin={{bottom: 100}}>
               <CartesianGrid strokeDasharray='3 3' />

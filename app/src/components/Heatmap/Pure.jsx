@@ -45,13 +45,33 @@ const Heatmap = compose(
         // onDragEnd: () => {
         //   console.log('Drag End changed refs map ' + refs.map.getBounds())
         // },
-        onIdle: (getBikePointsActionSaga, getHeatmapPointsActionSaga, fromDate, toDate) => {
+        onIdle: (getBikePointsActionSaga, getHeatmapPointsActionSaga, updateMapBoundsAction,
+          fromDate, toDate) => {
           const bounds = refs.map.getBounds()
           const swLat = bounds.getSouthWest().lat()
           const swLng = bounds.getSouthWest().lng()
           const neLat = bounds.getNorthEast().lat()
           const neLng = bounds.getNorthEast().lng()
-          const payload = [swLat, swLng, neLat, neLng, fromDate, toDate]
+          const boundsObj = {
+            ne: { neLat: neLat, neLng: neLng },
+            sw: { swLat: swLat, swLng: swLng }
+          }
+          // const payload = [swLat, swLng, neLat, neLng, fromDate, toDate]
+          const payload = {
+            ne: {
+              neLat: neLat,
+              neLng: neLng
+            },
+            sw: {
+              swLat: swLat,
+              swLng: swLng
+            },
+            date: {
+              fromDate: fromDate,
+              toDate: toDate 
+            }
+          }
+          updateMapBoundsAction(boundsObj)
           getBikePointsActionSaga(payload)
           getHeatmapPointsActionSaga(payload)
         },
@@ -86,7 +106,8 @@ const Heatmap = compose(
   const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
     onMapMounted, center, zoom, onBoundsChanged, updateMapLocation, onZoomChanged,
     onDragEnd, onIdle, mapInitialLoadStatus, getBikePointsActionSaga, currentBikePointsArray,
-    bikeUsageHistoryDataArray, getHeatmapPointsActionSaga, fromDate, toDate } = props
+    bikeUsageHistoryDataArray, getHeatmapPointsActionSaga, fromDate, toDate, updateMapBoundsAction
+  } = props
 
   // Get custom search bar element
   const input = document.getElementById('search-autocomplete')
@@ -104,7 +125,7 @@ const Heatmap = compose(
   })
   const handleOnIdle = () => {
     !mapInitialLoadStatus ? 
-    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, fromDate, toDate) : 
+    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, updateMapBoundsAction, fromDate, toDate) : 
     console.log('map initial load complete!')
   }
   const handleMouseOver = e => {
