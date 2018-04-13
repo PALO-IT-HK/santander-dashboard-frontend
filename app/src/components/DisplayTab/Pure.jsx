@@ -10,7 +10,7 @@ export const DisplayTabWrapper = styled.div`
   width: 250px;
   height: 30px;
   padding: 5px;
-  border-radius: 3px;
+  border-radius: 5px;
   border: 1px solid #d5dfeb;
   display: flex;
   justify-content: center;
@@ -18,6 +18,7 @@ export const DisplayTabWrapper = styled.div`
   line-height: 20px;
   color: #748597;
   cursor: pointer;
+  background: #ffffff;
 `
 
 export const DisplayAllTabs = ({ children }) => (

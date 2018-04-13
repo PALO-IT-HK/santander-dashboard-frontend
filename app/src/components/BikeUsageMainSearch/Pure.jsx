@@ -13,6 +13,7 @@ import { formatDateBy_ddmmyyyy } from 'utils/utils'
 
 const RenderMapGraphDiv = styled.div`
   height: 300px;
+  background: #f1f4f8;
 `
 
 const SearchBoxDiv = styled.div`

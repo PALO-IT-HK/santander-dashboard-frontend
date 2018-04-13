@@ -47,23 +47,20 @@ class BikeUsageGraph extends React.Component {
     const {data, showErrorText, loader} = this.props
     return (
       <div>
-        <div style={{height: '500px', padding: '0 20px'}}>
-          { data.length !== 0
-            ? (<ResponsiveContainer minWidth={1024}>
-              <BarChart data={data} margin={{bottom: 100}}>
-                <CartesianGrid strokeDasharray='3 3' />
-                <XAxis dataKey={v => v.location} tick={<CustomizedAxisTick />} interval={0} />
-                <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} />
-                { data.length > 0 && <Tooltip content={customToolTip} />}
-                <Bar yAxisId='bar'
-                  dataKey={v => formatToNum(v.totalBikesOut)}
-                  maxBarSize={50}
-                  fill='#D54435'
-                />
-              </BarChart>
-            </ResponsiveContainer>)
-            : (!loader && <p>{showErrorText}</p>)
-          }
+        <div style={{height: '500px', padding: '0 20px', background: '#f1f4f8'}}>
+          <ResponsiveContainer minWidth={1024}>
+            <BarChart data={data} margin={{bottom: 100}}>
+              <CartesianGrid strokeDasharray='3 3' />
+              <XAxis dataKey={v => v.location} tick={<CustomizedAxisTick />} interval={0} />
+              <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} />
+              { data.length > 0 && <Tooltip content={customToolTip} />}
+              <Bar yAxisId='bar'
+                dataKey={v => formatToNum(v.totalBikesOut)}
+                maxBarSize={50}
+                fill='#D54435'
+              />
+            </BarChart>
+          </ResponsiveContainer>
         </div>
       </div>
     )
