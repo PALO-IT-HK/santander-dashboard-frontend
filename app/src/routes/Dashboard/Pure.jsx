@@ -3,7 +3,7 @@ import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
 import BikeUsageMainSearch from 'components/BikeUsageMainSearch'
-import WeatherEffect from 'components/WeatherEffect/Pure'
+import WeatherEffect from 'components/WeatherEffect'
 
 const Wrap = styled.div`
   margin: 0;

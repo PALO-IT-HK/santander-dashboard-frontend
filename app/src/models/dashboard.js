@@ -3,8 +3,7 @@ import { put, call, select } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
-import { formatDateBy_yyyymmdd } from 'utils/utils'
-import { formatDateForApi } from 'utils/utils'
+import { formatDateBy_yyyymmdd, formatDateForApi } from 'utils/utils'
 
 // Mock data
 import data from '../mockdata.json'
@@ -27,6 +26,9 @@ export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
 export const changeToggledTabAction = createAction(
   `${MODEL_NAME} CHANGE_TOGGLED_TAB`
 )
+
+export const changeWeatherTabAction = createAction(`${MODEL_NAME} TOGGLE_WEATHER_TAB`)
+
 // HeatMap Actions
 export const toggleMarkerLabelVisibilityAction = createAction(
   `${HEAT_MAP} TOGGLE MARKER LABEL VISIBLE`
@@ -104,6 +106,7 @@ export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE
 export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
 export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
 export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
+
 /** --------------------------------------------------
  *
  * Sagas
@@ -145,7 +148,7 @@ export const sagas = {
       const result = yield call(fetchInitialBikePoints, payload)
       yield put(getBikePointsActionSuccess(result.data))
     } catch (error) {
-      yield put (getBikePointsActionFailed(error))
+      yield put(getBikePointsActionFailed(error))
     }
   },
   [getBikeUsageTopLocationsActionSaga]: function * () {
@@ -189,6 +192,13 @@ const addDashboardData = (state, dashboardData) => {
   return {
     ...state,
     dashboardData
+  }
+}
+
+const changeWeatherTab = (state, currentWeatherTab) => {
+  return {
+    ...state,
+    currentWeatherTab
   }
 }
 
@@ -378,13 +388,15 @@ export const dashboard = {
   [showErrorAction]: showError,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
   [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
-  [updateMapBoundsAction]: updateMapBounds
+  [updateMapBoundsAction]: updateMapBounds,
+  [changeWeatherTabAction]: changeWeatherTab
 }
 
 export const dashboardInitialState = {
   currentTab: 'BIKE USAGE',
   currentMarker: '',
   currentToggledTab: 'HEAT MAP',
+  currentWeatherTab: 'TEMPERATURE',
   graphData: data,
   currentFocusStatus: '',
   searchedLocation: '',

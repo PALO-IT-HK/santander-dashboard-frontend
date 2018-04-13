@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from 'styled-components'
 
+import ToggleWeatherTabs from 'components/ToggleWeatherTabs/Pure'
 import CalendarDatePicker from 'components/CalendarDatePicker/Pure'
 
 const SearchWrapper = styled.div`
@@ -20,26 +21,16 @@ const SubHeader = styled.div`
   font-size: 36px;
   color: #748597;
   font-family: Abril Fatface;
-  font-weight: normal;
-  font-style: normal;
-  font-stretch: normal;
   line-height: normal;
   letter-spacing: 0.5px;
   display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
-  align-items: center;
 `
 
 const SearchDivText = styled.div`
-  font-family: Abril Fatface;
   font-size: 30px;
   color: #1dacbd;
   width: 300px;
-  padding-left: 1rem;
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
+  margin-left: 1rem;
   border-bottom: 2px dashed #1dacbd;
 `
 
@@ -54,18 +45,17 @@ const DateTab = styled.div`
   height: 100px;
   width: auto;
 `
-const ToggleWeatherTabs = styled.div`
-  height: 100px;
-  width: auto;
-`
 
 const GraphWrapper = styled.div`
   height: 300px;
 `
 
 const WeatherEffect = ({
-  state
+  changeWeatherTabAction,
+  currentWeatherTab
 }) => {
+  const handleWeatherTab = val => changeWeatherTabAction(val)
+
   return (
     <div>
       <SearchWrapper>
@@ -76,11 +66,17 @@ const WeatherEffect = ({
         </SubHeader>
       </SearchWrapper>
       <FilterWrapper>
-        <ToggleWeatherTabs />
-        <DateTab />
+        <ToggleWeatherTabs
+          value={currentWeatherTab}
+          onChange={handleWeatherTab} />
+        <CalendarDatePicker />
       </FilterWrapper>
       <GraphWrapper>
         <h3>Graph lives here</h3>
+        {currentWeatherTab === 'TEMPERATURE' && (
+          <h4>Temperature</h4>)}
+        {currentWeatherTab === 'RAINFALL' && (
+          <h4>Rainfall</h4>)}
       </GraphWrapper>
     </div>
   )
