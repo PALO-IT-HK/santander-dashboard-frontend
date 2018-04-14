@@ -34,3 +34,5 @@ export const formatDateBy_yyyymmdd = date => {
 export const formatDateForApi = date => {
   return moment(date).format('YYYYMMDD')
 }
+
+export const formatTime = time => time.replace(':', '')

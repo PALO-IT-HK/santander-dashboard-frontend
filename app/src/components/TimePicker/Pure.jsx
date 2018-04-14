@@ -59,7 +59,8 @@ const TimePicker = ({
   filterTimeToArrayAction,
   filterTimeFromArrayAction,
   getTimeTagAction,
-  toggleWidgetOpenStatusAction
+  toggleWidgetOpenStatusAction,
+  fetchSagaAction
 }) => {
   const getTimeTag = tag => {
     getTimeTagAction([tag, timeFilters[tag]])
@@ -83,6 +84,7 @@ const TimePicker = ({
   }
 
   const handleApplyOnClick = () => {
+    fetchSagaAction()
     toggleWidgetOpenStatusAction(false)
     hideTimePickerAction()
   }

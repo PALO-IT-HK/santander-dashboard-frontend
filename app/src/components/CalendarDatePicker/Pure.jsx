@@ -45,7 +45,8 @@ export default class CalendarDatePicker extends Component {
       return
     }
     const currentDate = new Date()
-    if (day.getTime() > currentDate.getTime()) return
+    if (moment(day).isAfter(currentDate, 'day')) return
+
     this.isSelectingFirstDay(from, to, day)
       ? clickDateFromAction({ from: day })
       : clickDateToAction({ to: day, enteredTo: day })
@@ -99,7 +100,7 @@ export default class CalendarDatePicker extends Component {
     return (
       <div>
         <CalendarWrapper>
-          <PublicHolidayFilters selectPublicHoliday={this.getPublicHoliday} />
+          {(this.props.currentTab === 'WEATHER EFFECT') ? null : <PublicHolidayFilters selectPublicHoliday={this.getPublicHoliday} />}
           <DayPicker
             className="Range"
             numberOfMonths={2}
@@ -110,7 +111,12 @@ export default class CalendarDatePicker extends Component {
             onDayChange={this.getPublicHoliday}
             onDayClick={day => this.handleDayClick(day)}
             onDayMouseEnter={this.handleDayMouseEnter}
-            disabledDays={[{ after: new Date() }]}
+            disabledDays={day => {
+              const dateToCheck = this.props.currentTab === 'WEATHER EFFECT'
+                ? moment(from).add(6, 'days')
+                : new Date()
+              return moment(day).isAfter(dateToCheck, 'day')
+            }}
           />
           <DisplayButtons>
             <div>

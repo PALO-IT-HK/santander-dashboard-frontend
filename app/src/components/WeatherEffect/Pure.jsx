@@ -96,7 +96,8 @@ const WeatherEffect = ({
   bikeUsageTopLocationsArray,
   isAnyWidgetOpenCurrently,
   totalBikeUsageAndWeatherActionSaga,
-  aggregatedBikeWeather
+  aggregatedBikeWeather,
+  currentTab
 }) => {
   const handleWeatherTab = val => changeWeatherTabAction(val)
 
@@ -161,10 +162,12 @@ const WeatherEffect = ({
               enteredTo={enteredToWeather}
               hideDatePickerAction={hideDatePickerAction}
               toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
+              currentTab={currentTab}
             />
           ) : null}
           { isTimePickerShown ? (
             <TimePicker
+              fetchSagaAction={totalBikeUsageAndWeatherActionSaga}
               getTimeTagAction={getTimeTagAction}
               filterTimeFromArrayAction={filterTimeFromArrayAction}
               filterTimeToArrayAction={filterTimeToArrayAction}
@@ -182,7 +185,6 @@ const WeatherEffect = ({
         </DateTimeSearchWrapper>
       </FilterWrapper>
       <GraphWrapper>
-        <h3>Graph lives here</h3>
         {currentWeatherTab === 'TEMPERATURE' && (
           <TemperatureGraph
             totalBikeUsageAndWeatherActionSaga={totalBikeUsageAndWeatherActionSaga}

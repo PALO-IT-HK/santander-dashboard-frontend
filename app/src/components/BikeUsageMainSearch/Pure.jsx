@@ -207,6 +207,7 @@ const BikeUsageMainSearch = ({
           ) : null}
           {isTimePickerShown ? (
             <TimePicker
+              fetchSagaAction={getBikeUsageTopLocationsActionSaga}
               getTimeTagAction={getTimeTagAction}
               filterTimeFromArrayAction={filterTimeFromArrayAction}
               filterTimeToArrayAction={filterTimeToArrayAction}

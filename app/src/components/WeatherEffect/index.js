@@ -26,6 +26,7 @@ import {
 
 // s function
 const s = state => ({
+  currentTab: state.dashboard.currentTab,
   currentWeatherTab: state.dashboard.currentWeatherTab,
   bikeUsageTopLocationsArray: state.dashboard.bikeUsageTopLocationsArray,
   isLoading: state.dashboard.isLoading,

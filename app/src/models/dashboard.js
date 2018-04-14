@@ -3,7 +3,8 @@ import { put, call, select, all } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
-import { formatDateBy_yyyymmdd, formatDateForApi } from 'utils/utils'
+import { formatDateBy_yyyymmdd, formatDateForApi, formatTime } from 'utils/utils'
+import moment from 'moment'
 
 // Mock data
 import data from '../mockdata.json'
@@ -126,18 +127,18 @@ function fetchDashboard () {
   return axios.get('https://swapi.co/api/people/1')
 }
 
-function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate) {
-  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
+function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate, timeFrom, timeTo) {
+  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}/timerange/${formatTime(timeFrom)}/${formatTime(timeTo)}`
   return axios.get(url)
 }
 
-function fetchWeather (fromDate, toDate) {
-  const url = `https://api.ci.palo-it-hk.com/weather/history/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
+function fetchWeather (fromDate, toDate, timeFrom, timeTo) {
+  const url = `https://api.ci.palo-it-hk.com/weather/history/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}/${formatTime(timeFrom)}/${formatTime(timeTo)}`
   return axios.get(url)
 }
 
-function fetchTotalUsageBikePointsByDate (fromDate, toDate) {
-  const url = `https://api.ci.palo-it-hk.com/usages/bikepoints/_all/type/aggregated-by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
+function fetchTotalUsageBikePointsByDate (fromDate, toDate, timeFrom, timeTo) {
+  const url = `https://api.ci.palo-it-hk.com/usages/bikepoints/_all/type/aggregated-by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}/timerange/${formatTime(timeFrom)}/${formatTime(timeTo)}`
   return axios.get(url)
 }
 
@@ -172,13 +173,15 @@ export const sagas = {
   },
   [getBikeUsageTopLocationsActionSaga]: function * () {
     yield put(showLoader())
-    const {usageRank, fromDate, toDate} = yield select(state => ({
+    const {usageRank, fromDate, toDate, timeFrom, timeTo} = yield select(state => ({
       usageRank: state.dashboard.currentDropDownDisplayValue,
       fromDate: state.dashboard.fromDate,
-      toDate: state.dashboard.toDate
+      toDate: state.dashboard.toDate,
+      timeFrom: state.dashboard.timeFrom,
+      timeTo: state.dashboard.timeTo
     }))
     try {
-      const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate)
+      const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate, timeFrom, timeTo)
       result.data.length !== 0 ? yield put(getBikeUsageTopLocationsActionSuccess(result.data)) : yield put(showErrorAction())
       yield put(hideLoader())
     } catch (error) {
@@ -195,13 +198,15 @@ export const sagas = {
   },
   [totalBikeUsageAndWeatherActionSaga]: function * () {
     try {
-      const {fromDate, toDate} = yield select(state => ({
+      const {fromDate, toDate, timeFrom, timeTo} = yield select(state => ({
         fromDate: state.dashboard.fromDateWeather,
-        toDate: state.dashboard.toDateWeather
+        toDate: state.dashboard.toDateWeather,
+        timeFrom: state.dashboard.timeFrom,
+        timeTo: state.dashboard.timeTo
       }))
       const [totalUsageBikePoints, weatherForecast] = yield all([
-        call(fetchTotalUsageBikePointsByDate, fromDate, toDate),
-        call(fetchWeather, fromDate, toDate)
+        call(fetchTotalUsageBikePointsByDate, fromDate, toDate, timeFrom, timeTo),
+        call(fetchWeather, fromDate, toDate, timeFrom, timeTo)
       ])
       yield put(getTotalBikeUsageWeatherSuccess({totalUsageBikePoints, weatherForecast}))
     } catch (error) {
@@ -484,7 +489,7 @@ export const dashboardInitialState = {
   searchedLocation: '',
   mapInitialLoadStatus: false,
   currentBikePointsArray: [],
-  fromDate: new Date(),
+  fromDate: new Date(moment(new Date()).subtract(3, 'months')),
   toDate: new Date(),
   enteredTo: new Date(),
   showDatePicker: false,
@@ -503,7 +508,7 @@ export const dashboardInitialState = {
   bikeUsageHistoryDataArray: [],
   isAnyWidgetOpenCurrently: false,
   currentMapBounds: [],
-  fromDateWeather: new Date(),
+  fromDateWeather: new Date(moment(new Date()).subtract(1, 'week')),
   toDateWeather: new Date(),
   enteredToWeather: new Date(),
   totalBikeUsage: [],
