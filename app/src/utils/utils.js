@@ -19,7 +19,7 @@ export const formatDateBy_ddmmyyyy = date => {
   const day = date.getDate()
   const monthIndex = date.getMonth()
   const year = date.getFullYear()
-  
+
   return day + ' ' + monthNames[monthIndex] + ' ' + year
 }
 
@@ -30,7 +30,6 @@ export const formatDateBy_yyyymmdd = date => {
   const day = date.getDate()
   return `${fullYear}${formattedMonth}${day}`
 }
-export const formatToNum = (string) => parseInt(string)
 
 export const formatDateForApi = date => {
   return moment(date).format('YYYYMMDD')

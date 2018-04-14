@@ -1,5 +1,5 @@
 import { createAction, createReducer } from 'redux-act'
-import { put, call, select } from 'redux-saga/effects'
+import { put, call, select, all } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
@@ -97,20 +97,24 @@ export const getHeatmapPointsActionSuccess = createAction(
 export const getHeatmapPointsActionFailed = createAction(
   `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND FAILED`
 )
+export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS`)
+export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_FAIL`)
+export const totalBikeUsageAndWeatherActionSaga = createAction(`${WEATHER} GET_BIKE_USAGE_AND_WEATHER`)
+
+// Weather
+export const getTotalBikeUsageWeatherSuccess = createAction(`${WEATHER} GET_BIKE_USAGE_AND_WEATHER_SUCCESS`)
+export const resetWeatherCalendarAction = createAction(`${WEATHER} RESET_WEATHER_CALENDAR`)
+export const clickDateFromWeatherAction = createAction(`${WEATHER} DATE_FROM_WEATHER_CALENDAR`)
+export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER_CALENDAR`)
 
 // Graph Actions
 export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
 export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
-export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS`)
 export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
-export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_FAIL`)
+
 export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
 export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
 export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
-
-export const resetWeatherCalendarAction = createAction(`${WEATHER} RESET_WEATHER_CALENDAR`)
-export const clickDateFromWeatherAction = createAction(`${WEATHER} DATE_FROM_WEATHER_CALENDAR`)
-export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER_CALENDAR`)
 
 /** --------------------------------------------------
  *
@@ -124,6 +128,16 @@ function fetchDashboard () {
 
 function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate) {
   const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
+  return axios.get(url)
+}
+
+function fetchWeather (fromDate, toDate) {
+  const url = `https://api.ci.palo-it-hk.com/weather/history/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
+  return axios.get(url)
+}
+
+function fetchTotalUsageBikePointsByDate (fromDate, toDate) {
+  const url = `https://api.ci.palo-it-hk.com/usages/bikepoints/_all/type/aggregated-by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}`
   return axios.get(url)
 }
 
@@ -177,6 +191,21 @@ export const sagas = {
       yield put(getHeatmapPointsActionSuccess(result.data))
     } catch (error) {
       yield put(getHeatmapPointsActionFailed(error))
+    }
+  },
+  [totalBikeUsageAndWeatherActionSaga]: function * () {
+    try {
+      const {fromDate, toDate} = yield select(state => ({
+        fromDate: state.dashboard.fromDateWeather,
+        toDate: state.dashboard.toDateWeather
+      }))
+      const [totalUsageBikePoints, weatherForecast] = yield all([
+        call(fetchTotalUsageBikePointsByDate, fromDate, toDate),
+        call(fetchWeather, fromDate, toDate)
+      ])
+      yield put(getTotalBikeUsageWeatherSuccess({totalUsageBikePoints, weatherForecast}))
+    } catch (error) {
+      console.log(error)
     }
   }
 }
@@ -379,6 +408,17 @@ const resetWeatherCalendar = (state) => ({
   enteredToWeather: null
 })
 
+const totalBikeUsageAndWeather = (state, {totalUsageBikePoints, weatherForecast}) => {
+  const totalBikePointsUsage = totalUsageBikePoints.data
+  const weather = weatherForecast.data
+
+  return {
+    ...state,
+    totalBikeUsage: totalBikePointsUsage,
+    weather: weather
+  }
+}
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -418,7 +458,20 @@ export const dashboard = {
   [changeWeatherTabAction]: changeWeatherTab,
   [resetWeatherCalendarAction]: resetWeatherCalendar,
   [clickDateFromWeatherAction]: clickDateFromWeather,
-  [clickDateToWeatherAction]: clickDateToWeather
+  [clickDateToWeatherAction]: clickDateToWeather,
+  [getTotalBikeUsageWeatherSuccess]: totalBikeUsageAndWeather
+}
+
+/** --------------------------------------------------
+ *
+ * Selectors
+ *
+ */
+export const computeAggregatedBikeWeather = state => {
+  const {totalBikeUsage, weather} = state.dashboard
+  return totalBikeUsage.length > 0 && Object.keys(weather).length > 0
+    ? totalBikeUsage.map(bike => ({...bike, ...weather.aggregated[bike.date]}))
+    : []
 }
 
 export const dashboardInitialState = {
@@ -452,7 +505,9 @@ export const dashboardInitialState = {
   currentMapBounds: [],
   fromDateWeather: new Date(),
   toDateWeather: new Date(),
-  enteredToWeather: new Date()
+  enteredToWeather: new Date(),
+  totalBikeUsage: [],
+  weather: {}
 }
 
 export default createReducer(dashboard, dashboardInitialState)

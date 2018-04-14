@@ -1,6 +1,5 @@
 import React from 'react'
 import { BarChart, Bar, Tooltip, CartesianGrid, YAxis, XAxis, ResponsiveContainer } from 'recharts'
-import { formatToNum } from 'utils/utils'
 
 const customToolTipStyles = {
   width: '180px',
@@ -56,7 +55,7 @@ class BikeUsageGraph extends React.Component {
                 <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} />
                 { data.length > 0 && <Tooltip content={customToolTip} />}
                 <Bar yAxisId='bar'
-                  dataKey={v => formatToNum(v.totalBikesOut)}
+                  dataKey={v => parseInt(v.totalBikesOut)}
                   maxBarSize={50}
                   fill='#D54435'
                 />

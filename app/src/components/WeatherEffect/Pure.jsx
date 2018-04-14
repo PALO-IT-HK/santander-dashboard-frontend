@@ -94,7 +94,9 @@ const WeatherEffect = ({
   timeTagName,
   getBikeUsageTopLocationsActionSaga,
   bikeUsageTopLocationsArray,
-  isAnyWidgetOpenCurrently
+  isAnyWidgetOpenCurrently,
+  totalBikeUsageAndWeatherActionSaga,
+  aggregatedBikeWeather
 }) => {
   const handleWeatherTab = val => changeWeatherTabAction(val)
 
@@ -149,7 +151,7 @@ const WeatherEffect = ({
           />
           {showDatePicker ? (
             <CalendarDatePicker
-              getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+              fetchSagaAction={totalBikeUsageAndWeatherActionSaga}
               getPublicHolidayAction={getPublicHolidayAction}
               clickDateFromAction={clickDateFromWeatherAction}
               clickDateToAction={clickDateToWeatherAction}
@@ -183,15 +185,15 @@ const WeatherEffect = ({
         <h3>Graph lives here</h3>
         {currentWeatherTab === 'TEMPERATURE' && (
           <TemperatureGraph
-            getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
-            data={bikeUsageTopLocationsArray}
+            totalBikeUsageAndWeatherActionSaga={totalBikeUsageAndWeatherActionSaga}
+            data={aggregatedBikeWeather}
             showErrorText={showErrorText}
             loader={isLoading}
           />)}
         {currentWeatherTab === 'RAINFALL' && (
           <RainfallGraph
-            getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
-            data={bikeUsageTopLocationsArray}
+            totalBikeUsageAndWeatherActionSaga={totalBikeUsageAndWeatherActionSaga}
+            data={aggregatedBikeWeather}
             showErrorText={showErrorText}
             loader={isLoading}
           />)}
