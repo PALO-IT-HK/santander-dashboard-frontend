@@ -27,6 +27,9 @@ export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
 export const changeToggledTabAction = createAction(
   `${MODEL_NAME} CHANGE_TOGGLED_TAB`
 )
+export const toggleLoadingBarAction = createAction(
+  `${MODEL_NAME} TOGGLE LOADING BAR SHOW HIDE`
+)
 // HeatMap Actions
 export const toggleMarkerLabelVisibilityAction = createAction(
   `${HEAT_MAP} TOGGLE MARKER LABEL VISIBLE`
@@ -141,6 +144,7 @@ export const sagas = {
     yield put(getDashboardSuccess(res.data))
   },
   [getBikePointsActionSaga]: function * ({ payload }) {
+    yield put(toggleLoadingBarAction(true))
     try {
       const result = yield call(fetchInitialBikePoints, payload)
       yield put(getBikePointsActionSuccess(result.data))
@@ -149,7 +153,7 @@ export const sagas = {
     }
   },
   [getBikeUsageTopLocationsActionSaga]: function * () {
-    yield put(showLoader())
+    yield put(toggleLoadingBarAction(true))
     const {usageRank, fromDate, toDate} = yield select(state => ({
       usageRank: state.dashboard.currentDropDownDisplayValue,
       fromDate: state.dashboard.fromDate,
@@ -158,15 +162,17 @@ export const sagas = {
     try {
       const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate)
       result.data.length !== 0 ? yield put(getBikeUsageTopLocationsActionSuccess(result.data)) : yield put(showErrorAction())
-      yield put(hideLoader())
+      yield put(toggleLoadingBarAction(false))
     } catch (error) {
       yield put(getBikeUsageTopLocationActionFail(error))
     }
   },
   [getHeatmapPointsActionSaga]: function * ({ payload }) {
+    yield put(toggleLoadingBarAction(true))
     try {
       const result = yield call(fetchHeatmapPoints, payload)
       yield put(getHeatmapPointsActionSuccess(result.data))
+      yield put(toggleLoadingBarAction(false))
     } catch (error) {
       yield put(getHeatmapPointsActionFailed(error))
     }
@@ -179,6 +185,10 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  * Logic
  *
  */
+
+// Loader
+const toggleLoadingBar = (state, status) => ({ ...state, loadingBarStatus: status })
+
 // Tabs
 const changeTab = (state, tabs) => ({ ...state, currentTab: tabs })
 const changeToggledTab = (state, tabs) => ({
@@ -378,7 +388,8 @@ export const dashboard = {
   [showErrorAction]: showError,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
   [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
-  [updateMapBoundsAction]: updateMapBounds
+  [updateMapBoundsAction]: updateMapBounds,
+  [toggleLoadingBarAction]: toggleLoadingBar
 }
 
 export const dashboardInitialState = {
@@ -408,7 +419,8 @@ export const dashboardInitialState = {
   isLoading: false,
   bikeUsageHistoryDataArray: [],
   isAnyWidgetOpenCurrently: false,
-  currentMapBounds: []
+  currentMapBounds: [],
+  loadingBarStatus: false
 }
 
 export default createReducer(dashboard, dashboardInitialState)

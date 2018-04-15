@@ -3,11 +3,20 @@ import styled from 'styled-components'
 
 import LoadingBar from 'components/LoadingBar/Pure'
 
+const hideShowStyles = {
+  hide: `display: none;`,
+  show: `display: flex;`
+}
+
 const LoadingBarWrapper = styled.div`
   position: absolute;
   top: 0;
   width: 100%;
   background-color: blue;
+  ${({loadingBarStatus}) => {
+    const status = loadingBarStatus ? 'show' : 'hide'
+    return hideShowStyles[status]}
+  }
 `
 
 export const MenuTabsWrapper = styled.div`
@@ -31,9 +40,10 @@ export const TabWrapper = styled.div`
   transition-duration: 0.2s;
 `
 
-export const MenuTabs = ({value, onChange, children}) => (
+export const MenuTabs = ({value, onChange, loadingBarStatus, children}) => (
   <div style={{padding: 0}}>
-    <LoadingBarWrapper>
+    <LoadingBarWrapper
+      loadingBarStatus={loadingBarStatus}>
       <LoadingBar />
     </LoadingBarWrapper>
     <MenuTabsWrapper>

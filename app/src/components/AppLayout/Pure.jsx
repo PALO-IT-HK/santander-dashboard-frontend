@@ -43,7 +43,7 @@ const Content = styled.div`
   `};
 `
 
-const AppLayout = ({ currentTab, changeTabAction, children }) => {
+const AppLayout = ({ currentTab, changeTabAction, loadingBarStatus, children }) => {
   const handleTabChange = v => changeTabAction(v)
   return (
     <RootAppContainer>
@@ -55,6 +55,7 @@ const AppLayout = ({ currentTab, changeTabAction, children }) => {
                 <MenuBar
                   value={currentTab}
                   onChange={v => handleTabChange(v)}
+                  loadingBarStatus={loadingBarStatus}
                 />
               </StdWrapperFlexContentLeft>
           </Header>
