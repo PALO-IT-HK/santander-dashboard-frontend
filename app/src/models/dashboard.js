@@ -3,8 +3,7 @@ import { put, call, select } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
-import { formatDateBy_yyyymmdd } from 'utils/utils'
-import { formatDateForApi } from 'utils/utils'
+import { formatDateForApi, formatDateBy_yyyymmdd, formatTimeInHhMmAndRemoveSpecialChars } from 'utils/utils'
 
 // Mock data
 import data from '../mockdata.json'
@@ -131,8 +130,11 @@ function fetchInitialBikePoints (payload) {
 function fetchHeatmapPoints (payload) {
   const fromDate = formatDateBy_yyyymmdd(payload.date.fromDate)
   const toDate = formatDateBy_yyyymmdd(payload.date.toDate)
+  const timeFrom = formatTimeInHhMmAndRemoveSpecialChars(payload.time.timeFrom)
+  const timeTo = formatTimeInHhMmAndRemoveSpecialChars(payload.time.timeTo)
   const url = `https://api.ci.palo-it-hk.com/usages/boundary/${payload.ne.neLat},${payload.ne.neLng}/
-    ${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}`
+    ${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}/
+    timerange/${timeFrom}/${timeTo}`
   return axios.get(url)
 }
 

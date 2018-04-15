@@ -35,3 +35,7 @@ export const formatToNum = (string) => parseInt(string)
 export const formatDateForApi = date => {
   return moment(date).format('YYYYMMDD')
 }
+
+export const formatTimeInHhMmAndRemoveSpecialChars = timeString => {
+  return timeString.toString().split(':').join('')
+}
