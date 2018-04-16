@@ -100,7 +100,7 @@ export default class CalendarDatePicker extends Component {
     return (
       <div>
         <CalendarWrapper>
-          {(this.props.currentTab === 'WEATHER EFFECT') ? null : <PublicHolidayFilters selectPublicHoliday={this.getPublicHoliday} />}
+          {this.props.currentTab === 'WEATHER EFFECT' ? null : <PublicHolidayFilters selectPublicHoliday={this.getPublicHoliday} />}
           <DayPicker
             className="Range"
             numberOfMonths={2}
