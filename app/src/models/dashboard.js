@@ -3,7 +3,11 @@ import { put, call, select } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
+<<<<<<< HEAD
 import { formatDateForApi, formatDateBy_yyyymmdd, formatTimeInHhMmAndRemoveSpecialChars } from 'utils/utils'
+=======
+import { formatDateBy_yyyymmdd, formatDateForApi } from 'utils/utils'
+>>>>>>> master
 
 // Mock data
 import data from '../mockdata.json'
@@ -19,6 +23,7 @@ const GRAPH = '[GRAPH]'
 const CALENDAR = '[CALENDAR]'
 const CALENDAR_TIME = '[CALENDAR_TIME]'
 const TIME = '[TIME]'
+const WEATHER = '[WEATHER]'
 
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
@@ -26,9 +31,9 @@ export const changeTabAction = createAction(`${MODEL_NAME} CHANGE_TAB`)
 export const changeToggledTabAction = createAction(
   `${MODEL_NAME} CHANGE_TOGGLED_TAB`
 )
-export const toggleLoadingBarAction = createAction(
-  `${MODEL_NAME} TOGGLE LOADING BAR SHOW HIDE`
-)
+
+export const changeWeatherTabAction = createAction(`${MODEL_NAME} TOGGLE_WEATHER_TAB`)
+
 // HeatMap Actions
 export const toggleMarkerLabelVisibilityAction = createAction(
   `${HEAT_MAP} TOGGLE MARKER LABEL VISIBLE`
@@ -96,6 +101,9 @@ export const getHeatmapPointsActionSuccess = createAction(
 export const getHeatmapPointsActionFailed = createAction(
   `${MODEL_NAME} GET HEAT MAP POINTS FROM BACKEND FAILED`
 )
+export const toggleLoadingBarAction = createAction(
+  `${MODEL_NAME} TOGGLE ISLOADING BAR`
+)
 
 // Graph Actions
 export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
@@ -103,9 +111,13 @@ export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DI
 export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS`)
 export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
 export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_FAIL`)
-export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
-export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
 export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
+
+// Weather Actions 
+export const resetWeatherCalendarAction = createAction(`${WEATHER} RESET_WEATHER_CALENDAR`)
+export const clickDateFromWeatherAction = createAction(`${WEATHER} DATE_FROM_WEATHER_CALENDAR`)
+export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER_CALENDAR`)
+
 /** --------------------------------------------------
  *
  * Sagas
@@ -151,7 +163,7 @@ export const sagas = {
       const result = yield call(fetchInitialBikePoints, payload)
       yield put(getBikePointsActionSuccess(result.data))
     } catch (error) {
-      yield put (getBikePointsActionFailed(error))
+      yield put(getBikePointsActionFailed(error))
     }
   },
   [getBikeUsageTopLocationsActionSaga]: function * () {
@@ -188,9 +200,6 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  *
  */
 
-// Loader
-const toggleLoadingBar = (state, status) => ({ ...state, loadingBarStatus: status })
-
 // Tabs
 const changeTab = (state, tabs) => ({ ...state, currentTab: tabs })
 const changeToggledTab = (state, tabs) => ({
@@ -201,6 +210,13 @@ const addDashboardData = (state, dashboardData) => {
   return {
     ...state,
     dashboardData
+  }
+}
+
+const changeWeatherTab = (state, currentWeatherTab) => {
+  return {
+    ...state,
+    currentWeatherTab
   }
 }
 
@@ -249,6 +265,7 @@ const clickDateFrom = (state, { from }) => ({
   toDate: null,
   enteredTo: null
 })
+
 const clickDateTo = (state, { to, enteredTo }) => ({
   ...state,
   toDate: to,
@@ -329,19 +346,7 @@ const bikeUsageTopLocations = (state, data) => {
 }
 
 // Loader
-const showLoading = (state) => {
-  return ({
-    ...state,
-    isLoading: true
-  })
-}
-
-const hideLoading = (state) => {
-  return ({
-    ...state,
-    isLoading: false
-  })
-}
+const toggleLoadingBar = (state, status) => ({ ...state, loadingBarStatus: status })
 
 const showError = (state, showErrorText) => {
   return ({
@@ -353,6 +358,26 @@ const showError = (state, showErrorText) => {
 const toggleWidgetOpenStatus = (state, status) => ({
   ...state,
   isAnyWidgetOpenCurrently: status
+})
+
+const clickDateFromWeather = (state, { from }) => ({
+  ...state,
+  fromDateWeather: from,
+  toDateWeather: null,
+  enteredToWeather: null
+})
+
+const clickDateToWeather = (state, { to, enteredTo }) => ({
+  ...state,
+  toDateWeather: to,
+  enteredToWeather: enteredTo
+})
+
+const resetWeatherCalendar = (state) => ({
+  ...state,
+  toDateWeather: null,
+  fromDateWeather: null,
+  enteredToWeather: null
 })
 
 /** --------------------------------------------------
@@ -385,19 +410,22 @@ export const dashboard = {
   [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
   [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
   [getBikeUsageTopLocationsActionSuccess]: bikeUsageTopLocations,
-  [showLoader]: showLoading,
-  [hideLoader]: hideLoading,
   [showErrorAction]: showError,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
   [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
   [updateMapBoundsAction]: updateMapBounds,
-  [toggleLoadingBarAction]: toggleLoadingBar
+  [toggleLoadingBarAction]: toggleLoadingBar,
+  [changeWeatherTabAction]: changeWeatherTab,
+  [resetWeatherCalendarAction]: resetWeatherCalendar,
+  [clickDateFromWeatherAction]: clickDateFromWeather,
+  [clickDateToWeatherAction]: clickDateToWeather
 }
 
 export const dashboardInitialState = {
   currentTab: 'BIKE USAGE',
   currentMarker: '',
   currentToggledTab: 'HEAT MAP',
+  currentWeatherTab: 'TEMPERATURE',
   graphData: data,
   currentFocusStatus: '',
   searchedLocation: '',
@@ -418,11 +446,13 @@ export const dashboardInitialState = {
   dropDownDisplayStatus: false,
   currentDropDownDisplayValue: 5,
   bikeUsageTopLocationsArray: [],
-  isLoading: false,
   bikeUsageHistoryDataArray: [],
   isAnyWidgetOpenCurrently: false,
   currentMapBounds: [],
-  loadingBarStatus: false
+  loadingBarStatus: false,
+  fromDateWeather: new Date(),
+  toDateWeather: new Date(),
+  enteredToWeather: new Date()
 }
 
 export default createReducer(dashboard, dashboardInitialState)

@@ -39,7 +39,7 @@ const customToolTip = ({label, payload}) => {
   )
 }
 
-class BikeUsageGraph extends React.Component {
+class RainfallGraph extends React.Component {
   componentDidMount () {
     this.props.getBikeUsageTopLocationsActionSaga()
   }
@@ -70,4 +70,4 @@ class BikeUsageGraph extends React.Component {
   }
 }
 
-export default BikeUsageGraph
+export default RainfallGraph

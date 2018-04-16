@@ -3,6 +3,7 @@ import styled from 'styled-components'
 
 import { StdWrapperFlexContentCentered } from 'components/Layout'
 import BikeUsageMainSearch from 'components/BikeUsageMainSearch'
+import WeatherEffect from 'components/WeatherEffect'
 
 const MainDiv = styled.div`
   text-align: center;
@@ -19,7 +20,14 @@ export default function Dashboard ({getDashboard, dashboardData, value, currentT
         <MainDiv>
           {currentTab === 'BIKE USAGE' && (
             <BikeUsageMainSearch />)}
-          {currentTab === 'WEATHER EFFECT' && <h1>WEATHER EFFECT</h1>}
+          {currentTab === 'WEATHER EFFECT' && (
+            <WeatherEffect />
+          )}
+          {dashboardData &&
+          <StdWrapperFlexContentCentered>
+            {JSON.stringify(dashboardData, 2, null)}
+          </StdWrapperFlexContentCentered>
+          }
         </MainDiv>
   )
 }
