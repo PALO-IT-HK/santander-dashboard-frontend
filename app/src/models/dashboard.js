@@ -153,8 +153,11 @@ function fetchInitialBikePoints (payload) {
 function fetchHeatmapPoints (payload) {
   const fromDate = formatDateBy_yyyymmdd(payload.date.fromDate)
   const toDate = formatDateBy_yyyymmdd(payload.date.toDate)
+  const timeFrom = formatTime(payload.time.timeFrom)
+  const timeTo = formatTime(payload.time.timeTo)
   const url = `https://api.ci.palo-it-hk.com/usages/boundary/${payload.ne.neLat},${payload.ne.neLng}/
-    ${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}`
+    ${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}/
+    timerange/${timeFrom}/${timeTo}`
   return axios.get(url)
 }
 

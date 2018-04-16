@@ -63,12 +63,6 @@ export default class CalendarDatePicker extends Component {
     this.props.resetDateAction()
   }
 
-  hideDatePicker = () => {
-    this.props.fetchSagaAction()
-    this.props.hideDatePickerAction()
-    this.props.toggleWidgetOpenStatusAction(false)
-  }
-
   handleCalendarApplyOnClick = () => {
     const payload = {
       ne: {
@@ -85,7 +79,9 @@ export default class CalendarDatePicker extends Component {
       }
     }
     this.props.getHeatmapPointsActionSaga(payload)
-    this.hideDatePicker()
+    this.props.getBikeUsageTopLocationsActionSaga()
+    this.props.hideDatePickerAction()
+    this.props.toggleWidgetOpenStatusAction(false)
   }
 
   getPublicHoliday = (day) => {
@@ -139,7 +135,7 @@ export default class CalendarDatePicker extends Component {
                   <SButton
                     type={'primary'}
                     size={'small'}
-                    onClick={this.hideDatePicker}
+                    onClick={this.handleCalendarApplyOnClick}
                     children={'Apply'}
                   />
               </ButtonsWrapper>
