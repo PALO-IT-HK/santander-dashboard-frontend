@@ -3,11 +3,7 @@ import { put, call, select } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
-<<<<<<< HEAD
 import { formatDateForApi, formatDateBy_yyyymmdd, formatTimeInHhMmAndRemoveSpecialChars } from 'utils/utils'
-=======
-import { formatDateBy_yyyymmdd, formatDateForApi } from 'utils/utils'
->>>>>>> master
 
 // Mock data
 import data from '../mockdata.json'
