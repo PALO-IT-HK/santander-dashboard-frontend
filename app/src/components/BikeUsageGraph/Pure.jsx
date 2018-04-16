@@ -56,7 +56,7 @@ class BikeUsageGraph extends React.Component {
                 <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} />
                 { data.length > 0 && <Tooltip content={customToolTip} />}
                 <Bar yAxisId='bar'
-                  dataKey={v => parseInt(v.totalBikesOut)}
+                  dataKey={v => v.totalBikesOut}
                   maxBarSize={50}
                   fill='#D54435'
                 />

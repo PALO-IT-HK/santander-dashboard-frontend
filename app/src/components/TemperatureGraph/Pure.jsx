@@ -31,7 +31,6 @@ const CustomizedAxisTick = props => {
 const customToolTip = ({label, payload}) => {
   if (!payload.length) return
   const {date, totalBikesOut, avg_air_temperature} = payload[0].payload
-  const temp = avg_air_temperature.toFixed(2).toString()
   const formattedDate = moment(date).format('dddd, DD, MMMM YYYY')
   return (
     <div style={customToolTipStyles}>
@@ -40,7 +39,7 @@ const customToolTip = ({label, payload}) => {
         {`${totalBikesOut} Total Usage`}
       </span>
       <span style={{color: '#A8AAB6'}}>{`${' '}|`}</span>
-      <span style={{color: '#1dacbd'}}>{`${' '}${temp}°C`}</span>
+      <span style={{color: '#1dacbd'}}>{`${' '}${avg_air_temperature}°C`}</span>
     </div>
   )
 }
@@ -65,7 +64,7 @@ class TemperatureGraph extends React.Component {
                 {data.length > 0 && <Tooltip content={customToolTip} />}
                 <Bar
                   yAxisId='bar'
-                  dataKey={v => parseInt(v.totalBikesOut)}
+                  dataKey={v => v.totalBikesOut}
                   maxBarSize={50}
                   fill='#D54435'
                 />

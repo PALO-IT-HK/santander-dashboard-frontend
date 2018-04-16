@@ -31,7 +31,6 @@ const CustomizedAxisTick = props => {
 const customToolTip = ({label, payload}) => {
   if (!payload.length) return
   const {date, totalBikesOut, total_prcp_amt} = payload[0].payload
-  const rainfall = total_prcp_amt.toString()
   const formattedDate = moment(date).format('dddd, DD, MMMM YYYY')
   return (
     <div style={customToolTipStyles}>
@@ -40,7 +39,7 @@ const customToolTip = ({label, payload}) => {
         {`${totalBikesOut} Total Usage`}
       </span>
       <span style={{color: '#A8AAB6'}}>{`${' '}|`}</span>
-      <span style={{color: '#1dacbd'}}>{`${' '}${rainfall}mm`}</span>
+      <span style={{color: '#1dacbd'}}>{`${' '}${total_prcp_amt}mm`}</span>
     </div>
   )
 }
@@ -64,7 +63,7 @@ class RainfallGraph extends React.Component {
                 {data.length > 0 && <Tooltip content={customToolTip} />}
                 <Bar
                   yAxisId='bar'
-                  dataKey={v => parseInt(v.totalBikesOut)}
+                  dataKey={v => v.totalBikesOut}
                   maxBarSize={50}
                   fill='#D54435'
                 />
