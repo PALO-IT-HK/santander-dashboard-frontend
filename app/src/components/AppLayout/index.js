@@ -6,7 +6,10 @@ import Pure from './Pure'
 import { changeTabAction } from 'models/dashboard'
 
 // s function
-const s = (state) => ({currentTab: state.dashboard.currentTab})
+const s = (state) => ({
+  currentTab: state.dashboard.currentTab,
+  loadingBarStatus: state.dashboard.loadingBarStatus
+})
 
 // d function
 const d = dispatch => ({changeTabAction: bindActionCreators(changeTabAction, dispatch)})

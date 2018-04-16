@@ -12,6 +12,7 @@ const SearchInputField = styled.input`
     color: #1dacbd;
     font-family: Abril Fatface;
     font-size: 30px;
+    background-color: #f1f4f8;
   &::-webkit-input-placeholder {
     ${({status}) => status === 'focus' ? `opacity: 0.4;` : `opacity: 1;`}
     color: #1dacbd;

@@ -17,7 +17,6 @@ html,body, ul {
 }
 
 body.no-overflow{
-  height: 100vh;
   overflow: hidden;
 }
 
