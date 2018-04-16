@@ -119,14 +119,13 @@ const BikeUsageMainSearch = ({
   updateDropDownDisplayValueAction,
   getBikeUsageTopLocationsActionSaga,
   bikeUsageTopLocationsArray,
-  isLoading,
+  loadingBarStatus,
   bikeUsageHistoryDataArray,
   getHeatmapPointsActionSaga,
   toggleWidgetOpenStatusAction,
   isAnyWidgetOpenCurrently,
   updateMapBoundsAction,
-  currentMapBounds,
-  showErrorText
+  currentMapBounds
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
@@ -185,7 +184,6 @@ const BikeUsageMainSearch = ({
                 currentDropDownDisplayValue={currentDropDownDisplayValue}
                 updateDropDownDisplayValueAction={updateDropDownDisplayValueAction}
                 onChange={getBikeUsageTopLocationsActionSaga} />
-
             </SubHeader>
           </SearchBoxDiv>
         )
@@ -205,7 +203,7 @@ const BikeUsageMainSearch = ({
             />
             {showDatePicker ? (
               <CalendarDatePicker
-                getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+                fetchSagaAction={getBikeUsageTopLocationsActionSaga}
                 getPublicHolidayAction={getPublicHolidayAction}
                 clickDateFromAction={clickDateFromAction}
                 clickDateToAction={clickDateToAction}
@@ -221,6 +219,7 @@ const BikeUsageMainSearch = ({
             ) : null}
             {isTimePickerShown ? (
               <TimePicker
+                fetchSagaAction={getBikeUsageTopLocationsActionSaga}
                 getTimeTagAction={getTimeTagAction}
                 filterTimeFromArrayAction={filterTimeFromArrayAction}
                 filterTimeToArrayAction={filterTimeToArrayAction}
@@ -268,8 +267,7 @@ const BikeUsageMainSearch = ({
           <BikeUsageGraph
             getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
             data={bikeUsageTopLocationsArray}
-            showErrorText={showErrorText}
-            loader={isLoading}
+            loader={loadingBarStatus}
           />
         )}
       </RenderMapGraphDiv>

@@ -68,11 +68,11 @@ const Heatmap = compose(
             },
             date: {
               fromDate: fromDate,
-              toDate: toDate 
+              toDate: toDate
             },
             time: {
               timeFrom: timeFrom,
-              timeTo: timeTo              
+              timeTo: timeTo
             }
           }
           updateMapBoundsAction(boundsObj)
@@ -107,68 +107,68 @@ const Heatmap = compose(
   }),
   withScriptjs,
   withGoogleMap)(props => {
-  const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
+    const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
     onMapMounted, center, zoom, onBoundsChanged, updateMapLocation, onZoomChanged,
     onDragEnd, onIdle, mapInitialLoadStatus, getBikePointsActionSaga, currentBikePointsArray,
     bikeUsageHistoryDataArray, getHeatmapPointsActionSaga, fromDate, toDate, timeFrom, timeTo,
     updateMapBoundsAction } = props
 
   // Get custom search bar element
-  const input = document.getElementById('search-autocomplete')
+    const input = document.getElementById('search-autocomplete')
 
   // Autocomplete Library to listen to places changed outside map
-  const autocomplete = new window.google.maps.places.Autocomplete(input)
+    const autocomplete = new window.google.maps.places.Autocomplete(input)
 
   // Set search results bounds
-  autocomplete.setComponentRestrictions({ country: ['uk'] })
+    autocomplete.setComponentRestrictions({ country: ['uk'] })
 
   // Event listener for place changed
-  autocomplete.addListener('place_changed', () => {
-    const places = [autocomplete.getPlace()]
-    updateMapLocation(places)
-  })
-  const handleOnIdle = () => {
-    !mapInitialLoadStatus ? 
-    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, 
-      updateMapBoundsAction, fromDate, toDate, timeFrom, timeTo) : 
+    autocomplete.addListener('place_changed', () => {
+      const places = [autocomplete.getPlace()]
+      updateMapLocation(places)
+    })
+    const handleOnIdle = () => {
+      !mapInitialLoadStatus ?
+    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga,
+      updateMapBoundsAction, fromDate, toDate, timeFrom, timeTo) :
     console.log('map initial load complete!')
-  }
-  const handleMouseOver = e => {
+    }
+    const handleMouseOver = e => {
     // const title = e.Fa.target.parentElement.title ? e.Fa.target.parentElement.title : null
-    const title = e.Ia.path !== undefined ? e.Ia.path[1].title : null
-    console.log(e.Ia.path[1].title)
-    toggleMarkerLabelVisibilityAction(title)
-  }
-  const getPoints = () => {
-    return bikeUsageHistoryDataArray.reduce((acc, curr) => {
-      const lat = parseFloat(curr.lat)
-      const lng = parseFloat(curr.lng)
-      const pointWeight = curr.totalBikesOut / 1000
-      const finalValueToEval = curr.totalBikesOut / 1000 < 1.5 ?
+      const title = e.Ia.path !== undefined ? e.Ia.path[1].title : null
+      console.log(e.Ia.path[1].title)
+      toggleMarkerLabelVisibilityAction(title)
+    }
+    const getPoints = () => {
+      return bikeUsageHistoryDataArray.reduce((acc, curr) => {
+        const lat = parseFloat(curr.lat)
+        const lng = parseFloat(curr.lng)
+        const pointWeight = curr.totalBikesOut / 1000
+        const finalValueToEval = curr.totalBikesOut / 1000 < 1.5 ?
       new window.google.maps.LatLng(lat, lng) :
       { location: new window.google.maps.LatLng(lat, lng), weight: pointWeight }
-      return [
-        ...acc, 
-        finalValueToEval
-      ]
-    },[])
-  }
-  return (
-    <GoogleMap
-      ref={onMapMounted}
-      zoom={zoom}
-      center={center}
-      onIdle={() => handleOnIdle()}
-      onBoundsChanged={onBoundsChanged}
-      onZoomChanged={onZoomChanged}
-      onDragEnd={onDragEnd}>
+        return [
+          ...acc,
+          finalValueToEval
+        ]
+      }, [])
+    }
+    return (
+      <GoogleMap
+        ref={onMapMounted}
+        zoom={zoom}
+        center={center}
+        onIdle={() => handleOnIdle()}
+        onBoundsChanged={onBoundsChanged}
+        onZoomChanged={onZoomChanged}
+        onDragEnd={onDragEnd}>
 
-      <HeatmapLayer
-        data={getPoints()}
-        options={({ radius: '100', dissipating: true })} />
+        <HeatmapLayer
+          data={getPoints()}
+          options={({ radius: '100', dissipating: true })} />
 
-      {currentBikePointsArray.map(item => {
-        return (
+        {currentBikePointsArray.map(item => {
+          return (
           isMarkerShown &&
           <MarkerWithLabel
             title={item.id}
@@ -222,13 +222,13 @@ const Heatmap = compose(
               </div>
             </div>
           </MarkerWithLabel>
-        )
-      })
+          )
+        })
       }
 
-    </GoogleMap>
-  )
-})
+      </GoogleMap>
+    )
+  })
 
 Heatmap.defaultProps = {
   isMarkerShown: false

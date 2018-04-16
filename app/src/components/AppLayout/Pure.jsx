@@ -11,7 +11,7 @@ import {
 import Helmet from 'react-helmet'
 
 const RootAppContainer = styled.div`
-  
+
 `
 
 const Header = styled.div`
@@ -51,13 +51,13 @@ const AppLayout = ({ currentTab, changeTabAction, loadingBarStatus, children }) 
         <React.Fragment>
           <Helmet title='Landing Page' titleTemplate='%s | My App' />
           <Header>
-              <StdWrapperFlexContentLeft>
-                <MenuBar
-                  value={currentTab}
-                  onChange={v => handleTabChange(v)}
-                  loadingBarStatus={loadingBarStatus}
-                />
-              </StdWrapperFlexContentLeft>
+            <StdWrapperFlexContentLeft>
+              <MenuBar
+                value={currentTab}
+                onChange={v => handleTabChange(v)}
+                loadingBarStatus={loadingBarStatus}
+              />
+            </StdWrapperFlexContentLeft>
           </Header>
           <Content>{children}</Content>
         </React.Fragment>

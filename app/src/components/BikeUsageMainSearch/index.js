@@ -29,8 +29,7 @@ import {
   getBikeUsageTopLocationsActionSaga,
   getHeatmapPointsActionSaga,
   toggleWidgetOpenStatusAction,
-  updateMapBoundsAction,
-  showErrorAction
+  updateMapBoundsAction
 } from 'models/dashboard'
 
 // s function
@@ -61,7 +60,7 @@ const s = state => ({
   bikeUsageHistoryDataArray: state.dashboard.bikeUsageHistoryDataArray,
   isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
   currentMapBounds: state.dashboard.currentMapBounds,
-  showErrorText: state.dashboard.showErrorText
+  loadingBarStatus: state.dashboard.loadingBarStatus
 })
 
 const d = dispatch => ({
@@ -89,8 +88,7 @@ const d = dispatch => ({
   getBikeUsageTopLocationsActionSaga: bindActionCreators(getBikeUsageTopLocationsActionSaga, dispatch),
   getHeatmapPointsActionSaga: bindActionCreators(getHeatmapPointsActionSaga, dispatch),
   toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch),
-  updateMapBoundsAction: bindActionCreators(updateMapBoundsAction, dispatch),
-  showErrorAction: bindActionCreators(showErrorAction, dispatch)
+  updateMapBoundsAction: bindActionCreators(updateMapBoundsAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))
