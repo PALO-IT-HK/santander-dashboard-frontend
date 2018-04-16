@@ -46,7 +46,7 @@ const Heatmap = compose(
         //   console.log('Drag End changed refs map ' + refs.map.getBounds())
         // },
         onIdle: (getBikePointsActionSaga, getHeatmapPointsActionSaga, updateMapBoundsAction,
-          fromDate, toDate) => {
+          fromDate, toDate, timeFrom, timeTo) => {
           const bounds = refs.map.getBounds()
           const swLat = bounds.getSouthWest().lat()
           const swLng = bounds.getSouthWest().lng()
@@ -69,6 +69,10 @@ const Heatmap = compose(
             date: {
               fromDate: fromDate,
               toDate: toDate 
+            },
+            time: {
+              timeFrom: timeFrom,
+              timeTo: timeTo              
             }
           }
           updateMapBoundsAction(boundsObj)
@@ -106,8 +110,8 @@ const Heatmap = compose(
   const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
     onMapMounted, center, zoom, onBoundsChanged, updateMapLocation, onZoomChanged,
     onDragEnd, onIdle, mapInitialLoadStatus, getBikePointsActionSaga, currentBikePointsArray,
-    bikeUsageHistoryDataArray, getHeatmapPointsActionSaga, fromDate, toDate, updateMapBoundsAction
-  } = props
+    bikeUsageHistoryDataArray, getHeatmapPointsActionSaga, fromDate, toDate, timeFrom, timeTo,
+    updateMapBoundsAction } = props
 
   // Get custom search bar element
   const input = document.getElementById('search-autocomplete')
@@ -125,7 +129,8 @@ const Heatmap = compose(
   })
   const handleOnIdle = () => {
     !mapInitialLoadStatus ? 
-    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, updateMapBoundsAction, fromDate, toDate) : 
+    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, 
+      updateMapBoundsAction, fromDate, toDate, timeFrom, timeTo) : 
     console.log('map initial load complete!')
   }
   const handleMouseOver = e => {

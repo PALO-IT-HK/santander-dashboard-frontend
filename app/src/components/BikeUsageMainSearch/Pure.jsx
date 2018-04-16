@@ -229,10 +229,14 @@ const BikeUsageMainSearch = ({
                 timeFromArray={timeFromArray}
                 timeFrom={timeFrom}
                 timeTo={timeTo}
+                fromDate={fromDate}
+                toDate={toDate}
                 selectTimeFromAction={selectTimeFromAction}
                 selectTimeToAction={selectTimeToAction}
                 hideTimePickerAction={hideTimePickerAction}
                 toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
+                currentMapBounds={currentMapBounds}
+                getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
               />
             ) : null}
           </DateTimeSearchWrapper>

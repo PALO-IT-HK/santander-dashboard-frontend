@@ -51,6 +51,8 @@ const TimePicker = ({
   hideTimePickerAction,
   timeFrom,
   timeTo,
+  fromDate,
+  toDate,
   selectTimeFromAction,
   selectTimeToAction,
   timeFromArray,
@@ -59,7 +61,9 @@ const TimePicker = ({
   filterTimeToArrayAction,
   filterTimeFromArrayAction,
   getTimeTagAction,
-  toggleWidgetOpenStatusAction
+  toggleWidgetOpenStatusAction,
+  currentMapBounds,
+  getHeatmapPointsActionSaga
 }) => {
   const getTimeTag = tag => {
     getTimeTagAction([tag, timeFilters[tag]])
@@ -83,6 +87,25 @@ const TimePicker = ({
   }
 
   const handleApplyOnClick = () => {
+    const payload = {
+      ne: {
+        neLat: currentMapBounds.ne.neLat,
+        neLng: currentMapBounds.ne.neLng
+      },
+      sw: {
+        swLat: currentMapBounds.sw.swLat,
+        swLng: currentMapBounds.sw.swLng
+      },
+      date: {
+        fromDate: fromDate,
+        toDate: toDate
+      },
+      time: {
+        timeFrom: timeFrom,
+        timeTo: timeTo
+      }
+    }
+    getHeatmapPointsActionSaga(payload)
     toggleWidgetOpenStatusAction(false)
     hideTimePickerAction()
   }
