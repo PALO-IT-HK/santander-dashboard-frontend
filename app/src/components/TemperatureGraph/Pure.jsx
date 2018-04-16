@@ -32,6 +32,7 @@ const customToolTip = ({label, payload}) => {
   if (!payload.length) return
   const {date, totalBikesOut, avg_air_temperature} = payload[0].payload
   const formattedDate = moment(date).format('dddd, DD, MMMM YYYY')
+  const temp = avg_air_temperature.toFixed(2)
   return (
     <div style={customToolTipStyles}>
       <p style={{fontSize: 10, fontWeight: 400}}>{formattedDate}</p>
@@ -39,7 +40,7 @@ const customToolTip = ({label, payload}) => {
         {`${totalBikesOut} Total Usage`}
       </span>
       <span style={{color: '#A8AAB6'}}>{`${' '}|`}</span>
-      <span style={{color: '#1dacbd'}}>{`${' '}${avg_air_temperature}°C`}</span>
+      <span style={{color: '#1dacbd'}}>{`${' '}${temp}°C`}</span>
     </div>
   )
 }
