@@ -5,30 +5,18 @@ import { StdWrapperFlexContentCentered } from 'components/Layout'
 import BikeUsageMainSearch from 'components/BikeUsageMainSearch'
 import WeatherEffect from 'components/WeatherEffect'
 
-const Wrap = styled.div`
-  margin: 0;
-  min-height: calc(100vh - 100px);
-  height: 100%;
-  position: relative;
-  display: flex;
-  flex-direction: column;
-`
-
-const BodyWrap = styled.div`
-  flex: 1;
-  height: 100%;
-`
-
 const MainDiv = styled.div`
   text-align: center;
-  margin-top: 80px;
+  margin-top: 60px;
   padding: 0;
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 63px);
 `
 
 export default function Dashboard ({getDashboard, dashboardData, value, currentTab}) {
   return (
-    <Wrap>
-      <BodyWrap>
         <MainDiv>
           {currentTab === 'BIKE USAGE' && (
             <BikeUsageMainSearch />)}
@@ -41,7 +29,5 @@ export default function Dashboard ({getDashboard, dashboardData, value, currentT
           </StdWrapperFlexContentCentered>
           }
         </MainDiv>
-      </BodyWrap>
-    </Wrap>
   )
 }

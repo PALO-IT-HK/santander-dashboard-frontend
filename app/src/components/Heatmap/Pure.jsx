@@ -24,7 +24,7 @@ const Heatmap = compose(
       'https://maps.googleapis.com/maps/api/js?key=AIzaSyBvNDpxJtaSm1gz28pSnOdi86k_UmVqyLw&v=3.exp&libraries=visualization,geometry,drawing,places',
     loadingElement: <div style={{ height: `100%` }} />,
     containerElement: <div style={{ height: `100%`, padding: `0px 10px 10px 10px`, zIndex: `1` }} />,
-    mapElement: <div style={{ height: `450px` }} id='mapElement' /> }),
+    mapElement: <div style={{ height: `100%` }} id='mapElement' /> }),
   lifecycle({
     componentWillMount () {
       const refs = {}

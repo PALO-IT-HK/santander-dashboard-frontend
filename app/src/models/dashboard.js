@@ -102,21 +102,22 @@ export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIK
 export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_FAIL`)
 export const totalBikeUsageAndWeatherActionSaga = createAction(`${WEATHER} GET_BIKE_USAGE_AND_WEATHER`)
 
-// Weather
+// Weather Actions
 export const getTotalBikeUsageWeatherSuccess = createAction(`${WEATHER} GET_BIKE_USAGE_AND_WEATHER_SUCCESS`)
 export const resetWeatherCalendarAction = createAction(`${WEATHER} RESET_WEATHER_CALENDAR`)
 export const clickDateFromWeatherAction = createAction(`${WEATHER} DATE_FROM_WEATHER_CALENDAR`)
 export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER_CALENDAR`)
+
+export const toggleLoadingBarAction = createAction(
+  `${MODEL_NAME} TOGGLE ISLOADING BAR`
+)
+export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
 
 // Graph Actions
 export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
 export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
 export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
 export const getTotalBikeUsagaAndWeatherActionFail = createAction(`${GRAPH} GET_BIKE_USAGE_AND_WEATHER_FAIL`)
-
-export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
-export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
-export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
 
 /** --------------------------------------------------
  *
@@ -165,6 +166,7 @@ export const sagas = {
     yield put(getDashboardSuccess(res.data))
   },
   [getBikePointsActionSaga]: function * ({ payload }) {
+    yield put(toggleLoadingBarAction(true))
     try {
       const result = yield call(fetchInitialBikePoints, payload)
       yield put(getBikePointsActionSuccess(result.data))
@@ -173,7 +175,7 @@ export const sagas = {
     }
   },
   [getBikeUsageTopLocationsActionSaga]: function * () {
-    yield put(showLoader())
+    yield put(toggleLoadingBarAction(true))
     const {usageRank, fromDate, toDate, timeFrom, timeTo} = yield select(state => ({
       usageRank: state.dashboard.currentDropDownDisplayValue,
       fromDate: state.dashboard.fromDate,
@@ -184,21 +186,23 @@ export const sagas = {
     try {
       const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate, timeFrom, timeTo)
       result.data.length !== 0 ? yield put(getBikeUsageTopLocationsActionSuccess(result.data)) : yield put(showErrorAction())
-      yield put(hideLoader())
+      yield put(toggleLoadingBarAction(false))
     } catch (error) {
       yield put(getBikeUsageTopLocationActionFail(error))
     }
   },
   [getHeatmapPointsActionSaga]: function * ({ payload }) {
+    yield put(toggleLoadingBarAction(true))
     try {
       const result = yield call(fetchHeatmapPoints, payload)
       yield put(getHeatmapPointsActionSuccess(result.data))
+      yield put(toggleLoadingBarAction(false))
     } catch (error) {
       yield put(getHeatmapPointsActionFailed(error))
     }
   },
   [totalBikeUsageAndWeatherActionSaga]: function * () {
-    yield put(showLoader())
+    yield put(toggleLoadingBarAction(true))
     const {fromDate, toDate, timeFrom, timeTo} = yield select(state => ({
       fromDate: state.dashboard.fromDateWeather,
       toDate: state.dashboard.toDateWeather,
@@ -211,7 +215,6 @@ export const sagas = {
         call(fetchWeather, fromDate, toDate, timeFrom, timeTo)
       ])
       yield put(getTotalBikeUsageWeatherSuccess({totalUsageBikePoints, weatherForecast}))
-      yield put(hideLoader())
     } catch (error) {
       yield put(getTotalBikeUsagaAndWeatherActionFail(error))
     }
@@ -224,6 +227,7 @@ export const dashboardSagaWatcher = createSagaWatcher(sagas)
  * Logic
  *
  */
+
 // Tabs
 const changeTab = (state, tabs) => ({ ...state, currentTab: tabs })
 const changeToggledTab = (state, tabs) => ({
@@ -370,19 +374,7 @@ const bikeUsageTopLocations = (state, data) => {
 }
 
 // Loader
-const showLoading = (state) => {
-  return ({
-    ...state,
-    isLoading: true
-  })
-}
-
-const hideLoading = (state) => {
-  return ({
-    ...state,
-    isLoading: false
-  })
-}
+const toggleLoadingBar = (state, status) => ({ ...state, loadingBarStatus: status })
 
 const showError = (state, showErrorText) => {
   return ({
@@ -458,12 +450,11 @@ export const dashboard = {
   [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
   [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
   [getBikeUsageTopLocationsActionSuccess]: bikeUsageTopLocations,
-  [showLoader]: showLoading,
-  [hideLoader]: hideLoading,
   [showErrorAction]: showError,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
   [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
   [updateMapBoundsAction]: updateMapBounds,
+  [toggleLoadingBarAction]: toggleLoadingBar,
   [changeWeatherTabAction]: changeWeatherTab,
   [resetWeatherCalendarAction]: resetWeatherCalendar,
   [clickDateFromWeatherAction]: clickDateFromWeather,
@@ -508,10 +499,10 @@ export const dashboardInitialState = {
   dropDownDisplayStatus: false,
   currentDropDownDisplayValue: 5,
   bikeUsageTopLocationsArray: [],
-  isLoading: false,
   bikeUsageHistoryDataArray: [],
   isAnyWidgetOpenCurrently: false,
   currentMapBounds: [],
+  loadingBarStatus: false,
   fromDateWeather: new Date(moment(new Date()).subtract(1, 'week')),
   toDateWeather: new Date(),
   enteredToWeather: new Date(),
