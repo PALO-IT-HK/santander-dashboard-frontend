@@ -3,7 +3,7 @@ import { put, call, select, all } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
-import { formatDateBy_yyyymmdd, formatDateForApi, formatTime } from 'utils/utils'
+import { formatDateForApi, formatTime } from 'utils/utils'
 import moment from 'moment'
 
 // Mock data
@@ -111,7 +111,6 @@ export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER
 export const toggleLoadingBarAction = createAction(
   `${MODEL_NAME} TOGGLE ISLOADING BAR`
 )
-export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
 
 // Graph Actions
 export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
@@ -130,7 +129,7 @@ function fetchDashboard () {
 }
 
 function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate, timeFrom, timeTo) {
-  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/by-day/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}/timerange/${formatTime(timeFrom)}/${formatTime(timeTo)}`
+  const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/total/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}/timerange/${formatTime(timeFrom)}/${formatTime(timeTo)}`
   return axios.get(url)
 }
 
@@ -145,19 +144,22 @@ function fetchTotalUsageBikePointsByDate (fromDate, toDate, timeFrom, timeTo) {
 }
 
 function fetchInitialBikePoints (payload) {
-  const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${payload.sw.swLat}
-    &swLon=${payload.sw.swLng}&neLat=${payload.ne.neLat}&neLon=${payload.ne.neLng}`
+  const url = `https://api.ci.palo-it-hk.com/bike/point?swLat=${payload.sw.swLat}&swLon=${payload.sw.swLng}&neLat=${payload.ne.neLat}&neLon=${payload.ne.neLng}`
   return axios.get(url)
 }
 
 function fetchHeatmapPoints (payload) {
-  const fromDate = formatDateBy_yyyymmdd(payload.date.fromDate)
-  const toDate = formatDateBy_yyyymmdd(payload.date.toDate)
-  const timeFrom = formatTime(payload.time.timeFrom)
-  const timeTo = formatTime(payload.time.timeTo)
-  const url = `https://api.ci.palo-it-hk.com/usages/boundary/${payload.ne.neLat},${payload.ne.neLng}/
-    ${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}/
-    timerange/${timeFrom}/${timeTo}`
+  const widget = payload.widget || 'CALENDAR'
+  if (widget === 'TIME') {
+    const timeFrom = formatTime(payload.time.timeFrom)
+    const timeTo = formatTime(payload.time.timeTo)
+  }
+  const fromDate = formatDateForApi(payload.date.fromDate)
+  const toDate = formatDateForApi(payload.date.toDate)
+
+  const url = widget === 'CALENDAR' ?
+    `https://api.ci.palo-it-hk.com/usages/boundary/${payload.ne.neLat},${payload.ne.neLng}/${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}` :
+    `https://api.ci.palo-it-hk.com/usages/boundary/${payload.ne.neLat},${payload.ne.neLng}/${payload.sw.swLat},${payload.sw.swLng}/type/total/daterange/${fromDate}/${toDate}/timerange/${timeFrom}/${timeTo}`
   return axios.get(url)
 }
 
@@ -188,7 +190,7 @@ export const sagas = {
     }))
     try {
       const result = yield call(fetchTopBikeUsageByLocations, usageRank, fromDate, toDate, timeFrom, timeTo)
-      result.data.length !== 0 ? yield put(getBikeUsageTopLocationsActionSuccess(result.data)) : yield put(showErrorAction())
+      yield put(getBikeUsageTopLocationsActionSuccess(result.data))
       yield put(toggleLoadingBarAction(false))
     } catch (error) {
       yield put(getBikeUsageTopLocationActionFail(error))
@@ -218,6 +220,7 @@ export const sagas = {
         call(fetchWeather, fromDate, toDate, timeFrom, timeTo)
       ])
       yield put(getTotalBikeUsageWeatherSuccess({totalUsageBikePoints, weatherForecast}))
+      yield put(toggleLoadingBarAction(false))
     } catch (error) {
       yield put(getTotalBikeUsagaAndWeatherActionFail(error))
     }
@@ -371,20 +374,12 @@ const getTimeTag = (state, time) => ({
 const bikeUsageTopLocations = (state, data) => {
   return ({
     ...state,
-    bikeUsageTopLocationsArray: data,
-    showErrorText: null
+    bikeUsageTopLocationsArray: data
   })
 }
 
 // Loader
 const toggleLoadingBar = (state, status) => ({ ...state, loadingBarStatus: status })
-
-const showError = (state, showErrorText) => {
-  return ({
-    ...state,
-    showErrorText: `Sorry there is no data for this date range, please refine your parameters`
-  })
-}
 
 const toggleWidgetOpenStatus = (state, status) => ({
   ...state,
@@ -418,8 +413,7 @@ const totalBikeUsageAndWeather = (state, {totalUsageBikePoints, weatherForecast}
   return {
     ...state,
     totalBikeUsage: totalBikePointsUsage,
-    weather: weather,
-    showErrorText: null
+    weather: weather
   }
 }
 
@@ -453,7 +447,6 @@ export const dashboard = {
   [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
   [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
   [getBikeUsageTopLocationsActionSuccess]: bikeUsageTopLocations,
-  [showErrorAction]: showError,
   [getHeatmapPointsActionSuccess]: updateHeatmapPoints,
   [toggleWidgetOpenStatusAction]: toggleWidgetOpenStatus,
   [updateMapBoundsAction]: updateMapBounds,

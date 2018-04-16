@@ -50,7 +50,7 @@ class TemperatureGraph extends React.Component {
     this.props.totalBikeUsageAndWeatherActionSaga()
   }
   render () {
-    const {data, showErrorText, loader} = this.props
+    const {data, loader} = this.props
 
     return (
       <div>
@@ -80,7 +80,7 @@ class TemperatureGraph extends React.Component {
                 />
               </ComposedChart>
             </ResponsiveContainer>)
-            : (!loader && <p>{showErrorText}</p>)
+            : (!loader && <p>Sorry there is no data for this date range, please refine your parameters</p>)
           }
         </div>
       </div>

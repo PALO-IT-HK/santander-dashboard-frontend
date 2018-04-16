@@ -119,14 +119,13 @@ const BikeUsageMainSearch = ({
   updateDropDownDisplayValueAction,
   getBikeUsageTopLocationsActionSaga,
   bikeUsageTopLocationsArray,
-  isLoading,
+  loadingBarStatus,
   bikeUsageHistoryDataArray,
   getHeatmapPointsActionSaga,
   toggleWidgetOpenStatusAction,
   isAnyWidgetOpenCurrently,
   updateMapBoundsAction,
-  currentMapBounds,
-  showErrorText
+  currentMapBounds
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
@@ -268,8 +267,7 @@ const BikeUsageMainSearch = ({
           <BikeUsageGraph
             getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
             data={bikeUsageTopLocationsArray}
-            showErrorText={showErrorText}
-            loader={isLoading}
+            loader={loadingBarStatus}
           />
         )}
       </RenderMapGraphDiv>

@@ -43,7 +43,8 @@ class BikeUsageGraph extends React.Component {
     this.props.getBikeUsageTopLocationsActionSaga()
   }
   render () {
-    const {data, showErrorText, loader} = this.props
+    const {data, loader} = this.props
+
     return (
       <div>
         <div style={{height: '500px', padding: '0 20px', background: '#f1f4f8'}}>
@@ -61,7 +62,7 @@ class BikeUsageGraph extends React.Component {
                 />
               </BarChart>
             </ResponsiveContainer>)
-            : (!loader && <p>{showErrorText}</p>)
+            : (!loader && <p>Sorry there is no data for this date range, please refine your parameters</p>)
           }
         </div>
       </div>

@@ -23,14 +23,6 @@ export const formatDateBy_ddmmyyyy = date => {
   return day + ' ' + monthNames[monthIndex] + ' ' + year
 }
 
-export const formatDateBy_yyyymmdd = date => {
-  const fullYear = date.getFullYear()
-  const month = date.getMonth() + 1
-  const formattedMonth = month < 10 ? `0${month}` : month
-  const day = date.getDate()
-  return `${fullYear}${formattedMonth}${day}`
-}
-
 export const formatDateForApi = date => {
   return moment(date).format('YYYYMMDD')
 }

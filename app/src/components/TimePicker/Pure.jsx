@@ -48,6 +48,7 @@ const DisplayButtons = styled.div`
 `
 
 const TimePicker = ({
+  currentTab,
   hideTimePickerAction,
   timeFrom,
   timeTo,
@@ -88,26 +89,30 @@ const TimePicker = ({
   }
 
   const handleApplyOnClick = () => {
-    fetchSagaAction()
-    const payload = {
-      ne: {
-        neLat: currentMapBounds.ne.neLat,
-        neLng: currentMapBounds.ne.neLng
-      },
-      sw: {
-        swLat: currentMapBounds.sw.swLat,
-        swLng: currentMapBounds.sw.swLng
-      },
-      date: {
-        fromDate: fromDate,
-        toDate: toDate
-      },
-      time: {
-        timeFrom: timeFrom,
-        timeTo: timeTo
+    const currTab = currentTab || 'BIKE USAGE'
+    if (currTab === 'BIKE USAGE') {
+      const payload = {
+        widget: 'TIME',
+        ne: {
+          neLat: currentMapBounds.ne.neLat,
+          neLng: currentMapBounds.ne.neLng
+        },
+        sw: {
+          swLat: currentMapBounds.sw.swLat,
+          swLng: currentMapBounds.sw.swLng
+        },
+        date: {
+          fromDate: fromDate,
+          toDate: toDate
+        },
+        time: {
+          timeFrom: timeFrom,
+          timeTo: timeTo
+        }
       }
+      getHeatmapPointsActionSaga(payload)
     }
-    getHeatmapPointsActionSaga(payload)
+    fetchSagaAction()
     toggleWidgetOpenStatusAction(false)
     hideTimePickerAction()
   }

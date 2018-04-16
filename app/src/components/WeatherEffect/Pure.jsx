@@ -10,6 +10,12 @@ import TimePicker from 'components/TimePicker/Pure'
 import TemperatureGraph from 'components/TemperatureGraph/Pure'
 import RainfallGraph from 'components/RainfallGraph/Pure'
 
+const WeatherEffectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+`
+
 const SearchWrapper = styled.div`
   height: 70px;
   padding: 0 5rem;
@@ -63,8 +69,7 @@ const GraphWrapper = styled.div`
 const WeatherEffect = ({
   changeWeatherTabAction,
   currentWeatherTab,
-  showErrorText,
-  isLoading,
+  loadingBarStatus,
   toggleWidgetOpenStatusAction,
   showDatePicker,
   currentMarker,
@@ -129,7 +134,7 @@ const WeatherEffect = ({
   const formatTime = () => timeTagName || `${timeFrom} - ${timeTo}`
 
   return (
-    <div>
+    <WeatherEffectWrapper>
       <SearchWrapper>
         <SubHeader>
           {' '}
@@ -167,6 +172,7 @@ const WeatherEffect = ({
           ) : null}
           { isTimePickerShown ? (
             <TimePicker
+              currentTab={currentTab}
               fetchSagaAction={totalBikeUsageAndWeatherActionSaga}
               getTimeTagAction={getTimeTagAction}
               filterTimeFromArrayAction={filterTimeFromArrayAction}
@@ -185,23 +191,20 @@ const WeatherEffect = ({
         </DateTimeSearchWrapper>
       </FilterWrapper>
       <GraphWrapper>
-        {isLoading ? 'THIS IS LOADING' : null}
         {currentWeatherTab === 'TEMPERATURE' && (
           <TemperatureGraph
             totalBikeUsageAndWeatherActionSaga={totalBikeUsageAndWeatherActionSaga}
             data={aggregatedBikeWeather}
-            showErrorText={showErrorText}
-            loader={isLoading}
+            loader={loadingBarStatus}
           />)}
         {currentWeatherTab === 'RAINFALL' && (
           <RainfallGraph
             totalBikeUsageAndWeatherActionSaga={totalBikeUsageAndWeatherActionSaga}
             data={aggregatedBikeWeather}
-            showErrorText={showErrorText}
-            loader={isLoading}
+            loader={loadingBarStatus}
           />)}
       </GraphWrapper>
-    </div>
+    </WeatherEffectWrapper>
   )
 }
 

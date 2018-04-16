@@ -64,22 +64,26 @@ export default class CalendarDatePicker extends Component {
   }
 
   handleCalendarApplyOnClick = () => {
-    const payload = {
-      ne: {
-        neLat: this.props.currentMapBounds.ne.neLat,
-        neLng: this.props.currentMapBounds.ne.neLng
-      },
-      sw: {
-        swLat: this.props.currentMapBounds.sw.swLat,
-        swLng: this.props.currentMapBounds.sw.swLng
-      },
-      date: {
-        fromDate: this.props.from,
-        toDate: this.props.to
+    const currentTab = this.props.currentTab || 'BIKE USAGE'
+    if (currentTab === 'BIKE USAGE') {
+      const payload = {
+        widget: 'CALENDAR',
+        ne: {
+          neLat: this.props.currentMapBounds.ne.neLat,
+          neLng: this.props.currentMapBounds.ne.neLng
+        },
+        sw: {
+          swLat: this.props.currentMapBounds.sw.swLat,
+          swLng: this.props.currentMapBounds.sw.swLng
+        },
+        date: {
+          fromDate: this.props.from,
+          toDate: this.props.to
+        }
       }
+      this.props.getHeatmapPointsActionSaga(payload)
     }
-    this.props.getHeatmapPointsActionSaga(payload)
-    this.props.getBikeUsageTopLocationsActionSaga()
+    this.props.fetchSagaAction()
     this.props.hideDatePickerAction()
     this.props.toggleWidgetOpenStatusAction(false)
   }
