@@ -185,6 +185,7 @@ const WeatherEffect = ({
         </DateTimeSearchWrapper>
       </FilterWrapper>
       <GraphWrapper>
+        {isLoading ? 'THIS IS LOADING' : null}
         {currentWeatherTab === 'TEMPERATURE' && (
           <TemperatureGraph
             totalBikeUsageAndWeatherActionSaga={totalBikeUsageAndWeatherActionSaga}

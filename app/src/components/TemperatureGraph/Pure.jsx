@@ -50,34 +50,38 @@ class TemperatureGraph extends React.Component {
     this.props.totalBikeUsageAndWeatherActionSaga()
   }
   render () {
-    const {data} = this.props
+    const {data, showErrorText, loader} = this.props
+
     return (
       <div>
         <div style={{height: '500px', padding: '0 20px', background: '#f1f4f8'}}>
-          <ResponsiveContainer minWidth={1024}>
-            <ComposedChart data={data} margin={{bottom: 100}}>
-              <CartesianGrid strokeDasharray='3 3' />
-              <XAxis dataKey={v => v.date} tick={<CustomizedAxisTick />} interval={0} />
-              <YAxis yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} orientation='right' />
-              <YAxis yAxisId='line' tick={{fontFamily: 'Rubik', fontSize: 12}} />
-              {data.length > 0 && <Tooltip content={customToolTip} />}
-              <Bar
-                yAxisId='bar'
-                dataKey={v => parseInt(v.totalBikesOut)}
-                maxBarSize={50}
-                fill='#D54435'
-              />
-              <Line
-                yAxisId='line'
-                dataKey={v => v.avg_air_temperature}
-                type='monotone'
-                stroke='#1dacbd'
-                strokeWidth={3}
-                dot={false}
-                activeDot={{ stroke: '#1dacbd', r: 6 }}
-              />
-            </ComposedChart>
-          </ResponsiveContainer>
+          { data.length !== 0
+            ? (<ResponsiveContainer minWidth={1024}>
+              <ComposedChart data={data} margin={{bottom: 100}}>
+                <CartesianGrid strokeDasharray='3 3' />
+                <XAxis dataKey={v => v.date} tick={<CustomizedAxisTick />} interval={0} />
+                <YAxis yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} orientation='right' />
+                <YAxis yAxisId='line' tick={{fontFamily: 'Rubik', fontSize: 12}} />
+                {data.length > 0 && <Tooltip content={customToolTip} />}
+                <Bar
+                  yAxisId='bar'
+                  dataKey={v => parseInt(v.totalBikesOut)}
+                  maxBarSize={50}
+                  fill='#D54435'
+                />
+                <Line
+                  yAxisId='line'
+                  dataKey={v => v.avg_air_temperature}
+                  type='monotone'
+                  stroke='#1dacbd'
+                  strokeWidth={3}
+                  dot={false}
+                  activeDot={{ stroke: '#1dacbd', r: 6 }}
+                />
+              </ComposedChart>
+            </ResponsiveContainer>)
+            : (!loader && <p>{showErrorText}</p>)
+          }
         </div>
       </div>
     )

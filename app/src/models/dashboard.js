@@ -112,6 +112,7 @@ export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER
 export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
 export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
 export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
+export const getTotalBikeUsagaAndWeatherActionFail = createAction(`${GRAPH} GET_BIKE_USAGE_AND_WEATHER_FAIL`)
 
 export const showLoader = createAction(`${GRAPH} SHOW_LOADER`)
 export const hideLoader = createAction(`${GRAPH} HIDE_LOADER`)
@@ -197,20 +198,22 @@ export const sagas = {
     }
   },
   [totalBikeUsageAndWeatherActionSaga]: function * () {
+    yield put(showLoader())
+    const {fromDate, toDate, timeFrom, timeTo} = yield select(state => ({
+      fromDate: state.dashboard.fromDateWeather,
+      toDate: state.dashboard.toDateWeather,
+      timeFrom: state.dashboard.timeFrom,
+      timeTo: state.dashboard.timeTo
+    }))
     try {
-      const {fromDate, toDate, timeFrom, timeTo} = yield select(state => ({
-        fromDate: state.dashboard.fromDateWeather,
-        toDate: state.dashboard.toDateWeather,
-        timeFrom: state.dashboard.timeFrom,
-        timeTo: state.dashboard.timeTo
-      }))
       const [totalUsageBikePoints, weatherForecast] = yield all([
         call(fetchTotalUsageBikePointsByDate, fromDate, toDate, timeFrom, timeTo),
         call(fetchWeather, fromDate, toDate, timeFrom, timeTo)
       ])
       yield put(getTotalBikeUsageWeatherSuccess({totalUsageBikePoints, weatherForecast}))
+      yield put(hideLoader())
     } catch (error) {
-      console.log(error)
+      yield put(getTotalBikeUsagaAndWeatherActionFail(error))
     }
   }
 }
@@ -420,7 +423,8 @@ const totalBikeUsageAndWeather = (state, {totalUsageBikePoints, weatherForecast}
   return {
     ...state,
     totalBikeUsage: totalBikePointsUsage,
-    weather: weather
+    weather: weather,
+    showErrorText: null
   }
 }
 
