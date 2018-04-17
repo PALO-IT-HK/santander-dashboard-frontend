@@ -68,11 +68,11 @@ const Heatmap = compose(
             },
             date: {
               fromDate: fromDate,
-              toDate: toDate 
+              toDate: toDate
             },
             time: {
               timeFrom: timeFrom,
-              timeTo: timeTo              
+              timeTo: timeTo
             }
           }
           updateMapBoundsAction(boundsObj)
@@ -128,10 +128,7 @@ const Heatmap = compose(
     updateMapLocation(places)
   })
   const handleOnIdle = () => {
-    !mapInitialLoadStatus ? 
-    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, 
-      updateMapBoundsAction, fromDate, toDate, timeFrom, timeTo) : 
-    console.log('map initial load complete!')
+    !mapInitialLoadStatus ? onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, updateMapBoundsAction, fromDate, toDate, timeFrom, timeTo) : console.log('map initial load complete!')
   }
   const handleMouseOver = e => {
     // const title = e.Fa.target.parentElement.title ? e.Fa.target.parentElement.title : null
@@ -144,14 +141,14 @@ const Heatmap = compose(
       const lat = parseFloat(curr.lat)
       const lng = parseFloat(curr.lng)
       const pointWeight = curr.totalBikesOut / 1000
-      const finalValueToEval = curr.totalBikesOut / 1000 < 1.5 ?
-      new window.google.maps.LatLng(lat, lng) :
-      { location: new window.google.maps.LatLng(lat, lng), weight: pointWeight }
+      const finalValueToEval = curr.totalBikesOut / 1000 < 1.5
+        ? new window.google.maps.LatLng(lat, lng)
+        : { location: new window.google.maps.LatLng(lat, lng), weight: pointWeight }
       return [
-        ...acc, 
+        ...acc,
         finalValueToEval
       ]
-    },[])
+    }, [])
   }
   return (
     <GoogleMap

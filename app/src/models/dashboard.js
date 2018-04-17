@@ -3,7 +3,7 @@ import { put, call, select } from 'redux-saga/effects'
 import axios from 'axios'
 import { createSagaWatcher } from 'saga'
 import { totalTimeArray, timeToArray, timeFromArray } from 'constants/index'
-import { formatDateForApi, formatDateBy_yyyymmdd, formatTimeInHhMmAndRemoveSpecialChars } from 'utils/utils'
+import { formatDateForApi, formatTimeInHhMmAndRemoveSpecialChars } from 'utils/utils'
 
 // Mock data
 import data from '../mockdata.json'
@@ -108,8 +108,12 @@ export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIK
 export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
 export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_FAIL`)
 export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
+export const updateGraphSearchResultsAction = createAction(`${GRAPH} UPDATE SEARCH RESULTS ARRAY`)
+export const updateGraphSelectedDistrictAction = createAction(`${GRAPH} UPDATE SELECTED DISTRICT`)
+export const updateGraphSearchInputValueAction = createAction(`${GRAPH} UPDATE INPUT VALUE`)
+export const toggleResultsWrapperVisibilityAction = createAction(`${GRAPH} TOGGLE HIDE SHOW RESULTS WRAPPER`)
 
-// Weather Actions 
+// Weather Actions
 export const resetWeatherCalendarAction = createAction(`${WEATHER} RESET_WEATHER_CALENDAR`)
 export const clickDateFromWeatherAction = createAction(`${WEATHER} DATE_FROM_WEATHER_CALENDAR`)
 export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER_CALENDAR`)
@@ -136,8 +140,8 @@ function fetchInitialBikePoints (payload) {
 }
 
 function fetchHeatmapPoints (payload) {
-  const fromDate = formatDateBy_yyyymmdd(payload.date.fromDate)
-  const toDate = formatDateBy_yyyymmdd(payload.date.toDate)
+  const fromDate = formatDateForApi(payload.date.fromDate)
+  const toDate = formatDateForApi(payload.date.toDate)
   const timeFrom = formatTimeInHhMmAndRemoveSpecialChars(payload.time.timeFrom)
   const timeTo = formatTimeInHhMmAndRemoveSpecialChars(payload.time.timeTo)
   const url = `https://api.ci.palo-it-hk.com/usages/boundary/${payload.ne.neLat},${payload.ne.neLng}/
@@ -332,12 +336,40 @@ const getTimeTag = (state, time) => ({
   timeTo: time[1].timeTo
 })
 
-// Graph top filter
+// Graph
 const bikeUsageTopLocations = (state, data) => {
   return ({
     ...state,
     bikeUsageTopLocationsArray: data,
     showErrorText: null
+  })
+}
+
+const updateGraphSearchResults = (state, filteredDistricts) => {
+  return ({
+    ...state,
+    graphSearchResults: filteredDistricts
+  })
+}
+
+const updateGraphSelectedDistrict = (state, district) => {
+  return ({
+    ...state,
+    graphSelectedDistrict: district
+  })
+}
+
+const updateGraphSearchInputValue = (state, value) => {
+  return ({
+    ...state,
+    currentGraphInputValue: value
+  })
+}
+
+const toggleResultsWrapperVisibility = (state, bool) => {
+  return ({
+    ...state,
+    resultsWrapperVisibilityStatus: bool
   })
 }
 
@@ -414,7 +446,11 @@ export const dashboard = {
   [changeWeatherTabAction]: changeWeatherTab,
   [resetWeatherCalendarAction]: resetWeatherCalendar,
   [clickDateFromWeatherAction]: clickDateFromWeather,
-  [clickDateToWeatherAction]: clickDateToWeather
+  [clickDateToWeatherAction]: clickDateToWeather,
+  [updateGraphSearchResultsAction]: updateGraphSearchResults,
+  [updateGraphSelectedDistrictAction]: updateGraphSelectedDistrict,
+  [updateGraphSearchInputValueAction]: updateGraphSearchInputValue,
+  [toggleResultsWrapperVisibilityAction]: toggleResultsWrapperVisibility
 }
 
 export const dashboardInitialState = {
@@ -448,7 +484,11 @@ export const dashboardInitialState = {
   loadingBarStatus: false,
   fromDateWeather: new Date(),
   toDateWeather: new Date(),
-  enteredToWeather: new Date()
+  enteredToWeather: new Date(),
+  graphSearchResults: [],
+  graphSelectedDistrict: 'London',
+  currentGraphInputValue: '',
+  resultsWrapperVisibilityStatus: false
 }
 
 export default createReducer(dashboard, dashboardInitialState)
