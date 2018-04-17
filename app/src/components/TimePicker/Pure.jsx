@@ -92,9 +92,7 @@ const TimePicker = ({
   }
 
   const handleApplyOnClick = () => {
-    const currTab = currentTab
-    const currSubTab = currentToggledTab
-    if (currTab === 'BIKE USAGE' && currSubTab === 'HEAT MAP') {
+    if (currentTab === 'BIKE USAGE' && currentToggledTab === 'HEAT MAP') {
       const payload = {
         widget: 'TIME',
         ne: {
@@ -116,9 +114,11 @@ const TimePicker = ({
       }
       getHeatmapPointsActionSaga(payload)
     }
-    (currentTab !== 'WEATHER EFFECT' && graphSelectedDistrict !== 'All of London')
-      ? fetchDistrictSelectedActionSaga()
-      : fetchSagaAction()
+    if (currentTab !== 'WEATHER EFFECT' && currentToggledTab !== 'HEAT MAP') {
+      graphSelectedDistrict !== 'All of London'
+        ? fetchDistrictSelectedActionSaga()
+        : fetchSagaAction()
+    }
     toggleWidgetOpenStatusAction(false)
     hideTimePickerAction()
   }
