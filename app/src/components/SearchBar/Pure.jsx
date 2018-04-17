@@ -91,10 +91,7 @@ const SearchBar = props => {
       if (e.type === 'focus') {
         changeInputFocusAction('focus')
         if (e.target.value !== '') toggleResultsWrapperVisibilityAction(true)
-      } else {
-        changeInputFocusAction('blur')
-        toggleResultsWrapperVisibilityAction(false)
-      }
+      } 
     } else if (id === 'search-autocomplete' && e.type === 'focus') {
       changeInputFocusAction('focus')
     } else {
@@ -104,17 +101,14 @@ const SearchBar = props => {
   const handleSearchBarOnChange = (e, currentToggledTab, updateGraphSearchResultsAction,
     updateGraphSearchInputValueAction, currentGraphInputValue,
     toggleResultsWrapperVisibilityAction) => {
-    e.target.value === '' ? toggleResultsWrapperVisibilityAction(false) : toggleResultsWrapperVisibilityAction(true)
-    updateGraphSearchInputValueAction(e.target.value)
     const currentTab = currentToggledTab
     if (currentTab === 'GRAPH') {
+      updateGraphSearchInputValueAction(e.target.value)
+      e.target.value === '' ? toggleResultsWrapperVisibilityAction(false) : toggleResultsWrapperVisibilityAction(true)
       const districtNamesArray = Object.keys(districts)
-      console.log('DISTRICTS: ' + districtNamesArray)
       const filteredDistricts = districtNamesArray
         .filter(district => district.toLowerCase().includes(currentGraphInputValue.toLowerCase()))
         .sort()
-      console.log('INPUT VALUE: ' + e.target.value)
-      console.log('FILTERED DIST: ' + filteredDistricts)
       updateGraphSearchResultsAction(filteredDistricts)
     }
   }
@@ -130,10 +124,8 @@ const SearchBar = props => {
       <SearchInputField
         id={id}
         size={size}
-        onFocus={id === 'search-autocomplete' ? (e) => handleFocusBlur(e, changeInputFocusAction)
-          : (e) => handleFocusBlur(e, changeInputFocusAction, id, toggleResultsWrapperVisibilityAction)}
-        onBlur={id === 'search-autocomplete' ? (e) => handleFocusBlur(e, changeInputFocusAction)
-          : (e) => handleFocusBlur(e, changeInputFocusAction, id, toggleResultsWrapperVisibilityAction)}
+        onFocus={(e) => handleFocusBlur(e, changeInputFocusAction, id, toggleResultsWrapperVisibilityAction)}
+        onBlur={(e) => handleFocusBlur(e, changeInputFocusAction, id, toggleResultsWrapperVisibilityAction)}
         status={currentFocusStatus}
         value={currentGraphInputValue}
         type={type}
