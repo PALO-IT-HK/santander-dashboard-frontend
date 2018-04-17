@@ -40,6 +40,7 @@ import {
 const s = state => ({
   currentMarker: state.dashboard.currentMarker,
   currentFocusStatus: state.dashboard.currentFocusStatus,
+  currentTab: state.dashboard.currentTab,
   currentToggledTab: state.dashboard.currentToggledTab,
   graphData: state.dashboard.graphData,
   searchedLocation: state.dashboard.searchedLocation,

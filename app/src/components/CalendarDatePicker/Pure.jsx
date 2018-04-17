@@ -64,8 +64,9 @@ export default class CalendarDatePicker extends Component {
   }
 
   handleCalendarApplyOnClick = () => {
-    const currentTab = this.props.currentTab || 'BIKE USAGE'
-    if (currentTab === 'BIKE USAGE') {
+    const currTab = this.props.currentTab
+    const currSubTab = this.props.currentToggledTab
+    if (currTab === 'BIKE USAGE' && currSubTab === 'HEAT MAP') {
       const payload = {
         widget: 'CALENDAR',
         ne: {
@@ -79,6 +80,10 @@ export default class CalendarDatePicker extends Component {
         date: {
           fromDate: this.props.from,
           toDate: this.props.to
+        },
+        time: {
+          timeFrom: this.props.timeFrom,
+          timeTo: this.props.timeTo
         }
       }
       this.props.getHeatmapPointsActionSaga(payload)
