@@ -63,6 +63,7 @@ const TimePicker = ({
   filterTimeToArrayAction,
   filterTimeFromArrayAction,
   getTimeTagAction,
+  displayPreviousTimeAction,
   toggleWidgetOpenStatusAction,
   fetchSagaAction,
   currentMapBounds,
@@ -126,6 +127,7 @@ const TimePicker = ({
   const handleCancelOnClick = () => {
     toggleWidgetOpenStatusAction(false)
     hideTimePickerAction()
+    displayPreviousTimeAction()
   }
 
   return (

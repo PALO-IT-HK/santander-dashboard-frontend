@@ -102,7 +102,9 @@ const WeatherEffect = ({
   isAnyWidgetOpenCurrently,
   totalBikeUsageAndWeatherActionSaga,
   aggregatedBikeWeather,
-  currentTab
+  currentTab,
+  storeTimeStateAction,
+  displayPreviousTimeAction
 }) => {
   const handleWeatherTab = val => changeWeatherTabAction(val)
 
@@ -117,6 +119,7 @@ const WeatherEffect = ({
   const openTimePicker = v => {
     if (!isAnyWidgetOpenCurrently) {
       showTimePickerAction(v)
+      storeTimeStateAction()
       toggleWidgetOpenStatusAction(true)
     } else {
       return null
@@ -182,6 +185,7 @@ const WeatherEffect = ({
               timeFromArray={timeFromArray}
               timeFrom={timeFrom}
               timeTo={timeTo}
+              displayPreviousTimeAction={displayPreviousTimeAction}
               selectTimeFromAction={selectTimeFromAction}
               selectTimeToAction={selectTimeToAction}
               hideTimePickerAction={hideTimePickerAction}
