@@ -100,6 +100,7 @@ export const getHeatmapPointsActionFailed = createAction(
 )
 export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS`)
 export const totalBikeUsageAndWeatherActionSaga = createAction(`${WEATHER} GET_BIKE_USAGE_AND_WEATHER`)
+export const fetchDistrictSelectedActionSaga = createAction(`${GRAPH} GET_TOP_BIKE_POINTS_DISTRICT`)
 
 // Weather Actions
 export const getTotalBikeUsageWeatherSuccess = createAction(`${WEATHER} GET_BIKE_USAGE_AND_WEATHER_SUCCESS`)
@@ -122,6 +123,8 @@ export const updateGraphSearchResultsAction = createAction(`${GRAPH} UPDATE SEAR
 export const updateGraphSelectedDistrictAction = createAction(`${GRAPH} UPDATE SELECTED DISTRICT`)
 export const updateGraphSearchInputValueAction = createAction(`${GRAPH} UPDATE INPUT VALUE`)
 export const toggleResultsWrapperVisibilityAction = createAction(`${GRAPH} TOGGLE HIDE SHOW RESULTS WRAPPER`)
+export const fetchDistrictsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_DISTRICTS_SUCCESS`)
+export const fetchDistrictsActionFail = createAction(`${GRAPH} GET_BIKE_TOP_DISTRICTS_FAIL`)
 
 /** --------------------------------------------------
  *
@@ -135,6 +138,11 @@ function fetchDashboard () {
 
 function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate, timeFrom, timeTo) {
   const url = `https://api.ci.palo-it-hk.com/usages/top-usage/${usageRank}/type/total/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}/timerange/${formatTime(timeFrom)}/${formatTime(timeTo)}`
+  return axios.get(url)
+}
+
+function fetchTopBikeUsageByDistricts (graphSelectedDistrict, fromDate, toDate, timeFrom, timeTo) {
+  const url = `https://api.ci.palo-it-hk.com/usages/by-district/${graphSelectedDistrict}/type/total/daterange/${formatDateForApi(fromDate)}/${formatDateForApi(toDate)}/timerange/${formatTime(timeFrom)}/${formatTime(timeTo)}`
   return axios.get(url)
 }
 
@@ -199,6 +207,23 @@ export const sagas = {
       yield put(toggleLoadingBarAction(false))
     } catch (error) {
       yield put(getBikeUsageTopLocationActionFail(error))
+    }
+  },
+  [fetchDistrictSelectedActionSaga]: function * () {
+    yield put(toggleLoadingBarAction(true))
+    const {graphSelectedDistrict, fromDate, toDate, timeFrom, timeTo} = yield select(state => ({
+      graphSelectedDistrict: state.dashboard.graphSelectedDistrict,
+      fromDate: state.dashboard.fromDate,
+      toDate: state.dashboard.toDate,
+      timeFrom: state.dashboard.timeFrom,
+      timeTo: state.dashboard.timeTo
+    }))
+    try {
+      const result = yield call(fetchTopBikeUsageByDistricts, graphSelectedDistrict, fromDate, toDate, timeFrom, timeTo)
+      yield put(fetchDistrictsActionSuccess(result.data))
+      yield put(toggleLoadingBarAction(false))
+    } catch (error) {
+      yield put(fetchDistrictsActionFail(error))
     }
   },
   [getHeatmapPointsActionSaga]: function * ({ payload }) {
@@ -492,7 +517,8 @@ export const dashboard = {
   [updateGraphSelectedDistrictAction]: updateGraphSelectedDistrict,
   [updateGraphSearchInputValueAction]: updateGraphSearchInputValue,
   [toggleResultsWrapperVisibilityAction]: toggleResultsWrapperVisibility,
-  [getTotalBikeUsageWeatherSuccess]: totalBikeUsageAndWeather
+  [getTotalBikeUsageWeatherSuccess]: totalBikeUsageAndWeather,
+  [fetchDistrictsActionSuccess]: bikeUsageTopLocations
 }
 
 /** --------------------------------------------------
@@ -505,6 +531,18 @@ export const computeAggregatedBikeWeather = state => {
   return totalBikeUsage.length > 0 && Object.keys(weather).length > 0
     ? totalBikeUsage.map(bike => ({...bike, ...weather.aggregated[bike.date]}))
     : []
+}
+
+export const computeAggregatedTopLocations = state => {
+  const {bikeUsageTopLocationsArray, currentDropDownDisplayValue} = state.dashboard
+  let filteredBikesArray = []
+  bikeUsageTopLocationsArray.sort((a, b) => {
+    if (a.totalBikesOut < b.totalBikesOut) return 1
+    if (a.totalBikesOut > b.totalBikesOut) return -1
+    return 0
+  })
+  filteredBikesArray = bikeUsageTopLocationsArray.slice(0, currentDropDownDisplayValue)
+  return filteredBikesArray
 }
 
 export const dashboardInitialState = {

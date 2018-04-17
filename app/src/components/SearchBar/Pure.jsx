@@ -85,13 +85,14 @@ const SearchBar = props => {
   const {id, size, placeholder, name, type, changeInputFocusAction, currentFocusStatus,
     wrapperPaddingLeft, currentToggledTab, updateGraphSearchResultsAction, graphSearchResults,
     updateGraphSelectedDistrictAction, updateGraphSearchInputValueAction,
-    currentGraphInputValue, resultsWrapperVisibilityStatus, toggleResultsWrapperVisibilityAction } = props
+    currentGraphInputValue, resultsWrapperVisibilityStatus, toggleResultsWrapperVisibilityAction,
+    fetchDistrictSelectedActionSaga} = props
   const handleFocusBlur = (e, changeInputFocusAction, id, currentGraphInputValue) => {
     if (id === 'graph-search') {
       if (e.type === 'focus') {
         changeInputFocusAction('focus')
         if (e.target.value !== '') toggleResultsWrapperVisibilityAction(true)
-      } 
+      }
     } else if (id === 'search-autocomplete' && e.type === 'focus') {
       changeInputFocusAction('focus')
     } else {
@@ -117,6 +118,7 @@ const SearchBar = props => {
     updateGraphSearchInputValueAction(e.target.innerHTML)
     updateGraphSelectedDistrictAction(e.target.innerHTML)
     toggleResultsWrapperVisibilityAction(false)
+    fetchDistrictSelectedActionSaga()
   }
   return (
     <SearchBarWrapper

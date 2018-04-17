@@ -40,6 +40,7 @@ const customToolTip = ({label, payload}) => {
 
 class BikeUsageGraph extends React.Component {
   componentDidMount () {
+    if (this.props.bikeUsageTopLocationsArray.length > 0) return
     this.props.getBikeUsageTopLocationsActionSaga()
   }
   render () {

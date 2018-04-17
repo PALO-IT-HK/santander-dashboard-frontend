@@ -33,7 +33,9 @@ import {
   updateGraphSearchResultsAction,
   updateGraphSelectedDistrictAction,
   updateGraphSearchInputValueAction,
-  toggleResultsWrapperVisibilityAction
+  toggleResultsWrapperVisibilityAction,
+  fetchDistrictSelectedActionSaga,
+  computeAggregatedTopLocations
 } from 'models/dashboard'
 
 // s function
@@ -59,8 +61,7 @@ const s = state => ({
   timeTagName: state.dashboard.timeTagName,
   dropDownDisplayStatus: state.dashboard.dropDownDisplayStatus,
   currentDropDownDisplayValue: state.dashboard.currentDropDownDisplayValue,
-  bikeUsageTopLocationsArray: state.dashboard.bikeUsageTopLocationsArray,
-  isLoading: state.dashboard.isLoading,
+  bikeUsageTopLocationsArray: computeAggregatedTopLocations(state),
   bikeUsageHistoryDataArray: state.dashboard.bikeUsageHistoryDataArray,
   isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
   currentMapBounds: state.dashboard.currentMapBounds,
@@ -100,7 +101,8 @@ const d = dispatch => ({
   updateGraphSearchResultsAction: bindActionCreators(updateGraphSearchResultsAction, dispatch),
   updateGraphSelectedDistrictAction: bindActionCreators(updateGraphSelectedDistrictAction, dispatch),
   updateGraphSearchInputValueAction: bindActionCreators(updateGraphSearchInputValueAction, dispatch),
-  toggleResultsWrapperVisibilityAction: bindActionCreators(toggleResultsWrapperVisibilityAction, dispatch)
+  toggleResultsWrapperVisibilityAction: bindActionCreators(toggleResultsWrapperVisibilityAction, dispatch),
+  fetchDistrictSelectedActionSaga: bindActionCreators(fetchDistrictSelectedActionSaga, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

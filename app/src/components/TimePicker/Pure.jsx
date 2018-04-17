@@ -65,7 +65,9 @@ const TimePicker = ({
   toggleWidgetOpenStatusAction,
   fetchSagaAction,
   currentMapBounds,
-  getHeatmapPointsActionSaga
+  getHeatmapPointsActionSaga,
+  fetchDistrictSelectedActionSaga,
+  graphSelectedDistrict
 }) => {
   const getTimeTag = tag => {
     getTimeTagAction([tag, timeFilters[tag]])
@@ -112,7 +114,7 @@ const TimePicker = ({
       }
       getHeatmapPointsActionSaga(payload)
     }
-    fetchSagaAction()
+    graphSelectedDistrict !== 'London' ? fetchDistrictSelectedActionSaga() : fetchSagaAction()
     toggleWidgetOpenStatusAction(false)
     hideTimePickerAction()
   }
