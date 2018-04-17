@@ -88,7 +88,9 @@ export default class CalendarDatePicker extends Component {
       }
       this.props.getHeatmapPointsActionSaga(payload)
     }
-    this.props.fetchSagaAction()
+    (this.props.currentTab !== 'WEATHER EFFECT' && this.props.graphSelectedDistrict !== 'London')
+      ? this.props.fetchDistrictSelectedActionSaga()
+      : this.props.fetchSagaAction()
     this.props.hideDatePickerAction()
     this.props.toggleWidgetOpenStatusAction(false)
   }

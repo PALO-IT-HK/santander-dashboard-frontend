@@ -40,6 +40,7 @@ const customToolTip = ({label, payload}) => {
 
 class BikeUsageGraph extends React.Component {
   componentDidMount () {
+    if (this.props.bikeUsageTopLocationsArray.length > 0) return
     this.props.getBikeUsageTopLocationsActionSaga()
   }
   render () {
@@ -53,7 +54,7 @@ class BikeUsageGraph extends React.Component {
               <BarChart data={data} margin={{bottom: 100}}>
                 <CartesianGrid strokeDasharray='3 3' />
                 <XAxis dataKey={v => v.location} tick={<CustomizedAxisTick />} interval={0} />
-                <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} label={{value: 'Bike Usage', position: 'insideLeft', angle: -90, dx: 10, fontFamily: 'Rubik', fontSize: 12}} />
+                <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} label={{value: 'Bike Usage', position: 'insideLeft', angle: -90, fontFamily: 'Rubik', fontSize: 12}} />
                 { data.length > 0 && <Tooltip content={customToolTip} />}
                 <Bar yAxisId='bar'
                   dataKey={v => v.totalBikesOut}

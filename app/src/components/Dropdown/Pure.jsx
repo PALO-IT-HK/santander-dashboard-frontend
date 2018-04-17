@@ -92,9 +92,15 @@ const DropdownItem = props => {
 
 const Dropdown = props => {
   const {size, name, type, dropDownDisplayStatus, toggleDropdownVisibilityAction,
-    currentDropDownDisplayValue, updateDropDownDisplayValueAction, onChange} = props
+    currentDropDownDisplayValue, updateDropDownDisplayValueAction,
+    graphSelectedDistrict, getBikeUsageTopLocationsActionSaga, fetchDistrictSelectedActionSaga} = props
   const handleDisplayOnClick = () => dropDownDisplayStatus ? toggleDropdownVisibilityAction(false) : toggleDropdownVisibilityAction(true)
-  const handleDropDownItemOnClick = (value) => updateDropDownDisplayValueAction(value) && onChange()
+  const handleDropDownItemOnClick = (value) => updateDropDownDisplayValueAction(value) && fetchDistrictAction()
+
+  const fetchDistrictAction = () => {
+    return graphSelectedDistrict !== 'London' ? fetchDistrictSelectedActionSaga() : getBikeUsageTopLocationsActionSaga()
+  }
+
   return (
     <DropdownWrapper>
       <DropdownDisplay

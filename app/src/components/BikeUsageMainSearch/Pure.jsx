@@ -127,7 +127,6 @@ const BikeUsageMainSearch = ({
   isAnyWidgetOpenCurrently,
   updateMapBoundsAction,
   currentMapBounds,
-  showErrorText,
   updateGraphSearchResultsAction,
   graphSearchResults,
   updateGraphSelectedDistrictAction,
@@ -135,7 +134,8 @@ const BikeUsageMainSearch = ({
   updateGraphSearchInputValueAction,
   currentGraphInputValue,
   toggleResultsWrapperVisibilityAction,
-  resultsWrapperVisibilityStatus
+  resultsWrapperVisibilityStatus,
+  fetchDistrictSelectedActionSaga
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
@@ -197,7 +197,10 @@ const BikeUsageMainSearch = ({
                 toggleDropdownVisibilityAction={toggleDropdownVisibilityAction}
                 currentDropDownDisplayValue={currentDropDownDisplayValue}
                 updateDropDownDisplayValueAction={updateDropDownDisplayValueAction}
-                onChange={getBikeUsageTopLocationsActionSaga} />
+                getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+                fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
+                graphSelectedDistrict={graphSelectedDistrict}
+              />
               <SearchBar
                 id={'graph-search'}
                 changeInputFocusAction={changeInputFocusAction}
@@ -213,6 +216,7 @@ const BikeUsageMainSearch = ({
                 currentGraphInputValue={currentGraphInputValue}
                 toggleResultsWrapperVisibilityAction={toggleResultsWrapperVisibilityAction}
                 resultsWrapperVisibilityStatus={resultsWrapperVisibilityStatus}
+                fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
               />
             </SubHeader>
           </SearchBoxDiv>
@@ -233,6 +237,7 @@ const BikeUsageMainSearch = ({
             />
             {showDatePicker ? (
               <CalendarDatePicker
+                fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
                 currentTab={currentTab}
                 currentToggledTab={currentToggledTab}
                 fetchSagaAction={getBikeUsageTopLocationsActionSaga}
@@ -249,10 +254,12 @@ const BikeUsageMainSearch = ({
                 toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
                 currentMapBounds={currentMapBounds}
                 getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
+                graphSelectedDistrict={graphSelectedDistrict}
               />
             ) : null}
             {isTimePickerShown ? (
               <TimePicker
+                fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
                 currentTab={currentTab}
                 currentToggledTab={currentToggledTab}
                 fetchSagaAction={getBikeUsageTopLocationsActionSaga}
@@ -272,6 +279,7 @@ const BikeUsageMainSearch = ({
                 toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
                 currentMapBounds={currentMapBounds}
                 getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}
+                graphSelectedDistrict={graphSelectedDistrict}
               />
             ) : null}
           </DateTimeSearchWrapper>
@@ -301,7 +309,9 @@ const BikeUsageMainSearch = ({
         )}
         {currentToggledTab === 'GRAPH' && (
           <BikeUsageGraph
+            fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
             getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
+            bikeUsageTopLocationsArray={bikeUsageTopLocationsArray}
             data={bikeUsageTopLocationsArray}
             loader={loadingBarStatus}
           />
