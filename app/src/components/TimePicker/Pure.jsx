@@ -49,6 +49,7 @@ const DisplayButtons = styled.div`
 
 const TimePicker = ({
   currentTab,
+  currentToggledTab,
   hideTimePickerAction,
   timeFrom,
   timeTo,
@@ -89,8 +90,9 @@ const TimePicker = ({
   }
 
   const handleApplyOnClick = () => {
-    const currTab = currentTab || 'BIKE USAGE'
-    if (currTab === 'BIKE USAGE') {
+    const currTab = currentTab
+    const currSubTab = currentToggledTab
+    if (currTab === 'BIKE USAGE' && currSubTab === 'HEAT MAP') {
       const payload = {
         widget: 'TIME',
         ne: {

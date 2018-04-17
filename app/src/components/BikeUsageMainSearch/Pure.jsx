@@ -75,6 +75,7 @@ const SubHeader = styled.div`
 `
 
 const BikeUsageMainSearch = ({
+  currentTab,
   currentToggledTab,
   changeToggledTabAction,
   showDatePicker,
@@ -232,6 +233,8 @@ const BikeUsageMainSearch = ({
             />
             {showDatePicker ? (
               <CalendarDatePicker
+                currentTab={currentTab}
+                currentToggledTab={currentToggledTab}
                 fetchSagaAction={getBikeUsageTopLocationsActionSaga}
                 getPublicHolidayAction={getPublicHolidayAction}
                 clickDateFromAction={clickDateFromAction}
@@ -239,6 +242,8 @@ const BikeUsageMainSearch = ({
                 resetDateAction={resetDateAction}
                 from={fromDate}
                 to={toDate}
+                timeFrom={timeFrom}
+                timeTo={timeTo}
                 enteredTo={enteredTo}
                 hideDatePickerAction={hideDatePickerAction}
                 toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
@@ -248,6 +253,8 @@ const BikeUsageMainSearch = ({
             ) : null}
             {isTimePickerShown ? (
               <TimePicker
+                currentTab={currentTab}
+                currentToggledTab={currentToggledTab}
                 fetchSagaAction={getBikeUsageTopLocationsActionSaga}
                 getTimeTagAction={getTimeTagAction}
                 filterTimeFromArrayAction={filterTimeFromArrayAction}
