@@ -1,30 +1,7 @@
 import moment from 'moment'
 
-export const formatDateBy_ddmmyyyy = date => {
-  const monthNames = [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ]
+export const formatDateBy_ddmmyyyy = date => moment(date).format('D MMMM YYYY')
 
-  const day = date.getDate()
-  const monthIndex = date.getMonth()
-  const year = date.getFullYear()
-
-  return day + ' ' + monthNames[monthIndex] + ' ' + year
-}
-
-export const formatDateForApi = date => {
-  return moment(date).format('YYYYMMDD')
-}
+export const formatDateForApi = date => moment(date).format('YYYYMMDD')
 
 export const formatTime = time => time.replace(':', '')

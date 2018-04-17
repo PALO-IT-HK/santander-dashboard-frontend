@@ -163,10 +163,8 @@ function fetchInitialBikePoints (payload) {
 
 function fetchHeatmapPoints (payload) {
   const widget = payload.widget || 'CALENDAR'
-  if (widget === 'TIME') {
-    const timeFrom = formatTime(payload.time.timeFrom)
-    const timeTo = formatTime(payload.time.timeTo)
-  }
+  const timeFrom = formatTime(payload.time.timeFrom) || '' 
+  const timeTo = formatTime(payload.time.timeTo) || ''
   const fromDate = formatDateForApi(payload.date.fromDate)
   const toDate = formatDateForApi(payload.date.toDate)
 

@@ -9,7 +9,7 @@ import Dropdown from 'components/Dropdown/Pure'
 import CalendarDatePicker from 'components/CalendarDatePicker/Pure'
 import DateTimeSearch from 'components/DateTimeSearch/Pure'
 import TimePicker from 'components/TimePicker/Pure'
-import { formatDateForApi } from 'utils/utils'
+import { formatDateBy_ddmmyyyy } from 'utils/utils'
 
 const OverallBikeUsageWrapper = styled.div`
   display: flex;
@@ -75,6 +75,7 @@ const SubHeader = styled.div`
 `
 
 const BikeUsageMainSearch = ({
+  currentTab,
   currentToggledTab,
   changeToggledTabAction,
   showDatePicker,
@@ -156,9 +157,9 @@ const BikeUsageMainSearch = ({
 
   const formatNewDate = () => {
     if (fromDate && toDate != null) {
-      return `${formatDateForApi(fromDate)} - ${formatDateForApi(toDate)}`
+      return `${formatDateBy_ddmmyyyy(fromDate)} - ${formatDateBy_ddmmyyyy(toDate)}`
     } else {
-      return `Today, ${formatDateForApi(currentDateSelection)}`
+      return `Today, ${formatDateBy_ddmmyyyy(currentDateSelection)}`
     }
   }
 
@@ -237,6 +238,8 @@ const BikeUsageMainSearch = ({
             {showDatePicker ? (
               <CalendarDatePicker
                 fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
+                currentTab={currentTab}
+                currentToggledTab={currentToggledTab}
                 fetchSagaAction={getBikeUsageTopLocationsActionSaga}
                 getPublicHolidayAction={getPublicHolidayAction}
                 clickDateFromAction={clickDateFromAction}
@@ -244,6 +247,8 @@ const BikeUsageMainSearch = ({
                 resetDateAction={resetDateAction}
                 from={fromDate}
                 to={toDate}
+                timeFrom={timeFrom}
+                timeTo={timeTo}
                 enteredTo={enteredTo}
                 hideDatePickerAction={hideDatePickerAction}
                 toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
@@ -255,6 +260,8 @@ const BikeUsageMainSearch = ({
             {isTimePickerShown ? (
               <TimePicker
                 fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
+                currentTab={currentTab}
+                currentToggledTab={currentToggledTab}
                 fetchSagaAction={getBikeUsageTopLocationsActionSaga}
                 getTimeTagAction={getTimeTagAction}
                 filterTimeFromArrayAction={filterTimeFromArrayAction}
