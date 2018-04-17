@@ -163,7 +163,7 @@ function fetchInitialBikePoints (payload) {
 
 function fetchHeatmapPoints (payload) {
   const widget = payload.widget || 'CALENDAR'
-  const timeFrom = formatTime(payload.time.timeFrom) || '' 
+  const timeFrom = formatTime(payload.time.timeFrom) || ''
   const timeTo = formatTime(payload.time.timeTo) || ''
   const fromDate = formatDateForApi(payload.date.fromDate)
   const toDate = formatDateForApi(payload.date.toDate)
@@ -533,14 +533,11 @@ export const computeAggregatedBikeWeather = state => {
 
 export const computeAggregatedTopLocations = state => {
   const {bikeUsageTopLocationsArray, currentDropDownDisplayValue} = state.dashboard
-  let filteredBikesArray = []
-  bikeUsageTopLocationsArray.sort((a, b) => {
+  return bikeUsageTopLocationsArray.sort((a, b) => {
     if (a.totalBikesOut < b.totalBikesOut) return 1
     if (a.totalBikesOut > b.totalBikesOut) return -1
     return 0
-  })
-  filteredBikesArray = bikeUsageTopLocationsArray.slice(0, currentDropDownDisplayValue)
-  return filteredBikesArray
+  }).slice(0, currentDropDownDisplayValue)
 }
 
 export const dashboardInitialState = {
