@@ -107,20 +107,20 @@ const Heatmap = compose(
   }),
   withScriptjs,
   withGoogleMap)(props => {
-  const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
+    const { isMarkerShown, currentMarker, toggleMarkerLabelVisibilityAction, hideMarkerLabelAction,
     onMapMounted, center, zoom, onBoundsChanged, updateMapLocation, onZoomChanged,
     onDragEnd, onIdle, mapInitialLoadStatus, getBikePointsActionSaga, currentBikePointsArray,
     bikeUsageHistoryDataArray, getHeatmapPointsActionSaga, fromDate, toDate, timeFrom, timeTo,
     updateMapBoundsAction } = props
 
   // Get custom search bar element
-  const input = document.getElementById('search-autocomplete')
+    const input = document.getElementById('search-autocomplete')
 
   // Autocomplete Library to listen to places changed outside map
-  const autocomplete = new window.google.maps.places.Autocomplete(input)
+    const autocomplete = new window.google.maps.places.Autocomplete(input)
 
   // Set search results bounds
-  autocomplete.setComponentRestrictions({ country: ['uk'] })
+    autocomplete.setComponentRestrictions({ country: ['uk'] })
 
   // Event listener for place changed
   autocomplete.addListener('place_changed', () => {
@@ -160,12 +160,12 @@ const Heatmap = compose(
       onZoomChanged={onZoomChanged}
       onDragEnd={onDragEnd}>
 
-      <HeatmapLayer
-        data={getPoints()}
-        options={({ radius: '100', dissipating: true })} />
+        <HeatmapLayer
+          data={getPoints()}
+          options={({ radius: '100', dissipating: true })} />
 
-      {currentBikePointsArray.map(item => {
-        return (
+        {currentBikePointsArray.map(item => {
+          return (
           isMarkerShown &&
           <MarkerWithLabel
             title={item.id}
@@ -219,13 +219,13 @@ const Heatmap = compose(
               </div>
             </div>
           </MarkerWithLabel>
-        )
-      })
+          )
+        })
       }
 
-    </GoogleMap>
-  )
-})
+      </GoogleMap>
+    )
+  })
 
 Heatmap.defaultProps = {
   isMarkerShown: false

@@ -8,7 +8,7 @@ import { StdWrapperFlexContentLeft } from 'components/Layout'
 import Helmet from 'react-helmet'
 
 const RootAppContainer = styled.div`
-  
+
 `
 
 const Header = styled.div`

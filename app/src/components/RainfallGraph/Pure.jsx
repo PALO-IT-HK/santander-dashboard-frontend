@@ -1,6 +1,6 @@
 import React from 'react'
-import { BarChart, Bar, Tooltip, CartesianGrid, YAxis, XAxis, ResponsiveContainer } from 'recharts'
-import { formatToNum } from 'utils/utils'
+import { ComposedChart, Bar, Line, Tooltip, CartesianGrid, YAxis, XAxis, ResponsiveContainer } from 'recharts'
+import moment from 'moment'
 
 const customToolTipStyles = {
   width: '180px',
@@ -30,39 +30,55 @@ const CustomizedAxisTick = props => {
 
 const customToolTip = ({label, payload}) => {
   if (!payload.length) return
-  const {value} = payload[0]
+  const {date, totalBikesOut, total_prcp_amt} = payload[0].payload
+  const formattedDate = moment(date).format('dddd, DD, MMMM YYYY')
   return (
     <div style={customToolTipStyles}>
-      <p>{label}</p>
-      <span style={{color: '#D54435'}}>{`${value} Total Usage`}</span>
+      <p style={{fontSize: 10, fontWeight: 400}}>{formattedDate}</p>
+      <span style={{color: '#D54435'}}>
+        {`${totalBikesOut} Total Usage`}
+      </span>
+      <span style={{color: '#A8AAB6'}}>{`${' '}|`}</span>
+      <span style={{color: '#1dacbd'}}>{`${' '}${total_prcp_amt}mm`}</span>
     </div>
   )
 }
 
 class RainfallGraph extends React.Component {
   componentDidMount () {
-    this.props.getBikeUsageTopLocationsActionSaga()
+    this.props.totalBikeUsageAndWeatherActionSaga()
   }
   render () {
-    const {data, showErrorText, loader} = this.props
+    const {data, loader} = this.props
     return (
       <div>
         <div style={{height: '500px', padding: '0 20px', background: '#f1f4f8'}}>
           { data.length !== 0
             ? (<ResponsiveContainer minWidth={1024}>
-              <BarChart data={data} margin={{bottom: 100}}>
+              <ComposedChart data={data} margin={{bottom: 100}}>
                 <CartesianGrid strokeDasharray='3 3' />
-                <XAxis dataKey={v => v.location} tick={<CustomizedAxisTick />} interval={0} />
-                <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} />
-                { data.length > 0 && <Tooltip content={customToolTip} />}
-                <Bar yAxisId='bar'
-                  dataKey={v => formatToNum(v.totalBikesOut)}
+                <XAxis dataKey={v => v.date} tick={<CustomizedAxisTick />} interval={0} />
+                <YAxis yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} orientation='right' />
+                <YAxis yAxisId='line' tick={{fontFamily: 'Rubik', fontSize: 12}} />
+                {data.length > 0 && <Tooltip content={customToolTip} />}
+                <Bar
+                  yAxisId='bar'
+                  dataKey={v => v.totalBikesOut}
                   maxBarSize={50}
                   fill='#D54435'
                 />
-              </BarChart>
+                <Line
+                  yAxisId='line'
+                  dataKey={v => v.total_prcp_amt}
+                  type='monotone'
+                  stroke='#1dacbd'
+                  strokeWidth={3}
+                  dot={false}
+                  activeDot={{ stroke: '#1dacbd', r: 6 }}
+                />
+              </ComposedChart>
             </ResponsiveContainer>)
-            : (!loader && <p>{showErrorText}</p>)
+            : (!loader && <p>Sorry there is no data for this date range, please refine your parameters</p>)
           }
         </div>
       </div>

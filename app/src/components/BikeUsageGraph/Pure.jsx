@@ -1,6 +1,5 @@
 import React from 'react'
 import { BarChart, Bar, Tooltip, CartesianGrid, YAxis, XAxis, ResponsiveContainer } from 'recharts'
-import { formatToNum } from 'utils/utils'
 
 const customToolTipStyles = {
   width: '180px',
@@ -44,7 +43,8 @@ class BikeUsageGraph extends React.Component {
     this.props.getBikeUsageTopLocationsActionSaga()
   }
   render () {
-    const {data, showErrorText, loader} = this.props
+    const {data, loader} = this.props
+
     return (
       <div>
         <div style={{height: '500px', padding: '0 20px', background: '#f1f4f8'}}>
@@ -56,13 +56,13 @@ class BikeUsageGraph extends React.Component {
                 <YAxis orientation='left' yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} />
                 { data.length > 0 && <Tooltip content={customToolTip} />}
                 <Bar yAxisId='bar'
-                  dataKey={v => formatToNum(v.totalBikesOut)}
+                  dataKey={v => v.totalBikesOut}
                   maxBarSize={50}
                   fill='#D54435'
                 />
               </BarChart>
             </ResponsiveContainer>)
-            : (!loader && <p>{showErrorText}</p>)
+            : (!loader && <p>Sorry there is no data for this date range, please refine your parameters</p>)
           }
         </div>
       </div>

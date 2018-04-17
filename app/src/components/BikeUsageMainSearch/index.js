@@ -69,7 +69,8 @@ const s = state => ({
   graphSearchResults: state.dashboard.graphSearchResults,
   graphSelectedDistrict: state.dashboard.graphSelectedDistrict,
   currentGraphInputValue: state.dashboard.currentGraphInputValue,
-  resultsWrapperVisibilityStatus: state.dashboard.resultsWrapperVisibilityStatus
+  resultsWrapperVisibilityStatus: state.dashboard.resultsWrapperVisibilityStatus,
+  loadingBarStatus: state.dashboard.loadingBarStatus
 })
 
 const d = dispatch => ({

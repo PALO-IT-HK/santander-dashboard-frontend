@@ -16,18 +16,19 @@ import {
   getTimeTagAction,
   getBikeUsageTopLocationsActionSaga,
   toggleWidgetOpenStatusAction,
-  showErrorAction,
   resetWeatherCalendarAction,
   clickDateFromWeatherAction,
-  clickDateToWeatherAction
+  clickDateToWeatherAction,
+  totalBikeUsageAndWeatherActionSaga,
+  computeAggregatedBikeWeather
 } from 'models/dashboard'
 
 // s function
 const s = state => ({
+  currentTab: state.dashboard.currentTab,
   currentWeatherTab: state.dashboard.currentWeatherTab,
   bikeUsageTopLocationsArray: state.dashboard.bikeUsageTopLocationsArray,
-  isLoading: state.dashboard.isLoading,
-  showErrorText: state.dashboard.showErrorText,
+  loadingBarStatus: state.dashboard.loadingBarStatus,
   showDatePicker: state.dashboard.showDatePicker,
   currentDateSelection: state.dashboard.currentDateSelection,
   isTimePickerShown: state.dashboard.isTimePickerShown,
@@ -40,7 +41,8 @@ const s = state => ({
   isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
   fromDateWeather: state.dashboard.fromDateWeather,
   toDateWeather: state.dashboard.toDateWeather,
-  enteredToWeather: state.dashboard.enteredToWeather
+  enteredToWeather: state.dashboard.enteredToWeather,
+  aggregatedBikeWeather: computeAggregatedBikeWeather(state)
 })
 
 // d function
@@ -57,11 +59,11 @@ const d = dispatch => ({
   filterTimeFromArrayAction: bindActionCreators(filterTimeFromArrayAction, dispatch),
   getTimeTagAction: bindActionCreators(getTimeTagAction, dispatch),
   toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch),
-  showErrorAction: bindActionCreators(showErrorAction, dispatch),
   getBikeUsageTopLocationsActionSaga: bindActionCreators(getBikeUsageTopLocationsActionSaga, dispatch),
   resetWeatherCalendarAction: bindActionCreators(resetWeatherCalendarAction, dispatch),
   clickDateFromWeatherAction: bindActionCreators(clickDateFromWeatherAction, dispatch),
-  clickDateToWeatherAction: bindActionCreators(clickDateToWeatherAction, dispatch)
+  clickDateToWeatherAction: bindActionCreators(clickDateToWeatherAction, dispatch),
+  totalBikeUsageAndWeatherActionSaga: bindActionCreators(totalBikeUsageAndWeatherActionSaga, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

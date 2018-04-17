@@ -23,12 +23,8 @@ export const formatDateBy_ddmmyyyy = date => {
   return day + ' ' + monthNames[monthIndex] + ' ' + year
 }
 
-export const formatToNum = (string) => parseInt(string)
-
 export const formatDateForApi = date => {
   return moment(date).format('YYYYMMDD')
 }
 
-export const formatTimeInHhMmAndRemoveSpecialChars = timeString => {
-  return timeString.toString().split(':').join('')
-}
+export const formatTime = time => time.replace(':', '')
