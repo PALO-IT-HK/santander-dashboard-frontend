@@ -9,7 +9,7 @@ import Dropdown from 'components/Dropdown/Pure'
 import CalendarDatePicker from 'components/CalendarDatePicker/Pure'
 import DateTimeSearch from 'components/DateTimeSearch/Pure'
 import TimePicker from 'components/TimePicker/Pure'
-import { formatDateBy_ddmmyyyy } from 'utils/utils'
+import { formatDateForApi } from 'utils/utils'
 
 const OverallBikeUsageWrapper = styled.div`
   display: flex;
@@ -125,7 +125,16 @@ const BikeUsageMainSearch = ({
   toggleWidgetOpenStatusAction,
   isAnyWidgetOpenCurrently,
   updateMapBoundsAction,
-  currentMapBounds
+  currentMapBounds,
+  showErrorText,
+  updateGraphSearchResultsAction,
+  graphSearchResults,
+  updateGraphSelectedDistrictAction,
+  graphSelectedDistrict,
+  updateGraphSearchInputValueAction,
+  currentGraphInputValue,
+  toggleResultsWrapperVisibilityAction,
+  resultsWrapperVisibilityStatus
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
@@ -147,9 +156,9 @@ const BikeUsageMainSearch = ({
 
   const formatNewDate = () => {
     if (fromDate && toDate != null) {
-      return `${formatDateBy_ddmmyyyy(fromDate)} - ${formatDateBy_ddmmyyyy(toDate)}`
+      return `${formatDateForApi(fromDate)} - ${formatDateForApi(toDate)}`
     } else {
-      return `Today, ${formatDateBy_ddmmyyyy(currentDateSelection)}`
+      return `Today, ${formatDateForApi(currentDateSelection)}`
     }
   }
 
@@ -164,10 +173,12 @@ const BikeUsageMainSearch = ({
               {' '}
               Bike usage of
               <SearchBar
+                id={'search-autocomplete'}
                 changeInputFocusAction={changeInputFocusAction}
                 currentFocusStatus={currentFocusStatus}
-                updateMapLocationAction={updateMapLocationAction}
-                searchedLocation={searchedLocation}
+                placeholder={'all docks in London'}
+                wrapperPaddingLeft={15}
+                currentToggledTab={currentToggledTab}
               />
             </SubHeader>
           </SearchBoxDiv>
@@ -184,6 +195,22 @@ const BikeUsageMainSearch = ({
                 currentDropDownDisplayValue={currentDropDownDisplayValue}
                 updateDropDownDisplayValueAction={updateDropDownDisplayValueAction}
                 onChange={getBikeUsageTopLocationsActionSaga} />
+              <SearchBar
+                id={'graph-search'}
+                changeInputFocusAction={changeInputFocusAction}
+                currentFocusStatus={currentFocusStatus}
+                placeholder={'London'}
+                wrapperPaddingLeft={30}
+                updateGraphSearchResultsAction={updateGraphSearchResultsAction}
+                graphSearchResults={graphSearchResults}
+                currentToggledTab={currentToggledTab}
+                updateGraphSelectedDistrictAction={updateGraphSelectedDistrictAction}
+                graphSelectedDistrict={graphSelectedDistrict}
+                updateGraphSearchInputValueAction={updateGraphSearchInputValueAction}
+                currentGraphInputValue={currentGraphInputValue}
+                toggleResultsWrapperVisibilityAction={toggleResultsWrapperVisibilityAction}
+                resultsWrapperVisibilityStatus={resultsWrapperVisibilityStatus}
+              />
             </SubHeader>
           </SearchBoxDiv>
         )

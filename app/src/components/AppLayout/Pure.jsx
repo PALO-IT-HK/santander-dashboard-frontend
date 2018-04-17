@@ -4,10 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { media } from 'styledconfig'
 import MenuBar from 'components/MenuBar/Pure'
-import {
-  StdContentCentered,
-  StdWrapperFlexContentLeft
-} from 'components/Layout'
+import { StdWrapperFlexContentLeft } from 'components/Layout'
 import Helmet from 'react-helmet'
 
 const RootAppContainer = styled.div`

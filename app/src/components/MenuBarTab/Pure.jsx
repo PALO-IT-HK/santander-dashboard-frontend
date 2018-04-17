@@ -15,8 +15,9 @@ const LoadingBarWrapper = styled.div`
   background-color: blue;
   ${({loadingBarStatus}) => {
     const status = loadingBarStatus ? 'show' : 'hide'
-    return hideShowStyles[status]}
+    return hideShowStyles[status]
   }
+}
 `
 
 export const MenuTabsWrapper = styled.div`

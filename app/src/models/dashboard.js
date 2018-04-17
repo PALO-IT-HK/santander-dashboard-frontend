@@ -116,6 +116,17 @@ export const toggleLoadingBarAction = createAction(
 export const toggleDropdownVisibilityAction = createAction(`${GRAPH} TOGGLE DROPDOWN SHOW/HIDE`)
 export const updateDropDownDisplayValueAction = createAction(`${GRAPH} UPDATE DISPLAY VALUE`)
 export const getBikeUsageTopLocationsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_SUCCESS`)
+export const getBikeUsageTopLocationActionFail = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS_FAIL`)
+export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
+export const updateGraphSearchResultsAction = createAction(`${GRAPH} UPDATE SEARCH RESULTS ARRAY`)
+export const updateGraphSelectedDistrictAction = createAction(`${GRAPH} UPDATE SELECTED DISTRICT`)
+export const updateGraphSearchInputValueAction = createAction(`${GRAPH} UPDATE INPUT VALUE`)
+export const toggleResultsWrapperVisibilityAction = createAction(`${GRAPH} TOGGLE HIDE SHOW RESULTS WRAPPER`)
+
+// Weather Actions
+export const resetWeatherCalendarAction = createAction(`${WEATHER} RESET_WEATHER_CALENDAR`)
+export const clickDateFromWeatherAction = createAction(`${WEATHER} DATE_FROM_WEATHER_CALENDAR`)
+export const clickDateToWeatherAction = createAction(`${WEATHER} DATE_TO_WEATHER_CALENDAR`)
 export const getTotalBikeUsagaAndWeatherActionFail = createAction(`${GRAPH} GET_BIKE_USAGE_AND_WEATHER_FAIL`)
 
 /** --------------------------------------------------
@@ -370,11 +381,39 @@ const getTimeTag = (state, time) => ({
   timeTo: time[1].timeTo
 })
 
-// Graph top filter
+// Graph
 const bikeUsageTopLocations = (state, data) => {
   return ({
     ...state,
     bikeUsageTopLocationsArray: data
+  })
+}
+
+const updateGraphSearchResults = (state, filteredDistricts) => {
+  return ({
+    ...state,
+    graphSearchResults: filteredDistricts
+  })
+}
+
+const updateGraphSelectedDistrict = (state, district) => {
+  return ({
+    ...state,
+    graphSelectedDistrict: district
+  })
+}
+
+const updateGraphSearchInputValue = (state, value) => {
+  return ({
+    ...state,
+    currentGraphInputValue: value
+  })
+}
+
+const toggleResultsWrapperVisibility = (state, bool) => {
+  return ({
+    ...state,
+    resultsWrapperVisibilityStatus: bool
   })
 }
 
@@ -455,6 +494,10 @@ export const dashboard = {
   [resetWeatherCalendarAction]: resetWeatherCalendar,
   [clickDateFromWeatherAction]: clickDateFromWeather,
   [clickDateToWeatherAction]: clickDateToWeather,
+  [updateGraphSearchResultsAction]: updateGraphSearchResults,
+  [updateGraphSelectedDistrictAction]: updateGraphSelectedDistrict,
+  [updateGraphSearchInputValueAction]: updateGraphSearchInputValue,
+  [toggleResultsWrapperVisibilityAction]: toggleResultsWrapperVisibility,
   [getTotalBikeUsageWeatherSuccess]: totalBikeUsageAndWeather
 }
 
@@ -502,6 +545,10 @@ export const dashboardInitialState = {
   fromDateWeather: new Date(moment(new Date()).subtract(1, 'week')),
   toDateWeather: new Date(),
   enteredToWeather: new Date(),
+  graphSearchResults: [],
+  graphSelectedDistrict: 'London',
+  currentGraphInputValue: '',
+  resultsWrapperVisibilityStatus: false,
   totalBikeUsage: [],
   weather: {}
 }

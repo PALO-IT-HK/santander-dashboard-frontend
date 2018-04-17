@@ -123,45 +123,42 @@ const Heatmap = compose(
     autocomplete.setComponentRestrictions({ country: ['uk'] })
 
   // Event listener for place changed
-    autocomplete.addListener('place_changed', () => {
-      const places = [autocomplete.getPlace()]
-      updateMapLocation(places)
-    })
-    const handleOnIdle = () => {
-      !mapInitialLoadStatus ?
-    onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga,
-      updateMapBoundsAction, fromDate, toDate, timeFrom, timeTo) :
-    console.log('map initial load complete!')
-    }
-    const handleMouseOver = e => {
+  autocomplete.addListener('place_changed', () => {
+    const places = [autocomplete.getPlace()]
+    updateMapLocation(places)
+  })
+  const handleOnIdle = () => {
+    !mapInitialLoadStatus ? onIdle(getBikePointsActionSaga, getHeatmapPointsActionSaga, updateMapBoundsAction, fromDate, toDate, timeFrom, timeTo) : console.log('map initial load complete!')
+  }
+  const handleMouseOver = e => {
     // const title = e.Fa.target.parentElement.title ? e.Fa.target.parentElement.title : null
-      const title = e.Ia.path !== undefined ? e.Ia.path[1].title : null
-      console.log(e.Ia.path[1].title)
-      toggleMarkerLabelVisibilityAction(title)
-    }
-    const getPoints = () => {
-      return bikeUsageHistoryDataArray.reduce((acc, curr) => {
-        const lat = parseFloat(curr.lat)
-        const lng = parseFloat(curr.lng)
-        const pointWeight = curr.totalBikesOut / 1000
-        const finalValueToEval = curr.totalBikesOut / 1000 < 1.5 ?
-      new window.google.maps.LatLng(lat, lng) :
-      { location: new window.google.maps.LatLng(lat, lng), weight: pointWeight }
-        return [
-          ...acc,
-          finalValueToEval
-        ]
-      }, [])
-    }
-    return (
-      <GoogleMap
-        ref={onMapMounted}
-        zoom={zoom}
-        center={center}
-        onIdle={() => handleOnIdle()}
-        onBoundsChanged={onBoundsChanged}
-        onZoomChanged={onZoomChanged}
-        onDragEnd={onDragEnd}>
+    const title = e.Ia.path !== undefined ? e.Ia.path[1].title : null
+    console.log(e.Ia.path[1].title)
+    toggleMarkerLabelVisibilityAction(title)
+  }
+  const getPoints = () => {
+    return bikeUsageHistoryDataArray.reduce((acc, curr) => {
+      const lat = parseFloat(curr.lat)
+      const lng = parseFloat(curr.lng)
+      const pointWeight = curr.totalBikesOut / 1000
+      const finalValueToEval = curr.totalBikesOut / 1000 < 1.5
+        ? new window.google.maps.LatLng(lat, lng)
+        : { location: new window.google.maps.LatLng(lat, lng), weight: pointWeight }
+      return [
+        ...acc,
+        finalValueToEval
+      ]
+    }, [])
+  }
+  return (
+    <GoogleMap
+      ref={onMapMounted}
+      zoom={zoom}
+      center={center}
+      onIdle={() => handleOnIdle()}
+      onBoundsChanged={onBoundsChanged}
+      onZoomChanged={onZoomChanged}
+      onDragEnd={onDragEnd}>
 
         <HeatmapLayer
           data={getPoints()}

@@ -1,0 +1,5718 @@
+{
+  "Clerkenwell": [
+    {
+      "id": 1,
+      "district": "Clerkenwell",
+      "location": "River Street",
+      "lat": 51.529163,
+      "lng": -0.10997
+    },
+    {
+      "id": 72,
+      "district": "Clerkenwell",
+      "location": "Farringdon Lane",
+      "lat": 51.52352,
+      "lng": -0.10834
+    },
+    {
+      "id": 135,
+      "district": "Clerkenwell",
+      "location": "Clerkenwell Green",
+      "lat": 51.52326,
+      "lng": -0.104708
+    },
+    {
+      "id": 170,
+      "district": "Clerkenwell",
+      "location": "Hardwick Street",
+      "lat": 51.527842,
+      "lng": -0.108068
+    },
+    {
+      "id": 204,
+      "district": "Clerkenwell",
+      "location": "Margery Street",
+      "lat": 51.526599,
+      "lng": -0.112432
+    },
+    {
+      "id": 227,
+      "district": "Clerkenwell",
+      "location": "Great Percy Street",
+      "lat": 51.528915,
+      "lng": -0.11548
+    },
+    {
+      "id": 246,
+      "district": "Clerkenwell",
+      "location": "Berry Street",
+      "lat": 51.522853,
+      "lng": -0.099994
+    },
+    {
+      "id": 264,
+      "district": "Clerkenwell",
+      "location": "Tysoe Street",
+      "lat": 51.526443,
+      "lng": -0.109256
+    }
+  ],
+  "Kensington": [
+    {
+      "id": 2,
+      "district": "Kensington",
+      "location": "Phillimore Gardens",
+      "lat": 51.499606,
+      "lng": -0.197574
+    },
+    {
+      "id": 36,
+      "district": "Kensington",
+      "location": "De Vere Gardens",
+      "lat": 51.501737,
+      "lng": -0.18498
+    },
+    {
+      "id": 38,
+      "district": "Kensington",
+      "location": "Abingdon Villas",
+      "lat": 51.497387,
+      "lng": -0.197245
+    },
+    {
+      "id": 97,
+      "district": "Kensington",
+      "location": "Gloucester Road (North)",
+      "lat": 51.497924,
+      "lng": -0.183834
+    },
+    {
+      "id": 103,
+      "district": "Kensington",
+      "location": "Vicarage Gate",
+      "lat": 51.504723,
+      "lng": -0.192538
+    },
+    {
+      "id": 133,
+      "district": "Kensington",
+      "location": "Derry Street",
+      "lat": 51.501364,
+      "lng": -0.191462
+    },
+    {
+      "id": 145,
+      "district": "Kensington",
+      "location": "Ilchester Place",
+      "lat": 51.500743,
+      "lng": -0.202759
+    },
+    {
+      "id": 155,
+      "district": "Kensington",
+      "location": "Lexham Gardens",
+      "lat": 51.495866,
+      "lng": -0.191933
+    },
+    {
+      "id": 157,
+      "district": "Kensington",
+      "location": "Wright's Lane",
+      "lat": 51.500397,
+      "lng": -0.193068
+    },
+    {
+      "id": 168,
+      "district": "Kensington",
+      "location": "Argyll Road",
+      "lat": 51.500401,
+      "lng": -0.195455
+    },
+    {
+      "id": 266,
+      "district": "Kensington",
+      "location": "Queen's Gate (North)",
+      "lat": 51.501026,
+      "lng": -0.180246
+    },
+    {
+      "id": 277,
+      "district": "Kensington",
+      "location": "Kensington Church Street",
+      "lat": 51.503157,
+      "lng": -0.191496
+    },
+    {
+      "id": 375,
+      "district": "Kensington",
+      "location": "Kensington Town Hall",
+      "lat": 51.501945,
+      "lng": -0.194392
+    },
+    {
+      "id": 384,
+      "district": "Kensington",
+      "location": "Marloes Road",
+      "lat": 51.496481,
+      "lng": -0.192404
+    },
+    {
+      "id": 398,
+      "district": "Kensington",
+      "location": "Holland Park",
+      "lat": 51.502319,
+      "lng": -0.200742
+    }
+  ],
+  "Liverpool Street": [
+    {
+      "id": 3,
+      "district": "Liverpool Street",
+      "location": "Christopher Street",
+      "lat": 51.521283,
+      "lng": -0.084605
+    },
+    {
+      "id": 41,
+      "district": "Liverpool Street",
+      "location": "Pindar Street",
+      "lat": 51.520955,
+      "lng": -0.083493
+    },
+    {
+      "id": 55,
+      "district": "Liverpool Street",
+      "location": "Finsbury Circus",
+      "lat": 51.517075,
+      "lng": -0.086685
+    },
+    {
+      "id": 87,
+      "district": "Liverpool Street",
+      "location": "Devonshire Square",
+      "lat": 51.516468,
+      "lng": -0.079684
+    },
+    {
+      "id": 122,
+      "district": "Liverpool Street",
+      "location": "Norton Folgate",
+      "lat": 51.521113,
+      "lng": -0.078869
+    },
+    {
+      "id": 175,
+      "district": "Liverpool Street",
+      "location": "Appold Street",
+      "lat": 51.521743,
+      "lng": -0.081118
+    },
+    {
+      "id": 217,
+      "district": "Liverpool Street",
+      "location": "Wormwood Street",
+      "lat": 51.516154,
+      "lng": -0.082422
+    },
+    {
+      "id": 251,
+      "district": "Liverpool Street",
+      "location": "Brushfield Street",
+      "lat": 51.518908,
+      "lng": -0.079249
+    },
+    {
+      "id": 506,
+      "district": "Liverpool Street",
+      "location": "Bell Lane",
+      "lat": 51.517475,
+      "lng": -0.075855
+    }
+  ],
+  "King's Cross": [
+    {
+      "id": 4,
+      "district": "King's Cross",
+      "location": "St. Chad's Street",
+      "lat": 51.530059,
+      "lng": -0.120973
+    },
+    {
+      "id": 14,
+      "district": "King's Cross",
+      "location": "Belgrove Street",
+      "lat": 51.529943,
+      "lng": -0.123616
+    },
+    {
+      "id": 34,
+      "district": "King's Cross",
+      "location": "Pancras Road",
+      "lat": 51.534123,
+      "lng": -0.129386
+    },
+    {
+      "id": 70,
+      "district": "King's Cross",
+      "location": "Calshot Street",
+      "lat": 51.53136,
+      "lng": -0.117069
+    },
+    {
+      "id": 431,
+      "district": "King's Cross",
+      "location": "Crinan Street",
+      "lat": 51.534474,
+      "lng": -0.122203
+    },
+    {
+      "id": 439,
+      "district": "King's Cross",
+      "location": "Killick Street",
+      "lat": 51.5338,
+      "lng": -0.118677
+    },
+    {
+      "id": 593,
+      "district": "King's Cross",
+      "location": "Northdown Street",
+      "lat": 51.531066,
+      "lng": -0.11934
+    },
+    {
+      "id": 674,
+      "district": "King's Cross",
+      "location": "Carnegie Street",
+      "lat": 51.535467,
+      "lng": -0.116191
+    },
+    {
+      "id": 798,
+      "district": "King's Cross",
+      "location": "Birkenhead Street",
+      "lat": 51.530199,
+      "lng": -0.122299
+    },
+    {
+      "id": 804,
+      "district": "King's Cross",
+      "location": "Good's Way",
+      "lat": 51.534667,
+      "lng": -0.125078
+    },
+    {
+      "id": 806,
+      "district": "King's Cross",
+      "location": "Handyside Street",
+      "lat": 51.53724,
+      "lng": -0.124807
+    }
+  ],
+  "Sloane Square": [
+    {
+      "id": 5,
+      "district": "Sloane Square",
+      "location": "Sedding Street",
+      "lat": 51.49313,
+      "lng": -0.156876
+    }
+  ],
+  "Marylebone": [
+    {
+      "id": 6,
+      "district": "Marylebone",
+      "location": "Broadcasting House",
+      "lat": 51.518117,
+      "lng": -0.144228
+    },
+    {
+      "id": 43,
+      "district": "Marylebone",
+      "location": "Crawford Street",
+      "lat": 51.52026,
+      "lng": -0.157183
+    },
+    {
+      "id": 45,
+      "district": "Marylebone",
+      "location": "Boston Place",
+      "lat": 51.522511,
+      "lng": -0.162298
+    },
+    {
+      "id": 56,
+      "district": "Marylebone",
+      "location": "Paddington Street",
+      "lat": 51.520583,
+      "lng": -0.154701
+    },
+    {
+      "id": 99,
+      "district": "Marylebone",
+      "location": "Old Quebec Street",
+      "lat": 51.514577,
+      "lng": -0.158264
+    },
+    {
+      "id": 121,
+      "district": "Marylebone",
+      "location": "Baker Street",
+      "lat": 51.518913,
+      "lng": -0.156166
+    },
+    {
+      "id": 141,
+      "district": "Marylebone",
+      "location": "Chapel Place",
+      "lat": 51.515308,
+      "lng": -0.147203
+    },
+    {
+      "id": 182,
+      "district": "Marylebone",
+      "location": "Bell Street",
+      "lat": 51.522029,
+      "lng": -0.165842
+    },
+    {
+      "id": 184,
+      "district": "Marylebone",
+      "location": "Portland Place",
+      "lat": 51.520715,
+      "lng": -0.145211
+    },
+    {
+      "id": 188,
+      "district": "Marylebone",
+      "location": "Nutford Place",
+      "lat": 51.516517,
+      "lng": -0.164393
+    },
+    {
+      "id": 201,
+      "district": "Marylebone",
+      "location": "Dorset Square",
+      "lat": 51.522596,
+      "lng": -0.161113
+    },
+    {
+      "id": 208,
+      "district": "Marylebone",
+      "location": "Mallory Street",
+      "lat": 51.525051,
+      "lng": -0.166304
+    },
+    {
+      "id": 210,
+      "district": "Marylebone",
+      "location": "Hinde Street",
+      "lat": 51.516814,
+      "lng": -0.151926
+    },
+    {
+      "id": 242,
+      "district": "Marylebone",
+      "location": "Beaumont Street",
+      "lat": 51.522008,
+      "lng": -0.151359
+    },
+    {
+      "id": 257,
+      "district": "Marylebone",
+      "location": "Westminster University",
+      "lat": 51.522481,
+      "lng": -0.154907
+    },
+    {
+      "id": 301,
+      "district": "Marylebone",
+      "location": "Marylebone Lane",
+      "lat": 51.514759,
+      "lng": -0.148105
+    },
+    {
+      "id": 367,
+      "district": "Marylebone",
+      "location": "Harrowby Street",
+      "lat": 51.517372,
+      "lng": -0.164207
+    },
+    {
+      "id": 396,
+      "district": "Marylebone",
+      "location": "Shouldham Street",
+      "lat": 51.51809,
+      "lng": -0.163609
+    },
+    {
+      "id": 400,
+      "district": "Marylebone",
+      "location": "George Street",
+      "lat": 51.517703,
+      "lng": -0.154106
+    },
+    {
+      "id": 402,
+      "district": "Marylebone",
+      "location": "Penfold Street",
+      "lat": 51.522892,
+      "lng": -0.171681
+    },
+    {
+      "id": 403,
+      "district": "Marylebone",
+      "location": "George Place Mews",
+      "lat": 51.516892,
+      "lng": -0.158249
+    },
+    {
+      "id": 410,
+      "district": "Marylebone",
+      "location": "Edgware Road Station",
+      "lat": 51.519968,
+      "lng": -0.169774
+    },
+    {
+      "id": 514,
+      "district": "Marylebone",
+      "location": "Portman Square",
+      "lat": 51.516204,
+      "lng": -0.155525
+    },
+    {
+      "id": 581,
+      "district": "Marylebone",
+      "location": "New Cavendish Street",
+      "lat": 51.519167,
+      "lng": -0.147983
+    },
+    {
+      "id": 605,
+      "district": "Marylebone",
+      "location": "Seymour Place",
+      "lat": 51.520331,
+      "lng": -0.163667
+    },
+    {
+      "id": 759,
+      "district": "Marylebone",
+      "location": "Broadley Terrace",
+      "lat": 51.524561,
+      "lng": -0.165668
+    },
+    {
+      "id": 760,
+      "district": "Marylebone",
+      "location": "Rossmore Road",
+      "lat": 51.525269,
+      "lng": -0.163795
+    }
+  ],
+  "St. John's Wood": [
+    {
+      "id": 7,
+      "district": "St. John's Wood",
+      "location": "Charlbert Street",
+      "lat": 51.5343,
+      "lng": -0.168074
+    },
+    {
+      "id": 8,
+      "district": "St. John's Wood",
+      "location": "Lodge Road",
+      "lat": 51.528341,
+      "lng": -0.170134
+    },
+    {
+      "id": 60,
+      "district": "St. John's Wood",
+      "location": "Lisson Grove",
+      "lat": 51.526448,
+      "lng": -0.17219
+    },
+    {
+      "id": 110,
+      "district": "St. John's Wood",
+      "location": "Wellington Road",
+      "lat": 51.533043,
+      "lng": -0.172528
+    },
+    {
+      "id": 286,
+      "district": "St. John's Wood",
+      "location": "St. John's Wood Road",
+      "lat": 51.527294,
+      "lng": -0.174653
+    },
+    {
+      "id": 312,
+      "district": "St. John's Wood",
+      "location": "Grove End Road",
+      "lat": 51.530889,
+      "lng": -0.17677
+    },
+    {
+      "id": 363,
+      "district": "St. John's Wood",
+      "location": "Lord's",
+      "lat": 51.529121,
+      "lng": -0.171185
+    },
+    {
+      "id": 394,
+      "district": "St. John's Wood",
+      "location": "Aberdeen Place",
+      "lat": 51.524826,
+      "lng": -0.176268
+    }
+  ],
+  "Bankside": [
+    {
+      "id": 9,
+      "district": "Bankside",
+      "location": "New Globe Walk",
+      "lat": 51.507385,
+      "lng": -0.09644
+    },
+    {
+      "id": 10,
+      "district": "Bankside",
+      "location": "Park Street",
+      "lat": 51.505974,
+      "lng": -0.092754
+    },
+    {
+      "id": 193,
+      "district": "Bankside",
+      "location": "Bankside Mix",
+      "lat": 51.505817,
+      "lng": -0.100186
+    },
+    {
+      "id": 230,
+      "district": "Bankside",
+      "location": "Poured Lines",
+      "lat": 51.506692,
+      "lng": -0.103137
+    },
+    {
+      "id": 801,
+      "district": "Bankside",
+      "location": "Lavington Street",
+      "lat": 51.505224,
+      "lng": -0.098031
+    },
+    {
+      "id": 803,
+      "district": "Bankside",
+      "location": "Southwark Street",
+      "lat": 51.505409,
+      "lng": -0.098341
+    },
+    {
+      "id": 810,
+      "district": "Bankside",
+      "location": "Tate Modern",
+      "lat": 51.506725,
+      "lng": -0.098807
+    }
+  ],
+  "Bloomsbury": [
+    {
+      "id": 11,
+      "district": "Bloomsbury",
+      "location": "Brunswick Square",
+      "lat": 51.523951,
+      "lng": -0.122502
+    },
+    {
+      "id": 12,
+      "district": "Bloomsbury",
+      "location": "Malet Street",
+      "lat": 51.52168,
+      "lng": -0.130431
+    },
+    {
+      "id": 15,
+      "district": "Bloomsbury",
+      "location": "Great Russell Street",
+      "lat": 51.517727,
+      "lng": -0.127854
+    },
+    {
+      "id": 16,
+      "district": "Bloomsbury",
+      "location": "Cartwright Gardens",
+      "lat": 51.526357,
+      "lng": -0.125979
+    },
+    {
+      "id": 19,
+      "district": "Bloomsbury",
+      "location": "Taviton Street",
+      "lat": 51.52505,
+      "lng": -0.131161
+    },
+    {
+      "id": 24,
+      "district": "Bloomsbury",
+      "location": "British Museum",
+      "lat": 51.51908,
+      "lng": -0.124678
+    },
+    {
+      "id": 57,
+      "district": "Bloomsbury",
+      "location": "Guilford Street",
+      "lat": 51.523346,
+      "lng": -0.120202
+    },
+    {
+      "id": 77,
+      "district": "Bloomsbury",
+      "location": "Russell Square Station",
+      "lat": 51.523418,
+      "lng": -0.124121
+    },
+    {
+      "id": 88,
+      "district": "Bloomsbury",
+      "location": "Bayley Street",
+      "lat": 51.518587,
+      "lng": -0.132053
+    },
+    {
+      "id": 89,
+      "district": "Bloomsbury",
+      "location": "Tavistock Place",
+      "lat": 51.52625,
+      "lng": -0.123509
+    },
+    {
+      "id": 287,
+      "district": "Bloomsbury",
+      "location": "Bedford Way",
+      "lat": 51.523673,
+      "lng": -0.128377
+    },
+    {
+      "id": 364,
+      "district": "Bloomsbury",
+      "location": "Alfred Place",
+      "lat": 51.519656,
+      "lng": -0.132339
+    },
+    {
+      "id": 793,
+      "district": "Bloomsbury",
+      "location": "Cromer Street",
+      "lat": 51.528279,
+      "lng": -0.119558
+    },
+    {
+      "id": 796,
+      "district": "Bloomsbury",
+      "location": "Coram Street",
+      "lat": 51.524,
+      "lng": -0.126409
+    }
+  ],
+  "Fitzrovia": [
+    {
+      "id": 13,
+      "district": "Fitzrovia",
+      "location": "Scala Street",
+      "lat": 51.519914,
+      "lng": -0.136039
+    },
+    {
+      "id": 28,
+      "district": "Fitzrovia",
+      "location": "Bolsover Street",
+      "lat": 51.523518,
+      "lng": -0.143613
+    },
+    {
+      "id": 81,
+      "district": "Fitzrovia",
+      "location": "Great Titchfield Street",
+      "lat": 51.520253,
+      "lng": -0.141327
+    },
+    {
+      "id": 306,
+      "district": "Fitzrovia",
+      "location": "Rathbone Street",
+      "lat": 51.518162,
+      "lng": -0.135025
+    },
+    {
+      "id": 311,
+      "district": "Fitzrovia",
+      "location": "Foley Street",
+      "lat": 51.519181,
+      "lng": -0.140485
+    },
+    {
+      "id": 313,
+      "district": "Fitzrovia",
+      "location": "Wells Street",
+      "lat": 51.517344,
+      "lng": -0.138072
+    },
+    {
+      "id": 357,
+      "district": "Fitzrovia",
+      "location": "Howland Street",
+      "lat": 51.520994,
+      "lng": -0.139016
+    },
+    {
+      "id": 381,
+      "district": "Fitzrovia",
+      "location": "Charlotte Street",
+      "lat": 51.51953,
+      "lng": -0.135777
+    }
+  ],
+  "Holborn": [
+    {
+      "id": 17,
+      "district": "Holborn",
+      "location": "Hatton Wall",
+      "lat": 51.521661,
+      "lng": -0.109006
+    },
+    {
+      "id": 22,
+      "district": "Holborn",
+      "location": "Northington Street",
+      "lat": 51.522264,
+      "lng": -0.114079
+    },
+    {
+      "id": 23,
+      "district": "Holborn",
+      "location": "Red Lion Square",
+      "lat": 51.519435,
+      "lng": -0.119123
+    },
+    {
+      "id": 66,
+      "district": "Holborn",
+      "location": "Holborn Circus",
+      "lat": 51.51795,
+      "lng": -0.108657
+    },
+    {
+      "id": 67,
+      "district": "Holborn",
+      "location": "Hatton Garden",
+      "lat": 51.518825,
+      "lng": -0.108028
+    },
+    {
+      "id": 68,
+      "district": "Holborn",
+      "location": "Theobald's Road",
+      "lat": 51.520596,
+      "lng": -0.116688
+    },
+    {
+      "id": 82,
+      "district": "Holborn",
+      "location": "Chancery Lane",
+      "lat": 51.514274,
+      "lng": -0.111257
+    },
+    {
+      "id": 84,
+      "district": "Holborn",
+      "location": "Breams Buildings",
+      "lat": 51.515937,
+      "lng": -0.111778
+    },
+    {
+      "id": 112,
+      "district": "Holborn",
+      "location": "Stonecutter Street",
+      "lat": 51.515809,
+      "lng": -0.10527
+    },
+    {
+      "id": 162,
+      "district": "Holborn",
+      "location": "Southampton Place",
+      "lat": 51.517606,
+      "lng": -0.121328
+    },
+    {
+      "id": 232,
+      "district": "Holborn",
+      "location": "Carey Street",
+      "lat": 51.51501,
+      "lng": -0.112753
+    },
+    {
+      "id": 372,
+      "district": "Holborn",
+      "location": "Sardinia Street",
+      "lat": 51.515208,
+      "lng": -0.117863
+    },
+    {
+      "id": 433,
+      "district": "Holborn",
+      "location": "Wren Street",
+      "lat": 51.524564,
+      "lng": -0.116279
+    },
+    {
+      "id": 436,
+      "district": "Holborn",
+      "location": "Red Lion Street",
+      "lat": 51.51824,
+      "lng": -0.11655
+    },
+    {
+      "id": 546,
+      "district": "Holborn",
+      "location": "New Fetter Lane",
+      "lat": 51.517428,
+      "lng": -0.107987
+    },
+    {
+      "id": 562,
+      "district": "Holborn",
+      "location": "Bury Place",
+      "lat": 51.51746,
+      "lng": -0.12335
+    },
+    {
+      "id": 703,
+      "district": "Holborn",
+      "location": "St. Bride Street",
+      "lat": 51.515059,
+      "lng": -0.105344
+    },
+    {
+      "id": 809,
+      "district": "Holborn",
+      "location": "Lincoln's Inn Fields",
+      "lat": 51.516277,
+      "lng": -0.118272
+    }
+  ],
+  "Covent Garden": [
+    {
+      "id": 18,
+      "district": "Covent Garden",
+      "location": "Drury Lane",
+      "lat": 51.51477,
+      "lng": -0.122219
+    },
+    {
+      "id": 244,
+      "district": "Covent Garden",
+      "location": "Earnshaw Street",
+      "lat": 51.516118,
+      "lng": -0.128585
+    },
+    {
+      "id": 283,
+      "district": "Covent Garden",
+      "location": "Kingsway",
+      "lat": 51.514409,
+      "lng": -0.118478
+    },
+    {
+      "id": 335,
+      "district": "Covent Garden",
+      "location": "Tavistock Street",
+      "lat": 51.511968,
+      "lng": -0.120718
+    },
+    {
+      "id": 358,
+      "district": "Covent Garden",
+      "location": "High Holborn",
+      "lat": 51.516226,
+      "lng": -0.124826
+    },
+    {
+      "id": 751,
+      "district": "Covent Garden",
+      "location": "Newton Street",
+      "lat": 51.516128,
+      "lng": -0.120909
+    }
+  ],
+  "Euston": [
+    {
+      "id": 20,
+      "district": "Euston",
+      "location": "Drummond Street",
+      "lat": 51.527736,
+      "lng": -0.135273
+    },
+    {
+      "id": 21,
+      "district": "Euston",
+      "location": "Hampstead Road (Cartmel)",
+      "lat": 51.530078,
+      "lng": -0.138846
+    },
+    {
+      "id": 65,
+      "district": "Euston",
+      "location": "Gower Place",
+      "lat": 51.525227,
+      "lng": -0.135188
+    },
+    {
+      "id": 69,
+      "district": "Euston",
+      "location": "Euston Road",
+      "lat": 51.526236,
+      "lng": -0.134407
+    },
+    {
+      "id": 98,
+      "district": "Euston",
+      "location": "Hampstead Road",
+      "lat": 51.525542,
+      "lng": -0.138231
+    },
+    {
+      "id": 214,
+      "district": "Euston",
+      "location": "Endsleigh Gardens",
+      "lat": 51.526838,
+      "lng": -0.130504
+    },
+    {
+      "id": 239,
+      "district": "Euston",
+      "location": "Warren Street Station",
+      "lat": 51.524438,
+      "lng": -0.138019
+    },
+    {
+      "id": 795,
+      "district": "Euston",
+      "location": "Melton Street",
+      "lat": 51.527566,
+      "lng": -0.134849
+    }
+  ],
+  "Somers Town": [
+    {
+      "id": 25,
+      "district": "Somers Town",
+      "location": "Doric Way",
+      "lat": 51.528833,
+      "lng": -0.13225
+    },
+    {
+      "id": 797,
+      "district": "Somers Town",
+      "location": "Ossulston Street",
+      "lat": 51.5293,
+      "lng": -0.128279
+    }
+  ],
+  "Temple": [
+    {
+      "id": 27,
+      "district": "Temple",
+      "location": "Bouverie Street",
+      "lat": 51.513821,
+      "lng": -0.107927
+    },
+    {
+      "id": 79,
+      "district": "Temple",
+      "location": "Arundel Street",
+      "lat": 51.511726,
+      "lng": -0.113855
+    },
+    {
+      "id": 773,
+      "district": "Temple",
+      "location": "Tallis Street",
+      "lat": 51.511891,
+      "lng": -0.107349
+    }
+  ],
+  "Bayswater": [
+    {
+      "id": 29,
+      "district": "Bayswater",
+      "location": "Hereford Road",
+      "lat": 51.513735,
+      "lng": -0.193487
+    },
+    {
+      "id": 105,
+      "district": "Bayswater",
+      "location": "Westbourne Grove",
+      "lat": 51.515529,
+      "lng": -0.19024
+    },
+    {
+      "id": 164,
+      "district": "Bayswater",
+      "location": "Cleveland Gardens",
+      "lat": 51.515607,
+      "lng": -0.183118
+    },
+    {
+      "id": 165,
+      "district": "Bayswater",
+      "location": "Orsett Terrace",
+      "lat": 51.517932,
+      "lng": -0.183716
+    },
+    {
+      "id": 176,
+      "district": "Bayswater",
+      "location": "Gloucester Terrace",
+      "lat": 51.517919,
+      "lng": -0.188098
+    },
+    {
+      "id": 224,
+      "district": "Bayswater",
+      "location": "Whiteley's",
+      "lat": 51.514769,
+      "lng": -0.188129
+    },
+    {
+      "id": 261,
+      "district": "Bayswater",
+      "location": "Princes Square",
+      "lat": 51.513489,
+      "lng": -0.191351
+    },
+    {
+      "id": 397,
+      "district": "Bayswater",
+      "location": "Devonshire Terrace",
+      "lat": 51.51348,
+      "lng": -0.17977
+    },
+    {
+      "id": 524,
+      "district": "Bayswater",
+      "location": "Lancaster Gate",
+      "lat": 51.511654,
+      "lng": -0.179668
+    },
+    {
+      "id": 568,
+      "district": "Bayswater",
+      "location": "Bishop's Bridge Road West",
+      "lat": 51.51616,
+      "lng": -0.18697
+    },
+    {
+      "id": 584,
+      "district": "Bayswater",
+      "location": "Ilchester Gardens",
+      "lat": 51.51244,
+      "lng": -0.19096
+    },
+    {
+      "id": 592,
+      "district": "Bayswater",
+      "location": "Bishop's Bridge Road East",
+      "lat": 51.5171,
+      "lng": -0.18377
+    }
+  ],
+  "Hoxton": [
+    {
+      "id": 30,
+      "district": "Hoxton",
+      "location": "Windsor Terrace",
+      "lat": 51.529154,
+      "lng": -0.093421
+    },
+    {
+      "id": 31,
+      "district": "Hoxton",
+      "location": "Fanshaw Street",
+      "lat": 51.529537,
+      "lng": -0.083353
+    },
+    {
+      "id": 42,
+      "district": "Hoxton",
+      "location": "Wenlock Road",
+      "lat": 51.530991,
+      "lng": -0.093903
+    },
+    {
+      "id": 50,
+      "district": "Hoxton",
+      "location": "East Road",
+      "lat": 51.528673,
+      "lng": -0.087459
+    },
+    {
+      "id": 63,
+      "district": "Hoxton",
+      "location": "Murray Grove",
+      "lat": 51.53089,
+      "lng": -0.089782
+    },
+    {
+      "id": 96,
+      "district": "Hoxton",
+      "location": "Falkirk Street",
+      "lat": 51.53095,
+      "lng": -0.078505
+    },
+    {
+      "id": 253,
+      "district": "Hoxton",
+      "location": "Shoreditch Park",
+      "lat": 51.534042,
+      "lng": -0.086379
+    },
+    {
+      "id": 327,
+      "district": "Hoxton",
+      "location": "New North Road 1",
+      "lat": 51.53095,
+      "lng": -0.085603
+    },
+    {
+      "id": 328,
+      "district": "Hoxton",
+      "location": "New North Road 2",
+      "lat": 51.53114,
+      "lng": -0.086016
+    },
+    {
+      "id": 465,
+      "district": "Hoxton",
+      "location": "Pitfield Street North",
+      "lat": 51.53558,
+      "lng": -0.08249
+    },
+    {
+      "id": 539,
+      "district": "Hoxton",
+      "location": "Hoxton Station",
+      "lat": 51.531091,
+      "lng": -0.075901
+    },
+    {
+      "id": 569,
+      "district": "Hoxton",
+      "location": "Pitfield Street Central",
+      "lat": 51.53213,
+      "lng": -0.08299
+    },
+    {
+      "id": 574,
+      "district": "Hoxton",
+      "location": "Eagle Wharf Road",
+      "lat": 51.53356,
+      "lng": -0.09315
+    },
+    {
+      "id": 588,
+      "district": "Hoxton",
+      "location": "Hoxton Street",
+      "lat": 51.52959,
+      "lng": -0.0801
+    }
+  ],
+  "Shoreditch": [
+    {
+      "id": 32,
+      "district": "Shoreditch",
+      "location": "Leonard Circus",
+      "lat": 51.524696,
+      "lng": -0.084439
+    },
+    {
+      "id": 39,
+      "district": "Shoreditch",
+      "location": "Shoreditch High Street",
+      "lat": 51.526377,
+      "lng": -0.07813
+    },
+    {
+      "id": 40,
+      "district": "Shoreditch",
+      "location": "Commercial Street",
+      "lat": 51.52127,
+      "lng": -0.075578
+    },
+    {
+      "id": 58,
+      "district": "Shoreditch",
+      "location": "New Inn Yard",
+      "lat": 51.524526,
+      "lng": -0.079248
+    },
+    {
+      "id": 132,
+      "district": "Shoreditch",
+      "location": "Bethnal Green Road",
+      "lat": 51.523648,
+      "lng": -0.074754
+    },
+    {
+      "id": 322,
+      "district": "Shoreditch",
+      "location": "Palissy Street",
+      "lat": 51.526293,
+      "lng": -0.073955
+    },
+    {
+      "id": 323,
+      "district": "Shoreditch",
+      "location": "Clifton Street",
+      "lat": 51.523196,
+      "lng": -0.083067
+    },
+    {
+      "id": 390,
+      "district": "Shoreditch",
+      "location": "Buxton Street 1",
+      "lat": 51.521776,
+      "lng": -0.068856
+    },
+    {
+      "id": 399,
+      "district": "Shoreditch",
+      "location": "Brick Lane Market",
+      "lat": 51.522617,
+      "lng": -0.071653
+    },
+    {
+      "id": 401,
+      "district": "Shoreditch",
+      "location": "Columbia Road",
+      "lat": 51.528187,
+      "lng": -0.075375
+    },
+    {
+      "id": 486,
+      "district": "Shoreditch",
+      "location": "Granby Street",
+      "lat": 51.525645,
+      "lng": -0.069543
+    }
+  ],
+  "Aldgate": [
+    {
+      "id": 33,
+      "district": "Aldgate",
+      "location": "Central House",
+      "lat": 51.5156,
+      "lng": -0.070056
+    },
+    {
+      "id": 102,
+      "district": "Aldgate",
+      "location": "Jewry Street",
+      "lat": 51.513406,
+      "lng": -0.076793
+    },
+    {
+      "id": 115,
+      "district": "Aldgate",
+      "location": "Braham Street",
+      "lat": 51.514233,
+      "lng": -0.073537
+    },
+    {
+      "id": 202,
+      "district": "Aldgate",
+      "location": "Leman Street",
+      "lat": 51.512363,
+      "lng": -0.069542
+    },
+    {
+      "id": 263,
+      "district": "Aldgate",
+      "location": "St. Mary Axe",
+      "lat": 51.514225,
+      "lng": -0.08066
+    },
+    {
+      "id": 779,
+      "district": "Aldgate",
+      "location": "Houndsditch",
+      "lat": 51.514449,
+      "lng": -0.077178
+    }
+  ],
+  "Earl's Court": [
+    {
+      "id": 37,
+      "district": "Earl's Court",
+      "location": "Penywern Road",
+      "lat": 51.491593,
+      "lng": -0.192369
+    },
+    {
+      "id": 142,
+      "district": "Earl's Court",
+      "location": "West Cromwell Road",
+      "lat": 51.493724,
+      "lng": -0.198286
+    },
+    {
+      "id": 158,
+      "district": "Earl's Court",
+      "location": "Trebovir Road",
+      "lat": 51.490853,
+      "lng": -0.19617
+    },
+    {
+      "id": 171,
+      "district": "Earl's Court",
+      "location": "Collingham Gardens",
+      "lat": 51.491615,
+      "lng": -0.186753
+    },
+    {
+      "id": 219,
+      "district": "Earl's Court",
+      "location": "Bramham Gardens",
+      "lat": 51.490163,
+      "lng": -0.190393
+    },
+    {
+      "id": 296,
+      "district": "Earl's Court",
+      "location": "Knaresborough Place",
+      "lat": 51.493631,
+      "lng": -0.190603
+    },
+    {
+      "id": 332,
+      "district": "Earl's Court",
+      "location": "Nevern Place",
+      "lat": 51.493343,
+      "lng": -0.194757
+    }
+  ],
+  "Mayfair": [
+    {
+      "id": 44,
+      "district": "Mayfair",
+      "location": "Bruton Street",
+      "lat": 51.510736,
+      "lng": -0.144165
+    },
+    {
+      "id": 49,
+      "district": "Mayfair",
+      "location": "Curzon Street",
+      "lat": 51.507069,
+      "lng": -0.145904
+    },
+    {
+      "id": 53,
+      "district": "Mayfair",
+      "location": "Grafton Street",
+      "lat": 51.509992,
+      "lng": -0.143495
+    },
+    {
+      "id": 106,
+      "district": "Mayfair",
+      "location": "Woodstock Street",
+      "lat": 51.514105,
+      "lng": -0.147301
+    },
+    {
+      "id": 138,
+      "district": "Mayfair",
+      "location": "Green Street",
+      "lat": 51.512276,
+      "lng": -0.157436
+    },
+    {
+      "id": 180,
+      "district": "Mayfair",
+      "location": "North Audley Street",
+      "lat": 51.512911,
+      "lng": -0.153645
+    },
+    {
+      "id": 289,
+      "district": "Mayfair",
+      "location": "South Audley Street",
+      "lat": 51.50923,
+      "lng": -0.151296
+    },
+    {
+      "id": 318,
+      "district": "Mayfair",
+      "location": "Sackville Street",
+      "lat": 51.510048,
+      "lng": -0.138846
+    },
+    {
+      "id": 348,
+      "district": "Mayfair",
+      "location": "Grosvenor Square",
+      "lat": 51.51217,
+      "lng": -0.150481
+    },
+    {
+      "id": 349,
+      "district": "Mayfair",
+      "location": "St. George Street",
+      "lat": 51.51196,
+      "lng": -0.142783
+    },
+    {
+      "id": 366,
+      "district": "Mayfair",
+      "location": "Millennium Hotel",
+      "lat": 51.510919,
+      "lng": -0.151126
+    },
+    {
+      "id": 380,
+      "district": "Mayfair",
+      "location": "Stanhope Gate",
+      "lat": 51.506864,
+      "lng": -0.150666
+    },
+    {
+      "id": 382,
+      "district": "Mayfair",
+      "location": "Farm Street",
+      "lat": 51.509351,
+      "lng": -0.147449
+    },
+    {
+      "id": 389,
+      "district": "Mayfair",
+      "location": "Upper Grosvenor Street",
+      "lat": 51.51013,
+      "lng": -0.155757
+    },
+    {
+      "id": 528,
+      "district": "Mayfair",
+      "location": "Clarges Street",
+      "lat": 51.507326,
+      "lng": -0.145827
+    },
+    {
+      "id": 541,
+      "district": "Mayfair",
+      "location": "Green Park Station",
+      "lat": 51.506613,
+      "lng": -0.142844
+    },
+    {
+      "id": 733,
+      "district": "Mayfair",
+      "location": "Park Lane",
+      "lat": 51.505426,
+      "lng": -0.150817
+    }
+  ],
+  "Wapping": [
+    {
+      "id": 46,
+      "district": "Wapping",
+      "location": "Nesham Street",
+      "lat": 51.507131,
+      "lng": -0.06691
+    },
+    {
+      "id": 134,
+      "district": "Wapping",
+      "location": "Wapping High Street",
+      "lat": 51.504904,
+      "lng": -0.06797
+    },
+    {
+      "id": 237,
+      "district": "Wapping",
+      "location": "Dock Street",
+      "lat": 51.509786,
+      "lng": -0.068161
+    },
+    {
+      "id": 451,
+      "district": "Wapping",
+      "location": "Hermitage Court",
+      "lat": 51.504719,
+      "lng": -0.063531
+    },
+    {
+      "id": 458,
+      "district": "Wapping",
+      "location": "Wapping Lane",
+      "lat": 51.504749,
+      "lng": -0.057544
+    },
+    {
+      "id": 488,
+      "district": "Wapping",
+      "location": "Reardon Street",
+      "lat": 51.506946,
+      "lng": -0.058681
+    },
+    {
+      "id": 490,
+      "district": "Wapping",
+      "location": "Pennington Street",
+      "lat": 51.508622,
+      "lng": -0.065006
+    }
+  ],
+  "Maida Vale": [
+    {
+      "id": 47,
+      "district": "Maida Vale",
+      "location": "Warwick Avenue Station",
+      "lat": 51.523344,
+      "lng": -0.183846
+    },
+    {
+      "id": 255,
+      "district": "Maida Vale",
+      "location": "Clifton Road",
+      "lat": 51.525575,
+      "lng": -0.179592
+    }
+  ],
+  "St. Paul's": [
+    {
+      "id": 48,
+      "district": "St. Paul's",
+      "location": "Godliman Street",
+      "lat": 51.512484,
+      "lng": -0.099141
+    },
+    {
+      "id": 71,
+      "district": "St. Paul's",
+      "location": "Newgate Street",
+      "lat": 51.515418,
+      "lng": -0.09885
+    },
+    {
+      "id": 136,
+      "district": "St. Paul's",
+      "location": "Queen Victoria Street",
+      "lat": 51.511961,
+      "lng": -0.097441
+    }
+  ],
+  "Finsbury": [
+    {
+      "id": 51,
+      "district": "Finsbury",
+      "location": "Finsbury Library",
+      "lat": 51.526717,
+      "lng": -0.104298
+    },
+    {
+      "id": 78,
+      "district": "Finsbury",
+      "location": "Sadlers Sports Centre",
+      "lat": 51.524868,
+      "lng": -0.099489
+    },
+    {
+      "id": 123,
+      "district": "Finsbury",
+      "location": "St. John Street",
+      "lat": 51.52836,
+      "lng": -0.104724
+    },
+    {
+      "id": 344,
+      "district": "Finsbury",
+      "location": "Goswell Road (City Uni)",
+      "lat": 51.528246,
+      "lng": -0.101026
+    },
+    {
+      "id": 544,
+      "district": "Finsbury",
+      "location": "Percival Street",
+      "lat": 51.526153,
+      "lng": -0.102208
+    }
+  ],
+  "St. Luke's": [
+    {
+      "id": 52,
+      "district": "St. Luke's",
+      "location": "Roscoe Street",
+      "lat": 51.522954,
+      "lng": -0.094934
+    },
+    {
+      "id": 73,
+      "district": "St. Luke's",
+      "location": "Old Street Station",
+      "lat": 51.525726,
+      "lng": -0.088486
+    },
+    {
+      "id": 107,
+      "district": "St. Luke's",
+      "location": "Finsbury Leisure Centre",
+      "lat": 51.526008,
+      "lng": -0.096317
+    },
+    {
+      "id": 119,
+      "district": "St. Luke's",
+      "location": "Bath Street",
+      "lat": 51.525893,
+      "lng": -0.090847
+    },
+    {
+      "id": 319,
+      "district": "St. Luke's",
+      "location": "Baldwin Street",
+      "lat": 51.527025,
+      "lng": -0.088542
+    }
+  ],
+  "Barbican": [
+    {
+      "id": 54,
+      "district": "Barbican",
+      "location": "Golden Lane",
+      "lat": 51.521747,
+      "lng": -0.094475
+    },
+    {
+      "id": 95,
+      "district": "Barbican",
+      "location": "Aldersgate Street",
+      "lat": 51.520841,
+      "lng": -0.09734
+    },
+    {
+      "id": 126,
+      "district": "Barbican",
+      "location": "Museum of London",
+      "lat": 51.517821,
+      "lng": -0.096496
+    },
+    {
+      "id": 275,
+      "district": "Barbican",
+      "location": "Barbican Centre",
+      "lat": 51.520044,
+      "lng": -0.092176
+    }
+  ],
+  "The Borough": [
+    {
+      "id": 61,
+      "district": "The Borough",
+      "location": "Great Dover Street",
+      "lat": 51.497382,
+      "lng": -0.089446
+    },
+    {
+      "id": 125,
+      "district": "The Borough",
+      "location": "Borough High Street",
+      "lat": 51.500694,
+      "lng": -0.094524
+    },
+    {
+      "id": 156,
+      "district": "The Borough",
+      "location": "New Kent Road",
+      "lat": 51.494436,
+      "lng": -0.092921
+    },
+    {
+      "id": 194,
+      "district": "The Borough",
+      "location": "Hop Exchange",
+      "lat": 51.504627,
+      "lng": -0.091773
+    },
+    {
+      "id": 196,
+      "district": "The Borough",
+      "location": "Union Street",
+      "lat": 51.503688,
+      "lng": -0.098497
+    },
+    {
+      "id": 249,
+      "district": "The Borough",
+      "location": "Harper Road",
+      "lat": 51.498597,
+      "lng": -0.096191
+    },
+    {
+      "id": 269,
+      "district": "The Borough",
+      "location": "Empire Square",
+      "lat": 51.500823,
+      "lng": -0.08974
+    },
+    {
+      "id": 295,
+      "district": "The Borough",
+      "location": "Swan Street",
+      "lat": 51.500296,
+      "lng": -0.092762
+    },
+    {
+      "id": 645,
+      "district": "The Borough",
+      "location": "Great Suffolk Street",
+      "lat": 51.501732,
+      "lng": -0.100292
+    }
+  ],
+  "Kennington": [
+    {
+      "id": 62,
+      "district": "Kennington",
+      "location": "Cotton Garden Estate",
+      "lat": 51.490757,
+      "lng": -0.106323
+    },
+    {
+      "id": 144,
+      "district": "Kennington",
+      "location": "Kennington Cross",
+      "lat": 51.48894,
+      "lng": -0.111435
+    },
+    {
+      "id": 412,
+      "district": "Kennington",
+      "location": "Cleaver Street",
+      "lat": 51.488105,
+      "lng": -0.110121
+    },
+    {
+      "id": 435,
+      "district": "Kennington",
+      "location": "Kennington Station",
+      "lat": 51.488852,
+      "lng": -0.105593
+    },
+    {
+      "id": 580,
+      "district": "Kennington",
+      "location": "Doddington Grove",
+      "lat": 51.486929,
+      "lng": -0.102996
+    }
+  ],
+  "Strand": [
+    {
+      "id": 64,
+      "district": "Strand",
+      "location": "William IV Street",
+      "lat": 51.509462,
+      "lng": -0.124749
+    },
+    {
+      "id": 174,
+      "district": "Strand",
+      "location": "Strand",
+      "lat": 51.512529,
+      "lng": -0.115163
+    },
+    {
+      "id": 229,
+      "district": "Strand",
+      "location": "Whitehall Place",
+      "lat": 51.506543,
+      "lng": -0.123179
+    },
+    {
+      "id": 256,
+      "district": "Strand",
+      "location": "Houghton Street",
+      "lat": 51.51362,
+      "lng": -0.116764
+    },
+    {
+      "id": 309,
+      "district": "Strand",
+      "location": "Embankment (Savoy)",
+      "lat": 51.509631,
+      "lng": -0.119047
+    },
+    {
+      "id": 338,
+      "district": "Strand",
+      "location": "Wellington Street",
+      "lat": 51.511756,
+      "lng": -0.119643
+    },
+    {
+      "id": 341,
+      "district": "Strand",
+      "location": "Craven Street",
+      "lat": 51.508103,
+      "lng": -0.126021
+    },
+    {
+      "id": 354,
+      "district": "Strand",
+      "location": "Northumberland Avenue",
+      "lat": 51.506767,
+      "lng": -0.123702
+    },
+    {
+      "id": 388,
+      "district": "Strand",
+      "location": "Southampton Street",
+      "lat": 51.510701,
+      "lng": -0.121723
+    },
+    {
+      "id": 564,
+      "district": "Strand",
+      "location": "Somerset House",
+      "lat": 51.509943,
+      "lng": -0.117619
+    },
+    {
+      "id": 594,
+      "district": "Strand",
+      "location": "Kingsway Southbound",
+      "lat": 51.513875,
+      "lng": -0.117774
+    }
+  ],
+  "Vauxhall": [
+    {
+      "id": 74,
+      "district": "Vauxhall",
+      "location": "Vauxhall Cross",
+      "lat": 51.485917,
+      "lng": -0.124469
+    },
+    {
+      "id": 86,
+      "district": "Vauxhall",
+      "location": "Sancroft Street",
+      "lat": 51.489479,
+      "lng": -0.115156
+    },
+    {
+      "id": 91,
+      "district": "Vauxhall",
+      "location": "Walnut Tree Walk",
+      "lat": 51.493686,
+      "lng": -0.111014
+    },
+    {
+      "id": 100,
+      "district": "Vauxhall",
+      "location": "Albert Embankment",
+      "lat": 51.490435,
+      "lng": -0.122806
+    },
+    {
+      "id": 117,
+      "district": "Vauxhall",
+      "location": "Lollard Street",
+      "lat": 51.49288,
+      "lng": -0.114934
+    },
+    {
+      "id": 139,
+      "district": "Vauxhall",
+      "location": "Lambeth Road",
+      "lat": 51.494881,
+      "lng": -0.117974
+    },
+    {
+      "id": 235,
+      "district": "Vauxhall",
+      "location": "Kennington Road",
+      "lat": 51.495718,
+      "lng": -0.110889
+    },
+    {
+      "id": 270,
+      "district": "Vauxhall",
+      "location": "Kennington Lane Rail Bridge",
+      "lat": 51.486343,
+      "lng": -0.122492
+    },
+    {
+      "id": 305,
+      "district": "Vauxhall",
+      "location": "Kennington Lane Tesco",
+      "lat": 51.486779,
+      "lng": -0.115853
+    },
+    {
+      "id": 310,
+      "district": "Vauxhall",
+      "location": "Black Prince Road",
+      "lat": 51.490867,
+      "lng": -0.116911
+    },
+    {
+      "id": 352,
+      "district": "Vauxhall",
+      "location": "Vauxhall Street",
+      "lat": 51.486965,
+      "lng": -0.116625
+    },
+    {
+      "id": 355,
+      "district": "Vauxhall",
+      "location": "Oval Way",
+      "lat": 51.486575,
+      "lng": -0.117286
+    },
+    {
+      "id": 387,
+      "district": "Vauxhall",
+      "location": "Fire Brigade Pier",
+      "lat": 51.493699,
+      "lng": -0.121394
+    },
+    {
+      "id": 437,
+      "district": "Vauxhall",
+      "location": "Vauxhall Walk",
+      "lat": 51.488124,
+      "lng": -0.120903
+    },
+    {
+      "id": 441,
+      "district": "Vauxhall",
+      "location": "Sail Street",
+      "lat": 51.495656,
+      "lng": -0.114605
+    },
+    {
+      "id": 600,
+      "district": "Vauxhall",
+      "location": "South Lambeth Road",
+      "lat": 51.481747,
+      "lng": -0.124642
+    },
+    {
+      "id": 813,
+      "district": "Vauxhall",
+      "location": "New Spring Gardens Walk",
+      "lat": 51.487807,
+      "lng": -0.122759
+    }
+  ],
+  "Angel": [
+    {
+      "id": 75,
+      "district": "Angel",
+      "location": "Torrens Street",
+      "lat": 51.532199,
+      "lng": -0.10548
+    },
+    {
+      "id": 93,
+      "district": "Angel",
+      "location": "Cloudesley Road",
+      "lat": 51.534408,
+      "lng": -0.109025
+    },
+    {
+      "id": 189,
+      "district": "Angel",
+      "location": "Claremont Square",
+      "lat": 51.531666,
+      "lng": -0.109914
+    },
+    {
+      "id": 234,
+      "district": "Angel",
+      "location": "Liverpool Road (N1 Centre)",
+      "lat": 51.534504,
+      "lng": -0.106992
+    },
+    {
+      "id": 254,
+      "district": "Angel",
+      "location": "Chadwell Street",
+      "lat": 51.530515,
+      "lng": -0.106408
+    },
+    {
+      "id": 326,
+      "district": "Angel",
+      "location": "Graham Street",
+      "lat": 51.532661,
+      "lng": -0.099981
+    },
+    {
+      "id": 339,
+      "district": "Angel",
+      "location": "Risinghill Street",
+      "lat": 51.533319,
+      "lng": -0.111781
+    },
+    {
+      "id": 365,
+      "district": "Angel",
+      "location": "City Road",
+      "lat": 51.530344,
+      "lng": -0.100168
+    },
+    {
+      "id": 695,
+      "district": "Angel",
+      "location": "Islington Green",
+      "lat": 51.536384,
+      "lng": -0.102757
+    },
+    {
+      "id": 697,
+      "district": "Angel",
+      "location": "Charlotte Terrace",
+      "lat": 51.536392,
+      "lng": -0.112721
+    }
+  ],
+  "The Regent's Park": [
+    {
+      "id": 76,
+      "district": "The Regent's Park",
+      "location": "Longford Street",
+      "lat": 51.525595,
+      "lng": -0.144083
+    },
+    {
+      "id": 114,
+      "district": "The Regent's Park",
+      "location": "Park Road (Baker Street)",
+      "lat": 51.524517,
+      "lng": -0.158963
+    },
+    {
+      "id": 247,
+      "district": "The Regent's Park",
+      "location": "St. John's Wood Church",
+      "lat": 51.530052,
+      "lng": -0.168314
+    },
+    {
+      "id": 271,
+      "district": "The Regent's Park",
+      "location": "London Zoo",
+      "lat": 51.535836,
+      "lng": -0.156285
+    },
+    {
+      "id": 315,
+      "district": "The Regent's Park",
+      "location": "The Tennis Courts",
+      "lat": 51.525367,
+      "lng": -0.153463
+    },
+    {
+      "id": 329,
+      "district": "The Regent's Park",
+      "location": "Prince Albert Road",
+      "lat": 51.535892,
+      "lng": -0.160854
+    },
+    {
+      "id": 343,
+      "district": "The Regent's Park",
+      "location": "London Zoo Car Park",
+      "lat": 51.536922,
+      "lng": -0.150181
+    },
+    {
+      "id": 540,
+      "district": "The Regent's Park",
+      "location": "Albany Street",
+      "lat": 51.528302,
+      "lng": -0.144466
+    }
+  ],
+  "Southwark": [
+    {
+      "id": 80,
+      "district": "Southwark",
+      "location": "Webber Street",
+      "lat": 51.500693,
+      "lng": -0.102091
+    },
+    {
+      "id": 240,
+      "district": "Southwark",
+      "location": "Colombo Street",
+      "lat": 51.505459,
+      "lng": -0.105692
+    },
+    {
+      "id": 420,
+      "district": "Southwark",
+      "location": "Southwark Station 1",
+      "lat": 51.504043,
+      "lng": -0.105312
+    },
+    {
+      "id": 421,
+      "district": "Southwark",
+      "location": "Southwark Station 2",
+      "lat": 51.504044,
+      "lng": -0.104778
+    },
+    {
+      "id": 792,
+      "district": "Southwark",
+      "location": "Blackfriars Road",
+      "lat": 51.505461,
+      "lng": -0.10454
+    }
+  ],
+  "West End": [
+    {
+      "id": 83,
+      "district": "West End",
+      "location": "Panton Street",
+      "lat": 51.509639,
+      "lng": -0.13151
+    },
+    {
+      "id": 116,
+      "district": "West End",
+      "location": "Little Argyll Street",
+      "lat": 51.514499,
+      "lng": -0.141423
+    },
+    {
+      "id": 226,
+      "district": "West End",
+      "location": "Charles II Street",
+      "lat": 51.508446,
+      "lng": -0.131961
+    },
+    {
+      "id": 233,
+      "district": "West End",
+      "location": "Pall Mall East",
+      "lat": 51.50777,
+      "lng": -0.130699
+    },
+    {
+      "id": 325,
+      "district": "West End",
+      "location": "St. Martin's Street",
+      "lat": 51.509087,
+      "lng": -0.129697
+    }
+  ],
+  "Bermondsey": [
+    {
+      "id": 85,
+      "district": "Bermondsey",
+      "location": "Tanner Street",
+      "lat": 51.500647,
+      "lng": -0.0786
+    },
+    {
+      "id": 278,
+      "district": "Bermondsey",
+      "location": "Tooley Street",
+      "lat": 51.503493,
+      "lng": -0.07962
+    },
+    {
+      "id": 308,
+      "district": "Bermondsey",
+      "location": "Long Lane",
+      "lat": 51.499075,
+      "lng": -0.085666
+    },
+    {
+      "id": 314,
+      "district": "Bermondsey",
+      "location": "Tyers Gate",
+      "lat": 51.500889,
+      "lng": -0.083159
+    },
+    {
+      "id": 321,
+      "district": "Bermondsey",
+      "location": "Bermondsey Street",
+      "lat": 51.497855,
+      "lng": -0.081608
+    },
+    {
+      "id": 818,
+      "district": "Bermondsey",
+      "location": "One Tower Bridge",
+      "lat": 51.503127,
+      "lng": -0.078655
+    }
+  ],
+  "Camden Town": [
+    {
+      "id": 90,
+      "district": "Camden Town",
+      "location": "Harrington Square 1",
+      "lat": 51.533019,
+      "lng": -0.139174
+    },
+    {
+      "id": 131,
+      "district": "Camden Town",
+      "location": "Eversholt Street",
+      "lat": 51.533005,
+      "lng": -0.136792
+    },
+    {
+      "id": 362,
+      "district": "Camden Town",
+      "location": "Royal College Street",
+      "lat": 51.536264,
+      "lng": -0.133952
+    },
+    {
+      "id": 425,
+      "district": "Camden Town",
+      "location": "Harrington Square 2",
+      "lat": 51.533379,
+      "lng": -0.139159
+    },
+    {
+      "id": 456,
+      "district": "Camden Town",
+      "location": "Parkway",
+      "lat": 51.538071,
+      "lng": -0.144664
+    },
+    {
+      "id": 457,
+      "district": "Camden Town",
+      "location": "Castlehaven Road",
+      "lat": 51.542138,
+      "lng": -0.145393
+    },
+    {
+      "id": 462,
+      "district": "Camden Town",
+      "location": "Bonny Street",
+      "lat": 51.541603,
+      "lng": -0.138853
+    },
+    {
+      "id": 535,
+      "district": "Camden Town",
+      "location": "Gloucester Avenue",
+      "lat": 51.537349,
+      "lng": -0.147154
+    },
+    {
+      "id": 545,
+      "district": "Camden Town",
+      "location": "Arlington Road",
+      "lat": 51.539957,
+      "lng": -0.145246
+    },
+    {
+      "id": 572,
+      "district": "Camden Town",
+      "location": "Greenland Road",
+      "lat": 51.539099,
+      "lng": -0.141728
+    },
+    {
+      "id": 604,
+      "district": "Camden Town",
+      "location": "St Martins Close",
+      "lat": 51.538792,
+      "lng": -0.138535
+    },
+    {
+      "id": 713,
+      "district": "Camden Town",
+      "location": "Hawley Crescent",
+      "lat": 51.541007,
+      "lng": -0.14326
+    }
+  ],
+  "Elephant & Castle": [
+    {
+      "id": 92,
+      "district": "Elephant & Castle",
+      "location": "Borough Road",
+      "lat": 51.498898,
+      "lng": -0.10044
+    },
+    {
+      "id": 262,
+      "district": "Elephant & Castle",
+      "location": "LSBU (Borough Road)",
+      "lat": 51.498744,
+      "lng": -0.103132
+    },
+    {
+      "id": 297,
+      "district": "Elephant & Castle",
+      "location": "Geraldine Street",
+      "lat": 51.496127,
+      "lng": -0.106
+    },
+    {
+      "id": 324,
+      "district": "Elephant & Castle",
+      "location": "Ontario Street",
+      "lat": 51.49652,
+      "lng": -0.101384
+    },
+    {
+      "id": 409,
+      "district": "Elephant & Castle",
+      "location": "Strata",
+      "lat": 51.493146,
+      "lng": -0.099828
+    },
+    {
+      "id": 411,
+      "district": "Elephant & Castle",
+      "location": "Walworth Road",
+      "lat": 51.493372,
+      "lng": -0.09968
+    },
+    {
+      "id": 548,
+      "district": "Elephant & Castle",
+      "location": "Westminster Bridge Road",
+      "lat": 51.498386,
+      "lng": -0.107913
+    },
+    {
+      "id": 549,
+      "district": "Elephant & Castle",
+      "location": "Gaywood  Street",
+      "lat": 51.49605,
+      "lng": -0.104193
+    }
+  ],
+  "Borough": [
+    {
+      "id": 94,
+      "district": "Borough",
+      "location": "Bricklayers Arms",
+      "lat": 51.495061,
+      "lng": -0.085814
+    },
+    {
+      "id": 317,
+      "district": "Borough",
+      "location": "Dickens Square",
+      "lat": 51.496791,
+      "lng": -0.093913
+    }
+  ],
+  "Bank": [
+    {
+      "id": 101,
+      "district": "Bank",
+      "location": "Queen Street 1",
+      "lat": 51.511553,
+      "lng": -0.09294
+    },
+    {
+      "id": 340,
+      "district": "Bank",
+      "location": "Bank of England Museum",
+      "lat": 51.514441,
+      "lng": -0.087587
+    },
+    {
+      "id": 427,
+      "district": "Bank",
+      "location": "Cheapside",
+      "lat": 51.51397,
+      "lng": -0.09294
+    },
+    {
+      "id": 579,
+      "district": "Bank",
+      "location": "Queen Street 2",
+      "lat": 51.511246,
+      "lng": -0.093051
+    }
+  ],
+  "Tower": [
+    {
+      "id": 104,
+      "district": "Tower",
+      "location": "Crosswall",
+      "lat": 51.511594,
+      "lng": -0.077121
+    },
+    {
+      "id": 130,
+      "district": "Tower",
+      "location": "Tower Gardens",
+      "lat": 51.509506,
+      "lng": -0.075459
+    },
+    {
+      "id": 452,
+      "district": "Tower",
+      "location": "St. Katharine's Way",
+      "lat": 51.505697,
+      "lng": -0.070542
+    }
+  ],
+  "Westminster": [
+    {
+      "id": 108,
+      "district": "Westminster",
+      "location": "Abbey Orchard Street",
+      "lat": 51.498125,
+      "lng": -0.132102
+    },
+    {
+      "id": 118,
+      "district": "Westminster",
+      "location": "Rochester Row",
+      "lat": 51.495827,
+      "lng": -0.135478
+    },
+    {
+      "id": 221,
+      "district": "Westminster",
+      "location": "Horseferry Road",
+      "lat": 51.494816,
+      "lng": -0.130458
+    },
+    {
+      "id": 267,
+      "district": "Westminster",
+      "location": "Regency Street",
+      "lat": 51.49206,
+      "lng": -0.132224
+    },
+    {
+      "id": 281,
+      "district": "Westminster",
+      "location": "Smith Square",
+      "lat": 51.495805,
+      "lng": -0.127575
+    },
+    {
+      "id": 299,
+      "district": "Westminster",
+      "location": "Vincent Square",
+      "lat": 51.493985,
+      "lng": -0.136928
+    },
+    {
+      "id": 353,
+      "district": "Westminster",
+      "location": "Greycoat Street",
+      "lat": 51.494591,
+      "lng": -0.134234
+    },
+    {
+      "id": 359,
+      "district": "Westminster",
+      "location": "Butler Place",
+      "lat": 51.497829,
+      "lng": -0.13544
+    },
+    {
+      "id": 360,
+      "district": "Westminster",
+      "location": "Howick Place",
+      "lat": 51.496753,
+      "lng": -0.138733
+    },
+    {
+      "id": 558,
+      "district": "Westminster",
+      "location": "Page Street",
+      "lat": 51.493978,
+      "lng": -0.127554
+    },
+    {
+      "id": 583,
+      "district": "Westminster",
+      "location": "Abingdon Green",
+      "lat": 51.497622,
+      "lng": -0.125978
+    },
+    {
+      "id": 646,
+      "district": "Westminster",
+      "location": "Buckingham Gate",
+      "lat": 51.498865,
+      "lng": -0.137424
+    },
+    {
+      "id": 762,
+      "district": "Westminster",
+      "location": "Storey's Gate",
+      "lat": 51.500703,
+      "lng": -0.129698
+    },
+    {
+      "id": 799,
+      "district": "Westminster",
+      "location": "Kings Gate House",
+      "lat": 51.497698,
+      "lng": -0.137598
+    },
+    {
+      "id": 826,
+      "district": "Westminster",
+      "location": "Allington street",
+      "lat": 51.496863,
+      "lng": -0.142943
+    }
+  ],
+  "Soho": [
+    {
+      "id": 109,
+      "district": "Soho",
+      "location": "Soho Square",
+      "lat": 51.515631,
+      "lng": -0.132328
+    },
+    {
+      "id": 129,
+      "district": "Soho",
+      "location": "Golden Square",
+      "lat": 51.511897,
+      "lng": -0.137043
+    },
+    {
+      "id": 159,
+      "district": "Soho",
+      "location": "Great Marlborough Street",
+      "lat": 51.514619,
+      "lng": -0.137841
+    },
+    {
+      "id": 192,
+      "district": "Soho",
+      "location": "Wardour Street",
+      "lat": 51.512515,
+      "lng": -0.133201
+    },
+    {
+      "id": 260,
+      "district": "Soho",
+      "location": "Broadwick Street",
+      "lat": 51.513684,
+      "lng": -0.13558
+    },
+    {
+      "id": 383,
+      "district": "Soho",
+      "location": "Frith Street",
+      "lat": 51.513103,
+      "lng": -0.131213
+    },
+    {
+      "id": 386,
+      "district": "Soho",
+      "location": "Moor Street",
+      "lat": 51.513527,
+      "lng": -0.13011
+    }
+  ],
+  "Hyde Park": [
+    {
+      "id": 111,
+      "district": "Hyde Park",
+      "location": "Park Lane",
+      "lat": 51.510017,
+      "lng": -0.157275
+    },
+    {
+      "id": 153,
+      "district": "Hyde Park",
+      "location": "Bayswater Road",
+      "lat": 51.511933,
+      "lng": -0.174411
+    },
+    {
+      "id": 191,
+      "district": "Hyde Park",
+      "location": "Hyde Park Corner",
+      "lat": 51.503117,
+      "lng": -0.15352
+    },
+    {
+      "id": 213,
+      "district": "Hyde Park",
+      "location": "Wellington Arch",
+      "lat": 51.50274,
+      "lng": -0.149569
+    },
+    {
+      "id": 222,
+      "district": "Hyde Park",
+      "location": "Knightsbridge",
+      "lat": 51.502757,
+      "lng": -0.155349
+    },
+    {
+      "id": 248,
+      "district": "Hyde Park",
+      "location": "Triangle Car Park",
+      "lat": 51.506451,
+      "lng": -0.170279
+    },
+    {
+      "id": 303,
+      "district": "Hyde Park",
+      "location": "Albert Gate",
+      "lat": 51.502953,
+      "lng": -0.158456
+    }
+  ],
+  "South Kensington": [
+    {
+      "id": 113,
+      "district": "South Kensington",
+      "location": "Gloucester Road (Central)",
+      "lat": 51.496462,
+      "lng": -0.183289
+    },
+    {
+      "id": 128,
+      "district": "South Kensington",
+      "location": "Emperor's Gate",
+      "lat": 51.495362,
+      "lng": -0.185296
+    },
+    {
+      "id": 172,
+      "district": "South Kensington",
+      "location": "Sumner Place",
+      "lat": 51.491211,
+      "lng": -0.173715
+    },
+    {
+      "id": 187,
+      "district": "South Kensington",
+      "location": "Queen's Gate (South)",
+      "lat": 51.492479,
+      "lng": -0.178433
+    },
+    {
+      "id": 216,
+      "district": "South Kensington",
+      "location": "Old Brompton Road",
+      "lat": 51.490945,
+      "lng": -0.18119
+    },
+    {
+      "id": 356,
+      "district": "South Kensington",
+      "location": "South Kensington Station",
+      "lat": 51.494412,
+      "lng": -0.173881
+    },
+    {
+      "id": 378,
+      "district": "South Kensington",
+      "location": "Natural History Museum",
+      "lat": 51.495592,
+      "lng": -0.179077
+    },
+    {
+      "id": 405,
+      "district": "South Kensington",
+      "location": "Gloucester Road Station",
+      "lat": 51.494185,
+      "lng": -0.18267
+    },
+    {
+      "id": 432,
+      "district": "South Kensington",
+      "location": "Exhibition Road Museums",
+      "lat": 51.496957,
+      "lng": -0.173894
+    },
+    {
+      "id": 781,
+      "district": "South Kensington",
+      "location": "Victoria & Albert Museum",
+      "lat": 51.495898,
+      "lng": -0.173009
+    }
+  ],
+  "Guildhall": [
+    {
+      "id": 120,
+      "district": "Guildhall",
+      "location": "The Guildhall",
+      "lat": 51.515735,
+      "lng": -0.09308
+    },
+    {
+      "id": 127,
+      "district": "Guildhall",
+      "location": "Wood Street",
+      "lat": 51.517008,
+      "lng": -0.093885
+    },
+    {
+      "id": 509,
+      "district": "Guildhall",
+      "location": "Fore Street",
+      "lat": 51.517842,
+      "lng": -0.090075
+    }
+  ],
+  "Belgravia": [
+    {
+      "id": 124,
+      "district": "Belgravia",
+      "location": "Eaton Square",
+      "lat": 51.496544,
+      "lng": -0.150905
+    },
+    {
+      "id": 181,
+      "district": "Belgravia",
+      "location": "Belgrave Square",
+      "lat": 51.499412,
+      "lng": -0.152317
+    },
+    {
+      "id": 207,
+      "district": "Belgravia",
+      "location": "Grosvenor Crescent",
+      "lat": 51.501352,
+      "lng": -0.153194
+    },
+    {
+      "id": 423,
+      "district": "Belgravia",
+      "location": "Eaton Square (South)",
+      "lat": 51.494561,
+      "lng": -0.153933
+    }
+  ],
+  "Moorgate": [
+    {
+      "id": 140,
+      "district": "Moorgate",
+      "location": "Finsbury Square",
+      "lat": 51.520962,
+      "lng": -0.085634
+    },
+    {
+      "id": 215,
+      "district": "Moorgate",
+      "location": "Moorfields",
+      "lat": 51.519069,
+      "lng": -0.088285
+    },
+    {
+      "id": 331,
+      "district": "Moorgate",
+      "location": "Bunhill Row",
+      "lat": 51.520858,
+      "lng": -0.089887
+    }
+  ],
+  "Knightsbridge": [
+    {
+      "id": 143,
+      "district": "Knightsbridge",
+      "location": "Pont Street",
+      "lat": 51.496886,
+      "lng": -0.161203
+    },
+    {
+      "id": 150,
+      "district": "Knightsbridge",
+      "location": "Holy Trinity Brompton",
+      "lat": 51.497056,
+      "lng": -0.168917
+    },
+    {
+      "id": 163,
+      "district": "Knightsbridge",
+      "location": "Sloane Avenue",
+      "lat": 51.493184,
+      "lng": -0.167894
+    },
+    {
+      "id": 166,
+      "district": "Knightsbridge",
+      "location": "Seville Street",
+      "lat": 51.501855,
+      "lng": -0.159237
+    },
+    {
+      "id": 209,
+      "district": "Knightsbridge",
+      "location": "Denyer Street",
+      "lat": 51.493583,
+      "lng": -0.165101
+    },
+    {
+      "id": 211,
+      "district": "Knightsbridge",
+      "location": "Cadogan Place",
+      "lat": 51.494645,
+      "lng": -0.158105
+    },
+    {
+      "id": 258,
+      "district": "Knightsbridge",
+      "location": "Kensington Gore",
+      "lat": 51.501432,
+      "lng": -0.178656
+    },
+    {
+      "id": 368,
+      "district": "Knightsbridge",
+      "location": "Harriet Street",
+      "lat": 51.500241,
+      "lng": -0.15934
+    },
+    {
+      "id": 373,
+      "district": "Knightsbridge",
+      "location": "Prince Consort Road",
+      "lat": 51.499806,
+      "lng": -0.176415
+    },
+    {
+      "id": 392,
+      "district": "Knightsbridge",
+      "location": "Imperial College",
+      "lat": 51.499428,
+      "lng": -0.179702
+    },
+    {
+      "id": 428,
+      "district": "Knightsbridge",
+      "location": "Exhibition Road",
+      "lat": 51.499917,
+      "lng": -0.174554
+    }
+  ],
+  "Pimlico": [
+    {
+      "id": 146,
+      "district": "Pimlico",
+      "location": "Vauxhall Bridge",
+      "lat": 51.488365,
+      "lng": -0.129361
+    },
+    {
+      "id": 178,
+      "district": "Pimlico",
+      "location": "Warwick Square",
+      "lat": 51.489856,
+      "lng": -0.141923
+    },
+    {
+      "id": 185,
+      "district": "Pimlico",
+      "location": "Alderney Street",
+      "lat": 51.488057,
+      "lng": -0.140741
+    },
+    {
+      "id": 190,
+      "district": "Pimlico",
+      "location": "Rampayne Street",
+      "lat": 51.489975,
+      "lng": -0.132845
+    },
+    {
+      "id": 243,
+      "district": "Pimlico",
+      "location": "Gloucester Street",
+      "lat": 51.490962,
+      "lng": -0.139625
+    },
+    {
+      "id": 245,
+      "district": "Pimlico",
+      "location": "Grosvenor Road",
+      "lat": 51.485357,
+      "lng": -0.142207
+    },
+    {
+      "id": 291,
+      "district": "Pimlico",
+      "location": "Claverton Street",
+      "lat": 51.484839,
+      "lng": -0.138089
+    },
+    {
+      "id": 294,
+      "district": "Pimlico",
+      "location": "St. George's Square",
+      "lat": 51.488226,
+      "lng": -0.135635
+    },
+    {
+      "id": 376,
+      "district": "Pimlico",
+      "location": "Millbank Tower",
+      "lat": 51.491884,
+      "lng": -0.125674
+    },
+    {
+      "id": 419,
+      "district": "Pimlico",
+      "location": "Chelsea Bridge",
+      "lat": 51.485821,
+      "lng": -0.149004
+    },
+    {
+      "id": 424,
+      "district": "Pimlico",
+      "location": "Ebury Bridge",
+      "lat": 51.490491,
+      "lng": -0.149186
+    },
+    {
+      "id": 426,
+      "district": "Pimlico",
+      "location": "Vincent Street",
+      "lat": 51.493072,
+      "lng": -0.129925
+    }
+  ],
+  "Victoria": [
+    {
+      "id": 148,
+      "district": "Victoria",
+      "location": "Tachbrook Street",
+      "lat": 51.492111,
+      "lng": -0.138364
+    },
+    {
+      "id": 161,
+      "district": "Victoria",
+      "location": "Guildhouse Street",
+      "lat": 51.492345,
+      "lng": -0.141334
+    },
+    {
+      "id": 167,
+      "district": "Victoria",
+      "location": "Eccleston Place",
+      "lat": 51.49395,
+      "lng": -0.147624
+    },
+    {
+      "id": 177,
+      "district": "Victoria",
+      "location": "Ashley Place",
+      "lat": 51.49616,
+      "lng": -0.140947
+    },
+    {
+      "id": 268,
+      "district": "Victoria",
+      "location": "Belgrave Road",
+      "lat": 51.493204,
+      "lng": -0.144132
+    },
+    {
+      "id": 288,
+      "district": "Victoria",
+      "location": "Elizabeth Bridge",
+      "lat": 51.492369,
+      "lng": -0.147478
+    },
+    {
+      "id": 320,
+      "district": "Victoria",
+      "location": "Queen Mother Sports Centre",
+      "lat": 51.493573,
+      "lng": -0.139956
+    }
+  ],
+  "Oval": [
+    {
+      "id": 149,
+      "district": "Oval",
+      "location": "Kennington Road Post Office",
+      "lat": 51.484788,
+      "lng": -0.110683
+    },
+    {
+      "id": 440,
+      "district": "Oval",
+      "location": "Kennington Oval",
+      "lat": 51.483145,
+      "lng": -0.113134
+    },
+    {
+      "id": 654,
+      "district": "Oval",
+      "location": "Ashmole Estate",
+      "lat": 51.482678,
+      "lng": -0.117661
+    }
+  ],
+  "Notting Hill": [
+    {
+      "id": 151,
+      "district": "Notting Hill",
+      "location": "Chepstow Villas",
+      "lat": 51.512136,
+      "lng": -0.201554
+    },
+    {
+      "id": 212,
+      "district": "Notting Hill",
+      "location": "Campden Hill Road",
+      "lat": 51.506584,
+      "lng": -0.199004
+    },
+    {
+      "id": 225,
+      "district": "Notting Hill",
+      "location": "Notting Hill Gate Station",
+      "lat": 51.509353,
+      "lng": -0.196422
+    },
+    {
+      "id": 333,
+      "district": "Notting Hill",
+      "location": "Palace Gardens Terrace",
+      "lat": 51.508605,
+      "lng": -0.193764
+    },
+    {
+      "id": 337,
+      "district": "Notting Hill",
+      "location": "Pembridge Villas",
+      "lat": 51.511084,
+      "lng": -0.197524
+    },
+    {
+      "id": 379,
+      "district": "Notting Hill",
+      "location": "Turquoise Island",
+      "lat": 51.514311,
+      "lng": -0.200838
+    }
+  ],
+  "Walworth": [
+    {
+      "id": 152,
+      "district": "Walworth",
+      "location": "Hampton Street",
+      "lat": 51.49217,
+      "lng": -0.101536
+    },
+    {
+      "id": 223,
+      "district": "Walworth",
+      "location": "Rodney Road",
+      "lat": 51.491484,
+      "lng": -0.09022
+    },
+    {
+      "id": 820,
+      "district": "Walworth",
+      "location": "Victory Place",
+      "lat": 51.492807,
+      "lng": -0.091938
+    }
+  ],
+  "Waterloo": [
+    {
+      "id": 154,
+      "district": "Waterloo",
+      "location": "Waterloo Station 3",
+      "lat": 51.503791,
+      "lng": -0.112824
+    },
+    {
+      "id": 272,
+      "district": "Waterloo",
+      "location": "Baylis Road",
+      "lat": 51.501444,
+      "lng": -0.110699
+    },
+    {
+      "id": 284,
+      "district": "Waterloo",
+      "location": "Lambeth North Station",
+      "lat": 51.49914,
+      "lng": -0.112031
+    },
+    {
+      "id": 347,
+      "district": "Waterloo",
+      "location": "Lower Marsh",
+      "lat": 51.500139,
+      "lng": -0.113936
+    },
+    {
+      "id": 361,
+      "district": "Waterloo",
+      "location": "Waterloo Station 2",
+      "lat": 51.503919,
+      "lng": -0.113426
+    },
+    {
+      "id": 371,
+      "district": "Waterloo",
+      "location": "King Edward Walk",
+      "lat": 51.49775,
+      "lng": -0.10988
+    },
+    {
+      "id": 374,
+      "district": "Waterloo",
+      "location": "Waterloo Station 1",
+      "lat": 51.504027,
+      "lng": -0.113864
+    },
+    {
+      "id": 641,
+      "district": "Waterloo",
+      "location": "Archbishop's Park",
+      "lat": 51.498241,
+      "lng": -0.117495
+    },
+    {
+      "id": 815,
+      "district": "Waterloo",
+      "location": "Lambeth Palace Road",
+      "lat": 51.500089,
+      "lng": -0.116628
+    }
+  ],
+  "St. James's": [
+    {
+      "id": 160,
+      "district": "St. James's",
+      "location": "Waterloo Place",
+      "lat": 51.506633,
+      "lng": -0.131773
+    },
+    {
+      "id": 228,
+      "district": "St. James's",
+      "location": "St. James's Square",
+      "lat": 51.507424,
+      "lng": -0.134621
+    }
+  ],
+  "Paddington": [
+    {
+      "id": 169,
+      "district": "Paddington",
+      "location": "Porchester Place",
+      "lat": 51.514746,
+      "lng": -0.165164
+    },
+    {
+      "id": 186,
+      "district": "Paddington",
+      "location": "South Wharf Road",
+      "lat": 51.517335,
+      "lng": -0.17581
+    },
+    {
+      "id": 238,
+      "district": "Paddington",
+      "location": "Frampton Street",
+      "lat": 51.523353,
+      "lng": -0.175116
+    },
+    {
+      "id": 265,
+      "district": "Paddington",
+      "location": "Southwick Street",
+      "lat": 51.515953,
+      "lng": -0.169249
+    },
+    {
+      "id": 279,
+      "district": "Paddington",
+      "location": "North Wharf Road",
+      "lat": 51.518622,
+      "lng": -0.176645
+    },
+    {
+      "id": 290,
+      "district": "Paddington",
+      "location": "Winsland Street",
+      "lat": 51.51678,
+      "lng": -0.175488
+    },
+    {
+      "id": 330,
+      "district": "Paddington",
+      "location": "Eastbourne Mews",
+      "lat": 51.516417,
+      "lng": -0.179135
+    },
+    {
+      "id": 370,
+      "district": "Paddington",
+      "location": "Paddington Green",
+      "lat": 51.520205,
+      "lng": -0.174593
+    },
+    {
+      "id": 408,
+      "district": "Paddington",
+      "location": "Paddington Green Police Station",
+      "lat": 51.519943,
+      "lng": -0.170704
+    }
+  ],
+  "South Bank": [
+    {
+      "id": 173,
+      "district": "South Bank",
+      "location": "Waterloo Road",
+      "lat": 51.50486,
+      "lng": -0.113001
+    },
+    {
+      "id": 195,
+      "district": "South Bank",
+      "location": "Milroy Walk",
+      "lat": 51.507244,
+      "lng": -0.106237
+    },
+    {
+      "id": 197,
+      "district": "South Bank",
+      "location": "Stamford Street",
+      "lat": 51.505569,
+      "lng": -0.111606
+    },
+    {
+      "id": 252,
+      "district": "South Bank",
+      "location": "Jubilee Gardens",
+      "lat": 51.504636,
+      "lng": -0.116542
+    },
+    {
+      "id": 273,
+      "district": "South Bank",
+      "location": "Belvedere Road 1",
+      "lat": 51.506133,
+      "lng": -0.114686
+    },
+    {
+      "id": 334,
+      "district": "South Bank",
+      "location": "Concert Hall Approach 1",
+      "lat": 51.505044,
+      "lng": -0.115851
+    },
+    {
+      "id": 336,
+      "district": "South Bank",
+      "location": "Concert Hall Approach 2",
+      "lat": 51.504942,
+      "lng": -0.115533
+    },
+    {
+      "id": 377,
+      "district": "South Bank",
+      "location": "Waterloo Bridge",
+      "lat": 51.505354,
+      "lng": -0.113656
+    },
+    {
+      "id": 819,
+      "district": "South Bank",
+      "location": "Belvedere Road 2",
+      "lat": 51.50621,
+      "lng": -0.114842
+    }
+  ],
+  "Nine Elms": [
+    {
+      "id": 183,
+      "district": "Nine Elms",
+      "location": "Riverlight North",
+      "lat": 51.482362,
+      "lng": -0.136123
+    },
+    {
+      "id": 631,
+      "district": "Nine Elms",
+      "location": "Battersea Park Road",
+      "lat": 51.479501,
+      "lng": -0.14177
+    },
+    {
+      "id": 817,
+      "district": "Nine Elms",
+      "location": "Riverlight South",
+      "lat": 51.481335,
+      "lng": -0.138212
+    }
+  ],
+  "Monument": [
+    {
+      "id": 199,
+      "district": "Monument",
+      "location": "Great Tower Street",
+      "lat": 51.510484,
+      "lng": -0.082989
+    },
+    {
+      "id": 276,
+      "district": "Monument",
+      "location": "Lower Thames Street",
+      "lat": 51.509301,
+      "lng": -0.084985
+    },
+    {
+      "id": 587,
+      "district": "Monument",
+      "location": "Monument Street",
+      "lat": 51.50964,
+      "lng": -0.08497
+    }
+  ],
+  "Whitechapel": [
+    {
+      "id": 200,
+      "district": "Whitechapel",
+      "location": "LMU Commercial Road",
+      "lat": 51.514924,
+      "lng": -0.066078
+    },
+    {
+      "id": 206,
+      "district": "Whitechapel",
+      "location": "New Road 1",
+      "lat": 51.518154,
+      "lng": -0.062697
+    },
+    {
+      "id": 236,
+      "district": "Whitechapel",
+      "location": "Fashion Street",
+      "lat": 51.51838,
+      "lng": -0.073438
+    },
+    {
+      "id": 282,
+      "district": "Whitechapel",
+      "location": "Royal London Hospital",
+      "lat": 51.519064,
+      "lng": -0.059642
+    },
+    {
+      "id": 443,
+      "district": "Whitechapel",
+      "location": "Philpot Street",
+      "lat": 51.515256,
+      "lng": -0.058641
+    },
+    {
+      "id": 489,
+      "district": "Whitechapel",
+      "location": "Christian Street",
+      "lat": 51.513074,
+      "lng": -0.064094
+    },
+    {
+      "id": 508,
+      "district": "Whitechapel",
+      "location": "Fournier Street",
+      "lat": 51.519362,
+      "lng": -0.074431
+    },
+    {
+      "id": 537,
+      "district": "Whitechapel",
+      "location": "Old Montague Street",
+      "lat": 51.51793,
+      "lng": -0.067937
+    },
+    {
+      "id": 565,
+      "district": "Whitechapel",
+      "location": "Selby Street",
+      "lat": 51.521905,
+      "lng": -0.063386
+    }
+  ],
+  "Farringdon": [
+    {
+      "id": 203,
+      "district": "Farringdon",
+      "location": "West Smithfield Rotunda",
+      "lat": 51.518218,
+      "lng": -0.100791
+    },
+    {
+      "id": 393,
+      "district": "Farringdon",
+      "location": "Snow Hill",
+      "lat": 51.517334,
+      "lng": -0.103604
+    }
+  ],
+  "Chelsea": [
+    {
+      "id": 218,
+      "district": "Chelsea",
+      "location": "St. Luke's Church",
+      "lat": 51.489716,
+      "lng": -0.170194
+    },
+    {
+      "id": 220,
+      "district": "Chelsea",
+      "location": "Chelsea Green",
+      "lat": 51.490664,
+      "lng": -0.166485
+    },
+    {
+      "id": 250,
+      "district": "Chelsea",
+      "location": "Royal Avenue 1",
+      "lat": 51.489932,
+      "lng": -0.162727
+    },
+    {
+      "id": 280,
+      "district": "Chelsea",
+      "location": "Royal Avenue 2",
+      "lat": 51.490083,
+      "lng": -0.162418
+    },
+    {
+      "id": 395,
+      "district": "Chelsea",
+      "location": "Cadogan Gardens",
+      "lat": 51.492462,
+      "lng": -0.159919
+    },
+    {
+      "id": 430,
+      "district": "Chelsea",
+      "location": "South Parade",
+      "lat": 51.48902,
+      "lng": -0.17524
+    },
+    {
+      "id": 529,
+      "district": "Chelsea",
+      "location": "Manresa Road",
+      "lat": 51.486892,
+      "lng": -0.170983
+    },
+    {
+      "id": 662,
+      "district": "Chelsea",
+      "location": "Phene Street",
+      "lat": 51.484984,
+      "lng": -0.167919
+    },
+    {
+      "id": 747,
+      "district": "Chelsea",
+      "location": "Ormonde Gate",
+      "lat": 51.487964,
+      "lng": -0.161765
+    },
+    {
+      "id": 755,
+      "district": "Chelsea",
+      "location": "The Vale",
+      "lat": 51.485121,
+      "lng": -0.174971
+    }
+  ],
+  "Olympia": [
+    {
+      "id": 274,
+      "district": "Olympia",
+      "location": "Warwick Road",
+      "lat": 51.496712,
+      "lng": -0.205284
+    },
+    {
+      "id": 293,
+      "district": "Olympia",
+      "location": "Kensington Olympia Station",
+      "lat": 51.498157,
+      "lng": -0.209494
+    },
+    {
+      "id": 515,
+      "district": "Olympia",
+      "location": "Russell Gardens",
+      "lat": 51.500088,
+      "lng": -0.211316
+    },
+    {
+      "id": 666,
+      "district": "Olympia",
+      "location": "Olympia Way",
+      "lat": 51.4961,
+      "lng": -0.208158
+    },
+    {
+      "id": 687,
+      "district": "Olympia",
+      "location": "Maclise Road",
+      "lat": 51.497608,
+      "lng": -0.211455
+    }
+  ],
+  "Shad Thames": [
+    {
+      "id": 298,
+      "district": "Shad Thames",
+      "location": "Curlew Street",
+      "lat": 51.502279,
+      "lng": -0.074189
+    }
+  ],
+  "Wandsworth": [
+    {
+      "id": 302,
+      "district": "Wandsworth",
+      "location": "Putney Pier",
+      "lat": 51.466907,
+      "lng": -0.216573
+    },
+    {
+      "id": 621,
+      "district": "Wandsworth",
+      "location": "Wandsworth Town Station",
+      "lat": 51.460864,
+      "lng": -0.187427
+    },
+    {
+      "id": 623,
+      "district": "Wandsworth",
+      "location": "Nantes Close",
+      "lat": 51.46193,
+      "lng": -0.180791
+    },
+    {
+      "id": 629,
+      "district": "Wandsworth",
+      "location": "Morie Street",
+      "lat": 51.459953,
+      "lng": -0.190184
+    },
+    {
+      "id": 684,
+      "district": "Wandsworth",
+      "location": "Neville Gill Close",
+      "lat": 51.454752,
+      "lng": -0.195197
+    },
+    {
+      "id": 685,
+      "district": "Wandsworth",
+      "location": "Osiers Road",
+      "lat": 51.46067,
+      "lng": -0.198735
+    },
+    {
+      "id": 688,
+      "district": "Wandsworth",
+      "location": "Northfields",
+      "lat": 51.460951,
+      "lng": -0.200667
+    },
+    {
+      "id": 724,
+      "district": "Wandsworth",
+      "location": "Alma Road",
+      "lat": 51.457991,
+      "lng": -0.184806
+    },
+    {
+      "id": 766,
+      "district": "Wandsworth",
+      "location": "Ram Street",
+      "lat": 51.457529,
+      "lng": -0.192165
+    },
+    {
+      "id": 767,
+      "district": "Wandsworth",
+      "location": "Santos Road",
+      "lat": 51.457059,
+      "lng": -0.200806
+    }
+  ],
+  "Kensington Gardens": [
+    {
+      "id": 307,
+      "district": "Kensington Gardens",
+      "location": "Black Lion Gate",
+      "lat": 51.509908,
+      "lng": -0.187842
+    },
+    {
+      "id": 350,
+      "district": "Kensington Gardens",
+      "location": "Queen's Gate",
+      "lat": 51.501715,
+      "lng": -0.179854
+    },
+    {
+      "id": 404,
+      "district": "Kensington Gardens",
+      "location": "Palace Gate",
+      "lat": 51.502042,
+      "lng": -0.1844
+    }
+  ],
+  "St Lukes": [
+    {
+      "id": 351,
+      "district": "St Lukes",
+      "location": "Macclesfield Rd",
+      "lat": 51.529423,
+      "lng": -0.097122
+    }
+  ],
+  "Avondale": [
+    {
+      "id": 442,
+      "district": "Avondale",
+      "location": "Walmer Road",
+      "lat": 51.510101,
+      "lng": -0.211358
+    },
+    {
+      "id": 652,
+      "district": "Avondale",
+      "location": "Evesham Street",
+      "lat": 51.511486,
+      "lng": -0.21819
+    },
+    {
+      "id": 663,
+      "district": "Avondale",
+      "location": "Clarendon Road",
+      "lat": 51.51323,
+      "lng": -0.211593
+    },
+    {
+      "id": 740,
+      "district": "Avondale",
+      "location": "Sirdar Road",
+      "lat": 51.510928,
+      "lng": -0.214594
+    },
+    {
+      "id": 741,
+      "district": "Avondale",
+      "location": "Freston Road",
+      "lat": 51.512981,
+      "lng": -0.219486
+    },
+    {
+      "id": 754,
+      "district": "Avondale",
+      "location": "Grenfell Road",
+      "lat": 51.5129,
+      "lng": -0.214762
+    },
+    {
+      "id": 771,
+      "district": "Avondale",
+      "location": "Rifle Place",
+      "lat": 51.509224,
+      "lng": -0.216016
+    }
+  ],
+  "Bethnal Green": [
+    {
+      "id": 444,
+      "district": "Bethnal Green",
+      "location": "Bethnal Green Garden",
+      "lat": 51.52568,
+      "lng": -0.055312
+    },
+    {
+      "id": 445,
+      "district": "Bethnal Green",
+      "location": "Cheshire Street",
+      "lat": 51.52388,
+      "lng": -0.065076
+    },
+    {
+      "id": 446,
+      "district": "Bethnal Green",
+      "location": "York Hall",
+      "lat": 51.528936,
+      "lng": -0.055894
+    },
+    {
+      "id": 479,
+      "district": "Bethnal Green",
+      "location": "Pott Street",
+      "lat": 51.527152,
+      "lng": -0.058005
+    },
+    {
+      "id": 485,
+      "district": "Bethnal Green",
+      "location": "Old Ford Road",
+      "lat": 51.531127,
+      "lng": -0.048017
+    },
+    {
+      "id": 501,
+      "district": "Bethnal Green",
+      "location": "Cephas Street",
+      "lat": 51.522561,
+      "lng": -0.054883
+    },
+    {
+      "id": 507,
+      "district": "Bethnal Green",
+      "location": "Clarkson Street",
+      "lat": 51.528692,
+      "lng": -0.059091
+    },
+    {
+      "id": 512,
+      "district": "Bethnal Green",
+      "location": "Pritchard's Road",
+      "lat": 51.532091,
+      "lng": -0.06142
+    },
+    {
+      "id": 520,
+      "district": "Bethnal Green",
+      "location": "Bancroft Road",
+      "lat": 51.526041,
+      "lng": -0.047218
+    },
+    {
+      "id": 533,
+      "district": "Bethnal Green",
+      "location": "Wellington Row",
+      "lat": 51.528222,
+      "lng": -0.069743
+    },
+    {
+      "id": 577,
+      "district": "Bethnal Green",
+      "location": "Globe Town Market",
+      "lat": 51.528869,
+      "lng": -0.047548
+    },
+    {
+      "id": 578,
+      "district": "Bethnal Green",
+      "location": "Hollybush Gardens",
+      "lat": 51.527607,
+      "lng": -0.057133
+    },
+    {
+      "id": 702,
+      "district": "Bethnal Green",
+      "location": "Durant Street",
+      "lat": 51.528681,
+      "lng": -0.06555
+    },
+    {
+      "id": 722,
+      "district": "Bethnal Green",
+      "location": "Finnis Street",
+      "lat": 51.524583,
+      "lng": -0.058631
+    }
+  ],
+  "Cubitt Town": [
+    {
+      "id": 447,
+      "district": "Cubitt Town",
+      "location": "Jubilee Crescent",
+      "lat": 51.493381,
+      "lng": -0.007542
+    },
+    {
+      "id": 455,
+      "district": "Cubitt Town",
+      "location": "East Ferry Road",
+      "lat": 51.49447,
+      "lng": -0.014409
+    },
+    {
+      "id": 474,
+      "district": "Cubitt Town",
+      "location": "Castalia Square",
+      "lat": 51.498125,
+      "lng": -0.011457
+    },
+    {
+      "id": 476,
+      "district": "Cubitt Town",
+      "location": "Stebondale Street",
+      "lat": 51.489096,
+      "lng": -0.009205
+    },
+    {
+      "id": 481,
+      "district": "Cubitt Town",
+      "location": "Saunders Ness Road",
+      "lat": 51.487129,
+      "lng": -0.009001
+    },
+    {
+      "id": 504,
+      "district": "Cubitt Town",
+      "location": "St. John's Park",
+      "lat": 51.496454,
+      "lng": -0.009506
+    },
+    {
+      "id": 563,
+      "district": "Cubitt Town",
+      "location": "Preston's Road",
+      "lat": 51.499286,
+      "lng": -0.009152
+    },
+    {
+      "id": 586,
+      "district": "Cubitt Town",
+      "location": "Mudchute DLR",
+      "lat": 51.490645,
+      "lng": -0.014582
+    }
+  ],
+  "Canary Wharf": [
+    {
+      "id": 448,
+      "district": "Canary Wharf",
+      "location": "Fisherman's Walk West",
+      "lat": 51.50623,
+      "lng": -0.02296
+    },
+    {
+      "id": 494,
+      "district": "Canary Wharf",
+      "location": "South Quay East",
+      "lat": 51.50196,
+      "lng": -0.016251
+    },
+    {
+      "id": 532,
+      "district": "Canary Wharf",
+      "location": "Jubilee Plaza",
+      "lat": 51.50357,
+      "lng": -0.020068
+    },
+    {
+      "id": 556,
+      "district": "Canary Wharf",
+      "location": "Heron Quays DLR",
+      "lat": 51.502661,
+      "lng": -0.021596
+    },
+    {
+      "id": 570,
+      "district": "Canary Wharf",
+      "location": "Upper Bank Street",
+      "lat": 51.503083,
+      "lng": -0.017676
+    },
+    {
+      "id": 811,
+      "district": "Canary Wharf",
+      "location": "Westferry Circus",
+      "lat": 51.505703,
+      "lng": -0.027772
+    }
+  ],
+  "Shadwell": [
+    {
+      "id": 449,
+      "district": "Shadwell",
+      "location": "Shadwell Station",
+      "lat": 51.511088,
+      "lng": -0.057159
+    },
+    {
+      "id": 453,
+      "district": "Shadwell",
+      "location": "Garnet Street",
+      "lat": 51.508447,
+      "lng": -0.055167
+    },
+    {
+      "id": 511,
+      "district": "Shadwell",
+      "location": "Sutton Street",
+      "lat": 51.511066,
+      "lng": -0.053558
+    },
+    {
+      "id": 552,
+      "district": "Shadwell",
+      "location": "Watney Street",
+      "lat": 51.511542,
+      "lng": -0.056667
+    }
+  ],
+  "Stepney": [
+    {
+      "id": 450,
+      "district": "Stepney",
+      "location": "Jubilee Street",
+      "lat": 51.515975,
+      "lng": -0.053177
+    },
+    {
+      "id": 461,
+      "district": "Stepney",
+      "location": "Aston Street",
+      "lat": 51.516,
+      "lng": -0.038775
+    },
+    {
+      "id": 464,
+      "district": "Stepney",
+      "location": "St. Mary & St. Michael Church",
+      "lat": 51.51417,
+      "lng": -0.052099
+    },
+    {
+      "id": 478,
+      "district": "Stepney",
+      "location": "Stepney Green Station",
+      "lat": 51.521889,
+      "lng": -0.04667
+    },
+    {
+      "id": 483,
+      "district": "Stepney",
+      "location": "Albert Gardens",
+      "lat": 51.51328,
+      "lng": -0.047784
+    },
+    {
+      "id": 500,
+      "district": "Stepney",
+      "location": "Ansell House",
+      "lat": 51.519806,
+      "lng": -0.055731
+    },
+    {
+      "id": 503,
+      "district": "Stepney",
+      "location": "Cleveland Way",
+      "lat": 51.520893,
+      "lng": -0.051394
+    },
+    {
+      "id": 513,
+      "district": "Stepney",
+      "location": "Watney Market",
+      "lat": 51.514222,
+      "lng": -0.055656
+    },
+    {
+      "id": 561,
+      "district": "Stepney",
+      "location": "Rectory Square",
+      "lat": 51.518369,
+      "lng": -0.043371
+    },
+    {
+      "id": 715,
+      "district": "Stepney",
+      "location": "Aylward Street",
+      "lat": 51.51563,
+      "lng": -0.049067
+    }
+  ],
+  "Millwall": [
+    {
+      "id": 454,
+      "district": "Millwall",
+      "location": "Napier Avenue",
+      "lat": 51.487679,
+      "lng": -0.021582
+    },
+    {
+      "id": 473,
+      "district": "Millwall",
+      "location": "Millharbour",
+      "lat": 51.496137,
+      "lng": -0.019355
+    },
+    {
+      "id": 475,
+      "district": "Millwall",
+      "location": "Lightermans Road",
+      "lat": 51.499041,
+      "lng": -0.020157
+    },
+    {
+      "id": 477,
+      "district": "Millwall",
+      "location": "Spindrift Avenue",
+      "lat": 51.49109,
+      "lng": -0.018716
+    },
+    {
+      "id": 576,
+      "district": "Millwall",
+      "location": "Alpha Grove",
+      "lat": 51.497304,
+      "lng": -0.022793
+    }
+  ],
+  "Old Ford": [
+    {
+      "id": 459,
+      "district": "Old Ford",
+      "location": "Gunmakers Lane",
+      "lat": 51.535179,
+      "lng": -0.03338
+    },
+    {
+      "id": 471,
+      "district": "Old Ford",
+      "location": "Hewison Street",
+      "lat": 51.533283,
+      "lng": -0.028155
+    },
+    {
+      "id": 517,
+      "district": "Old Ford",
+      "location": "Ford Road",
+      "lat": 51.532513,
+      "lng": -0.033085
+    },
+    {
+      "id": 521,
+      "district": "Old Ford",
+      "location": "Driffield Road",
+      "lat": 51.534137,
+      "lng": -0.037366
+    },
+    {
+      "id": 721,
+      "district": "Old Ford",
+      "location": "Wendon Street",
+      "lat": 51.536039,
+      "lng": -0.026262
+    }
+  ],
+  "Mile End": [
+    {
+      "id": 460,
+      "district": "Mile End",
+      "location": "Burdett Road",
+      "lat": 51.516196,
+      "lng": -0.029138
+    },
+    {
+      "id": 491,
+      "district": "Mile End",
+      "location": "Queen Mary's",
+      "lat": 51.522507,
+      "lng": -0.041378
+    },
+    {
+      "id": 492,
+      "district": "Mile End",
+      "location": "The Green Bridge",
+      "lat": 51.524677,
+      "lng": -0.03562
+    },
+    {
+      "id": 518,
+      "district": "Mile End",
+      "location": "Antill Road",
+      "lat": 51.528224,
+      "lng": -0.037471
+    },
+    {
+      "id": 522,
+      "district": "Mile End",
+      "location": "Clinton Road",
+      "lat": 51.525941,
+      "lng": -0.036017
+    },
+    {
+      "id": 531,
+      "district": "Mile End",
+      "location": "Twig Folly Bridge",
+      "lat": 51.530326,
+      "lng": -0.042744
+    },
+    {
+      "id": 550,
+      "district": "Mile End",
+      "location": "Harford Street",
+      "lat": 51.521564,
+      "lng": -0.039264
+    },
+    {
+      "id": 712,
+      "district": "Mile End",
+      "location": "Mile End Stadium",
+      "lat": 51.518541,
+      "lng": -0.034903
+    },
+    {
+      "id": 763,
+      "district": "Mile End",
+      "location": "Mile End Park Leisure Centre",
+      "lat": 51.520597,
+      "lng": -0.032566
+    }
+  ],
+  "Haggerston": [
+    {
+      "id": 463,
+      "district": "Haggerston",
+      "location": "Thurtle Road",
+      "lat": 51.534776,
+      "lng": -0.071881
+    },
+    {
+      "id": 466,
+      "district": "Haggerston",
+      "location": "Whiston Road",
+      "lat": 51.534464,
+      "lng": -0.076341
+    },
+    {
+      "id": 534,
+      "district": "Haggerston",
+      "location": "Goldsmith's Row",
+      "lat": 51.531864,
+      "lng": -0.066035
+    },
+    {
+      "id": 536,
+      "district": "Haggerston",
+      "location": "Queensbridge Road",
+      "lat": 51.53385,
+      "lng": -0.06992
+    },
+    {
+      "id": 553,
+      "district": "Haggerston",
+      "location": "Regent's Row",
+      "lat": 51.535678,
+      "lng": -0.062546
+    },
+    {
+      "id": 698,
+      "district": "Haggerston",
+      "location": "Shoreditch Court",
+      "lat": 51.539083,
+      "lng": -0.070329
+    },
+    {
+      "id": 699,
+      "district": "Haggerston",
+      "location": "Belford House",
+      "lat": 51.536654,
+      "lng": -0.07023
+    },
+    {
+      "id": 717,
+      "district": "Haggerston",
+      "location": "Dunston Road",
+      "lat": 51.536585,
+      "lng": -0.075885
+    },
+    {
+      "id": 749,
+      "district": "Haggerston",
+      "location": "Haggerston Road",
+      "lat": 51.539328,
+      "lng": -0.074284
+    }
+  ],
+  "Bow": [
+    {
+      "id": 467,
+      "district": "Bow",
+      "location": "Southern Grove",
+      "lat": 51.523538,
+      "lng": -0.030556
+    },
+    {
+      "id": 468,
+      "district": "Bow",
+      "location": "Cantrell Road",
+      "lat": 51.521564,
+      "lng": -0.022694
+    },
+    {
+      "id": 470,
+      "district": "Bow",
+      "location": "Mostyn Grove",
+      "lat": 51.530535,
+      "lng": -0.025492
+    },
+    {
+      "id": 472,
+      "district": "Bow",
+      "location": "Malmesbury Road",
+      "lat": 51.529452,
+      "lng": -0.027616
+    },
+    {
+      "id": 484,
+      "district": "Bow",
+      "location": "Bromley High Street",
+      "lat": 51.528828,
+      "lng": -0.013258
+    },
+    {
+      "id": 495,
+      "district": "Bow",
+      "location": "Bow Church Station",
+      "lat": 51.528169,
+      "lng": -0.018703
+    },
+    {
+      "id": 496,
+      "district": "Bow",
+      "location": "Devons Road",
+      "lat": 51.52512,
+      "lng": -0.015578
+    },
+    {
+      "id": 497,
+      "district": "Bow",
+      "location": "Merchant Street",
+      "lat": 51.526177,
+      "lng": -0.027467
+    },
+    {
+      "id": 498,
+      "district": "Bow",
+      "location": "Bow Road Station",
+      "lat": 51.527058,
+      "lng": -0.025296
+    },
+    {
+      "id": 499,
+      "district": "Bow",
+      "location": "Furze Green",
+      "lat": 51.519265,
+      "lng": -0.021345
+    },
+    {
+      "id": 505,
+      "district": "Bow",
+      "location": "Ackroyd Drive",
+      "lat": 51.520398,
+      "lng": -0.026768
+    }
+  ],
+  "Poplar": [
+    {
+      "id": 469,
+      "district": "Poplar",
+      "location": "Lindfield Street",
+      "lat": 51.513757,
+      "lng": -0.020467
+    },
+    {
+      "id": 482,
+      "district": "Poplar",
+      "location": "Thornfield House",
+      "lat": 51.509843,
+      "lng": -0.02377
+    },
+    {
+      "id": 487,
+      "district": "Poplar",
+      "location": "Canton Street",
+      "lat": 51.511811,
+      "lng": -0.025626
+    },
+    {
+      "id": 516,
+      "district": "Poplar",
+      "location": "Chrisp Street Market",
+      "lat": 51.5112,
+      "lng": -0.014438
+    },
+    {
+      "id": 519,
+      "district": "Poplar",
+      "location": "Teviot Street",
+      "lat": 51.518811,
+      "lng": -0.011662
+    },
+    {
+      "id": 523,
+      "district": "Poplar",
+      "location": "Langdon Park",
+      "lat": 51.51549,
+      "lng": -0.013475
+    },
+    {
+      "id": 530,
+      "district": "Poplar",
+      "location": "Newby Place",
+      "lat": 51.508896,
+      "lng": -0.012413
+    },
+    {
+      "id": 554,
+      "district": "Poplar",
+      "location": "Aberfeldy Street",
+      "lat": 51.513548,
+      "lng": -0.005659
+    },
+    {
+      "id": 716,
+      "district": "Poplar",
+      "location": "Stainsby Road",
+      "lat": 51.515427,
+      "lng": -0.023565
+    }
+  ],
+  "Limehouse": [
+    {
+      "id": 480,
+      "district": "Limehouse",
+      "location": "Flamborough Street",
+      "lat": 51.512871,
+      "lng": -0.038986
+    },
+    {
+      "id": 510,
+      "district": "Limehouse",
+      "location": "Westferry DLR",
+      "lat": 51.509303,
+      "lng": -0.025996
+    },
+    {
+      "id": 542,
+      "district": "Limehouse",
+      "location": "Salmon Lane",
+      "lat": 51.514115,
+      "lng": -0.033828
+    }
+  ],
+  "Blackwall": [
+    {
+      "id": 526,
+      "district": "Blackwall",
+      "location": "Lancaster Drive",
+      "lat": 51.503143,
+      "lng": -0.008428
+    },
+    {
+      "id": 538,
+      "district": "Blackwall",
+      "location": "Naval Row",
+      "lat": 51.508981,
+      "lng": -0.00699
+    },
+    {
+      "id": 547,
+      "district": "Blackwall",
+      "location": "East India DLR",
+      "lat": 51.509474,
+      "lng": -0.002275
+    }
+  ],
+  "Holland Park": [
+    {
+      "id": 527,
+      "district": "Holland Park",
+      "location": "Hansard Mews",
+      "lat": 51.503802,
+      "lng": -0.215808
+    },
+    {
+      "id": 559,
+      "district": "Holland Park",
+      "location": "Abbotsbury Road",
+      "lat": 51.501391,
+      "lng": -0.205991
+    },
+    {
+      "id": 606,
+      "district": "Holland Park",
+      "location": "Addison Road",
+      "lat": 51.504199,
+      "lng": -0.210941
+    },
+    {
+      "id": 611,
+      "district": "Holland Park",
+      "location": "Princedale Road",
+      "lat": 51.506465,
+      "lng": -0.208486
+    }
+  ],
+  "Ladbroke Grove": [
+    {
+      "id": 543,
+      "district": "Ladbroke Grove",
+      "location": "Lansdowne Walk",
+      "lat": 51.509591,
+      "lng": -0.204666
+    },
+    {
+      "id": 560,
+      "district": "Ladbroke Grove",
+      "location": "Ladbroke Grove Central",
+      "lat": 51.511624,
+      "lng": -0.205921
+    },
+    {
+      "id": 622,
+      "district": "Ladbroke Grove",
+      "location": "Lansdowne Road",
+      "lat": 51.507481,
+      "lng": -0.205535
+    },
+    {
+      "id": 742,
+      "district": "Ladbroke Grove",
+      "location": "Blenheim Crescent",
+      "lat": 51.515108,
+      "lng": -0.208565
+    }
+  ],
+  "St Pauls": [
+    {
+      "id": 557,
+      "district": "St Pauls",
+      "location": "King Edward Street",
+      "lat": 51.51601,
+      "lng": -0.0985
+    }
+  ],
+  "White City": [
+    {
+      "id": 566,
+      "district": "White City",
+      "location": "Westfield Ariel Way",
+      "lat": 51.509158,
+      "lng": -0.224103
+    },
+    {
+      "id": 601,
+      "district": "White City",
+      "location": "BBC White City",
+      "lat": 51.514767,
+      "lng": -0.225787
+    }
+  ],
+  "Shepherd's Bush": [
+    {
+      "id": 571,
+      "district": "Shepherd's Bush",
+      "location": "Westfield Southern Terrace",
+      "lat": 51.506256,
+      "lng": -0.218337
+    },
+    {
+      "id": 591,
+      "district": "Shepherd's Bush",
+      "location": "Westfield Library Corner",
+      "lat": 51.506093,
+      "lng": -0.224223
+    },
+    {
+      "id": 613,
+      "district": "Shepherd's Bush",
+      "location": "Woodstock Grove",
+      "lat": 51.504038,
+      "lng": -0.2174
+    },
+    {
+      "id": 647,
+      "district": "Shepherd's Bush",
+      "location": "Richmond Way",
+      "lat": 51.500353,
+      "lng": -0.217515
+    },
+    {
+      "id": 657,
+      "district": "Shepherd's Bush",
+      "location": "Blythe Road West",
+      "lat": 51.49968,
+      "lng": -0.221791
+    },
+    {
+      "id": 667,
+      "district": "Shepherd's Bush",
+      "location": "Shepherd's Bush Road North",
+      "lat": 51.501594,
+      "lng": -0.222293
+    },
+    {
+      "id": 736,
+      "district": "Shepherd's Bush",
+      "location": "Queensdale Road",
+      "lat": 51.50659,
+      "lng": -0.216104
+    }
+  ],
+  "West Chelsea": [
+    {
+      "id": 573,
+      "district": "West Chelsea",
+      "location": "Limerston Street",
+      "lat": 51.485587,
+      "lng": -0.18119
+    },
+    {
+      "id": 589,
+      "district": "West Chelsea",
+      "location": "Drayton Gardens",
+      "lat": 51.487196,
+      "lng": -0.179369
+    },
+    {
+      "id": 610,
+      "district": "West Chelsea",
+      "location": "Danvers Street",
+      "lat": 51.482567,
+      "lng": -0.172078
+    },
+    {
+      "id": 649,
+      "district": "West Chelsea",
+      "location": "World's End Place",
+      "lat": 51.481805,
+      "lng": -0.180274
+    },
+    {
+      "id": 651,
+      "district": "West Chelsea",
+      "location": "Thorndike Close",
+      "lat": 51.480898,
+      "lng": -0.183853
+    },
+    {
+      "id": 745,
+      "district": "West Chelsea",
+      "location": "Upcerne Road",
+      "lat": 51.478169,
+      "lng": -0.182435
+    },
+    {
+      "id": 746,
+      "district": "West Chelsea",
+      "location": "Lots Road",
+      "lat": 51.479573,
+      "lng": -0.179038
+    }
+  ],
+  "St.John's Wood": [
+    {
+      "id": 590,
+      "district": "St.John's Wood",
+      "location": "Greenberry Street",
+      "lat": 51.53256,
+      "lng": -0.16862
+    }
+  ],
+  "Hammersmith": [
+    {
+      "id": 595,
+      "district": "Hammersmith",
+      "location": "Hammersmith Road",
+      "lat": 51.493267,
+      "lng": -0.21985
+    },
+    {
+      "id": 598,
+      "district": "Hammersmith",
+      "location": "Southerton Road",
+      "lat": 51.494499,
+      "lng": -0.228188
+    },
+    {
+      "id": 599,
+      "district": "Hammersmith",
+      "location": "Manbre Road",
+      "lat": 51.485743,
+      "lng": -0.223616
+    },
+    {
+      "id": 608,
+      "district": "Hammersmith",
+      "location": "Colet Gardens",
+      "lat": 51.491093,
+      "lng": -0.216493
+    },
+    {
+      "id": 635,
+      "district": "Hammersmith",
+      "location": "Greyhound Road",
+      "lat": 51.486062,
+      "lng": -0.214428
+    },
+    {
+      "id": 644,
+      "district": "Hammersmith",
+      "location": "Rainville Road",
+      "lat": 51.483732,
+      "lng": -0.223852
+    },
+    {
+      "id": 668,
+      "district": "Hammersmith",
+      "location": "Ravenscourt Park Station",
+      "lat": 51.494223,
+      "lng": -0.236769
+    },
+    {
+      "id": 682,
+      "district": "Hammersmith",
+      "location": "Crisp Road",
+      "lat": 51.488108,
+      "lng": -0.226606
+    },
+    {
+      "id": 686,
+      "district": "Hammersmith",
+      "location": "Beryl Road",
+      "lat": 51.488144,
+      "lng": -0.222456
+    },
+    {
+      "id": 696,
+      "district": "Hammersmith",
+      "location": "Charing Cross Hospital",
+      "lat": 51.487285,
+      "lng": -0.217995
+    },
+    {
+      "id": 730,
+      "district": "Hammersmith",
+      "location": "Bridge Avenue",
+      "lat": 51.492084,
+      "lng": -0.229116
+    },
+    {
+      "id": 753,
+      "district": "Hammersmith",
+      "location": "Hammersmith Town Hall",
+      "lat": 51.492636,
+      "lng": -0.234094
+    }
+  ],
+  "Parson's Green": [
+    {
+      "id": 596,
+      "district": "Parson's Green",
+      "location": "Parson's Green",
+      "lat": 51.472817,
+      "lng": -0.199783
+    }
+  ],
+  "Fulham": [
+    {
+      "id": 597,
+      "district": "Fulham",
+      "location": "Fulham Park Road",
+      "lat": 51.473471,
+      "lng": -0.20782
+    },
+    {
+      "id": 607,
+      "district": "Fulham",
+      "location": "Putney Bridge Station",
+      "lat": 51.468814,
+      "lng": -0.210279
+    },
+    {
+      "id": 615,
+      "district": "Fulham",
+      "location": "Finlay Street",
+      "lat": 51.476885,
+      "lng": -0.215895
+    },
+    {
+      "id": 616,
+      "district": "Fulham",
+      "location": "Aintree Street",
+      "lat": 51.481021,
+      "lng": -0.209973
+    },
+    {
+      "id": 617,
+      "district": "Fulham",
+      "location": "Elysium Place",
+      "lat": 51.471079,
+      "lng": -0.207842
+    },
+    {
+      "id": 655,
+      "district": "Fulham",
+      "location": "Crabtree Lane",
+      "lat": 51.482944,
+      "lng": -0.219346
+    },
+    {
+      "id": 681,
+      "district": "Fulham",
+      "location": "Bishop's Avenue",
+      "lat": 51.473036,
+      "lng": -0.214749
+    },
+    {
+      "id": 711,
+      "district": "Fulham",
+      "location": "Everington Street",
+      "lat": 51.483356,
+      "lng": -0.216305
+    },
+    {
+      "id": 727,
+      "district": "Fulham",
+      "location": "Chesilton Road",
+      "lat": 51.475698,
+      "lng": -0.205876
+    },
+    {
+      "id": 729,
+      "district": "Fulham",
+      "location": "St. Peter's Terrace",
+      "lat": 51.478939,
+      "lng": -0.208485
+    },
+    {
+      "id": 761,
+      "district": "Fulham",
+      "location": "Humbolt Road",
+      "lat": 51.483217,
+      "lng": -0.21186
+    },
+    {
+      "id": 765,
+      "district": "Fulham",
+      "location": "Ranelagh Gardens",
+      "lat": 51.467601,
+      "lng": -0.206827
+    }
+  ],
+  "Wandsworth Road": [
+    {
+      "id": 602,
+      "district": "Wandsworth Road",
+      "location": "Union Grove",
+      "lat": 51.472993,
+      "lng": -0.133972
+    },
+    {
+      "id": 624,
+      "district": "Wandsworth Road",
+      "location": "Courland Grove",
+      "lat": 51.472918,
+      "lng": -0.132102
+    },
+    {
+      "id": 714,
+      "district": "Wandsworth Road",
+      "location": "Stewart's Road",
+      "lat": 51.473116,
+      "lng": -0.137235
+    },
+    {
+      "id": 725,
+      "district": "Wandsworth Road",
+      "location": "Thessaly Road North",
+      "lat": 51.477322,
+      "lng": -0.138748
+    }
+  ],
+  "Stockwell": [
+    {
+      "id": 603,
+      "district": "Stockwell",
+      "location": "Caldwell Street",
+      "lat": 51.477839,
+      "lng": -0.116493
+    },
+    {
+      "id": 630,
+      "district": "Stockwell",
+      "location": "Clarence Walk",
+      "lat": 51.470732,
+      "lng": -0.126994
+    },
+    {
+      "id": 669,
+      "district": "Stockwell",
+      "location": "Teversham Lane",
+      "lat": 51.476149,
+      "lng": -0.123258
+    },
+    {
+      "id": 676,
+      "district": "Stockwell",
+      "location": "Hartington Road",
+      "lat": 51.47787,
+      "lng": -0.126874
+    },
+    {
+      "id": 772,
+      "district": "Stockwell",
+      "location": "Binfield Road",
+      "lat": 51.472509,
+      "lng": -0.122831
+    },
+    {
+      "id": 794,
+      "district": "Stockwell",
+      "location": "Lansdowne Way Bus Garage",
+      "lat": 51.474567,
+      "lng": -0.12458
+    },
+    {
+      "id": 802,
+      "district": "Stockwell",
+      "location": "Albert Square",
+      "lat": 51.47659,
+      "lng": -0.118256
+    },
+    {
+      "id": 808,
+      "district": "Stockwell",
+      "location": "Stockwell Roundabout",
+      "lat": 51.473486,
+      "lng": -0.122555
+    },
+    {
+      "id": 827,
+      "district": "Stockwell",
+      "location": "Cranmer Road",
+      "lat": 51.479601,
+      "lng": -0.111471
+    },
+    {
+      "id": 828,
+      "district": "Stockwell",
+      "location": "Normandy Road",
+      "lat": 51.473874,
+      "lng": -0.11258
+    },
+    {
+      "id": 829,
+      "district": "Stockwell",
+      "location": "Wynne Road",
+      "lat": 51.469217,
+      "lng": -0.112686
+    },
+    {
+      "id": 830,
+      "district": "Stockwell",
+      "location": "Sidney Road",
+      "lat": 51.469202,
+      "lng": -0.119022
+    }
+  ],
+  "Clapham": [
+    {
+      "id": 609,
+      "district": "Clapham",
+      "location": "Sugden Road",
+      "lat": 51.465123,
+      "lng": -0.157788
+    }
+  ],
+  "Isley Court": [
+    {
+      "id": 612,
+      "district": "Isley Court",
+      "location": "Wandsworth Rd",
+      "lat": 51.469259,
+      "lng": -0.141812
+    }
+  ],
+  "Battersea Park": [
+    {
+      "id": 614,
+      "district": "Battersea Park",
+      "location": "Bradmead",
+      "lat": 51.478172,
+      "lng": -0.14469
+    },
+    {
+      "id": 625,
+      "district": "Battersea Park",
+      "location": "Queen's Circus",
+      "lat": 51.477619,
+      "lng": -0.149551
+    },
+    {
+      "id": 658,
+      "district": "Battersea Park",
+      "location": "Ethelburga Estate",
+      "lat": 51.477292,
+      "lng": -0.164786
+    },
+    {
+      "id": 664,
+      "district": "Battersea Park",
+      "location": "Austin Road",
+      "lat": 51.474376,
+      "lng": -0.155442
+    },
+    {
+      "id": 710,
+      "district": "Battersea Park",
+      "location": "Albert Bridge Road",
+      "lat": 51.474392,
+      "lng": -0.163347
+    },
+    {
+      "id": 726,
+      "district": "Battersea Park",
+      "location": "Alfreda Street",
+      "lat": 51.47505,
+      "lng": -0.150908
+    },
+    {
+      "id": 756,
+      "district": "Battersea Park",
+      "location": "Prince of Wales Drive",
+      "lat": 51.475153,
+      "lng": -0.159169
+    },
+    {
+      "id": 800,
+      "district": "Battersea Park",
+      "location": "Sopwith Way",
+      "lat": 51.481121,
+      "lng": -0.149035
+    },
+    {
+      "id": 821,
+      "district": "Battersea Park",
+      "location": "Battersea Power Station",
+      "lat": 51.483507,
+      "lng": -0.147714
+    }
+  ],
+  "Walham Green": [
+    {
+      "id": 618,
+      "district": "Walham Green",
+      "location": "Eel Brook Common",
+      "lat": 51.476259,
+      "lng": -0.193254
+    },
+    {
+      "id": 691,
+      "district": "Walham Green",
+      "location": "Erin Close",
+      "lat": 51.479463,
+      "lng": -0.195777
+    },
+    {
+      "id": 731,
+      "district": "Walham Green",
+      "location": "Michael Road",
+      "lat": 51.477276,
+      "lng": -0.18921
+    },
+    {
+      "id": 737,
+      "district": "Walham Green",
+      "location": "Fulham Broadway",
+      "lat": 51.479932,
+      "lng": -0.194116
+    },
+    {
+      "id": 769,
+      "district": "Walham Green",
+      "location": "Sandilands Road",
+      "lat": 51.473611,
+      "lng": -0.191803
+    }
+  ],
+  "Parsons Green": [
+    {
+      "id": 619,
+      "district": "Parsons Green",
+      "location": "Irene Road",
+      "lat": 51.473763,
+      "lng": -0.19701
+    },
+    {
+      "id": 656,
+      "district": "Parsons Green",
+      "location": "Broomhouse Lane",
+      "lat": 51.468418,
+      "lng": -0.199135
+    },
+    {
+      "id": 671,
+      "district": "Parsons Green",
+      "location": "Parsons Green Station",
+      "lat": 51.475089,
+      "lng": -0.201968
+    },
+    {
+      "id": 774,
+      "district": "Parsons Green",
+      "location": "Hurlingham Park",
+      "lat": 51.470131,
+      "lng": -0.20464
+    }
+  ],
+  "Battersea": [
+    {
+      "id": 620,
+      "district": "Battersea",
+      "location": "Surrey Lane",
+      "lat": 51.47518,
+      "lng": -0.16716
+    },
+    {
+      "id": 627,
+      "district": "Battersea",
+      "location": "Holden Street",
+      "lat": 51.46879,
+      "lng": -0.15823
+    },
+    {
+      "id": 632,
+      "district": "Battersea",
+      "location": "Sheepcote Lane",
+      "lat": 51.470538,
+      "lng": -0.163041
+    },
+    {
+      "id": 640,
+      "district": "Battersea",
+      "location": "Silverthorne Road",
+      "lat": 51.472865,
+      "lng": -0.148059
+    },
+    {
+      "id": 642,
+      "district": "Battersea",
+      "location": "Fawcett Close",
+      "lat": 51.469161,
+      "lng": -0.174485
+    },
+    {
+      "id": 670,
+      "district": "Battersea",
+      "location": "Ashley Crescent",
+      "lat": 51.467185,
+      "lng": -0.152248
+    },
+    {
+      "id": 673,
+      "district": "Battersea",
+      "location": "Hibbert Street",
+      "lat": 51.46517,
+      "lng": -0.180389
+    },
+    {
+      "id": 677,
+      "district": "Battersea",
+      "location": "Heath Road",
+      "lat": 51.468669,
+      "lng": -0.146544
+    },
+    {
+      "id": 679,
+      "district": "Battersea",
+      "location": "Orbel Street",
+      "lat": 51.474535,
+      "lng": -0.17021
+    },
+    {
+      "id": 680,
+      "district": "Battersea",
+      "location": "Westbridge Road",
+      "lat": 51.477684,
+      "lng": -0.170329
+    },
+    {
+      "id": 690,
+      "district": "Battersea",
+      "location": "Stanley Grove",
+      "lat": 51.470475,
+      "lng": -0.15213
+    },
+    {
+      "id": 700,
+      "district": "Battersea",
+      "location": "Battersea Church Road",
+      "lat": 51.476964,
+      "lng": -0.174347
+    },
+    {
+      "id": 701,
+      "district": "Battersea",
+      "location": "Vicarage Crescent",
+      "lat": 51.472876,
+      "lng": -0.176267
+    },
+    {
+      "id": 750,
+      "district": "Battersea",
+      "location": "Culvert Road",
+      "lat": 51.471095,
+      "lng": -0.15785
+    }
+  ],
+  "West Kensington": [
+    {
+      "id": 626,
+      "district": "West Kensington",
+      "location": "Normand Park",
+      "lat": 51.484386,
+      "lng": -0.204815
+    },
+    {
+      "id": 633,
+      "district": "West Kensington",
+      "location": "Vereker Road",
+      "lat": 51.489591,
+      "lng": -0.209378
+    },
+    {
+      "id": 639,
+      "district": "West Kensington",
+      "location": "Coomer Place",
+      "lat": 51.48357,
+      "lng": -0.202038
+    },
+    {
+      "id": 660,
+      "district": "West Kensington",
+      "location": "West Kensington Station",
+      "lat": 51.49087,
+      "lng": -0.206029
+    },
+    {
+      "id": 707,
+      "district": "West Kensington",
+      "location": "Barons Court Station",
+      "lat": 51.490217,
+      "lng": -0.215087
+    },
+    {
+      "id": 720,
+      "district": "West Kensington",
+      "location": "Star Road",
+      "lat": 51.487244,
+      "lng": -0.205279
+    },
+    {
+      "id": 770,
+      "district": "West Kensington",
+      "location": "Gwendwr Road",
+      "lat": 51.491026,
+      "lng": -0.209121
+    },
+    {
+      "id": 782,
+      "district": "West Kensington",
+      "location": "Halford Road",
+      "lat": 51.483911,
+      "lng": -0.197609
+    }
+  ],
+  "Sands End": [
+    {
+      "id": 628,
+      "district": "Sands End",
+      "location": "William Morris Way",
+      "lat": 51.468819,
+      "lng": -0.184318
+    },
+    {
+      "id": 636,
+      "district": "Sands End",
+      "location": "South Park",
+      "lat": 51.467064,
+      "lng": -0.193502
+    },
+    {
+      "id": 648,
+      "district": "Sands End",
+      "location": "Peterborough Road",
+      "lat": 51.46904,
+      "lng": -0.196274
+    },
+    {
+      "id": 723,
+      "district": "Sands End",
+      "location": "Stephendale Road",
+      "lat": 51.46822,
+      "lng": -0.190346
+    },
+    {
+      "id": 738,
+      "district": "Sands End",
+      "location": "Imperial Road",
+      "lat": 51.475142,
+      "lng": -0.187278
+    },
+    {
+      "id": 780,
+      "district": "Sands End",
+      "location": "Imperial Wharf Station",
+      "lat": 51.474665,
+      "lng": -0.183165
+    }
+  ],
+  "Brook Green": [
+    {
+      "id": 634,
+      "district": "Brook Green",
+      "location": "Brook Green South",
+      "lat": 51.494347,
+      "lng": -0.215804
+    },
+    {
+      "id": 775,
+      "district": "Brook Green",
+      "location": "Little Brook Green",
+      "lat": 51.496664,
+      "lng": -0.223868
+    }
+  ],
+  "Wandsworth Common": [
+    {
+      "id": 637,
+      "district": "Wandsworth Common",
+      "location": "Spencer Park",
+      "lat": 51.45787,
+      "lng": -0.174691
+    }
+  ],
+  "Clapham Junction": [
+    {
+      "id": 638,
+      "district": "Clapham Junction",
+      "location": "Falcon Road",
+      "lat": 51.466633,
+      "lng": -0.169821
+    },
+    {
+      "id": 653,
+      "district": "Clapham Junction",
+      "location": "Simpson Street",
+      "lat": 51.470847,
+      "lng": -0.170703
+    },
+    {
+      "id": 659,
+      "district": "Clapham Junction",
+      "location": "Grant Road West",
+      "lat": 51.46437,
+      "lng": -0.174619
+    },
+    {
+      "id": 672,
+      "district": "Clapham Junction",
+      "location": "Grant Road Central",
+      "lat": 51.464688,
+      "lng": -0.173656
+    },
+    {
+      "id": 675,
+      "district": "Clapham Junction",
+      "location": "Usk Road",
+      "lat": 51.463489,
+      "lng": -0.182126
+    },
+    {
+      "id": 683,
+      "district": "Clapham Junction",
+      "location": "Dorothy Road",
+      "lat": 51.465064,
+      "lng": -0.16375
+    },
+    {
+      "id": 689,
+      "district": "Clapham Junction",
+      "location": "Spanish Road",
+      "lat": 51.459225,
+      "lng": -0.180884
+    },
+    {
+      "id": 734,
+      "district": "Clapham Junction",
+      "location": "Plough Terrace",
+      "lat": 51.462305,
+      "lng": -0.175407
+    },
+    {
+      "id": 735,
+      "district": "Clapham Junction",
+      "location": "Grant Road East",
+      "lat": 51.464894,
+      "lng": -0.173029
+    },
+    {
+      "id": 744,
+      "district": "Clapham Junction",
+      "location": "Ingrave Street",
+      "lat": 51.467454,
+      "lng": -0.172293
+    },
+    {
+      "id": 764,
+      "district": "Clapham Junction",
+      "location": "St. John's Road",
+      "lat": 51.462392,
+      "lng": -0.168292
+    },
+    {
+      "id": 776,
+      "district": "Clapham Junction",
+      "location": "Abyssinia Close",
+      "lat": 51.460333,
+      "lng": -0.167029
+    },
+    {
+      "id": 777,
+      "district": "Clapham Junction",
+      "location": "Limburg Road",
+      "lat": 51.461923,
+      "lng": -0.165297
+    }
+  ],
+  "Portobello": [
+    {
+      "id": 643,
+      "district": "Portobello",
+      "location": "All Saints' Road",
+      "lat": 51.519042,
+      "lng": -0.204764
+    },
+    {
+      "id": 661,
+      "district": "Portobello",
+      "location": "All Saints Church",
+      "lat": 51.51632,
+      "lng": -0.202608
+    },
+    {
+      "id": 758,
+      "district": "Portobello",
+      "location": "Westbourne Park Road",
+      "lat": 51.51787,
+      "lng": -0.201005
+    }
+  ],
+  "North Kensington": [
+    {
+      "id": 650,
+      "district": "North Kensington",
+      "location": "St. Mark's Road",
+      "lat": 51.51687,
+      "lng": -0.213872
+    },
+    {
+      "id": 805,
+      "district": "North Kensington",
+      "location": "Bevington Road",
+      "lat": 51.520069,
+      "lng": -0.206338
+    },
+    {
+      "id": 807,
+      "district": "North Kensington",
+      "location": "Bevington Road West",
+      "lat": 51.5212,
+      "lng": -0.208888
+    }
+  ],
+  "Putney": [
+    {
+      "id": 678,
+      "district": "Putney",
+      "location": "Esmond Street",
+      "lat": 51.462312,
+      "lng": -0.211468
+    },
+    {
+      "id": 693,
+      "district": "Putney",
+      "location": "Felsham Road",
+      "lat": 51.464786,
+      "lng": -0.215618
+    },
+    {
+      "id": 694,
+      "district": "Putney",
+      "location": "Putney Rail Station",
+      "lat": 51.460717,
+      "lng": -0.216526
+    },
+    {
+      "id": 708,
+      "district": "Putney",
+      "location": "Disraeli Road",
+      "lat": 51.46161,
+      "lng": -0.216145
+    },
+    {
+      "id": 709,
+      "district": "Putney",
+      "location": "Montserrat Road",
+      "lat": 51.463211,
+      "lng": -0.21555
+    },
+    {
+      "id": 743,
+      "district": "Putney",
+      "location": "Oxford Road",
+      "lat": 51.460792,
+      "lng": -0.212607
+    }
+  ],
+  "Victoria Park": [
+    {
+      "id": 692,
+      "district": "Victoria Park",
+      "location": "Cadogan Close",
+      "lat": 51.542118,
+      "lng": -0.028941
+    }
+  ],
+  "East Putney": [
+    {
+      "id": 704,
+      "district": "East Putney",
+      "location": "Mexfield Road",
+      "lat": 51.45682,
+      "lng": -0.202802
+    },
+    {
+      "id": 728,
+      "district": "East Putney",
+      "location": "Putney Bridge Road",
+      "lat": 51.461999,
+      "lng": -0.20624
+    },
+    {
+      "id": 752,
+      "district": "East Putney",
+      "location": "Manfred Road",
+      "lat": 51.458164,
+      "lng": -0.206002
+    }
+  ],
+  "London Bridge": [
+    {
+      "id": 706,
+      "district": "London Bridge",
+      "location": "Snowsfields",
+      "lat": 51.502153,
+      "lng": -0.083632
+    },
+    {
+      "id": 732,
+      "district": "London Bridge",
+      "location": "Duke Street Hill",
+      "lat": 51.506304,
+      "lng": -0.087262
+    }
+  ],
+  "Hackney Central": [
+    {
+      "id": 718,
+      "district": "Hackney Central",
+      "location": "Ada Street",
+      "lat": 51.535716,
+      "lng": -0.060291
+    },
+    {
+      "id": 719,
+      "district": "Hackney Central",
+      "location": "Victoria Park Road",
+      "lat": 51.536424,
+      "lng": -0.054162
+    }
+  ],
+  "West Brompton": [
+    {
+      "id": 739,
+      "district": "West Brompton",
+      "location": "Hortensia Road",
+      "lat": 51.481765,
+      "lng": -0.185273
+    },
+    {
+      "id": 757,
+      "district": "West Brompton",
+      "location": "Harcourt Terrace",
+      "lat": 51.487958,
+      "lng": -0.187404
+    }
+  ],
+  "De Beauvoir Town": [
+    {
+      "id": 748,
+      "district": "De Beauvoir Town",
+      "location": "Hertford Road",
+      "lat": 51.537277,
+      "lng": -0.079201
+    }
+  ],
+  "Clapham Common": [
+    {
+      "id": 768,
+      "district": "Clapham Common",
+      "location": "Clapham Common North Side",
+      "lat": 51.461343,
+      "lng": -0.159322
+    }
+  ],
+  "Hackney Wick": [
+    {
+      "id": 783,
+      "district": "Hackney Wick",
+      "location": "Monier Road",
+      "lat": 51.540311,
+      "lng": -0.02163
+    }
+  ],
+  "Queen Elizabeth Olympic Park": [
+    {
+      "id": 784,
+      "district": "Queen Elizabeth Olympic Park",
+      "location": "East Village",
+      "lat": 51.546326,
+      "lng": -0.009935
+    },
+    {
+      "id": 785,
+      "district": "Queen Elizabeth Olympic Park",
+      "location": "Aquatic Centre",
+      "lat": 51.54094,
+      "lng": -0.01051
+    },
+    {
+      "id": 786,
+      "district": "Queen Elizabeth Olympic Park",
+      "location": "Lee Valley VeloPark",
+      "lat": 51.549369,
+      "lng": -0.015717
+    },
+    {
+      "id": 787,
+      "district": "Queen Elizabeth Olympic Park",
+      "location": "Timber Lodge",
+      "lat": 51.546805,
+      "lng": -0.014691
+    },
+    {
+      "id": 788,
+      "district": "Queen Elizabeth Olympic Park",
+      "location": "Copper Box Arena",
+      "lat": 51.544836,
+      "lng": -0.019524
+    },
+    {
+      "id": 789,
+      "district": "Queen Elizabeth Olympic Park",
+      "location": "Podium",
+      "lat": 51.538718,
+      "lng": -0.011889
+    },
+    {
+      "id": 812,
+      "district": "Queen Elizabeth Olympic Park",
+      "location": "Here East North",
+      "lat": 51.548731,
+      "lng": -0.022606
+    },
+    {
+      "id": 816,
+      "district": "Queen Elizabeth Olympic Park",
+      "location": "Here East South",
+      "lat": 51.546532,
+      "lng": -0.020597
+    }
+  ],
+  "Stratford": [
+    {
+      "id": 790,
+      "district": "Stratford",
+      "location": "Stratford Station",
+      "lat": 51.541793,
+      "lng": -0.00481
+    }
+  ],
+  "Lingham Street": [
+    {
+      "id": 814,
+      "district": "Lingham Street",
+      "location": "Clapham Road",
+      "lat": 51.471433,
+      "lng": -0.12367
+    }
+  ],
+  "Brixton": [
+    {
+      "id": 831,
+      "district": "Brixton",
+      "location": "St John's Crescent",
+      "lat": 51.466232,
+      "lng": -0.113179
+    },
+    {
+      "id": 833,
+      "district": "Brixton",
+      "location": "Saltoun Road",
+      "lat": 51.460232,
+      "lng": -0.115375
+    }
+  ],
+  "Brixton.": [
+    {
+      "id": 832,
+      "district": "Brixton.",
+      "location": "Ferndale Road",
+      "lat": 51.464019,
+      "lng": -0.115781
+    }
+  ]
+}

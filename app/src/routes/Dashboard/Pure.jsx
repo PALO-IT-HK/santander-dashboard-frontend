@@ -17,17 +17,17 @@ const MainDiv = styled.div`
 
 export default function Dashboard ({getDashboard, dashboardData, value, currentTab}) {
   return (
-        <MainDiv>
-          {currentTab === 'BIKE USAGE' && (
-            <BikeUsageMainSearch />)}
-          {currentTab === 'WEATHER EFFECT' && (
-            <WeatherEffect />
-          )}
-          {dashboardData &&
-          <StdWrapperFlexContentCentered>
-            {JSON.stringify(dashboardData, 2, null)}
-          </StdWrapperFlexContentCentered>
-          }
-        </MainDiv>
+    <MainDiv>
+      {currentTab === 'BIKE USAGE' && (
+        <BikeUsageMainSearch />)}
+      {currentTab === 'WEATHER EFFECT' && (
+        <WeatherEffect />
+      )}
+      {dashboardData &&
+      <StdWrapperFlexContentCentered>
+        {JSON.stringify(dashboardData, 2, null)}
+      </StdWrapperFlexContentCentered>
+      }
+    </MainDiv>
   )
 }

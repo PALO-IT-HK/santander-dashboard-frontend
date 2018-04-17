@@ -29,7 +29,11 @@ import {
   getBikeUsageTopLocationsActionSaga,
   getHeatmapPointsActionSaga,
   toggleWidgetOpenStatusAction,
-  updateMapBoundsAction
+  updateMapBoundsAction,
+  updateGraphSearchResultsAction,
+  updateGraphSelectedDistrictAction,
+  updateGraphSearchInputValueAction,
+  toggleResultsWrapperVisibilityAction
 } from 'models/dashboard'
 
 // s function
@@ -60,6 +64,10 @@ const s = state => ({
   bikeUsageHistoryDataArray: state.dashboard.bikeUsageHistoryDataArray,
   isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
   currentMapBounds: state.dashboard.currentMapBounds,
+  graphSearchResults: state.dashboard.graphSearchResults,
+  graphSelectedDistrict: state.dashboard.graphSelectedDistrict,
+  currentGraphInputValue: state.dashboard.currentGraphInputValue,
+  resultsWrapperVisibilityStatus: state.dashboard.resultsWrapperVisibilityStatus,
   loadingBarStatus: state.dashboard.loadingBarStatus
 })
 
@@ -88,7 +96,11 @@ const d = dispatch => ({
   getBikeUsageTopLocationsActionSaga: bindActionCreators(getBikeUsageTopLocationsActionSaga, dispatch),
   getHeatmapPointsActionSaga: bindActionCreators(getHeatmapPointsActionSaga, dispatch),
   toggleWidgetOpenStatusAction: bindActionCreators(toggleWidgetOpenStatusAction, dispatch),
-  updateMapBoundsAction: bindActionCreators(updateMapBoundsAction, dispatch)
+  updateMapBoundsAction: bindActionCreators(updateMapBoundsAction, dispatch),
+  updateGraphSearchResultsAction: bindActionCreators(updateGraphSearchResultsAction, dispatch),
+  updateGraphSelectedDistrictAction: bindActionCreators(updateGraphSelectedDistrictAction, dispatch),
+  updateGraphSearchInputValueAction: bindActionCreators(updateGraphSearchInputValueAction, dispatch),
+  toggleResultsWrapperVisibilityAction: bindActionCreators(toggleResultsWrapperVisibilityAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

@@ -20,7 +20,7 @@ const DropdownDisplay = styled.div`
   font-family: Abril Fatface;
   font-size: 30px;
   color: #1dacbd;
-  width: 400px;
+  min-width: 230px;
   padding-left: 5px;
   display: flex;
   justify-content: flex-start;
@@ -44,7 +44,7 @@ const DropdownIcon = styled.div`
 
 const DropdownItemContainer = styled.div`
   position: absolute;
-  width: 400px;
+  min-width: 230px;
   height: auto;
   background-color: #e9e9e9;
   border-radius: 5px;
