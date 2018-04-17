@@ -133,9 +133,13 @@ const BikeUsageMainSearch = ({
   graphSelectedDistrict,
   updateGraphSearchInputValueAction,
   currentGraphInputValue,
+  updatePreviousGraphSearchInputValueAction,
+  previousGraphInputValue,
   toggleResultsWrapperVisibilityAction,
   resultsWrapperVisibilityStatus,
-  fetchDistrictSelectedActionSaga
+  fetchDistrictSelectedActionSaga,
+  updateMouseOverStatusAction,
+  mouseOverStatus
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
@@ -215,10 +219,14 @@ const BikeUsageMainSearch = ({
                 graphSelectedDistrict={graphSelectedDistrict}
                 updateGraphSearchInputValueAction={updateGraphSearchInputValueAction}
                 currentGraphInputValue={currentGraphInputValue}
+                updatePreviousGraphSearchInputValueAction={updatePreviousGraphSearchInputValueAction}
+                previousGraphInputValue={previousGraphInputValue}
                 toggleResultsWrapperVisibilityAction={toggleResultsWrapperVisibilityAction}
                 resultsWrapperVisibilityStatus={resultsWrapperVisibilityStatus}
                 fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
                 fetchSagaAction={getBikeUsageTopLocationsActionSaga}
+                updateMouseOverStatusAction={updateMouseOverStatusAction}
+                mouseOverStatus={mouseOverStatus}
               />
             </SubHeader>
           </SearchBoxDiv>

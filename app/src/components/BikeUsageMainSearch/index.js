@@ -33,9 +33,11 @@ import {
   updateGraphSearchResultsAction,
   updateGraphSelectedDistrictAction,
   updateGraphSearchInputValueAction,
+  updatePreviousGraphSearchInputValueAction,
   toggleResultsWrapperVisibilityAction,
   fetchDistrictSelectedActionSaga,
-  computeAggregatedTopLocations
+  computeAggregatedTopLocations,
+  updateMouseOverStatusAction
 } from 'models/dashboard'
 
 // s function
@@ -69,8 +71,10 @@ const s = state => ({
   graphSearchResults: state.dashboard.graphSearchResults,
   graphSelectedDistrict: state.dashboard.graphSelectedDistrict,
   currentGraphInputValue: state.dashboard.currentGraphInputValue,
+  previousGraphInputValue: state.dashboard.previousGraphInputValue,
   resultsWrapperVisibilityStatus: state.dashboard.resultsWrapperVisibilityStatus,
-  loadingBarStatus: state.dashboard.loadingBarStatus
+  loadingBarStatus: state.dashboard.loadingBarStatus,
+  mouseOverStatus: state.dashboard.mouseOverStatus
 })
 
 const d = dispatch => ({
@@ -102,8 +106,10 @@ const d = dispatch => ({
   updateGraphSearchResultsAction: bindActionCreators(updateGraphSearchResultsAction, dispatch),
   updateGraphSelectedDistrictAction: bindActionCreators(updateGraphSelectedDistrictAction, dispatch),
   updateGraphSearchInputValueAction: bindActionCreators(updateGraphSearchInputValueAction, dispatch),
+  updatePreviousGraphSearchInputValueAction: bindActionCreators(updatePreviousGraphSearchInputValueAction, dispatch),
   toggleResultsWrapperVisibilityAction: bindActionCreators(toggleResultsWrapperVisibilityAction, dispatch),
-  fetchDistrictSelectedActionSaga: bindActionCreators(fetchDistrictSelectedActionSaga, dispatch)
+  fetchDistrictSelectedActionSaga: bindActionCreators(fetchDistrictSelectedActionSaga, dispatch),
+  updateMouseOverStatusAction: bindActionCreators(updateMouseOverStatusAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))
