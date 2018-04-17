@@ -31,7 +31,7 @@ const Heatmap = compose(
       this.setState({
         bounds: null,
         center: { lat: 51.49614, lng: -0.135 },
-        zoom: 16,
+        zoom: 15,
         markers: [],
         onMapMounted: ref => {
           refs.map = ref
@@ -170,7 +170,10 @@ const Heatmap = compose(
           <MarkerWithLabel
             title={item.id}
             key={item.id}
-            icon={{url: 'https://thumb.ibb.co/cy5FMc/bike.png'}}
+            icon={{
+              url: 'https://thumb.ibb.co/i32Lj7/pin.png',
+              scaledSize: new google.maps.Size(40, 50)
+            }}
             position={{ lat: item.lat, lng: item.lon }}
             labelAnchor={new window.google.maps.Point(80, -10)}
             labelStyle={markerLabelStyle}
