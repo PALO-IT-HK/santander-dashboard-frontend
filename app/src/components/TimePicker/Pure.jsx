@@ -160,13 +160,13 @@ const TimePicker = ({
           type={'secondary'}
           size={'small'}
           children={'Cancel'}
-          onClick={(e) => handleCancelOnClick()}
+          onClick={() => handleCancelOnClick()}
         />
         <SButton
           type={'primary'}
           size={'small'}
           children={'Apply'}
-          onClick={(e) => handleApplyOnClick(currentMapBounds, fromDate, toDate, timeFrom, timeTo)}
+          onClick={() => handleApplyOnClick()}
         />
       </DisplayButtons>
     </TimeWrapper>
