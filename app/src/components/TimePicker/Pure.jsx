@@ -116,7 +116,8 @@ const TimePicker = ({
       }
       getHeatmapPointsActionSaga(payload)
     }
-    graphSelectedDistrict !== 'London' ? fetchDistrictSelectedActionSaga() : fetchSagaAction()
+    console.log('currentTab', currentTab)
+    currentTab !== 'WEATHER EFFECT' && graphSelectedDistrict !== 'London' ? fetchDistrictSelectedActionSaga() : fetchSagaAction()
     toggleWidgetOpenStatusAction(false)
     hideTimePickerAction()
   }
