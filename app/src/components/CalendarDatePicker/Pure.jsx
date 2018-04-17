@@ -66,16 +66,17 @@ export default class CalendarDatePicker extends Component {
   handleCalendarApplyOnClick = () => {
     const currTab = this.props.currentTab
     const currSubTab = this.props.currentToggledTab
+    const currentMapBounds = this.props.currentMapBounds
     if (currTab === 'BIKE USAGE' && currSubTab === 'HEAT MAP') {
       const payload = {
         widget: 'CALENDAR',
         ne: {
-          neLat: this.props.currentMapBounds.ne.neLat,
-          neLng: this.props.currentMapBounds.ne.neLng
+          neLat: currentMapBounds.ne.neLat,
+          neLng: currentMapBounds.ne.neLng
         },
         sw: {
-          swLat: this.props.currentMapBounds.sw.swLat,
-          swLng: this.props.currentMapBounds.sw.swLng
+          swLat: currentMapBounds.sw.swLat,
+          swLng: currentMapBounds.sw.swLng
         },
         date: {
           fromDate: this.props.from,
@@ -88,9 +89,11 @@ export default class CalendarDatePicker extends Component {
       }
       this.props.getHeatmapPointsActionSaga(payload)
     }
-    (this.props.currentTab !== 'WEATHER EFFECT' && this.props.graphSelectedDistrict !== 'All of London')
-      ? this.props.fetchDistrictSelectedActionSaga()
-      : this.props.fetchSagaAction()
+    if (currTab !== 'WEATHER EFFECT' && currSubTab !== 'HEAT MAP') {
+      this.props.graphSelectedDistrict !== 'All of London'
+        ? this.props.fetchDistrictSelectedActionSaga()
+        : this.props.fetchSagaAction()
+    }
     this.props.hideDatePickerAction()
     this.props.toggleWidgetOpenStatusAction(false)
   }
