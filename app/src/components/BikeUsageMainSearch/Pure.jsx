@@ -9,7 +9,7 @@ import Dropdown from 'components/Dropdown/Pure'
 import CalendarDatePicker from 'components/CalendarDatePicker/Pure'
 import DateTimeSearch from 'components/DateTimeSearch/Pure'
 import TimePicker from 'components/TimePicker/Pure'
-import { formatDateForApi } from 'utils/utils'
+import { formatDateBy_ddmmyyyy } from 'utils/utils'
 
 const OverallBikeUsageWrapper = styled.div`
   display: flex;
@@ -156,9 +156,9 @@ const BikeUsageMainSearch = ({
 
   const formatNewDate = () => {
     if (fromDate && toDate != null) {
-      return `${formatDateForApi(fromDate)} - ${formatDateForApi(toDate)}`
+      return `${formatDateBy_ddmmyyyy(fromDate)} - ${formatDateBy_ddmmyyyy(toDate)}`
     } else {
-      return `Today, ${formatDateForApi(currentDateSelection)}`
+      return `Today, ${formatDateBy_ddmmyyyy(currentDateSelection)}`
     }
   }
 

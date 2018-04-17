@@ -58,7 +58,7 @@ class RainfallGraph extends React.Component {
               <ComposedChart data={data} margin={{bottom: 100}}>
                 <CartesianGrid strokeDasharray='3 3' />
                 <XAxis dataKey={v => v.date} tick={<CustomizedAxisTick />} interval={0} />
-                <YAxis yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} orientation='right' label={{value: 'Bike Usage', position: 'middle', angle: -270, dx: 25, dy: -50, fontFamily: 'Rubik', fontSize: 12}} />
+                <YAxis yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} orientation='right' label={{value: 'Bike Usage', position: 'center', angle: -270, dx: 25, dy: -50, fontFamily: 'Rubik', fontSize: 12}} />
                 <YAxis yAxisId='line' tick={{fontFamily: 'Rubik', fontSize: 12}} label={{value: 'Rainfall (mm)', position: 'insideLeft', angle: -90, dx: 10, fontFamily: 'Rubik', fontSize: 12}} />
                 {data.length > 0 && <Tooltip content={customToolTip} />}
                 <Bar
