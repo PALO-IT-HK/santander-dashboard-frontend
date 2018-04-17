@@ -141,6 +141,7 @@ export default class CalendarDatePicker extends Component {
                     size={'small'}
                     onClick={this.handleCalendarApplyOnClick}
                     children={'Apply'}
+                    disabled={(!this.props.from || !this.props.enteredTo || !this.props.to)}
                   />
               </ButtonsWrapper>
             </div>
