@@ -179,6 +179,8 @@ const BikeUsageMainSearch = ({
                 placeholder={'all docks in London'}
                 wrapperPaddingLeft={15}
                 currentToggledTab={currentToggledTab}
+                toggleResultsWrapperVisibilityAction={toggleResultsWrapperVisibilityAction}
+                updateGraphSearchInputValueAction={updateGraphSearchInputValueAction}
               />
             </SubHeader>
           </SearchBoxDiv>
