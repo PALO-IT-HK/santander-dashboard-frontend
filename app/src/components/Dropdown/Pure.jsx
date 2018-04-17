@@ -93,12 +93,15 @@ const DropdownItem = props => {
 const Dropdown = props => {
   const {size, name, type, dropDownDisplayStatus, toggleDropdownVisibilityAction,
     currentDropDownDisplayValue, updateDropDownDisplayValueAction,
-    graphSelectedDistrict, getBikeUsageTopLocationsActionSaga, fetchDistrictSelectedActionSaga} = props
+    graphSelectedDistrict, getBikeUsageTopLocationsActionSaga, fetchDistrictSelectedActionSaga,
+    fetchSagaAction} = props
   const handleDisplayOnClick = () => dropDownDisplayStatus ? toggleDropdownVisibilityAction(false) : toggleDropdownVisibilityAction(true)
-  const handleDropDownItemOnClick = (value) => updateDropDownDisplayValueAction(value) && fetchDistrictAction()
-
+  const handleDropDownItemOnClick = (value) => {
+    updateDropDownDisplayValueAction(value)
+    graphSelectedDistrict !== 'All of London' ? fetchDistrictAction() : fetchSagaAction()
+  }
   const fetchDistrictAction = () => {
-    return graphSelectedDistrict !== 'London' ? fetchDistrictSelectedActionSaga() : getBikeUsageTopLocationsActionSaga()
+    return graphSelectedDistrict !== 'All of London' ? fetchDistrictSelectedActionSaga() : getBikeUsageTopLocationsActionSaga()
   }
 
   return (

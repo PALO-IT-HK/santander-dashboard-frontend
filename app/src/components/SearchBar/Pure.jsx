@@ -86,8 +86,8 @@ const SearchBar = props => {
     wrapperPaddingLeft, currentToggledTab, updateGraphSearchResultsAction, graphSearchResults,
     updateGraphSelectedDistrictAction, updateGraphSearchInputValueAction,
     currentGraphInputValue, resultsWrapperVisibilityStatus, toggleResultsWrapperVisibilityAction,
-    fetchDistrictSelectedActionSaga} = props
-  const handleFocusBlur = (e, changeInputFocusAction, id, currentGraphInputValue) => {
+    fetchDistrictSelectedActionSaga, fetchSagaAction} = props
+  const handleFocusBlur = (e) => {
     if (id === 'graph-search') {
       if (e.type === 'focus') {
         changeInputFocusAction('focus')
@@ -99,9 +99,7 @@ const SearchBar = props => {
       changeInputFocusAction('blur')
     }
   }
-  const handleSearchBarOnChange = (e, currentToggledTab, updateGraphSearchResultsAction,
-    updateGraphSearchInputValueAction, currentGraphInputValue,
-    toggleResultsWrapperVisibilityAction) => {
+  const handleSearchBarOnChange = (e) => {
     const currentTab = currentToggledTab
     if (currentTab === 'GRAPH') {
       updateGraphSearchInputValueAction(e.target.value)
@@ -113,12 +111,11 @@ const SearchBar = props => {
       updateGraphSearchResultsAction(filteredDistricts)
     }
   }
-  const handleSearchItemOnClick = (e, updateGraphSelectedDistrictAction,
-    updateGraphSearchInputValueAction, toggleResultsWrapperVisibilityAction) => {
+  const handleSearchItemOnClick = (e) => {
     updateGraphSearchInputValueAction(e.target.innerHTML)
     updateGraphSelectedDistrictAction(e.target.innerHTML)
     toggleResultsWrapperVisibilityAction(false)
-    fetchDistrictSelectedActionSaga()
+    e.target.innerHTML !== 'All of London' ? fetchDistrictSelectedActionSaga() : fetchSagaAction()
   }
   return (
     <SearchBarWrapper
@@ -126,15 +123,14 @@ const SearchBar = props => {
       <SearchInputField
         id={id}
         size={size}
-        onFocus={(e) => handleFocusBlur(e, changeInputFocusAction, id, toggleResultsWrapperVisibilityAction)}
-        onBlur={(e) => handleFocusBlur(e, changeInputFocusAction, id, toggleResultsWrapperVisibilityAction)}
+        onFocus={(e) => handleFocusBlur(e)}
+        onBlur={(e) => handleFocusBlur(e)}
         status={currentFocusStatus}
         value={currentGraphInputValue}
         type={type}
         placeholder={placeholder}
         name={name}
-        onChange={(e) => handleSearchBarOnChange(e, currentToggledTab, updateGraphSearchResultsAction,
-          updateGraphSearchInputValueAction, currentGraphInputValue, toggleResultsWrapperVisibilityAction)} />
+        onChange={(e) => handleSearchBarOnChange(e)} />
       {id === 'graph-search' &&
         <SearchResultsWrapper
           visibility={resultsWrapperVisibilityStatus.toString()}>
@@ -143,8 +139,7 @@ const SearchBar = props => {
               <SearchResultsItem
                 key={uuidv4()}
                 value={item}
-                onClick={(e) => handleSearchItemOnClick(e, updateGraphSelectedDistrictAction,
-                  updateGraphSearchInputValueAction, toggleResultsWrapperVisibilityAction)}>
+                onClick={(e) => handleSearchItemOnClick(e)}>
                 {item}
               </SearchResultsItem>
             )

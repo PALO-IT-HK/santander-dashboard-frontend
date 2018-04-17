@@ -199,13 +199,14 @@ const BikeUsageMainSearch = ({
                 updateDropDownDisplayValueAction={updateDropDownDisplayValueAction}
                 getBikeUsageTopLocationsActionSaga={getBikeUsageTopLocationsActionSaga}
                 fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
+                fetchSagaAction={getBikeUsageTopLocationsActionSaga}
                 graphSelectedDistrict={graphSelectedDistrict}
               />
               <SearchBar
                 id={'graph-search'}
                 changeInputFocusAction={changeInputFocusAction}
                 currentFocusStatus={currentFocusStatus}
-                placeholder={'London'}
+                placeholder={'All of London'}
                 wrapperPaddingLeft={30}
                 updateGraphSearchResultsAction={updateGraphSearchResultsAction}
                 graphSearchResults={graphSearchResults}
@@ -217,6 +218,7 @@ const BikeUsageMainSearch = ({
                 toggleResultsWrapperVisibilityAction={toggleResultsWrapperVisibilityAction}
                 resultsWrapperVisibilityStatus={resultsWrapperVisibilityStatus}
                 fetchDistrictSelectedActionSaga={fetchDistrictSelectedActionSaga}
+                fetchSagaAction={getBikeUsageTopLocationsActionSaga}
               />
             </SubHeader>
           </SearchBoxDiv>

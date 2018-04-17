@@ -573,7 +573,7 @@ export const dashboardInitialState = {
   toDateWeather: new Date(),
   enteredToWeather: new Date(),
   graphSearchResults: [],
-  graphSelectedDistrict: 'London',
+  graphSelectedDistrict: 'All of London',
   currentGraphInputValue: '',
   resultsWrapperVisibilityStatus: false,
   totalBikeUsage: [],
