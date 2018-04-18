@@ -5,8 +5,8 @@ export const publicHolidaysLondon = {
   'Christmas Day 2017': new Date('2017-12-25'),
   'Boxing Day 2017': new Date('2017-12-26'),
   'New Year\'s Day 2018': new Date('2018-01-01'),
-  'Good Friday 2018': new Date('2018-04-22'),
-  'Easter Monday 2018': new Date('2018-04-19')
+  'Good Friday 2018': new Date('2018-03-30'),
+  'Easter Monday 2018': new Date('2018-04-02')
 }
 
 export const timeFilters = {
