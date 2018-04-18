@@ -35,7 +35,9 @@ import {
   updateGraphSearchInputValueAction,
   toggleResultsWrapperVisibilityAction,
   fetchDistrictSelectedActionSaga,
-  computeAggregatedTopLocations
+  computeAggregatedTopLocations,
+  storeTimeStateAction,
+  displayPreviousTimeAction
 } from 'models/dashboard'
 
 // s function
@@ -60,6 +62,9 @@ const s = state => ({
   timeFromArray: state.dashboard.timeFromArray,
   timeToArray: state.dashboard.timeToArray,
   timeTagName: state.dashboard.timeTagName,
+  previousTimeFrom: state.dashboard.previousTimeFrom,
+  previousTimeTo: state.dashboard.previousTimeTo,
+  previousTimeTag: state.dashboard.previousTimeTagName,
   dropDownDisplayStatus: state.dashboard.dropDownDisplayStatus,
   currentDropDownDisplayValue: state.dashboard.currentDropDownDisplayValue,
   bikeUsageTopLocationsArray: computeAggregatedTopLocations(state),
@@ -103,7 +108,9 @@ const d = dispatch => ({
   updateGraphSelectedDistrictAction: bindActionCreators(updateGraphSelectedDistrictAction, dispatch),
   updateGraphSearchInputValueAction: bindActionCreators(updateGraphSearchInputValueAction, dispatch),
   toggleResultsWrapperVisibilityAction: bindActionCreators(toggleResultsWrapperVisibilityAction, dispatch),
-  fetchDistrictSelectedActionSaga: bindActionCreators(fetchDistrictSelectedActionSaga, dispatch)
+  fetchDistrictSelectedActionSaga: bindActionCreators(fetchDistrictSelectedActionSaga, dispatch),
+  storeTimeStateAction: bindActionCreators(storeTimeStateAction, dispatch),
+  displayPreviousTimeAction: bindActionCreators(displayPreviousTimeAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))
