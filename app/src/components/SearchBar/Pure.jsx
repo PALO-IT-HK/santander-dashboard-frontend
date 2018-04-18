@@ -91,9 +91,8 @@ const SearchBar = props => {
   const outsideSearchClickEventListener = event => {
     const id = event.target.id || ''
     if (!id.includes('searchItem') && !id.includes('graph-search') && resultsWrapperVisibilityStatus) {
-      removeClickListener()
-      updateGraphSearchInputValueAction(previousGraphInputValue)
       toggleResultsWrapperVisibilityAction(false)
+      removeClickListener()
     }
   }
   const removeClickListener = () => document.removeEventListener('click', outsideSearchClickEventListener)
@@ -114,10 +113,15 @@ const SearchBar = props => {
     }
   }
   const handleHoverAndMouseOut = (e) => {
-    if (id === 'graph-search')
-    e.type === 'mouseover'
-      ? updateMouseOverStatusAction(true)
-      : updateMouseOverStatusAction(false) && e.target.blur()
+    if (id === 'graph-search') {
+      if (e.type === 'mouseover') updateMouseOverStatusAction(true)
+      else {
+        updateMouseOverStatusAction(false)
+        e.target.blur()
+        changeInputFocusAction('blur')
+      }
+    }
+
   }
   const handleSearchBarOnChange = (e) => {
     if (currentToggledTab === 'GRAPH') {
@@ -133,6 +137,7 @@ const SearchBar = props => {
   }
   const handleSearchItemOnClick = (e) => {
     updateGraphSearchInputValueAction(e.target.innerHTML)
+    updatePreviousGraphSearchInputValueAction(e.target.innerHTML)
     updateGraphSelectedDistrictAction(e.target.innerHTML)
     toggleResultsWrapperVisibilityAction(false)
     e.target.innerHTML !== 'All of London' ? fetchDistrictSelectedActionSaga() : fetchSagaAction()
