@@ -124,9 +124,11 @@ export const showErrorAction = createAction(`${GRAPH} SHOW_ERROR_MESSAGE`)
 export const updateGraphSearchResultsAction = createAction(`${GRAPH} UPDATE SEARCH RESULTS ARRAY`)
 export const updateGraphSelectedDistrictAction = createAction(`${GRAPH} UPDATE SELECTED DISTRICT`)
 export const updateGraphSearchInputValueAction = createAction(`${GRAPH} UPDATE INPUT VALUE`)
+export const updatePreviousGraphSearchInputValueAction = createAction(`${GRAPH} UPDATE PREVIOUS INPUT VALUE`)
 export const toggleResultsWrapperVisibilityAction = createAction(`${GRAPH} TOGGLE HIDE SHOW RESULTS WRAPPER`)
 export const fetchDistrictsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_DISTRICTS_SUCCESS`)
 export const fetchDistrictsActionFail = createAction(`${GRAPH} GET_BIKE_TOP_DISTRICTS_FAIL`)
+export const updateMouseOverStatusAction = createAction(`${GRAPH} UPDATE MOUSE OVER STATUS`)
 
 /** --------------------------------------------------
  *
@@ -453,10 +455,24 @@ const updateGraphSearchInputValue = (state, value) => {
   })
 }
 
+const updatePreviousGraphSearchInputValue = (state, value) => {
+  return ({
+    ...state,
+    previousGraphInputValue: value
+  })
+}
+
 const toggleResultsWrapperVisibility = (state, bool) => {
   return ({
     ...state,
     resultsWrapperVisibilityStatus: bool
+  })
+}
+
+const updateMouseOverStatus = (state, bool) => {
+  return ({
+    ...state,
+    mouseOverStatus: bool
   })
 }
 
@@ -542,9 +558,11 @@ export const dashboard = {
   [updateGraphSearchResultsAction]: updateGraphSearchResults,
   [updateGraphSelectedDistrictAction]: updateGraphSelectedDistrict,
   [updateGraphSearchInputValueAction]: updateGraphSearchInputValue,
+  [updatePreviousGraphSearchInputValueAction]: updatePreviousGraphSearchInputValue,
   [toggleResultsWrapperVisibilityAction]: toggleResultsWrapperVisibility,
   [getTotalBikeUsageWeatherSuccess]: totalBikeUsageAndWeather,
-  [fetchDistrictsActionSuccess]: bikeUsageTopLocations
+  [fetchDistrictsActionSuccess]: bikeUsageTopLocations,
+  [updateMouseOverStatusAction] : updateMouseOverStatus
 }
 
 /** --------------------------------------------------
@@ -603,9 +621,11 @@ export const dashboardInitialState = {
   graphSearchResults: [],
   graphSelectedDistrict: 'All of London',
   currentGraphInputValue: '',
+  previousGraphInputValue: '',
   resultsWrapperVisibilityStatus: false,
   totalBikeUsage: [],
-  weather: {}
+  weather: {},
+  mouseOverStatus: false
 }
 
 export default createReducer(dashboard, dashboardInitialState)

@@ -84,12 +84,25 @@ const SearchResultsItem = styled.div`
 const SearchBar = props => {
   const {id, size, placeholder, name, type, changeInputFocusAction, currentFocusStatus,
     wrapperPaddingLeft, currentToggledTab, updateGraphSearchResultsAction, graphSearchResults,
-    updateGraphSelectedDistrictAction, updateGraphSearchInputValueAction,
-    currentGraphInputValue, resultsWrapperVisibilityStatus, toggleResultsWrapperVisibilityAction,
-    fetchDistrictSelectedActionSaga, fetchSagaAction} = props
+    updateGraphSelectedDistrictAction, updateGraphSearchInputValueAction, currentGraphInputValue,
+    updatePreviousGraphSearchInputValueAction, previousGraphInputValue, resultsWrapperVisibilityStatus,
+    toggleResultsWrapperVisibilityAction, fetchDistrictSelectedActionSaga, fetchSagaAction,
+    updateMouseOverStatusAction, mouseOverStatus} = props
+  const outsideSearchClickEventListener = event => {
+    const id = event.target.id || ''
+    if (!id.includes('searchItem') && !id.includes('graph-search') && resultsWrapperVisibilityStatus) {
+      toggleResultsWrapperVisibilityAction(false)
+      removeClickListener()
+    }
+  }
+  const removeClickListener = () => document.removeEventListener('click', outsideSearchClickEventListener)
+  document.addEventListener('click', outsideSearchClickEventListener)
   const handleFocusBlur = (e) => {
     if (id === 'graph-search') {
+      // Logic for Graph Search Box
+      // When focused and value is not empty string, open results box and apply focus style
       if (e.type === 'focus') {
+        updatePreviousGraphSearchInputValueAction(currentGraphInputValue)
         changeInputFocusAction('focus')
         if (e.target.value !== '') toggleResultsWrapperVisibilityAction(true)
       }
@@ -99,20 +112,32 @@ const SearchBar = props => {
       changeInputFocusAction('blur')
     }
   }
+  const handleHoverAndMouseOut = (e) => {
+    if (id === 'graph-search') {
+      if (e.type === 'mouseover') updateMouseOverStatusAction(true)
+      else {
+        updateMouseOverStatusAction(false)
+        e.target.blur()
+        changeInputFocusAction('blur')
+      }
+    }
+
+  }
   const handleSearchBarOnChange = (e) => {
-    const currentTab = currentToggledTab
-    if (currentTab === 'GRAPH') {
+    if (currentToggledTab === 'GRAPH') {
       updateGraphSearchInputValueAction(e.target.value)
       e.target.value === '' ? toggleResultsWrapperVisibilityAction(false) : toggleResultsWrapperVisibilityAction(true)
       const districtNamesArray = Object.keys(districts)
       const filteredDistricts = districtNamesArray
-        .filter(district => district.toLowerCase().includes(currentGraphInputValue.toLowerCase()))
+        .filter(district => district.toString().toLowerCase().includes(e.target.value.toLowerCase())
+          && district.toLowerCase() !== 'default')
         .sort()
       updateGraphSearchResultsAction(filteredDistricts)
     }
   }
   const handleSearchItemOnClick = (e) => {
     updateGraphSearchInputValueAction(e.target.innerHTML)
+    updatePreviousGraphSearchInputValueAction(e.target.innerHTML)
     updateGraphSelectedDistrictAction(e.target.innerHTML)
     toggleResultsWrapperVisibilityAction(false)
     e.target.innerHTML !== 'All of London' ? fetchDistrictSelectedActionSaga() : fetchSagaAction()
@@ -125,6 +150,8 @@ const SearchBar = props => {
         size={size}
         onFocus={(e) => handleFocusBlur(e)}
         onBlur={(e) => handleFocusBlur(e)}
+        onMouseOver={(e) => handleHoverAndMouseOut(e)}
+        onMouseOut={(e) => handleHoverAndMouseOut(e)}
         status={currentFocusStatus}
         value={currentGraphInputValue}
         type={type}
@@ -137,13 +164,23 @@ const SearchBar = props => {
           {graphSearchResults.map(item => {
             return (
               <SearchResultsItem
+                id={`searchItem-${uuidv4()}`}
                 key={uuidv4()}
-                value={item}
+                value={item.toString()}
                 onClick={(e) => handleSearchItemOnClick(e)}>
-                {item}
+                {item.toString()}
               </SearchResultsItem>
             )
           })
+          }
+          {graphSearchResults.length === 0 &&
+            <div style={{
+              height: '100%',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'}}>
+              No Results to display
+            </div>
           }
         </SearchResultsWrapper>
       }
