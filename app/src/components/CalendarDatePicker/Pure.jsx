@@ -94,6 +94,7 @@ export default class CalendarDatePicker extends Component {
         ? this.props.fetchDistrictSelectedActionSaga()
         : this.props.fetchSagaAction()
     }
+    if (currTab === 'WEATHER EFFECT') this.props.fetchSagaAction()
     this.props.hideDatePickerAction()
     this.props.toggleWidgetOpenStatusAction(false)
   }
