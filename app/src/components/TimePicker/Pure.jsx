@@ -120,6 +120,7 @@ const TimePicker = ({
         ? fetchDistrictSelectedActionSaga()
         : fetchSagaAction()
     }
+    if (currentTab === 'WEATHER EFFECT') fetchSagaAction()
     toggleWidgetOpenStatusAction(false)
     hideTimePickerAction()
   }
