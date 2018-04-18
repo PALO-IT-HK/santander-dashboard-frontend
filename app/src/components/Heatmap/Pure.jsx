@@ -171,8 +171,8 @@ const Heatmap = compose(
             title={item.id}
             key={item.id}
             icon={{
-              url: 'https://thumb.ibb.co/i32Lj7/pin.png',
-              scaledSize: new google.maps.Size(40, 50)
+              url: '/src/assets/img/pin.svg',
+              scaledSize: new google.maps.Size(30, 40)
             }}
             position={{ lat: item.lat, lng: item.lon }}
             labelAnchor={new window.google.maps.Point(80, -10)}
