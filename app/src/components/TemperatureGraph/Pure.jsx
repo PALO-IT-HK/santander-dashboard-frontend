@@ -1,5 +1,5 @@
 import React from 'react'
-import { ComposedChart, Line, Bar, Tooltip, CartesianGrid, YAxis, XAxis, ResponsiveContainer } from 'recharts'
+import { ComposedChart, Line, Bar, Tooltip, CartesianGrid, YAxis, XAxis, Legend, ResponsiveContainer } from 'recharts'
 import moment from 'moment'
 
 const customToolTipStyles = {
@@ -63,11 +63,13 @@ class TemperatureGraph extends React.Component {
                 <YAxis yAxisId='bar' tick={{fontFamily: 'Rubik', fontSize: 12}} orientation='right' label={{value: 'Bike Usage', position: 'center', angle: -270, dx: 25, dy: -50, fontFamily: 'Rubik', fontSize: 12}} />
                 <YAxis yAxisId='line' tick={{fontFamily: 'Rubik', fontSize: 12}} label={{value: 'Temperature (°C)', position: 'insideLeft', angle: -90, dx: 10, fontFamily: 'Rubik', fontSize: 12}} />
                 {data.length > 0 && <Tooltip content={customToolTip} />}
+                <Legend verticalAlign='top' height={36} />
                 <Bar
                   yAxisId='bar'
                   dataKey={v => v.totalBikesOut}
                   maxBarSize={50}
                   fill='#D54435'
+                  name='Bike Usage'
                 />
                 <Line
                   yAxisId='line'
@@ -77,6 +79,7 @@ class TemperatureGraph extends React.Component {
                   strokeWidth={3}
                   dot={false}
                   activeDot={{ stroke: '#1dacbd', r: 6 }}
+                  name='Temperature (°C)'
                 />
               </ComposedChart>
             </ResponsiveContainer>)
