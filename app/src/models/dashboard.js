@@ -73,6 +73,8 @@ export const filterTimeFromArrayAction = createAction(
   `${TIME} FILTER_TIME_FROM_ARRAY`
 )
 export const getTimeTagAction = createAction(`${TIME} TIME_TAG_SELECTED`)
+export const storeTimeStateAction = createAction(`${TIME} STORE_TIME_STATE`)
+export const displayPreviousTimeAction = createAction(`${TIME} DISPLAY_PREVIOUS_TIME_STATE`)
 
 // Calendar + Time Actions
 export const toggleWidgetOpenStatusAction = createAction(
@@ -400,6 +402,30 @@ const getTimeTag = (state, time) => ({
   timeTo: time[1].timeTo
 })
 
+const storeTimeState = (state) => {
+  const previousTimeFrom = state.timeFrom
+  const previousTimeTo = state.timeTo
+  const previousTimeTagName = state.timeTagName
+  return {
+    ...state,
+    previousTimeFrom: previousTimeFrom,
+    previousTimeTo: previousTimeTo,
+    previousTimeTag: previousTimeTagName
+  }
+}
+
+const displayPreviousTimeState = state => {
+  const timeFrom = state.previousTimeFrom
+  const timeTo = state.previousTimeTo
+  const timeTagName = state.previousTimeTag
+  return {
+    ...state,
+    timeFrom: timeFrom,
+    timeTo: timeTo,
+    timeTagName: timeTagName
+  }
+}
+
 // Graph
 const bikeUsageTopLocations = (state, data) => {
   return ({
@@ -516,6 +542,8 @@ export const dashboard = {
   [filterTimeToArrayAction]: filterTimeToArray,
   [filterTimeFromArrayAction]: filterTimeFromArray,
   [getTimeTagAction]: getTimeTag,
+  [storeTimeStateAction]: storeTimeState,
+  [displayPreviousTimeAction]: displayPreviousTimeState,
   [toggleDropdownVisibilityAction]: toggleDropdownVisibility,
   [updateDropDownDisplayValueAction]: updateDropDownDisplayValue,
   [getBikeUsageTopLocationsActionSuccess]: bikeUsageTopLocations,

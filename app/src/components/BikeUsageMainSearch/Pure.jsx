@@ -139,7 +139,9 @@ const BikeUsageMainSearch = ({
   resultsWrapperVisibilityStatus,
   fetchDistrictSelectedActionSaga,
   updateMouseOverStatusAction,
-  mouseOverStatus
+  mouseOverStatus,
+  storeTimeStateAction,
+  displayPreviousTimeAction
 }) => {
   const handleTabChange = v => changeToggledTabAction(v)
   const openDatePicker = v => {
@@ -153,6 +155,7 @@ const BikeUsageMainSearch = ({
   const openTimePicker = v => {
     if (!isAnyWidgetOpenCurrently) {
       showTimePickerAction(v)
+      storeTimeStateAction()
       toggleWidgetOpenStatusAction(true)
     } else {
       return null
@@ -286,6 +289,7 @@ const BikeUsageMainSearch = ({
                 selectTimeFromAction={selectTimeFromAction}
                 selectTimeToAction={selectTimeToAction}
                 hideTimePickerAction={hideTimePickerAction}
+                displayPreviousTimeAction={displayPreviousTimeAction}
                 toggleWidgetOpenStatusAction={toggleWidgetOpenStatusAction}
                 currentMapBounds={currentMapBounds}
                 getHeatmapPointsActionSaga={getHeatmapPointsActionSaga}

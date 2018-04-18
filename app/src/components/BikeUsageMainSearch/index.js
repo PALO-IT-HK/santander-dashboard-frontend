@@ -37,7 +37,9 @@ import {
   toggleResultsWrapperVisibilityAction,
   fetchDistrictSelectedActionSaga,
   computeAggregatedTopLocations,
-  updateMouseOverStatusAction
+  updateMouseOverStatusAction,
+  storeTimeStateAction,
+  displayPreviousTimeAction
 } from 'models/dashboard'
 
 // s function
@@ -62,6 +64,9 @@ const s = state => ({
   timeFromArray: state.dashboard.timeFromArray,
   timeToArray: state.dashboard.timeToArray,
   timeTagName: state.dashboard.timeTagName,
+  previousTimeFrom: state.dashboard.previousTimeFrom,
+  previousTimeTo: state.dashboard.previousTimeTo,
+  previousTimeTag: state.dashboard.previousTimeTagName,
   dropDownDisplayStatus: state.dashboard.dropDownDisplayStatus,
   currentDropDownDisplayValue: state.dashboard.currentDropDownDisplayValue,
   bikeUsageTopLocationsArray: computeAggregatedTopLocations(state),
@@ -109,7 +114,9 @@ const d = dispatch => ({
   updatePreviousGraphSearchInputValueAction: bindActionCreators(updatePreviousGraphSearchInputValueAction, dispatch),
   toggleResultsWrapperVisibilityAction: bindActionCreators(toggleResultsWrapperVisibilityAction, dispatch),
   fetchDistrictSelectedActionSaga: bindActionCreators(fetchDistrictSelectedActionSaga, dispatch),
-  updateMouseOverStatusAction: bindActionCreators(updateMouseOverStatusAction, dispatch)
+  updateMouseOverStatusAction: bindActionCreators(updateMouseOverStatusAction, dispatch),
+  storeTimeStateAction: bindActionCreators(storeTimeStateAction, dispatch),
+  displayPreviousTimeAction: bindActionCreators(displayPreviousTimeAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

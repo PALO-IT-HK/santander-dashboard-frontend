@@ -20,7 +20,9 @@ import {
   clickDateFromWeatherAction,
   clickDateToWeatherAction,
   totalBikeUsageAndWeatherActionSaga,
-  computeAggregatedBikeWeather
+  computeAggregatedBikeWeather,
+  storeTimeStateAction,
+  displayPreviousTimeAction
 } from 'models/dashboard'
 
 // s function
@@ -38,6 +40,9 @@ const s = state => ({
   timeFromArray: state.dashboard.timeFromArray,
   timeToArray: state.dashboard.timeToArray,
   timeTagName: state.dashboard.timeTagName,
+  previousTimeFrom: state.dashboard.previousTimeFrom,
+  previousTimeTo: state.dashboard.previousTimeTo,
+  previousTimeTag: state.dashboard.previousTimeTagName,
   isAnyWidgetOpenCurrently: state.dashboard.isAnyWidgetOpenCurrently,
   fromDateWeather: state.dashboard.fromDateWeather,
   toDateWeather: state.dashboard.toDateWeather,
@@ -63,7 +68,9 @@ const d = dispatch => ({
   resetWeatherCalendarAction: bindActionCreators(resetWeatherCalendarAction, dispatch),
   clickDateFromWeatherAction: bindActionCreators(clickDateFromWeatherAction, dispatch),
   clickDateToWeatherAction: bindActionCreators(clickDateToWeatherAction, dispatch),
-  totalBikeUsageAndWeatherActionSaga: bindActionCreators(totalBikeUsageAndWeatherActionSaga, dispatch)
+  totalBikeUsageAndWeatherActionSaga: bindActionCreators(totalBikeUsageAndWeatherActionSaga, dispatch),
+  storeTimeStateAction: bindActionCreators(storeTimeStateAction, dispatch),
+  displayPreviousTimeAction: bindActionCreators(displayPreviousTimeAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))
