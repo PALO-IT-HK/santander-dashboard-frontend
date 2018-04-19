@@ -4,7 +4,8 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 import { media } from 'styledconfig'
 import MenuBar from 'components/MenuBar/Pure'
-import { StdWrapperFlexContentLeft } from 'components/Layout'
+import EmailSubscribe from 'components/EmailSubscribe/Pure'
+import { StdWrapperFlexContentLeft, StdWrapperFlexContentRight } from 'components/Layout'
 import Helmet from 'react-helmet'
 
 const RootAppContainer = styled.div`
@@ -16,6 +17,8 @@ const Header = styled.div`
   top: 0;
   position: fixed;
   background-color: #ffffff;
+  display: flex;
+  justify-content: space-between;
   z-index: 1001;
   /*
   Examples for responsive css, breakpoints defined in 'styledconfig.js'
@@ -40,8 +43,17 @@ const Content = styled.div`
   `};
 `
 
-const AppLayout = ({ currentTab, changeTabAction, loadingBarStatus, children }) => {
+const AppLayout = ({
+  currentTab,
+  changeTabAction,
+  loadingBarStatus,
+  children,
+  isEmailSubscribedAction,
+  isEmailSubscribed,
+  handleInputChangeAction,
+  email }) => {
   const handleTabChange = v => changeTabAction(v)
+
   return (
     <RootAppContainer>
       <MuiThemeProvider>
@@ -55,6 +67,14 @@ const AppLayout = ({ currentTab, changeTabAction, loadingBarStatus, children }) 
                 loadingBarStatus={loadingBarStatus}
               />
             </StdWrapperFlexContentLeft>
+            <StdWrapperFlexContentRight>
+              <EmailSubscribe
+                handleInputChangeAction={handleInputChangeAction}
+                isEmailSubscribed={isEmailSubscribed}
+                isEmailSubscribedAction={isEmailSubscribedAction}
+                email={email}
+              />
+            </StdWrapperFlexContentRight>
           </Header>
           <Content>{children}</Content>
         </React.Fragment>

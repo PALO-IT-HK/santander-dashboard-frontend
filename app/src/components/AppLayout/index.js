@@ -3,15 +3,25 @@ import { withRouter } from 'react-router-dom'
 import { bindActionCreators } from 'redux'
 
 import Pure from './Pure'
-import { changeTabAction } from 'models/dashboard'
+import {
+  changeTabAction,
+  isEmailSubscribedAction,
+  handleInputChangeAction
+} from 'models/dashboard'
 
 // s function
 const s = (state) => ({
   currentTab: state.dashboard.currentTab,
-  loadingBarStatus: state.dashboard.loadingBarStatus
+  loadingBarStatus: state.dashboard.loadingBarStatus,
+  isEmailSubscribed: state.dashboard.isEmailSubscribed,
+  email: state.dashboard.email
 })
 
 // d function
-const d = dispatch => ({changeTabAction: bindActionCreators(changeTabAction, dispatch)})
+const d = dispatch => ({
+  changeTabAction: bindActionCreators(changeTabAction, dispatch),
+  isEmailSubscribedAction: bindActionCreators(isEmailSubscribedAction, dispatch),
+  handleInputChangeAction: bindActionCreators(handleInputChangeAction, dispatch)
+})
 
 export default withRouter(connect(s, d)(Pure))

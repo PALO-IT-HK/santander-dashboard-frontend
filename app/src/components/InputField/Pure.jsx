@@ -4,11 +4,9 @@ import styled from 'styled-components'
 
 const Input = styled.input`
   ${({size}) => inputSize[size]}
-  border-radius: 30px;
   padding: 0 10px;
-  border: 1px solid #D54435;
-  background-color: #D54435;
   color: #080E40;
+  margin: 0.5rem;
   &::-webkit-input-placeholder {
     color: #353F50;
   }
@@ -18,17 +16,17 @@ const inputSize = {
   small: `
     width: 150px;
     height: 32px;
-    font-size: 12px;
+    font-size: 10px;
   `,
   medium: `
     width: 200px;
     height: 36px;
-    font-size: 14px;
+    font-size: 12px;
   `,
   large: `
     width: 240px;
     height: 40px;
-    font-size: 16px;
+    font-size: 14px;
   `
 }
 
@@ -36,6 +34,7 @@ export default function InputField (props) {
   const {size, placeholder, name, type, onChange, value} = props
   return (
     <Input
+      required
       size={size}
       onChange={onChange}
       value={value}

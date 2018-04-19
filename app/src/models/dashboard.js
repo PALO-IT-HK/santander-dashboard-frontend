@@ -21,6 +21,7 @@ const CALENDAR = '[CALENDAR]'
 const CALENDAR_TIME = '[CALENDAR_TIME]'
 const TIME = '[TIME]'
 const WEATHER = '[WEATHER]'
+const EMAIL = '[EMAIL]'
 
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
@@ -129,6 +130,10 @@ export const toggleResultsWrapperVisibilityAction = createAction(`${GRAPH} TOGGL
 export const fetchDistrictsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_DISTRICTS_SUCCESS`)
 export const fetchDistrictsActionFail = createAction(`${GRAPH} GET_BIKE_TOP_DISTRICTS_FAIL`)
 export const updateMouseOverStatusAction = createAction(`${GRAPH} UPDATE MOUSE OVER STATUS`)
+
+// Email
+export const isEmailSubscribedAction = createAction(`${EMAIL} TOGGLE_EMAIL_SUBSCRIBE`)
+export const handleInputChangeAction = createAction(`${EMAIL} HANDLE_EMAIL_INPUT_CHANGE`)
 
 /** --------------------------------------------------
  *
@@ -515,6 +520,18 @@ const totalBikeUsageAndWeather = (state, {totalUsageBikePoints, weatherForecast}
   }
 }
 
+const toggleEmailSubscribe = (state, bool) => ({
+  ...state,
+  isEmailSubscribed: bool
+})
+
+const emailInfo = (state, email) => {
+  return {
+    ...state,
+    email: email
+  }
+}
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -562,7 +579,9 @@ export const dashboard = {
   [toggleResultsWrapperVisibilityAction]: toggleResultsWrapperVisibility,
   [getTotalBikeUsageWeatherSuccess]: totalBikeUsageAndWeather,
   [fetchDistrictsActionSuccess]: bikeUsageTopLocations,
-  [updateMouseOverStatusAction] : updateMouseOverStatus
+  [updateMouseOverStatusAction]: updateMouseOverStatus,
+  [isEmailSubscribedAction]: toggleEmailSubscribe,
+  [handleInputChangeAction]: emailInfo
 }
 
 /** --------------------------------------------------
@@ -625,7 +644,9 @@ export const dashboardInitialState = {
   resultsWrapperVisibilityStatus: false,
   totalBikeUsage: [],
   weather: {},
-  mouseOverStatus: false
+  mouseOverStatus: false,
+  isEmailSubscribed: false,
+  email: ''
 }
 
 export default createReducer(dashboard, dashboardInitialState)
