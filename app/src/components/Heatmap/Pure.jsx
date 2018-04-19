@@ -5,6 +5,7 @@ import { compose, withProps, lifecycle } from 'recompose'
 import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps'
 import { MarkerWithLabel } from 'react-google-maps/lib/components/addons/MarkerWithLabel'
 import HeatmapLayer from 'react-google-maps/lib/components/visualization/HeatmapLayer'
+import pin from 'assets/img/pin.svg'
 
 const markerLabelStyle = {
   width: '180px',
@@ -171,7 +172,7 @@ const Heatmap = compose(
             title={item.id}
             key={item.id}
             icon={{
-              url: '/src/assets/img/pin.svg',
+              url: `${pin}`,
               scaledSize: new google.maps.Size(30, 40)
             }}
             position={{ lat: item.lat, lng: item.lon }}

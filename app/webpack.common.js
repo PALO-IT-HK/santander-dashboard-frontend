@@ -61,7 +61,7 @@ config.module.rules.push({
   test: /\.(png|gif|jpe?g|svg)$/,
   loader: 'file-loader',
   options: {
-    name: 'assets/imgs/[name].[ext]',
+    name: 'assets/img/[name].[ext]',
     publicPath: `${publicPath}/`
   }
 })
