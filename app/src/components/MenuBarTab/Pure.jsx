@@ -24,6 +24,7 @@ export const MenuTabsWrapper = styled.div`
   width: fit-content;
   height: 60px;
   display: flex;
+  margin-left: 1rem;
 `
 export const TabWrapper = styled.div`
   min-width: 140px;

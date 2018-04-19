@@ -6,6 +6,7 @@ import { media } from 'styledconfig'
 import MenuBar from 'components/MenuBar/Pure'
 import { StdWrapperFlexContentLeft } from 'components/Layout'
 import Helmet from 'react-helmet'
+import logo from 'assets/img/santander_logo.png'
 
 const RootAppContainer = styled.div`
 
@@ -39,6 +40,12 @@ const Content = styled.div`
     padding-top: 50px;
   `};
 `
+const LogoPlacement = styled.div`
+  background-image: url(${logo});
+  height: 60px;
+  width: 60px;
+  background-size: cover;
+`
 
 const AppLayout = ({ currentTab, changeTabAction, loadingBarStatus, children }) => {
   const handleTabChange = v => changeTabAction(v)
@@ -49,6 +56,7 @@ const AppLayout = ({ currentTab, changeTabAction, loadingBarStatus, children }) 
           <Helmet title='Landing Page' titleTemplate='%s | My App' />
           <Header>
             <StdWrapperFlexContentLeft>
+              <LogoPlacement />
               <MenuBar
                 value={currentTab}
                 onChange={v => handleTabChange(v)}
