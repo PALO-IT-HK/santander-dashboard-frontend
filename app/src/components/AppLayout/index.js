@@ -6,7 +6,8 @@ import Pure from './Pure'
 import {
   changeTabAction,
   isEmailSubscribedAction,
-  handleInputChangeAction
+  handleInputChangeAction,
+  postEmailSagaAction
 } from 'models/dashboard'
 
 // s function
@@ -21,7 +22,8 @@ const s = (state) => ({
 const d = dispatch => ({
   changeTabAction: bindActionCreators(changeTabAction, dispatch),
   isEmailSubscribedAction: bindActionCreators(isEmailSubscribedAction, dispatch),
-  handleInputChangeAction: bindActionCreators(handleInputChangeAction, dispatch)
+  handleInputChangeAction: bindActionCreators(handleInputChangeAction, dispatch),
+  postEmailSagaAction: bindActionCreators(postEmailSagaAction, dispatch)
 })
 
 export default withRouter(connect(s, d)(Pure))

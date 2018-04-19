@@ -51,16 +51,17 @@ const RenderEmail = styled.div`
   display: inline-flex;
 `
 
-const EmailSubscribe = ({isEmailSubscribed, isEmailSubscribedAction, handleInputChangeAction, email}) => {
+const EmailSubscribe = ({isEmailSubscribed, isEmailSubscribedAction, handleInputChangeAction, postEmailSagaAction, email}) => {
   const handleInputChange = (e) => handleInputChangeAction(e.target.value)
   const submitEmail = (e) => {
     e.preventDefault()
+    postEmailSagaAction()
     isEmailSubscribed ? isEmailSubscribedAction(false) : isEmailSubscribedAction(true)
   }
 
   return (
     <EmailSubscribeWrapper>
-      <form type='submit' onSubmit={submitEmail} >
+      <form type='submit' onSubmit={submitEmail}>
         {isEmailSubscribed
           ? (<input
             style={unsubscribe}

@@ -51,6 +51,7 @@ const AppLayout = ({
   isEmailSubscribedAction,
   isEmailSubscribed,
   handleInputChangeAction,
+  postEmailSagaAction,
   email }) => {
   const handleTabChange = v => changeTabAction(v)
 
@@ -69,6 +70,7 @@ const AppLayout = ({
             </StdWrapperFlexContentLeft>
             <StdWrapperFlexContentRight>
               <EmailSubscribe
+                postEmailSagaAction={postEmailSagaAction}
                 handleInputChangeAction={handleInputChangeAction}
                 isEmailSubscribed={isEmailSubscribed}
                 isEmailSubscribedAction={isEmailSubscribedAction}
