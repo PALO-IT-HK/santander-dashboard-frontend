@@ -21,6 +21,7 @@ const CALENDAR = '[CALENDAR]'
 const CALENDAR_TIME = '[CALENDAR_TIME]'
 const TIME = '[TIME]'
 const WEATHER = '[WEATHER]'
+const EMAIL = '[EMAIL]'
 
 export const getDashboard = createAction(`${MODEL_NAME} GET`)
 export const getDashboardSuccess = createAction(`${MODEL_NAME} GET_SUCCESS`)
@@ -103,6 +104,7 @@ export const getHeatmapPointsActionFailed = createAction(
 export const getBikeUsageTopLocationsActionSaga = createAction(`${GRAPH} GET_BIKE_TOP_LOCATIONS`)
 export const totalBikeUsageAndWeatherActionSaga = createAction(`${WEATHER} GET_BIKE_USAGE_AND_WEATHER`)
 export const fetchDistrictSelectedActionSaga = createAction(`${GRAPH} GET_TOP_BIKE_POINTS_DISTRICT`)
+export const postEmailSagaAction = createAction(`${EMAIL} POST_EMAIL_TO_SES`)
 
 // Weather Actions
 export const getTotalBikeUsageWeatherSuccess = createAction(`${WEATHER} GET_BIKE_USAGE_AND_WEATHER_SUCCESS`)
@@ -130,6 +132,12 @@ export const fetchDistrictsActionSuccess = createAction(`${GRAPH} GET_BIKE_TOP_D
 export const fetchDistrictsActionFail = createAction(`${GRAPH} GET_BIKE_TOP_DISTRICTS_FAIL`)
 export const updateMouseOverStatusAction = createAction(`${GRAPH} UPDATE MOUSE OVER STATUS`)
 
+// Email
+export const isEmailSubscribedAction = createAction(`${EMAIL} TOGGLE_EMAIL_SUBSCRIBE`)
+export const handleInputChangeAction = createAction(`${EMAIL} HANDLE_EMAIL_INPUT_CHANGE`)
+export const postEmailActionSuccess = createAction(`${EMAIL} EMAIL_SUBSCRIBE_SUCCESS`)
+export const postEmailActionFail = createAction(`${EMAIL} EMAIL_SUBSCRIBE_FAIL`)
+
 /** --------------------------------------------------
  *
  * Sagas
@@ -138,6 +146,10 @@ export const updateMouseOverStatusAction = createAction(`${GRAPH} UPDATE MOUSE O
 // Sample data, to be replaced by API call to Node Backend when ready
 function fetchDashboard () {
   return axios.get('https://swapi.co/api/people/1')
+}
+
+function postEmail (email) {
+  return axios.post('https://api-ses.ci.palo-it-hk.com/verifyEmail', {email: email})
 }
 
 function fetchTopBikeUsageByLocations (usageRank, fromDate, toDate, timeFrom, timeTo) {
@@ -184,6 +196,19 @@ export const sagas = {
     const res = yield call(fetchDashboard)
     // This next yield dispatches another action that does not go through Saga and instead to the Reducer
     yield put(getDashboardSuccess(res.data))
+  },
+  [postEmailSagaAction]: function * () {
+    yield put(toggleLoadingBarAction(true))
+    const {email} = yield select(state => ({
+      email: state.dashboard.email
+    }))
+    try {
+      const postResult = yield call(postEmail, email)
+      yield put(postEmailActionSuccess(postResult))
+      yield put(toggleLoadingBarAction(false))
+    } catch (error) {
+      yield put(postEmailActionFail(error))
+    }
   },
   [getBikePointsActionSaga]: function * ({ payload }) {
     yield put(toggleLoadingBarAction(true))
@@ -515,6 +540,18 @@ const totalBikeUsageAndWeather = (state, {totalUsageBikePoints, weatherForecast}
   }
 }
 
+const toggleEmailSubscribe = (state, bool) => ({
+  ...state,
+  isEmailSubscribed: bool
+})
+
+const emailInfo = (state, email) => {
+  return {
+    ...state,
+    email: email
+  }
+}
+
 /** --------------------------------------------------
  *
  * Reducers
@@ -562,7 +599,9 @@ export const dashboard = {
   [toggleResultsWrapperVisibilityAction]: toggleResultsWrapperVisibility,
   [getTotalBikeUsageWeatherSuccess]: totalBikeUsageAndWeather,
   [fetchDistrictsActionSuccess]: bikeUsageTopLocations,
-  [updateMouseOverStatusAction] : updateMouseOverStatus
+  [updateMouseOverStatusAction]: updateMouseOverStatus,
+  [isEmailSubscribedAction]: toggleEmailSubscribe,
+  [handleInputChangeAction]: emailInfo
 }
 
 /** --------------------------------------------------
@@ -625,7 +664,9 @@ export const dashboardInitialState = {
   resultsWrapperVisibilityStatus: false,
   totalBikeUsage: [],
   weather: {},
-  mouseOverStatus: false
+  mouseOverStatus: false,
+  isEmailSubscribed: false,
+  email: ''
 }
 
 export default createReducer(dashboard, dashboardInitialState)
