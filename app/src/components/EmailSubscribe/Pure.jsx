@@ -67,6 +67,7 @@ const EmailSubscribe = ({isEmailSubscribed, isEmailSubscribedAction, handleInput
             style={unsubscribe}
             type='submit'
             value='Unsubscribe'
+            disabled={isEmailSubscribed}
           />)
           : (<input
             style={subscribe}
